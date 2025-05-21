@@ -12,7 +12,6 @@ DroidEdit redesigned UI
 
 #### Screenshoots
 
-<img src="Screenshots/img_1.jpg" alt="" />
 <img src="Screenshots/img_2.jpg" alt="" />
 <img src="Screenshots/img_3.jpg" alt="" />
 <img src="Screenshots/img_4.jpg" alt="" />
