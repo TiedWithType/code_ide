@@ -34,6 +34,7 @@
   <MODE NAME="cfscript" FILE="cfscript.xml" FILE_NAME_GLOB="*.cfc"/>
   <MODE NAME="chill" FILE="chill.xml" FILE_NAME_GLOB="*.{chl,mpol}"/>
   <MODE NAME="cil" FILE="cil.xml" FILE_NAME_GLOB="*.il"/>
+  <MODE NAME="clips" FILE="clips.xml"/>
   <MODE NAME="clojure" FILE="clojure.xml" FILE_NAME_GLOB="*.{clj,cljs,cljc,edn}"/>
   <MODE NAME="cmake" FILE="cmake.xml" FILE_NAME_GLOB="{CMakeLists.txt,*.cmake}"/>
   <MODE NAME="cobol" FILE="cobol.xml" FILE_NAME_GLOB="*.{cbl,cob}"/>
@@ -46,6 +47,7 @@
   <MODE NAME="d" FILE="d.xml" FILE_NAME_GLOB="*.d"/>
   <MODE NAME="dart" FILE="dart.xml" FILE_NAME_GLOB="*.dart"/>
   <MODE NAME="django" FILE="django.xml"/>
+  <MODE NAME="dockerfile" FILE="dockerfile.xml" FILE_NAME_GLOB="{Dockerfile,Dockerfile.*,*.Dockerfile,Containerfile,Containerfile.*}"/>
   <MODE NAME="dot" FILE="dot.xml" FILE_NAME_GLOB="*.dot"/>
   <MODE NAME="doxygen" FILE="doxygen.xml" FILE_NAME_GLOB="doxyfile*"/>
   <MODE NAME="dsssl" FILE="dsssl.xml" FILE_NAME_GLOB="*.dsl"/>
@@ -64,10 +66,12 @@
   <MODE NAME="gnuplot" FILE="gnuplot.xml" FILE_NAME_GLOB="*.{dem,plt}"/>
   <MODE NAME="go" FILE="go.xml" FILE_NAME_GLOB="*.go"/>
   <MODE NAME="gradle" FILE="gradle.xml" FILE_NAME_GLOB="*.{gradle}"/>
+  <MODE NAME="graphql" FILE="graphql.xml" FILE_NAME_GLOB="*.{graphql,gql,graphqls}"/>
   <MODE NAME="groovy" FILE="groovy.xml" FILE_NAME_GLOB="*.{gant,groovy,grv}"/>
   <MODE NAME="gsp" FILE="jsp.xml" FILE_NAME_GLOB="*.{gsp}"/>
   <MODE NAME="haskell" FILE="haskell.xml" FILE_NAME_GLOB="*.hs"/>
   <MODE NAME="haxe" FILE="haxe.xml" FILE_NAME_GLOB="*.hx"/>
+  <MODE NAME="hcl" FILE="hcl.xml" FILE_NAME_GLOB="*.{hcl,tf,tfvars}"/>
   <MODE NAME="hex" FILE="hex.xml"/>
   <MODE NAME="hlsl" FILE="hlsl.xml" FILE_NAME_GLOB="*.fx"/>
   <MODE NAME="htaccess" FILE="htaccess.xml" FILE_NAME_GLOB=".htaccess"/>
@@ -93,8 +97,11 @@
   <MODE NAME="jhtml" FILE="jhtml.xml" FILE_NAME_GLOB="*.jhtml"/>
   <MODE NAME="jmk" FILE="jmk.xml" FILE_NAME_GLOB="*.jmk"/>
   <MODE NAME="json" FILE="json.xml" FILE_NAME_GLOB="*.json"/>
-  <MODE NAME="JSON5" FILE="json5.xml" FILE_NAME_GLOB="*.json5"/>
+  <MODE NAME="json5" FILE="json5.xml" FILE_NAME_GLOB="*.json5"/>
+  <MODE NAME="jsonc" FILE="jsonc.xml" FILE_NAME_GLOB="{*.jsonc,tsconfig.json,tsconfig.*.json,jsconfig.json}"/>
   <MODE NAME="jsp" FILE="jsp.xml" FILE_NAME_GLOB="*.{jsp,jsf,jspf,tag}"/>
+  <MODE NAME="jsx" FILE="jsx.xml" FILE_NAME_GLOB="*.jsx"/>
+  <MODE NAME="kotlin" FILE="kotlin.xml" FILE_NAME_GLOB="*.{kt,kts}"/>
   <MODE NAME="latex" FILE="latex.xml" FILE_NAME_GLOB="*.{tex,sty,ltx}"/>
   <MODE NAME="lex" FILE="lex.xml" FILE_NAME_GLOB="*.l"/>
   <MODE NAME="lilypond" FILE="lilypond.xml" FILE_NAME_GLOB="*.{ly,ily}"/>
@@ -108,7 +115,7 @@
   <MODE NAME="mail" FILE="mail.xml"/>
   <MODE NAME="makefile" FILE="makefile.xml" FILE_NAME_GLOB="*makefile"/>
   <MODE NAME="maple" FILE="maple.xml" FILE_NAME_GLOB="*.{mpl,mws}"/>
-  <MODE NAME="Markdown" FILE="markdown.xml" FILE_NAME_GLOB="*.{md,markdown,mdown,mkd}"/>
+  <MODE NAME="markdown" FILE="markdown.xml" FILE_NAME_GLOB="*.{md,markdown,mdown,mkd}"/>
   <MODE NAME="maven" FILE="maven.xml" FILE_NAME_GLOB="pom.xml"/>
   <MODE NAME="metapost" FILE="mpost.xml" FILE_NAME_GLOB="*.mp"/>
   <MODE NAME="ml" FILE="ml.xml" FILE_NAME_GLOB="*.{sml,ml}"/>
@@ -137,7 +144,7 @@
   <MODE NAME="pl1" FILE="pl1.xml" FILE_NAME_GLOB="*.pl[i1]"/>
   <MODE NAME="plaintex" FILE="plaintex.xml"/>
   <MODE NAME="pop11" FILE="pop11.xml" FILE_NAME_GLOB="*.{p,pop11,p11}"/>
-  <MODE NAME="PostgreSQL" FILE="pg-sql.xml" FILE_NAME_GLOB="*.{pg_sql,pg-sql}"/>
+  <MODE NAME="postgresql" FILE="pg-sql.xml" FILE_NAME_GLOB="*.{pg_sql,pg-sql}"/>
   <MODE NAME="postscript" FILE="postscript.xml" FILE_NAME_GLOB="*.{ps,eps}"/>
   <MODE NAME="povray" FILE="povray.xml" FILE_NAME_GLOB="*.{pov,povray}"/>
   <MODE NAME="powerdynamo" FILE="powerdynamo.xml" FILE_NAME_GLOB="*.{ssc,stm}"/>
@@ -151,11 +158,13 @@
   <MODE NAME="pvwave" FILE="pvwave.xml" FILE_NAME_GLOB="*.jou"/>
   <MODE NAME="pyrex" FILE="pyrex.xml" FILE_NAME_GLOB="*.{pyx}"/>
   <MODE NAME="python" FILE="python.xml" FILE_NAME_GLOB="*.{py,pyw,pyi}" FIRST_LINE_GLOB="#!*/*python*"/>
+  <MODE NAME="quake" FILE="quake.xml"/>
   <MODE NAME="rakefile" FILE="ruby.xml" FILE_NAME_GLOB="*Rakefile"/>
   <MODE NAME="rcp" FILE="rcp.xml" FILE_NAME_GLOB="*.rcp"/>
   <MODE NAME="rd" FILE="rd.xml" FILE_NAME_GLOB="*.rd"/>
   <MODE NAME="rebol" FILE="rebol.xml" FILE_NAME_GLOB="*.r"/>
   <MODE NAME="redcode" FILE="redcode.xml" FILE_NAME_GLOB="*.{red,rc}"/>
+  <MODE NAME="regex" FILE="regex.xml"/>
   <MODE NAME="relax-ng-compact" FILE="relax-ng-compact.xml" FILE_NAME_GLOB="*.rnc"/>
   <MODE NAME="renderman-rib" FILE="rib.xml" FILE_NAME_GLOB="*.rib"/>
   <MODE NAME="rest" FILE="rest.xml" FILE_NAME_GLOB="*.{rst,rest}" FIRST_LINE_GLOB="{===,~~~}*"/>
@@ -165,6 +174,7 @@
   <MODE NAME="rpm-spec" FILE="rpmspec.xml" FILE_NAME_GLOB="*.spec"/>
   <MODE NAME="rtf" FILE="rtf.xml" FILE_NAME_GLOB="*.rtf"/>
   <MODE NAME="ruby" FILE="ruby.xml" FILE_NAME_GLOB="*.{rb,rbw}" FIRST_LINE_GLOB="#!*/*ruby*"/>
+  <MODE NAME="rust" FILE="rust.xml" FILE_NAME_GLOB="*.rs"/>
   <MODE NAME="rview" FILE="rview.xml" FILE_NAME_GLOB="*.rvw"/>
   <MODE NAME="s#" FILE="ssharp.xml" FILE_NAME_GLOB="*.{ss,ssc,ssi,ssw,sts,aml}"/>
   <MODE NAME="s+" FILE="splus.xml" FILE_NAME_GLOB="*.ssc"/>
@@ -188,6 +198,7 @@
   <MODE NAME="squidconf" FILE="squidconf.xml" FILE_NAME_GLOB="squid.conf"/>
   <MODE NAME="stata" FILE="stata.xml" FILE_NAME_GLOB="*.{do,ado,mata}"/>
   <MODE NAME="svn-commit" FILE="svn-commit.xml" FILE_NAME_GLOB="svn-commit*.tmp"/>
+  <MODE NAME="swift" FILE="swift.xml" FILE_NAME_GLOB="*.swift"/>
   <MODE NAME="swig" FILE="swig.xml" FILE_NAME_GLOB="*.{i,swg}"/>
   <MODE NAME="tcl" FILE="tcl.xml" FILE_NAME_GLOB="*.{tcl,tsh}"/>
   <MODE NAME="template-toolkit" FILE="tthtml.xml" FILE_NAME_GLOB="*.tt{html,css,js}"/>
@@ -195,15 +206,22 @@
   <MODE NAME="texinfo" FILE="texinfo.xml" FILE_NAME_GLOB="*.texi"/>
   <MODE NAME="text" FILE="text.xml" FILE_NAME_GLOB="*.txt"/>
   <MODE NAME="tld" FILE="tld.xml" FILE_NAME_GLOB="*.tld"/>
+  <MODE NAME="toml" FILE="toml.xml" FILE_NAME_GLOB="*.toml"/>
+  <MODE NAME="tpl" FILE="tpl.xml"/>
   <MODE NAME="transact-sql" FILE="tsql.xml"/>
   <MODE NAME="tsp" FILE="tsp.xml" FILE_NAME_GLOB="*.tsp"/>
+  <MODE NAME="tsx" FILE="tsx.xml" FILE_NAME_GLOB="*.tsx"/>
+  <MODE NAME="turbobasic" FILE="turbobasic.xml"/>
   <MODE NAME="twiki" FILE="twiki.xml" FILE_NAME_GLOB="*.twiki"/>
+  <MODE NAME="txt" FILE="txt.xml"/>
+  <MODE NAME="typescript" FILE="typescript.xml" FILE_NAME_GLOB="*.{ts,mts,cts}"/>
   <MODE NAME="typoscript" FILE="typoscript.xml" FILE_NAME_GLOB="*.typo"/>
   <MODE NAME="url" FILE="url.xml" FILE_NAME_GLOB="*.url"/>
   <MODE NAME="uscript" FILE="uscript.xml" FILE_NAME_GLOB="*.uc"/>
   <MODE NAME="vala" FILE="vala.xml" FILE_NAME_GLOB="*.vala"/>
   <MODE NAME="vbscript" FILE="vbscript.xml" FILE_NAME_GLOB="*.{vbs,bas,cls}"/>
   <MODE NAME="velocity" FILE="velocity_pure.xml" FILE_NAME_GLOB="*.vm"/>
+  <MODE NAME="velocity-legacy" FILE="velocity.xml"/>
   <MODE NAME="verilog" FILE="verilog.xml" FILE_NAME_GLOB="*.{ver,v,sv}"/>
   <MODE NAME="vhdl" FILE="vhdl.xml" FILE_NAME_GLOB="*.vh*"/>
   <MODE NAME="visualbasic" FILE="visualbasic.xml" FILE_NAME_GLOB="*.{vb}"/>
@@ -214,22 +232,4 @@
   <MODE NAME="yab" FILE="yab.xml" FILE_NAME_GLOB="*.yab"/>
   <MODE NAME="yaml" FILE="yaml.xml" FILE_NAME_GLOB="*.{yaml,yml}"/>
   <MODE NAME="zpt" FILE="zpt.xml" FILE_NAME_GLOB="*.{pt,zpt}"/>
-  <MODE NAME="typescript" FILE="typescript.xml" FILE_NAME_GLOB="*.{ts,mts,cts}"/>
-  <MODE NAME="jsx" FILE="jsx.xml" FILE_NAME_GLOB="*.jsx"/>
-  <MODE NAME="tsx" FILE="tsx.xml" FILE_NAME_GLOB="*.tsx"/>
-  <MODE NAME="rust" FILE="rust.xml" FILE_NAME_GLOB="*.rs"/>
-  <MODE NAME="kotlin" FILE="kotlin.xml" FILE_NAME_GLOB="*.{kt,kts}"/>
-  <MODE NAME="swift" FILE="swift.xml" FILE_NAME_GLOB="*.swift"/>
-  <MODE NAME="toml" FILE="toml.xml" FILE_NAME_GLOB="*.toml"/>
-  <MODE NAME="graphql" FILE="graphql.xml" FILE_NAME_GLOB="*.{graphql,gql,graphqls}"/>
-  <MODE NAME="dockerfile" FILE="dockerfile.xml" FILE_NAME_GLOB="{Dockerfile,Dockerfile.*,*.Dockerfile,Containerfile,Containerfile.*}"/>
-  <MODE NAME="hcl" FILE="hcl.xml" FILE_NAME_GLOB="*.{hcl,tf,tfvars}"/>
-  <MODE NAME="jsonc" FILE="jsonc.xml" FILE_NAME_GLOB="{*.jsonc,tsconfig.json,tsconfig.*.json,jsconfig.json}"/>
-  <MODE NAME="turbobasic" FILE="turbobasic.xml"/>
-  <MODE NAME="tpl" FILE="tpl.xml"/>
-  <MODE NAME="regex" FILE="regex.xml"/>
-  <MODE NAME="quake" FILE="quake.xml"/>
-  <MODE NAME="txt" FILE="txt.xml"/>
-  <MODE NAME="clips" FILE="clips.xml"/>
-  <MODE NAME="velocity-legacy" FILE="velocity.xml"/>
 </MODES>
