@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<!-- Previous definition: JavaScript mode by Andre Kaplan; replaced with dedicated JSON5 lexical rules. -->
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="// "/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE">
+    <SPAN TYPE="COMMENT1">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+    <EOL_SPAN TYPE="COMMENT2">//</EOL_SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="&quot;">"(?:\\.|[^"\\\r\n])*"(?=\s*:)</SEQ_REGEXP>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="'">'(?:\\.|[^'\\\r\n])*'(?=\s*:)</SEQ_REGEXP>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>'</BEGIN>
+      <END>'</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD2" AT_WORD_START="TRUE">[$A-Za-z_][$\w]*(?=\s*:)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="+-0123456789.IN">[+-]?(?:0[xX][0-9A-Fa-f]+|(?:[0-9]+\.?[0-9]*|\.[0-9]+)(?:[eE][+-]?[0-9]+)?|Infinity\b|NaN\b)</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <KEYWORDS>
+      <LITERAL2>true</LITERAL2>
+      <LITERAL2>false</LITERAL2>
+      <LITERAL2>null</LITERAL2>
+      <LITERAL2>Infinity</LITERAL2>
+      <LITERAL2>NaN</LITERAL2>
+    </KEYWORDS>
+  </RULES>
+</MODE>

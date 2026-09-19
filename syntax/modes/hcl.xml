@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="#"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_-">
+    <SPAN TYPE="COMMENT1">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+    <EOL_SPAN TYPE="COMMENT2">//</EOL_SPAN>
+    <EOL_SPAN TYPE="COMMENT1">#</EOL_SPAN>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR="&lt;" DELEGATE="TEMPLATE">
+      <BEGIN>&lt;&lt;-?([A-Za-z_][\w-]*)</BEGIN>
+      <END REGEXP="TRUE" AT_LINE_START="TRUE">^\s*$1\s*$</END>
+    </SPAN_REGEXP>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE" DELEGATE="TEMPLATE">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="0123456789">(?:0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*|0[bB][01](?:_?[01])*|0[oO][0-7](?:_?[0-7])*|[0-9](?:_?[0-9])*(?:\.[0-9](?:_?[0-9])*)?(?:[eE][+-]?[0-9](?:_?[0-9])*)?)</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">!==</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^=</SEQ>
+    <SEQ TYPE="OPERATOR">**=</SEQ>
+    <SEQ TYPE="OPERATOR">...</SEQ>
+    <SEQ TYPE="OPERATOR">..&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">..=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">===</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">??=</SEQ>
+    <SEQ TYPE="OPERATOR">||=</SEQ>
+    <SEQ TYPE="OPERATOR">!!</SEQ>
+    <SEQ TYPE="OPERATOR">!=</SEQ>
+    <SEQ TYPE="OPERATOR">%=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^</SEQ>
+    <SEQ TYPE="OPERATOR">**</SEQ>
+    <SEQ TYPE="OPERATOR">*=</SEQ>
+    <SEQ TYPE="OPERATOR">++</SEQ>
+    <SEQ TYPE="OPERATOR">+=</SEQ>
+    <SEQ TYPE="OPERATOR">--</SEQ>
+    <SEQ TYPE="OPERATOR">-=</SEQ>
+    <SEQ TYPE="OPERATOR">-&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">/=</SEQ>
+    <SEQ TYPE="OPERATOR">::</SEQ>
+    <SEQ TYPE="OPERATOR">:=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">==</SEQ>
+    <SEQ TYPE="OPERATOR">=&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?.</SEQ>
+    <SEQ TYPE="OPERATOR">?:</SEQ>
+    <SEQ TYPE="OPERATOR">??</SEQ>
+    <SEQ TYPE="OPERATOR">||</SEQ>
+    <SEQ TYPE="OPERATOR">!</SEQ>
+    <SEQ TYPE="OPERATOR">%</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">(</SEQ>
+    <SEQ TYPE="OPERATOR">)</SEQ>
+    <SEQ TYPE="OPERATOR">*</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">-</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">/</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">^</SEQ>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">|</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <KEYWORDS>
+      <KEYWORD1>for</KEYWORD1>
+      <KEYWORD1>in</KEYWORD1>
+      <KEYWORD1>if</KEYWORD1>
+      <KEYWORD2>terraform</KEYWORD2>
+      <KEYWORD2>required_providers</KEYWORD2>
+      <KEYWORD2>provider</KEYWORD2>
+      <KEYWORD2>resource</KEYWORD2>
+      <KEYWORD2>data</KEYWORD2>
+      <KEYWORD2>variable</KEYWORD2>
+      <KEYWORD2>output</KEYWORD2>
+      <KEYWORD2>locals</KEYWORD2>
+      <KEYWORD2>module</KEYWORD2>
+      <KEYWORD2>moved</KEYWORD2>
+      <KEYWORD2>import</KEYWORD2>
+      <KEYWORD2>check</KEYWORD2>
+      <KEYWORD2>removed</KEYWORD2>
+      <KEYWORD2>ephemeral</KEYWORD2>
+      <KEYWORD3>string</KEYWORD3>
+      <KEYWORD3>number</KEYWORD3>
+      <KEYWORD3>bool</KEYWORD3>
+      <KEYWORD3>list</KEYWORD3>
+      <KEYWORD3>set</KEYWORD3>
+      <KEYWORD3>map</KEYWORD3>
+      <KEYWORD3>object</KEYWORD3>
+      <KEYWORD3>tuple</KEYWORD3>
+      <KEYWORD3>any</KEYWORD3>
+      <LITERAL2>true</LITERAL2>
+      <LITERAL2>false</LITERAL2>
+      <LITERAL2>null</LITERAL2>
+    </KEYWORDS>
+  </RULES>
+  <RULES DEFAULT="LITERAL1" SET="TEMPLATE">
+    <SEQ TYPE="LITERAL1">$${</SEQ>
+    <SEQ TYPE="LITERAL1">%%{</SEQ>
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>${</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>%{</BEGIN>
+      <END>}</END>
+    </SPAN>
+  </RULES>
+  <RULES IGNORE_CASE="FALSE" SET="EXPRESSION">
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <IMPORT DELEGATE="MAIN"/>
+  </RULES>
+</MODE>

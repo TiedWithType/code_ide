@@ -1,0 +1,7 @@
+[project]
+name = "demo"
+release = 2026-09-19T12:30:00Z
+color = 0xDEAD_BEEF
+text = """first
+second"""
+enabled = true

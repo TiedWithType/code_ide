@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+YAML mode by Jakub Roztočil <jakub@webkitchen.cz>
+-->
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentNextLines" VALUE=".+:$"/>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="[{|&gt;"/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="ignoreWhitespace" VALUE="false"/>
+    <PROPERTY NAME="lineComment" VALUE="#"/>
+    <!-- YAML forbids tabs -->
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="indentSize" VALUE="2"/>
+    <PROPERTY NAME="tabSize" VALUE="2"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_-">
+    <EOL_SPAN TYPE="COMMENT1" AT_WHITESPACE_END="TRUE">#</EOL_SPAN>
+    <EOL_SPAN_REGEXP TYPE="COMMENT1" HASH_CHARS=" &#9;">[ \t]+#</EOL_SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD3" AT_LINE_START="TRUE" HASH_CHARS="-.">---(?=\s|$)|\.\.\.(?=\s|$)</SEQ_REGEXP>
+    <EOL_SPAN_REGEXP TYPE="KEYWORD2" AT_LINE_START="TRUE" HASH_CHAR="%">%(?:YAML|TAG)\b</EOL_SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD1" HASH_CHAR="&quot;">"(?:\\.|[^"\\])*"(?=\s*:)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD1" HASH_CHAR="'">'(?:''|[^'])*'(?=\s*:)</SEQ_REGEXP>
+    <SPAN TYPE="LITERAL1" ESCAPE="\">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR="'" DELEGATE="SINGLE_QUOTED">
+      <BEGIN>'</BEGIN>
+      <END REGEXP="TRUE">'(?!')</END>
+    </SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD1" AT_WORD_START="TRUE">[^\s:\[\]{},\x27"#][^:\[\]{},\x27"#]*?(?=:[ \t]|:$)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="LABEL" HASH_CHARS="&amp;*">[&amp;*][A-Za-z0-9_-]+</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="!">![^\s,\[\]{}]+</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="LITERAL2" HASH_CHARS="|&gt;">[|&gt;][+-]?[1-9]?|[|&gt;][1-9][+-]?</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="+-0123456789." AT_WORD_START="TRUE">[-+]?(?:0x[0-9A-Fa-f]+|0o[0-7]+|(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][-+]?[0-9]+)?)(?=[ \t,\]}]|$)</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">?</SEQ>
+    <SEQ TYPE="OPERATOR">-</SEQ>
+    <KEYWORDS>
+      <LITERAL2>true</LITERAL2>
+      <LITERAL2>True</LITERAL2>
+      <LITERAL2>TRUE</LITERAL2>
+      <LITERAL2>false</LITERAL2>
+      <LITERAL2>False</LITERAL2>
+      <LITERAL2>FALSE</LITERAL2>
+      <LITERAL2>null</LITERAL2>
+      <LITERAL2>Null</LITERAL2>
+      <LITERAL2>NULL</LITERAL2>
+      <LITERAL2>~</LITERAL2>
+    </KEYWORDS>
+  </RULES>
+  <RULES DEFAULT="LITERAL1" SET="SINGLE_QUOTED">
+    <SEQ TYPE="LITERAL1">''</SEQ>
+  </RULES>
+</MODE>

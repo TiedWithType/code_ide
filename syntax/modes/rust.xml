@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="//"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_">
+    <SPAN TYPE="COMMENT1" DELEGATE="BLOCK_COMMENT">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+    <EOL_SPAN TYPE="COMMENT2">//</EOL_SPAN>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHARS="bcr">
+      <BEGIN>(?:br|cr|r)(#{0,255})"</BEGIN>
+      <END>"$1</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHARS="bc&quot;" ESCAPE="\">
+      <BEGIN>(?:b|c)?"</BEGIN>
+      <END>"</END>
+    </SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="LITERAL1" HASH_CHARS="b'">b?'(?:\\(?:x[0-9A-Fa-f]{2}|u\{[0-9A-Fa-f_]+\}|.)|[^'\\\r\n])'</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="LABEL" HASH_CHAR="'">'[A-Za-z_]\w*</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="NULL" HASH_CHAR="r">r#[A-Za-z_]\w*</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="#">#!?\[</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="FUNCTION" AT_WORD_START="TRUE">[A-Za-z_]\w*!(?=\s*[({\[])</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="0123456789" AT_WORD_START="TRUE">(?:0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*|0[bB][01](?:_?[01])*|0[oO][0-7](?:_?[0-7])*|[0-9](?:_?[0-9])*(?:\.[0-9](?:_?[0-9])*)?(?:[eE][+-]?[0-9](?:_?[0-9])*)?)(?:_?[iu](?:8|16|32|64|128|size)|_?f(?:32|64))?(?!\w)</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">!==</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^=</SEQ>
+    <SEQ TYPE="OPERATOR">**=</SEQ>
+    <SEQ TYPE="OPERATOR">...</SEQ>
+    <SEQ TYPE="OPERATOR">..&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">..=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">===</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">??=</SEQ>
+    <SEQ TYPE="OPERATOR">||=</SEQ>
+    <SEQ TYPE="OPERATOR">!!</SEQ>
+    <SEQ TYPE="OPERATOR">!=</SEQ>
+    <SEQ TYPE="OPERATOR">%=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^</SEQ>
+    <SEQ TYPE="OPERATOR">**</SEQ>
+    <SEQ TYPE="OPERATOR">*=</SEQ>
+    <SEQ TYPE="OPERATOR">++</SEQ>
+    <SEQ TYPE="OPERATOR">+=</SEQ>
+    <SEQ TYPE="OPERATOR">--</SEQ>
+    <SEQ TYPE="OPERATOR">-=</SEQ>
+    <SEQ TYPE="OPERATOR">-&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">/=</SEQ>
+    <SEQ TYPE="OPERATOR">::</SEQ>
+    <SEQ TYPE="OPERATOR">:=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">==</SEQ>
+    <SEQ TYPE="OPERATOR">=&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?.</SEQ>
+    <SEQ TYPE="OPERATOR">?:</SEQ>
+    <SEQ TYPE="OPERATOR">??</SEQ>
+    <SEQ TYPE="OPERATOR">||</SEQ>
+    <SEQ TYPE="OPERATOR">!</SEQ>
+    <SEQ TYPE="OPERATOR">%</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">(</SEQ>
+    <SEQ TYPE="OPERATOR">)</SEQ>
+    <SEQ TYPE="OPERATOR">*</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">-</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">/</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">^</SEQ>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">|</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <KEYWORDS>
+      <KEYWORD1>as</KEYWORD1>
+      <KEYWORD1>async</KEYWORD1>
+      <KEYWORD1>await</KEYWORD1>
+      <KEYWORD1>break</KEYWORD1>
+      <KEYWORD1>const</KEYWORD1>
+      <KEYWORD1>continue</KEYWORD1>
+      <KEYWORD1>crate</KEYWORD1>
+      <KEYWORD1>dyn</KEYWORD1>
+      <KEYWORD1>else</KEYWORD1>
+      <KEYWORD1>enum</KEYWORD1>
+      <KEYWORD1>extern</KEYWORD1>
+      <KEYWORD1>fn</KEYWORD1>
+      <KEYWORD1>for</KEYWORD1>
+      <KEYWORD1>if</KEYWORD1>
+      <KEYWORD1>impl</KEYWORD1>
+      <KEYWORD1>in</KEYWORD1>
+      <KEYWORD1>let</KEYWORD1>
+      <KEYWORD1>loop</KEYWORD1>
+      <KEYWORD1>match</KEYWORD1>
+      <KEYWORD1>mod</KEYWORD1>
+      <KEYWORD1>move</KEYWORD1>
+      <KEYWORD1>mut</KEYWORD1>
+      <KEYWORD1>pub</KEYWORD1>
+      <KEYWORD1>ref</KEYWORD1>
+      <KEYWORD1>return</KEYWORD1>
+      <KEYWORD1>self</KEYWORD1>
+      <KEYWORD1>Self</KEYWORD1>
+      <KEYWORD1>static</KEYWORD1>
+      <KEYWORD1>struct</KEYWORD1>
+      <KEYWORD1>super</KEYWORD1>
+      <KEYWORD1>trait</KEYWORD1>
+      <KEYWORD1>type</KEYWORD1>
+      <KEYWORD1>unsafe</KEYWORD1>
+      <KEYWORD1>use</KEYWORD1>
+      <KEYWORD1>where</KEYWORD1>
+      <KEYWORD1>while</KEYWORD1>
+      <KEYWORD1>abstract</KEYWORD1>
+      <KEYWORD1>become</KEYWORD1>
+      <KEYWORD1>box</KEYWORD1>
+      <KEYWORD1>do</KEYWORD1>
+      <KEYWORD1>final</KEYWORD1>
+      <KEYWORD1>gen</KEYWORD1>
+      <KEYWORD1>macro</KEYWORD1>
+      <KEYWORD1>override</KEYWORD1>
+      <KEYWORD1>priv</KEYWORD1>
+      <KEYWORD1>typeof</KEYWORD1>
+      <KEYWORD1>unsized</KEYWORD1>
+      <KEYWORD1>virtual</KEYWORD1>
+      <KEYWORD1>yield</KEYWORD1>
+      <KEYWORD1>try</KEYWORD1>
+      <KEYWORD3>bool</KEYWORD3>
+      <KEYWORD3>char</KEYWORD3>
+      <KEYWORD3>str</KEYWORD3>
+      <KEYWORD3>i8</KEYWORD3>
+      <KEYWORD3>i16</KEYWORD3>
+      <KEYWORD3>i32</KEYWORD3>
+      <KEYWORD3>i64</KEYWORD3>
+      <KEYWORD3>i128</KEYWORD3>
+      <KEYWORD3>isize</KEYWORD3>
+      <KEYWORD3>u8</KEYWORD3>
+      <KEYWORD3>u16</KEYWORD3>
+      <KEYWORD3>u32</KEYWORD3>
+      <KEYWORD3>u64</KEYWORD3>
+      <KEYWORD3>u128</KEYWORD3>
+      <KEYWORD3>usize</KEYWORD3>
+      <KEYWORD3>f32</KEYWORD3>
+      <KEYWORD3>f64</KEYWORD3>
+      <LITERAL2>true</LITERAL2>
+      <LITERAL2>false</LITERAL2>
+    </KEYWORDS>
+  </RULES>
+  <RULES DEFAULT="COMMENT1" SET="BLOCK_COMMENT">
+    <SPAN TYPE="COMMENT1" DELEGATE="BLOCK_COMMENT">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+  </RULES>
+</MODE>

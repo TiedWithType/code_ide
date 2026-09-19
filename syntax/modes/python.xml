@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<!-- Python mode, by Slava Pestov. Based on PythonTokenMarker by -->
+<!-- Jonathan Revusky -->
+<!-- Modified 19-Jul-00 by Ivan Frohne to: -->
+<!--  (a) implement 'indentOnEnter'; -->
+<!--  (b) indent next line automatically after control structures followed -->
+<!--	  by ':'; -->
+<!--  (c) make """ or ''' multiline quotes TYPE LITERAL2; -->
+<!--  (d) add TYPE FUNCTION identified by a following '(' -->
+<!--  (e) eliminate the '?' SEQ TYPE ('?' has no meaning in Python); -->
+<!--  (f) change the TYPE of 'and', 'or', and 'not' to KEYWORD1; and -->
+<!--  (g) add all builtin functions, builtin exceptions, -->
+<!--	  builtin type methods, File object methods, and special type -->
+<!--	  attributes as TYPE KEYWORD3. -->
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentNextLines" VALUE="\s*[^#]{3,}:\s*(#.*)?"/>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="unalignedOpenBrackets" VALUE="("/>
+    <PROPERTY NAME="unalignedCloseBrackets" VALUE=")"/>
+    <PROPERTY NAME="unindentNextLines" VALUE="^\s*(pass|else\s*:|elif\s.*:|except(\s.*)?:|finally\s*:)\s*(#.*)?$"/>
+    <PROPERTY NAME="unindentThisLine" VALUE="^\s*(else|elif\s.*|except(\s.*)?|finally)\s*:\s*(#.*)?"/>
+    <PROPERTY NAME="lineComment" VALUE="#"/>
+    <PROPERTY NAME="electricKeys" VALUE=":"/>
+    <PROPERTY NAME="ignoreWhitespace" VALUE="false"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" HIGHLIGHT_DIGITS="FALSE" NO_WORD_SEP="_">
+    <EOL_SPAN TYPE="COMMENT1">#</EOL_SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD4" HASH_CHAR="@" AT_WHITESPACE_END="TRUE">@[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*</SEQ_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL2" HASH_CHARS="rRbBuUfFtT&quot;" ESCAPE="\" DELEGATE="FORMAT_STRING">
+      <BEGIN>(?i:(?:fr|rf|tr|rt|f|t))"""</BEGIN>
+      <END>"""</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL2" HASH_CHARS="rRbBuUfFtT&quot;" ESCAPE="\">
+      <BEGIN>(?i:(?:br|rb|r|u|b)?)"""</BEGIN>
+      <END>"""</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL2" HASH_CHARS="rRbBuUfFtT'" ESCAPE="\" DELEGATE="FORMAT_STRING">
+      <BEGIN>(?i:(?:fr|rf|tr|rt|f|t))'''</BEGIN>
+      <END>'''</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL2" HASH_CHARS="rRbBuUfFtT'" ESCAPE="\">
+      <BEGIN>(?i:(?:br|rb|r|u|b)?)'''</BEGIN>
+      <END>'''</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHARS="rRbBuUfFtT&quot;" ESCAPE="\" NO_LINE_BREAK="TRUE" DELEGATE="FORMAT_STRING">
+      <BEGIN>(?i:(?:fr|rf|tr|rt|f|t))"</BEGIN>
+      <END>"</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHARS="rRbBuUfFtT&quot;" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>(?i:(?:br|rb|r|u|b)?)"</BEGIN>
+      <END>"</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHARS="rRbBuUfFtT'" ESCAPE="\" NO_LINE_BREAK="TRUE" DELEGATE="FORMAT_STRING">
+      <BEGIN>(?i:(?:fr|rf|tr|rt|f|t))'</BEGIN>
+      <END>'</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHARS="rRbBuUfFtT'" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>(?i:(?:br|rb|r|u|b)?)'</BEGIN>
+      <END>'</END>
+    </SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="0123456789" AT_WORD_START="TRUE">(?:0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*|0[bB][01](?:_?[01])*|0[oO][0-7](?:_?[0-7])*|[0-9](?:_?[0-9])*(?:\.[0-9](?:_?[0-9])*)?(?:[eE][+-]?[0-9](?:_?[0-9])*)?)[jJ]?(?!\w)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHAR=".">\.[0-9](?:_?[0-9])*(?:[eE][+-]?[0-9](?:_?[0-9])*)?[jJ]?(?!\w)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD1" AT_WHITESPACE_END="TRUE">(?:match|case)\b(?=\s+.+:)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD1" HASH_CHAR="t" AT_WORD_START="TRUE">type\b(?=\s+[A-Za-z_]\w*(?:\s*\[[^\]]*\])?\s*=)</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">!==</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^=</SEQ>
+    <SEQ TYPE="OPERATOR">**=</SEQ>
+    <SEQ TYPE="OPERATOR">...</SEQ>
+    <SEQ TYPE="OPERATOR">..&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">..=</SEQ>
+    <SEQ TYPE="OPERATOR">//=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">===</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">??=</SEQ>
+    <SEQ TYPE="OPERATOR">||=</SEQ>
+    <SEQ TYPE="OPERATOR">!!</SEQ>
+    <SEQ TYPE="OPERATOR">!=</SEQ>
+    <SEQ TYPE="OPERATOR">%=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^</SEQ>
+    <SEQ TYPE="OPERATOR">**</SEQ>
+    <SEQ TYPE="OPERATOR">*=</SEQ>
+    <SEQ TYPE="OPERATOR">++</SEQ>
+    <SEQ TYPE="OPERATOR">+=</SEQ>
+    <SEQ TYPE="OPERATOR">--</SEQ>
+    <SEQ TYPE="OPERATOR">-=</SEQ>
+    <SEQ TYPE="OPERATOR">-&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">//</SEQ>
+    <SEQ TYPE="OPERATOR">/=</SEQ>
+    <SEQ TYPE="OPERATOR">::</SEQ>
+    <SEQ TYPE="OPERATOR">:=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">==</SEQ>
+    <SEQ TYPE="OPERATOR">=&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?.</SEQ>
+    <SEQ TYPE="OPERATOR">?:</SEQ>
+    <SEQ TYPE="OPERATOR">??</SEQ>
+    <SEQ TYPE="OPERATOR">@=</SEQ>
+    <SEQ TYPE="OPERATOR">||</SEQ>
+    <SEQ TYPE="OPERATOR">!</SEQ>
+    <SEQ TYPE="OPERATOR">%</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">(</SEQ>
+    <SEQ TYPE="OPERATOR">)</SEQ>
+    <SEQ TYPE="OPERATOR">*</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">-</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">/</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?</SEQ>
+    <SEQ TYPE="OPERATOR">@</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">^</SEQ>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">|</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <KEYWORDS>
+      <KEYWORD1>and</KEYWORD1>
+      <KEYWORD1>as</KEYWORD1>
+      <KEYWORD1>assert</KEYWORD1>
+      <KEYWORD1>async</KEYWORD1>
+      <KEYWORD1>await</KEYWORD1>
+      <KEYWORD1>break</KEYWORD1>
+      <KEYWORD1>class</KEYWORD1>
+      <KEYWORD1>continue</KEYWORD1>
+      <KEYWORD1>def</KEYWORD1>
+      <KEYWORD1>del</KEYWORD1>
+      <KEYWORD1>elif</KEYWORD1>
+      <KEYWORD1>else</KEYWORD1>
+      <KEYWORD1>except</KEYWORD1>
+      <KEYWORD1>finally</KEYWORD1>
+      <KEYWORD1>for</KEYWORD1>
+      <KEYWORD1>from</KEYWORD1>
+      <KEYWORD1>global</KEYWORD1>
+      <KEYWORD1>if</KEYWORD1>
+      <KEYWORD1>import</KEYWORD1>
+      <KEYWORD1>in</KEYWORD1>
+      <KEYWORD1>is</KEYWORD1>
+      <KEYWORD1>lambda</KEYWORD1>
+      <KEYWORD1>nonlocal</KEYWORD1>
+      <KEYWORD1>not</KEYWORD1>
+      <KEYWORD1>or</KEYWORD1>
+      <KEYWORD1>pass</KEYWORD1>
+      <KEYWORD1>raise</KEYWORD1>
+      <KEYWORD1>return</KEYWORD1>
+      <KEYWORD1>try</KEYWORD1>
+      <KEYWORD1>while</KEYWORD1>
+      <KEYWORD1>with</KEYWORD1>
+      <KEYWORD1>yield</KEYWORD1>
+      <LITERAL2>False</LITERAL2>
+      <LITERAL2>True</LITERAL2>
+      <LITERAL2>None</LITERAL2>
+      <LITERAL2>NotImplemented</LITERAL2>
+      <LITERAL2>Ellipsis</LITERAL2>
+      <KEYWORD2>abs</KEYWORD2>
+      <KEYWORD2>aiter</KEYWORD2>
+      <KEYWORD2>all</KEYWORD2>
+      <KEYWORD2>anext</KEYWORD2>
+      <KEYWORD2>any</KEYWORD2>
+      <KEYWORD2>ascii</KEYWORD2>
+      <KEYWORD2>bin</KEYWORD2>
+      <KEYWORD2>bool</KEYWORD2>
+      <KEYWORD2>breakpoint</KEYWORD2>
+      <KEYWORD2>bytearray</KEYWORD2>
+      <KEYWORD2>bytes</KEYWORD2>
+      <KEYWORD2>callable</KEYWORD2>
+      <KEYWORD2>chr</KEYWORD2>
+      <KEYWORD2>classmethod</KEYWORD2>
+      <KEYWORD2>compile</KEYWORD2>
+      <KEYWORD2>complex</KEYWORD2>
+      <KEYWORD2>delattr</KEYWORD2>
+      <KEYWORD2>dict</KEYWORD2>
+      <KEYWORD2>dir</KEYWORD2>
+      <KEYWORD2>divmod</KEYWORD2>
+      <KEYWORD2>enumerate</KEYWORD2>
+      <KEYWORD2>eval</KEYWORD2>
+      <KEYWORD2>exec</KEYWORD2>
+      <KEYWORD2>filter</KEYWORD2>
+      <KEYWORD2>float</KEYWORD2>
+      <KEYWORD2>format</KEYWORD2>
+      <KEYWORD2>frozenset</KEYWORD2>
+      <KEYWORD2>getattr</KEYWORD2>
+      <KEYWORD2>globals</KEYWORD2>
+      <KEYWORD2>hasattr</KEYWORD2>
+      <KEYWORD2>hash</KEYWORD2>
+      <KEYWORD2>help</KEYWORD2>
+      <KEYWORD2>hex</KEYWORD2>
+      <KEYWORD2>id</KEYWORD2>
+      <KEYWORD2>input</KEYWORD2>
+      <KEYWORD2>int</KEYWORD2>
+      <KEYWORD2>isinstance</KEYWORD2>
+      <KEYWORD2>issubclass</KEYWORD2>
+      <KEYWORD2>iter</KEYWORD2>
+      <KEYWORD2>len</KEYWORD2>
+      <KEYWORD2>list</KEYWORD2>
+      <KEYWORD2>locals</KEYWORD2>
+      <KEYWORD2>map</KEYWORD2>
+      <KEYWORD2>max</KEYWORD2>
+      <KEYWORD2>memoryview</KEYWORD2>
+      <KEYWORD2>min</KEYWORD2>
+      <KEYWORD2>next</KEYWORD2>
+      <KEYWORD2>object</KEYWORD2>
+      <KEYWORD2>oct</KEYWORD2>
+      <KEYWORD2>open</KEYWORD2>
+      <KEYWORD2>ord</KEYWORD2>
+      <KEYWORD2>pow</KEYWORD2>
+      <KEYWORD2>print</KEYWORD2>
+      <KEYWORD2>property</KEYWORD2>
+      <KEYWORD2>range</KEYWORD2>
+      <KEYWORD2>repr</KEYWORD2>
+      <KEYWORD2>reversed</KEYWORD2>
+      <KEYWORD2>round</KEYWORD2>
+      <KEYWORD2>set</KEYWORD2>
+      <KEYWORD2>setattr</KEYWORD2>
+      <KEYWORD2>slice</KEYWORD2>
+      <KEYWORD2>sorted</KEYWORD2>
+      <KEYWORD2>staticmethod</KEYWORD2>
+      <KEYWORD2>str</KEYWORD2>
+      <KEYWORD2>sum</KEYWORD2>
+      <KEYWORD2>super</KEYWORD2>
+      <KEYWORD2>tuple</KEYWORD2>
+      <KEYWORD2>type</KEYWORD2>
+      <KEYWORD2>vars</KEYWORD2>
+      <KEYWORD2>zip</KEYWORD2>
+      <KEYWORD2>__import__</KEYWORD2>
+      <KEYWORD3>ArithmeticError</KEYWORD3>
+      <KEYWORD3>AssertionError</KEYWORD3>
+      <KEYWORD3>AttributeError</KEYWORD3>
+      <KEYWORD3>DeprecationWarning</KEYWORD3>
+      <KEYWORD3>EOFError</KEYWORD3>
+      <KEYWORD3>EnvironmentError</KEYWORD3>
+      <KEYWORD3>Exception</KEYWORD3>
+      <KEYWORD3>FloatingPointError</KEYWORD3>
+      <KEYWORD3>IOError</KEYWORD3>
+      <KEYWORD3>ImportError</KEYWORD3>
+      <KEYWORD3>IndentationError</KEYWORD3>
+      <KEYWORD3>IndexError</KEYWORD3>
+      <KEYWORD3>KeyError</KEYWORD3>
+      <KEYWORD3>LookupError</KEYWORD3>
+      <KEYWORD3>MemoryError</KEYWORD3>
+      <KEYWORD3>NameError</KEYWORD3>
+      <KEYWORD3>NotImplementedError</KEYWORD3>
+      <KEYWORD3>OSError</KEYWORD3>
+      <KEYWORD3>OverflowError</KEYWORD3>
+      <KEYWORD3>ReferenceError</KEYWORD3>
+      <KEYWORD3>RuntimeError</KEYWORD3>
+      <KEYWORD3>RuntimeWarning</KEYWORD3>
+      <KEYWORD3>SyntaxError</KEYWORD3>
+      <KEYWORD3>SyntaxWarning</KEYWORD3>
+      <KEYWORD3>SystemError</KEYWORD3>
+      <KEYWORD3>TabError</KEYWORD3>
+      <KEYWORD3>TypeError</KEYWORD3>
+      <KEYWORD3>UnboundLocalError</KEYWORD3>
+      <KEYWORD3>UnicodeError</KEYWORD3>
+      <KEYWORD3>UserWarning</KEYWORD3>
+      <KEYWORD3>ValueError</KEYWORD3>
+      <KEYWORD3>Warning</KEYWORD3>
+      <KEYWORD3>ZeroDivisionError</KEYWORD3>
+      <KEYWORD3>BaseException</KEYWORD3>
+      <KEYWORD3>BaseExceptionGroup</KEYWORD3>
+      <KEYWORD3>ExceptionGroup</KEYWORD3>
+      <KEYWORD3>StopAsyncIteration</KEYWORD3>
+      <KEYWORD3>RecursionError</KEYWORD3>
+      <KEYWORD3>ModuleNotFoundError</KEYWORD3>
+      <KEYWORD3>FileNotFoundError</KEYWORD3>
+      <KEYWORD3>PermissionError</KEYWORD3>
+      <KEYWORD3>TimeoutError</KEYWORD3>
+    </KEYWORDS>
+  </RULES>
+  <!-- rulesets to syntax highlight string interpolation sequences -->
+  <RULES SET="LITERAL_ONE" DEFAULT="LITERAL1" ESCAPE="\">
+    <SEQ_REGEXP HASH_CHAR="%" TYPE="LITERAL4">%[.]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+    <SEQ_REGEXP HASH_CHAR="%(" TYPE="LITERAL4">%\([^)]+\)[+ -]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+  </RULES>
+  <!-- triple-quoted strings has its own, since it's LITERAL2 by default -->
+  <RULES SET="LITERAL_TWO" DEFAULT="LITERAL2" ESCAPE="\">
+    <SEQ_REGEXP HASH_CHAR="%" TYPE="LITERAL4">%\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+    <SEQ_REGEXP HASH_CHAR="%(" TYPE="LITERAL4">%\([^)]+\)[+ -]?\d*[diouxXeEfFgGcrs]</SEQ_REGEXP>
+    <SPAN TYPE="LITERAL3">
+      <BEGIN>B{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL3">
+      <BEGIN>C{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL3">
+      <BEGIN>E{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL3">
+      <BEGIN>I{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL3">
+      <BEGIN>L{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <!--
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" DELEGATE="python::MAIN" TYPE="LITERAL3">&gt;&gt;&gt;</EOL_SPAN>
+		<EOL_SPAN AT_WHITESPACE_END="TRUE" DELEGATE="python::MAIN" TYPE="LITERAL3">...</EOL_SPAN>
+		-->
+    <EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="LITERAL3">&gt;&gt;&gt;</EOL_SPAN>
+    <EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="LITERAL3">...</EOL_SPAN>
+    <MARK_FOLLOWING TYPE="LITERAL3" AT_WHITESPACE_END="TRUE">@</MARK_FOLLOWING>
+  </RULES>
+  <RULES DEFAULT="LITERAL1" ESCAPE="\" SET="FORMAT_STRING">
+    <SEQ TYPE="LITERAL1">{{</SEQ>
+    <SEQ TYPE="LITERAL1">}}</SEQ>
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+  </RULES>
+  <RULES IGNORE_CASE="FALSE" SET="EXPRESSION">
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <IMPORT DELEGATE="MAIN"/>
+  </RULES>
+</MODE>

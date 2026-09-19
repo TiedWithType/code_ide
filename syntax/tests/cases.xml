@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TESTS>
+  <CASE mode="json">
+    <SOURCE>{"key": "value", "ok": false, "none": null, "n": -1.25e+3}</SOURCE>
+    <EXPECT line="1" text="&quot;key&quot;" type="KEYWORD2"/>
+    <EXPECT line="1" text="&quot;value&quot;" type="LITERAL1"/>
+    <EXPECT line="1" text="false" type="LITERAL2"/>
+    <EXPECT line="1" text="null" type="LITERAL2"/>
+    <EXPECT line="1" text="-1.25e+3" type="DIGIT"/>
+  </CASE>
+  <CASE mode="json">
+    <SOURCE>{"truth": trueValue, "n": 01}</SOURCE>
+    <EXPECT line="1" text="trueValue" type="NULL"/>
+  </CASE>
+  <CASE mode="JSON5">
+    <SOURCE>// note
+{unquoted: 'hello', n: +Infinity, hex: 0xA, trailing: .5,}</SOURCE>
+    <EXPECT line="1" text="note" type="COMMENT2"/>
+    <EXPECT line="2" text="unquoted" type="KEYWORD2"/>
+    <EXPECT line="2" text="'hello'" type="LITERAL1"/>
+    <EXPECT line="2" text="+Infinity" type="DIGIT"/>
+    <EXPECT line="2" text="0xA" type="DIGIT"/>
+    <EXPECT line="2" text=".5" type="DIGIT"/>
+  </CASE>
+  <CASE mode="jsonc">
+    <SOURCE>// options
+{"strict": true}</SOURCE>
+    <EXPECT line="1" text="options" type="COMMENT2"/>
+    <EXPECT line="2" text="&quot;strict&quot;" type="KEYWORD2"/>
+    <EXPECT line="2" text="true" type="LITERAL2"/>
+  </CASE>
+  <CASE mode="javascript">
+    <SOURCE>const n = 0xFFn + 1_000 + .5 + 1.;
+const ratio = a / b / c;
+const re = /[/]/gu;
+returnValue = 42;</SOURCE>
+    <EXPECT line="1" text="const" type="KEYWORD1"/>
+    <EXPECT line="1" text="0xFFn" type="DIGIT"/>
+    <EXPECT line="1" text="1_000" type="DIGIT"/>
+    <EXPECT line="1" text=".5" type="DIGIT"/>
+    <EXPECT line="1" text="1." type="DIGIT"/>
+    <EXPECT line="2" text="/" type="OPERATOR"/>
+    <EXPECT line="2" text="b" type="NULL"/>
+    <EXPECT line="3" text="[/]" type="MARKUP"/>
+    <EXPECT line="4" text="42" type="DIGIT"/>
+  </CASE>
+  <CASE mode="javascript">
+    <SOURCE>const x = `hello ${ {a: `nested ${42}`} } done`;
+const end = true;</SOURCE>
+    <EXPECT line="1" text="hello" type="LITERAL3"/>
+    <EXPECT line="1" text="42" type="DIGIT"/>
+    <EXPECT line="1" text="done" type="LITERAL3"/>
+    <EXPECT line="2" text="const" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="typescript">
+    <SOURCE>@ns.component
+interface View { readonly size: number; }
+const x = {size: 10} satisfies View;</SOURCE>
+    <EXPECT line="1" text="@ns.component" type="KEYWORD2"/>
+    <EXPECT line="2" text="interface" type="KEYWORD1"/>
+    <EXPECT line="2" text="readonly" type="KEYWORD1"/>
+    <EXPECT line="2" text="number" type="KEYWORD3"/>
+    <EXPECT line="3" text="satisfies" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="jsx">
+    <SOURCE>const node = &lt;div title="a&amp;b"&gt;don't &lt;span&gt;{true ? "yes" : "no"}&lt;/span&gt;&lt;/div&gt;;
+const after = false;</SOURCE>
+    <EXPECT line="1" text="a&amp;b" type="LITERAL1"/>
+    <EXPECT line="1" text="don't" type="NULL"/>
+    <EXPECT line="1" text="&lt;span" type="MARKUP"/>
+    <EXPECT line="1" text="true" type="LITERAL2"/>
+    <EXPECT line="1" text="&lt;/div&gt;" type="MARKUP"/>
+    <EXPECT line="2" text="const" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="jsx">
+    <SOURCE>const node = &lt;&gt;&lt;A /&gt;&lt;B data-id={42} /&gt;&lt;/&gt;;
+const after = true;</SOURCE>
+    <EXPECT line="1" text="&lt;A" type="MARKUP"/>
+    <EXPECT line="1" text="42" type="DIGIT"/>
+    <EXPECT line="2" text="const" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="tsx">
+    <SOURCE>const node = &lt;div title="a&amp;b"&gt;don't &lt;span&gt;{true ? "yes" : "no"}&lt;/span&gt;&lt;/div&gt;;
+const after = false;</SOURCE>
+    <EXPECT line="1" text="a&amp;b" type="LITERAL1"/>
+    <EXPECT line="1" text="don't" type="NULL"/>
+    <EXPECT line="1" text="&lt;span" type="MARKUP"/>
+    <EXPECT line="1" text="true" type="LITERAL2"/>
+    <EXPECT line="1" text="&lt;/div&gt;" type="MARKUP"/>
+    <EXPECT line="2" text="const" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="tsx">
+    <SOURCE>const node = &lt;&gt;&lt;A /&gt;&lt;B data-id={42} /&gt;&lt;/&gt;;
+const after = true;</SOURCE>
+    <EXPECT line="1" text="&lt;A" type="MARKUP"/>
+    <EXPECT line="1" text="42" type="DIGIT"/>
+    <EXPECT line="2" text="const" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="tsx">
+    <SOURCE>const id = &lt;T,&gt;(x: T) =&gt; x;
+type A = number;</SOURCE>
+    <EXPECT line="1" text="&lt;" type="OPERATOR"/>
+    <EXPECT line="2" text="type" type="KEYWORD1"/>
+    <EXPECT line="2" text="number" type="KEYWORD3"/>
+  </CASE>
+  <CASE mode="python">
+    <SOURCE>@cache(size=2)
+async def main():
+    value = f"hi { {'n': 42} } tail"
+    rendered = t"Hello {value}"
+    return True</SOURCE>
+    <EXPECT line="1" text="@cache" type="KEYWORD4"/>
+    <EXPECT line="2" text="async" type="KEYWORD1"/>
+    <EXPECT line="3" text="42" type="DIGIT"/>
+    <EXPECT line="3" text="tail" type="LITERAL1"/>
+    <EXPECT line="4" text="Hello" type="LITERAL1"/>
+    <EXPECT line="5" text="return" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="python">
+    <SOURCE>type Pair[T] = tuple[T, T]
+match value:
+    case [first, *rest]:
+        print(first)
+match = 3</SOURCE>
+    <EXPECT line="1" text="type" type="KEYWORD1"/>
+    <EXPECT line="2" text="match" type="KEYWORD1"/>
+    <EXPECT line="3" text="case" type="KEYWORD1"/>
+    <EXPECT line="4" text="print" type="KEYWORD2"/>
+    <EXPECT line="5" text="match" type="NULL"/>
+  </CASE>
+  <CASE mode="go">
+    <SOURCE>/* block
+comment */
+func main() { s := `raw
+string`; n := 0x1.fp2; clear(items); }</SOURCE>
+    <EXPECT line="1" text="block" type="COMMENT1"/>
+    <EXPECT line="2" text="comment" type="COMMENT1"/>
+    <EXPECT line="3" text="func" type="KEYWORD1"/>
+    <EXPECT line="3" text="raw" type="LITERAL1"/>
+    <EXPECT line="4" text="string" type="LITERAL1"/>
+    <EXPECT line="4" text="0x1.fp2" type="DIGIT"/>
+    <EXPECT line="4" text="clear" type="KEYWORD2"/>
+  </CASE>
+  <CASE mode="rust">
+    <SOURCE>/* outer /* nested */ still */
+async fn run&lt;'a&gt;(x: &amp;'a str) {
+    let raw = r##"a "quote" # b"##;
+    println!("{}", 42_u32);
+}</SOURCE>
+    <EXPECT line="1" text="still" type="COMMENT1"/>
+    <EXPECT line="2" text="async" type="KEYWORD1"/>
+    <EXPECT line="2" text="'a" type="LABEL"/>
+    <EXPECT line="3" text="quote" type="LITERAL1"/>
+    <EXPECT line="4" text="println!" type="FUNCTION"/>
+  </CASE>
+  <CASE mode="kotlin">
+    <SOURCE>/* outer /* inner */ after */
+data class User(val name: String)
+val text = "hi ${user.name} tail"
+val raw = """C:\path $name"""
+val end = true</SOURCE>
+    <EXPECT line="1" text="after" type="COMMENT1"/>
+    <EXPECT line="2" text="data" type="KEYWORD1"/>
+    <EXPECT line="2" text="String" type="KEYWORD3"/>
+    <EXPECT line="3" text="tail" type="LITERAL1"/>
+    <EXPECT line="4" text="$name" type="KEYWORD2"/>
+    <EXPECT line="5" text="val" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="swift">
+    <SOURCE>/* outer /* inner */ after */
+@MainActor
+actor User {
+ let raw = ##"say "hi""##
+ let name = "hello \(user.name) tail"
+}</SOURCE>
+    <EXPECT line="1" text="after" type="COMMENT1"/>
+    <EXPECT line="2" text="@MainActor" type="KEYWORD2"/>
+    <EXPECT line="3" text="actor" type="KEYWORD1"/>
+    <EXPECT line="4" text="hi" type="LITERAL1"/>
+    <EXPECT line="5" text="user" type="NULL"/>
+    <EXPECT line="5" text="tail" type="LITERAL1"/>
+  </CASE>
+  <CASE mode="toml">
+    <SOURCE>[project]
+name = "demo"
+release = 2026-09-19T12:30:00Z
+color = 0xDEAD_BEEF
+text = """first
+second"""
+enabled = true</SOURCE>
+    <EXPECT line="1" text="[project]" type="LABEL"/>
+    <EXPECT line="2" text="name" type="KEYWORD2"/>
+    <EXPECT line="2" text="demo" type="LITERAL1"/>
+    <EXPECT line="3" text="2026-09-19T12:30:00Z" type="LITERAL2"/>
+    <EXPECT line="4" text="0xDEAD_BEEF" type="DIGIT"/>
+    <EXPECT line="6" text="second" type="LITERAL1"/>
+    <EXPECT line="7" text="true" type="LITERAL2"/>
+  </CASE>
+  <CASE mode="graphql">
+    <SOURCE>query User($id: ID!) { user(id: $id) @include(if: true) { name } }
+"""Description
+block"""
+type User { id: ID! }</SOURCE>
+    <EXPECT line="1" text="query" type="KEYWORD1"/>
+    <EXPECT line="1" text="$id" type="KEYWORD2"/>
+    <EXPECT line="1" text="@include" type="KEYWORD2"/>
+    <EXPECT line="1" text="true" type="LITERAL2"/>
+    <EXPECT line="3" text="block" type="LITERAL1"/>
+    <EXPECT line="4" text="type" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="dockerfile">
+    <SOURCE>FROM alpine:3 AS build
+# syntax example
+RUN &lt;&lt;EOF
+echo hello
+EOF
+COPY --from=build /a /b</SOURCE>
+    <EXPECT line="1" text="FROM" type="KEYWORD1"/>
+    <EXPECT line="1" text="AS" type="KEYWORD2"/>
+    <EXPECT line="2" text="syntax" type="COMMENT1"/>
+    <EXPECT line="4" text="echo" type="LITERAL2"/>
+    <EXPECT line="6" text="COPY" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="hcl">
+    <SOURCE>resource "local_file" "example" {
+ content = "hello ${var.name} tail"
+ text = &lt;&lt;-EOT
+hello ${var.name}
+EOT
+ enabled = true
+}</SOURCE>
+    <EXPECT line="1" text="resource" type="KEYWORD2"/>
+    <EXPECT line="2" text="tail" type="LITERAL1"/>
+    <EXPECT line="4" text="hello" type="LITERAL1"/>
+    <EXPECT line="6" text="true" type="LITERAL2"/>
+  </CASE>
+  <CASE mode="html">
+    <SOURCE>&lt;script&gt;/* comment */ const value = 42;&lt;/script&gt;
+&lt;style&gt;:root { --bg: #123; color: var(--bg); } .x { color: red; }&lt;/style&gt;
+&lt;main&gt;&lt;app-root title="a&amp;b &amp;amp; c"&gt;hello&lt;/app-root&gt;&lt;/main&gt;</SOURCE>
+    <EXPECT line="1" text="comment" type="COMMENT1"/>
+    <EXPECT line="1" text="const" type="KEYWORD1"/>
+    <EXPECT line="1" text="42" type="DIGIT"/>
+    <EXPECT line="2" text=":root" type="KEYWORD4"/>
+    <EXPECT line="2" text="color:" type="KEYWORD2"/>
+    <EXPECT line="3" text="main" type="KEYWORD1"/>
+    <EXPECT line="3" text="app-root" type="KEYWORD1"/>
+    <EXPECT line="3" text="a&amp;b" type="LITERAL1"/>
+    <EXPECT line="3" text="&amp;amp;" type="LITERAL2"/>
+  </CASE>
+  <CASE mode="html">
+    <SOURCE>&lt;script type="application/ld+json"&gt;{"ok":false}&lt;/script&gt;
+&lt;div&gt;next&lt;/div&gt;</SOURCE>
+    <EXPECT line="1" text="&quot;ok&quot;" type="KEYWORD2"/>
+    <EXPECT line="1" text="false" type="LITERAL2"/>
+    <EXPECT line="2" text="div" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="css">
+    <SOURCE>:root { --bg: #123; color: var(--bg); }
+.card { &amp;:hover { color: red; } display: grid; }</SOURCE>
+    <EXPECT line="1" text=":root" type="KEYWORD4"/>
+    <EXPECT line="1" text="color:" type="KEYWORD2"/>
+    <EXPECT line="2" text=":hover" type="KEYWORD4"/>
+    <EXPECT line="2" text="color:" type="KEYWORD2"/>
+    <EXPECT line="2" text="display:" type="KEYWORD2"/>
+  </CASE>
+  <CASE mode="yaml">
+    <SOURCE>enabled: true
+legacy: yes
+url: https://example.org/#anchor # comment
+name: 'it''s good'
+"quoted": false</SOURCE>
+    <EXPECT line="1" text="enabled" type="KEYWORD1"/>
+    <EXPECT line="1" text="true" type="LITERAL2"/>
+    <EXPECT line="2" text="yes" type="NULL"/>
+    <EXPECT line="3" text="anchor" type="NULL"/>
+    <EXPECT line="3" text="comment" type="COMMENT1"/>
+    <EXPECT line="4" text="it''s good" type="LITERAL1"/>
+    <EXPECT line="5" text="&quot;quoted&quot;" type="KEYWORD1"/>
+    <EXPECT line="5" text="false" type="LITERAL2"/>
+  </CASE>
+  <CASE mode="java">
+    <SOURCE>record Point(int x, int y) {}
+String s = """
+hello "world"
+""";
+sealed interface Shape {}</SOURCE>
+    <EXPECT line="1" text="record" type="KEYWORD1"/>
+    <EXPECT line="3" text="world" type="LITERAL1"/>
+    <EXPECT line="5" text="sealed" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="c#">
+    <SOURCE>var s = @"say ""hello""";
+var t = $"value {42} tail";
+var raw = """some "quoted" content""";
+required string Name { get; init; }</SOURCE>
+    <EXPECT line="1" text="hello" type="LITERAL3"/>
+    <EXPECT line="2" text="42" type="DIGIT"/>
+    <EXPECT line="2" text="tail" type="LITERAL1"/>
+    <EXPECT line="3" text="quoted" type="LITERAL1"/>
+    <EXPECT line="4" text="required" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="dart">
+    <SOURCE>sealed class Shape {}
+var raw = r"literal $name";
+var s = "hello ${ {'x': 42} } tail";</SOURCE>
+    <EXPECT line="1" text="sealed" type="KEYWORD1"/>
+    <EXPECT line="2" text="$name" type="LITERAL1"/>
+    <EXPECT line="3" text="tail" type="LITERAL1"/>
+  </CASE>
+  <CASE mode="c++">
+    <SOURCE>constexpr auto x = R"tag(a "quote" b)tag";
+concept Sized = requires { 1; };</SOURCE>
+    <EXPECT line="1" text="constexpr" type="KEYWORD1"/>
+    <EXPECT line="1" text="quote" type="LITERAL1"/>
+    <EXPECT line="2" text="concept" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="rust">
+    <SOURCE>let n = 42_u32;</SOURCE>
+    <EXPECT line="1" text="42_u32" type="DIGIT"/>
+  </CASE>
+  <CASE mode="php">
+    <SOURCE>&lt;?php
+#[Example]
+readonly class User {}
+$result = match ($x) { 1 =&gt; true, default =&gt; false };
+$value = $user?-&gt;name ?? "guest";
+?&gt;</SOURCE>
+    <EXPECT line="2" text="Example" type="KEYWORD2"/>
+    <EXPECT line="3" text="readonly" type="KEYWORD1"/>
+    <EXPECT line="4" text="match" type="KEYWORD1"/>
+    <EXPECT line="5" text="?-&gt;" type="OPERATOR"/>
+  </CASE>
+  <CASE mode="Markdown">
+    <SOURCE>```typescript
+const x: number = 42;
+```
+After
+~~~~rust
+let n = 42_u32;
+~~~~~
+Done</SOURCE>
+    <EXPECT line="2" text="const" type="KEYWORD1"/>
+    <EXPECT line="2" text="number" type="KEYWORD3"/>
+    <EXPECT line="4" text="After" type="NULL"/>
+    <EXPECT line="6" text="let" type="KEYWORD1"/>
+    <EXPECT line="6" text="42_u32" type="DIGIT"/>
+    <EXPECT line="8" text="Done" type="NULL"/>
+  </CASE>
+  <CASE mode="dockerfile">
+    <SOURCE>RUN &lt;&lt;EOF
+echo EOF
+still inside
+EOF
+COPY a b</SOURCE>
+    <EXPECT line="2" text="echo EOF" type="LITERAL2"/>
+    <EXPECT line="3" text="still inside" type="LITERAL2"/>
+    <EXPECT line="5" text="COPY" type="KEYWORD1"/>
+  </CASE>
+  <CASE mode="hcl">
+    <SOURCE>x = &lt;&lt;EOT
+hello EOT
+still inside
+EOT
+enabled = true</SOURCE>
+    <EXPECT line="2" text="hello EOT" type="LITERAL1"/>
+    <EXPECT line="3" text="still inside" type="LITERAL1"/>
+    <EXPECT line="5" text="true" type="LITERAL2"/>
+  </CASE>
+  <CASE mode="Markdown">
+    <SOURCE>```text
+text ```
+still code
+```
+after</SOURCE>
+    <EXPECT line="2" text="text ```" type="LITERAL2"/>
+    <EXPECT line="3" text="still code" type="LITERAL2"/>
+    <EXPECT line="5" text="after" type="NULL"/>
+  </CASE>
+</TESTS>

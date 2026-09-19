@@ -1,0 +1,4 @@
+query User($id: ID!) { user(id: $id) @include(if: true) { name } }
+"""Description
+block"""
+type User { id: ID! }

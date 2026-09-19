@@ -1,0 +1,2 @@
+:root { --bg: #123; color: var(--bg); }
+.card { &:hover { color: red; } display: grid; }

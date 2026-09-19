@@ -1,0 +1,5 @@
+enabled: true
+legacy: yes
+url: https://example.org/#anchor # comment
+name: 'it''s good'
+"quoted": false

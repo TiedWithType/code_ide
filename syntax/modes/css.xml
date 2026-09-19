@@ -1,0 +1,1472 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<!--
+  CSS3/4 syntax highlighting mode for jEdit
+  Based on original css.xml, extended with:
+  - CSS Nesting (& selector)
+  - CSS4 pseudo-classes: :is(), :where(), :has(), :not(), :focus-visible,
+    :focus-within, :placeholder-shown, :nth-child(An+B of S), etc.
+  - Modern at-rules: @keyframes, @supports, @layer, @container, @property, @charset
+  - CSS Custom Properties (custom property names)
+  - Modern units: dvh, dvw, svh, svw, lvh, lvw, cqi, cqb, cqmin, cqmax
+  - CSS4 functions: min(), max(), clamp(), env(), var(), color-mix(),
+    lab(), lch(), oklch(), oklab(), color(), light-dark()
+  - Modern properties: aspect-ratio, gap, scroll-snap-*, container-*,
+    accent-color, color-scheme, overscroll-behavior, content-visibility, etc.
+  - Deduplicated all keyword lists
+  - Promoted formerly INVALID properties now widely supported
+-->
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="commentStart" VALUE="/*"/>
+    <PROPERTY NAME="commentEnd" VALUE="*/"/>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{"/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}"/>
+    <PROPERTY NAME="noWordSep" VALUE="-_"/>
+  </PROPS>
+  <!-- ═══════════════════════════════════════════════════════
+	     MAIN RULE SET
+	     Handles top-level selectors, at-rules, nesting
+	     ═══════════════════════════════════════════════════════ -->
+  <RULES IGNORE_CASE="TRUE" HIGHLIGHT_DIGITS="TRUE" DIGIT_RE="-?(\d+\.?\d*|\.\d+)(pt|pc|in|mm|cm|rlh|lh|rem|em|ex|ch|vw|vh|vmin|vmax|dvh|dvw|dvmin|dvmax|svh|svw|lvh|lvw|cqw|cqh|cqi|cqb|cqmin|cqmax|px|ms|s|fr|%)?" NO_WORD_SEP="-_%">
+    <!-- CSS Custom Properties declaration for custom variables -->
+    <SEQ_REGEXP TYPE="LITERAL3" HASH_CHAR="-">--[\w-]+</SEQ_REGEXP>
+    <!-- Custom element selectors: app-root, user-card, etc. -->
+    <SEQ_REGEXP TYPE="MARKUP" AT_WORD_START="TRUE">[a-z][a-z0-9]*-[a-z0-9_-]*</SEQ_REGEXP>
+    <!-- CSS Nesting: & selector -->
+    <SEQ TYPE="MARKUP">&amp;</SEQ>
+    <!-- Classes -->
+    <MARK_FOLLOWING TYPE="LITERAL2">.</MARK_FOLLOWING>
+    <!-- IDs -->
+    <MARK_FOLLOWING TYPE="LITERAL4">#</MARK_FOLLOWING>
+    <!-- Combinators -->
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <!-- Attribute selectors -->
+    <SPAN TYPE="LITERAL4">
+      <BEGIN>[</BEGIN>
+      <END>]</END>
+    </SPAN>
+    <!-- Pseudo-classes and pseudo-elements.
+             Do not delegate on ':' here. In HTML <style>, css::PSEUDO can escape
+             the CSS wrapper and break highlighting after selectors like :root. -->
+    <SPAN_REGEXP TYPE="KEYWORD4" HASH_CHAR=":">
+      <BEGIN>::?(is|where|has|not|lang|dir|nth-child|nth-last-child|nth-of-type|nth-last-of-type|nth-col|host|host-context|slotted|part|state)\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD4" HASH_CHAR=":">::?[A-Za-z][A-Za-z0-9_-]*</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">*</SEQ>
+    <!-- Property blocks -->
+    <SPAN TYPE="OPERATOR" DELEGATE="PROPERTIES">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <IMPORT DELEGATE="GLOBAL"/>
+    <!-- HTML element selectors — typed as MARKUP for distinct color -->
+    <KEYWORDS>
+      <MARKUP>a</MARKUP>
+      <MARKUP>abbr</MARKUP>
+      <MARKUP>address</MARKUP>
+      <MARKUP>article</MARKUP>
+      <MARKUP>aside</MARKUP>
+      <MARKUP>audio</MARKUP>
+      <MARKUP>b</MARKUP>
+      <MARKUP>blockquote</MARKUP>
+      <MARKUP>body</MARKUP>
+      <MARKUP>br</MARKUP>
+      <MARKUP>button</MARKUP>
+      <MARKUP>canvas</MARKUP>
+      <MARKUP>caption</MARKUP>
+      <MARKUP>cite</MARKUP>
+      <MARKUP>code</MARKUP>
+      <MARKUP>col</MARKUP>
+      <MARKUP>colgroup</MARKUP>
+      <MARKUP>data</MARKUP>
+      <MARKUP>datalist</MARKUP>
+      <MARKUP>dd</MARKUP>
+      <MARKUP>del</MARKUP>
+      <MARKUP>details</MARKUP>
+      <MARKUP>dfn</MARKUP>
+      <MARKUP>dialog</MARKUP>
+      <MARKUP>div</MARKUP>
+      <MARKUP>dl</MARKUP>
+      <MARKUP>dt</MARKUP>
+      <MARKUP>em</MARKUP>
+      <MARKUP>embed</MARKUP>
+      <MARKUP>fieldset</MARKUP>
+      <MARKUP>figcaption</MARKUP>
+      <MARKUP>figure</MARKUP>
+      <MARKUP>footer</MARKUP>
+      <MARKUP>form</MARKUP>
+      <MARKUP>h1</MARKUP>
+      <MARKUP>h2</MARKUP>
+      <MARKUP>h3</MARKUP>
+      <MARKUP>h4</MARKUP>
+      <MARKUP>h5</MARKUP>
+      <MARKUP>h6</MARKUP>
+      <MARKUP>head</MARKUP>
+      <MARKUP>header</MARKUP>
+      <MARKUP>hgroup</MARKUP>
+      <MARKUP>hr</MARKUP>
+      <MARKUP>html</MARKUP>
+      <MARKUP>i</MARKUP>
+      <MARKUP>iframe</MARKUP>
+      <MARKUP>img</MARKUP>
+      <MARKUP>input</MARKUP>
+      <MARKUP>ins</MARKUP>
+      <MARKUP>kbd</MARKUP>
+      <MARKUP>label</MARKUP>
+      <MARKUP>legend</MARKUP>
+      <MARKUP>li</MARKUP>
+      <MARKUP>link</MARKUP>
+      <MARKUP>main</MARKUP>
+      <MARKUP>map</MARKUP>
+      <MARKUP>mark</MARKUP>
+      <MARKUP>menu</MARKUP>
+      <MARKUP>meta</MARKUP>
+      <MARKUP>meter</MARKUP>
+      <MARKUP>nav</MARKUP>
+      <MARKUP>noscript</MARKUP>
+      <MARKUP>object</MARKUP>
+      <MARKUP>ol</MARKUP>
+      <MARKUP>optgroup</MARKUP>
+      <MARKUP>option</MARKUP>
+      <MARKUP>output</MARKUP>
+      <MARKUP>p</MARKUP>
+      <MARKUP>picture</MARKUP>
+      <MARKUP>pre</MARKUP>
+      <MARKUP>progress</MARKUP>
+      <MARKUP>q</MARKUP>
+      <MARKUP>rp</MARKUP>
+      <MARKUP>rt</MARKUP>
+      <MARKUP>ruby</MARKUP>
+      <MARKUP>s</MARKUP>
+      <MARKUP>samp</MARKUP>
+      <MARKUP>script</MARKUP>
+      <MARKUP>search</MARKUP>
+      <MARKUP>section</MARKUP>
+      <MARKUP>select</MARKUP>
+      <MARKUP>slot</MARKUP>
+      <MARKUP>small</MARKUP>
+      <MARKUP>source</MARKUP>
+      <MARKUP>span</MARKUP>
+      <MARKUP>strong</MARKUP>
+      <MARKUP>style</MARKUP>
+      <MARKUP>sub</MARKUP>
+      <MARKUP>summary</MARKUP>
+      <MARKUP>sup</MARKUP>
+      <MARKUP>table</MARKUP>
+      <MARKUP>tbody</MARKUP>
+      <MARKUP>td</MARKUP>
+      <MARKUP>template</MARKUP>
+      <MARKUP>textarea</MARKUP>
+      <MARKUP>tfoot</MARKUP>
+      <MARKUP>th</MARKUP>
+      <MARKUP>thead</MARKUP>
+      <MARKUP>time</MARKUP>
+      <MARKUP>title</MARKUP>
+      <MARKUP>tr</MARKUP>
+      <MARKUP>track</MARKUP>
+      <MARKUP>u</MARKUP>
+      <MARKUP>ul</MARKUP>
+      <MARKUP>var</MARKUP>
+      <MARKUP>video</MARKUP>
+      <MARKUP>wbr</MARKUP>
+    </KEYWORDS>
+  </RULES>
+  <!-- ═══════════════════════════════════════════════════════
+	     PSEUDO — pseudo-classes and pseudo-elements after ":"
+	     ═══════════════════════════════════════════════════════ -->
+  <RULES SET="PSEUDO">
+    <!-- Delegate back on whitespace or comma -->
+    <SEQ TYPE="NULL" DELEGATE="MAIN"> </SEQ>
+    <SEQ TYPE="OPERATOR" DELEGATE="MAIN">,</SEQ>
+    <SEQ TYPE="OPERATOR" DELEGATE="PROPERTIES">{</SEQ>
+    <!-- Functional pseudo-classes with arguments -->
+    <SPAN_REGEXP HASH_CHAR="lang" TYPE="KEYWORD4">
+      <BEGIN>lang\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="not" TYPE="KEYWORD4">
+      <BEGIN>not\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="is" TYPE="KEYWORD4">
+      <BEGIN>is\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="where" TYPE="KEYWORD4">
+      <BEGIN>where\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="has" TYPE="KEYWORD4">
+      <BEGIN>has\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="nth" TYPE="KEYWORD4">
+      <BEGIN>nth-child\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="nth" TYPE="KEYWORD4">
+      <BEGIN>nth-last-child\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="nth" TYPE="KEYWORD4">
+      <BEGIN>nth-of-type\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="nth" TYPE="KEYWORD4">
+      <BEGIN>nth-last-of-type\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="nth" TYPE="KEYWORD4">
+      <BEGIN>nth-col\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="host" TYPE="KEYWORD4">
+      <BEGIN>host\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="host-context" TYPE="KEYWORD4">
+      <BEGIN>host-context\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="slotted" TYPE="KEYWORD4">
+      <BEGIN>slotted\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="part" TYPE="KEYWORD4">
+      <BEGIN>part\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP HASH_CHAR="state" TYPE="KEYWORD4">
+      <BEGIN>state\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <IMPORT DELEGATE="GLOBAL"/>
+    <KEYWORDS>
+      <!-- CSS1/2 pseudo-classes -->
+      <KEYWORD4>link</KEYWORD4>
+      <KEYWORD4>visited</KEYWORD4>
+      <KEYWORD4>active</KEYWORD4>
+      <KEYWORD4>hover</KEYWORD4>
+      <KEYWORD4>focus</KEYWORD4>
+      <!-- CSS3 pseudo-classes -->
+      <KEYWORD4>first-child</KEYWORD4>
+      <KEYWORD4>last-child</KEYWORD4>
+      <KEYWORD4>only-child</KEYWORD4>
+      <KEYWORD4>first-of-type</KEYWORD4>
+      <KEYWORD4>last-of-type</KEYWORD4>
+      <KEYWORD4>only-of-type</KEYWORD4>
+      <KEYWORD4>empty</KEYWORD4>
+      <KEYWORD4>checked</KEYWORD4>
+      <KEYWORD4>disabled</KEYWORD4>
+      <KEYWORD4>enabled</KEYWORD4>
+      <KEYWORD4>target</KEYWORD4>
+      <KEYWORD4>root</KEYWORD4>
+      <!-- CSS3 pseudo-elements -->
+      <KEYWORD4>before</KEYWORD4>
+      <KEYWORD4>after</KEYWORD4>
+      <KEYWORD4>first-line</KEYWORD4>
+      <KEYWORD4>first-letter</KEYWORD4>
+      <KEYWORD4>selection</KEYWORD4>
+      <KEYWORD4>placeholder</KEYWORD4>
+      <KEYWORD4>marker</KEYWORD4>
+      <KEYWORD4>backdrop</KEYWORD4>
+      <KEYWORD4>spelling-error</KEYWORD4>
+      <KEYWORD4>grammar-error</KEYWORD4>
+      <KEYWORD4>cue</KEYWORD4>
+      <KEYWORD4>slotted</KEYWORD4>
+      <!-- CSS4 pseudo-classes -->
+      <KEYWORD4>focus-visible</KEYWORD4>
+      <KEYWORD4>focus-within</KEYWORD4>
+      <KEYWORD4>is</KEYWORD4>
+      <KEYWORD4>not</KEYWORD4>
+      <KEYWORD4>has</KEYWORD4>
+      <KEYWORD4>where</KEYWORD4>
+      <KEYWORD4>any</KEYWORD4>
+      <KEYWORD4>any-link</KEYWORD4>
+      <KEYWORD4>local-link</KEYWORD4>
+      <KEYWORD4>scope</KEYWORD4>
+      <KEYWORD4>current</KEYWORD4>
+      <KEYWORD4>past</KEYWORD4>
+      <KEYWORD4>future</KEYWORD4>
+      <KEYWORD4>playing</KEYWORD4>
+      <KEYWORD4>paused</KEYWORD4>
+      <KEYWORD4>valid</KEYWORD4>
+      <KEYWORD4>invalid</KEYWORD4>
+      <KEYWORD4>required</KEYWORD4>
+      <KEYWORD4>optional</KEYWORD4>
+      <KEYWORD4>user-valid</KEYWORD4>
+      <KEYWORD4>user-invalid</KEYWORD4>
+      <KEYWORD4>in-range</KEYWORD4>
+      <KEYWORD4>out-of-range</KEYWORD4>
+      <KEYWORD4>read-only</KEYWORD4>
+      <KEYWORD4>read-write</KEYWORD4>
+      <KEYWORD4>placeholder-shown</KEYWORD4>
+      <KEYWORD4>default</KEYWORD4>
+      <KEYWORD4>indeterminate</KEYWORD4>
+      <KEYWORD4>fullscreen</KEYWORD4>
+      <KEYWORD4>modal</KEYWORD4>
+      <KEYWORD4>picture-in-picture</KEYWORD4>
+      <KEYWORD4>open</KEYWORD4>
+      <KEYWORD4>lang</KEYWORD4>
+      <KEYWORD4>dir</KEYWORD4>
+      <KEYWORD4>nth-child</KEYWORD4>
+      <KEYWORD4>nth-last-child</KEYWORD4>
+      <KEYWORD4>nth-of-type</KEYWORD4>
+      <KEYWORD4>nth-last-of-type</KEYWORD4>
+      <KEYWORD4>host</KEYWORD4>
+      <KEYWORD4>host-context</KEYWORD4>
+      <KEYWORD4>defined</KEYWORD4>
+      <KEYWORD4>state</KEYWORD4>
+      <KEYWORD4>popover-open</KEYWORD4>
+      <KEYWORD4>starting-style</KEYWORD4>
+    </KEYWORDS>
+  </RULES>
+  <!-- ═══════════════════════════════════════════════════════
+	     PROPERTIES — inside { } block
+	     ═══════════════════════════════════════════════════════ -->
+  <RULES SET="PROPERTIES" ESCAPE="\" IGNORE_CASE="TRUE" NO_WORD_SEP="-_%">
+    <SPAN_REGEXP TYPE="OPERATOR" DELEGATE="PROP_VALUE" MATCH_TYPE="KEYWORD2">
+      <BEGIN>(?&lt;![\w.#:&amp;-])(?:--[\w-]+|[A-Za-z-]+)\s*:(?![^;{}]*\{)</BEGIN>
+      <END REGEXP="TRUE">;|(?=\})</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="KEYWORD4" HASH_CHAR=":">
+      <BEGIN>::?(is|where|has|not|lang|dir|nth-child|nth-last-child|nth-of-type|nth-last-of-type|nth-col|host|host-context|slotted|part|state)\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD4" HASH_CHAR=":">::?[A-Za-z][A-Za-z0-9_-]*</SEQ_REGEXP>
+    <!-- Delegate back -->
+    <!-- CSS Custom Properties: —my-var: value -->
+    <SEQ_REGEXP TYPE="LITERAL3" HASH_CHAR="-">--[\w-]+</SEQ_REGEXP>
+    <!-- CSS Nesting inside a block -->
+    <SEQ TYPE="MARKUP">&amp;</SEQ>
+    <!-- Nested rule: selector { ... } -->
+    <SPAN TYPE="OPERATOR" DELEGATE="PROPERTIES">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <IMPORT DELEGATE="GLOBAL"/>
+    <IMPORT DELEGATE="MAIN"/>
+    <KEYWORDS>
+      <!-- ── Logical / Flow-relative properties (CSS Logical Properties) ── -->
+      <KEYWORD2>block-size</KEYWORD2>
+      <KEYWORD2>inline-size</KEYWORD2>
+      <KEYWORD2>min-block-size</KEYWORD2>
+      <KEYWORD2>max-block-size</KEYWORD2>
+      <KEYWORD2>min-inline-size</KEYWORD2>
+      <KEYWORD2>max-inline-size</KEYWORD2>
+      <KEYWORD2>border-block</KEYWORD2>
+      <KEYWORD2>border-block-color</KEYWORD2>
+      <KEYWORD2>border-block-end</KEYWORD2>
+      <KEYWORD2>border-block-end-color</KEYWORD2>
+      <KEYWORD2>border-block-end-style</KEYWORD2>
+      <KEYWORD2>border-block-end-width</KEYWORD2>
+      <KEYWORD2>border-block-start</KEYWORD2>
+      <KEYWORD2>border-block-start-color</KEYWORD2>
+      <KEYWORD2>border-block-start-style</KEYWORD2>
+      <KEYWORD2>border-block-start-width</KEYWORD2>
+      <KEYWORD2>border-block-style</KEYWORD2>
+      <KEYWORD2>border-block-width</KEYWORD2>
+      <KEYWORD2>border-inline</KEYWORD2>
+      <KEYWORD2>border-inline-color</KEYWORD2>
+      <KEYWORD2>border-inline-end</KEYWORD2>
+      <KEYWORD2>border-inline-end-color</KEYWORD2>
+      <KEYWORD2>border-inline-end-style</KEYWORD2>
+      <KEYWORD2>border-inline-end-width</KEYWORD2>
+      <KEYWORD2>border-inline-start</KEYWORD2>
+      <KEYWORD2>border-inline-start-color</KEYWORD2>
+      <KEYWORD2>border-inline-start-style</KEYWORD2>
+      <KEYWORD2>border-inline-start-width</KEYWORD2>
+      <KEYWORD2>border-inline-style</KEYWORD2>
+      <KEYWORD2>border-inline-width</KEYWORD2>
+      <KEYWORD2>border-start-start-radius</KEYWORD2>
+      <KEYWORD2>border-start-end-radius</KEYWORD2>
+      <KEYWORD2>border-end-start-radius</KEYWORD2>
+      <KEYWORD2>border-end-end-radius</KEYWORD2>
+      <KEYWORD2>inset</KEYWORD2>
+      <KEYWORD2>inset-block</KEYWORD2>
+      <KEYWORD2>inset-block-end</KEYWORD2>
+      <KEYWORD2>inset-block-start</KEYWORD2>
+      <KEYWORD2>inset-inline</KEYWORD2>
+      <KEYWORD2>inset-inline-end</KEYWORD2>
+      <KEYWORD2>inset-inline-start</KEYWORD2>
+      <KEYWORD2>margin-block</KEYWORD2>
+      <KEYWORD2>margin-block-end</KEYWORD2>
+      <KEYWORD2>margin-block-start</KEYWORD2>
+      <KEYWORD2>margin-inline</KEYWORD2>
+      <KEYWORD2>margin-inline-end</KEYWORD2>
+      <KEYWORD2>margin-inline-start</KEYWORD2>
+      <KEYWORD2>padding-block</KEYWORD2>
+      <KEYWORD2>padding-block-end</KEYWORD2>
+      <KEYWORD2>padding-block-start</KEYWORD2>
+      <KEYWORD2>padding-inline</KEYWORD2>
+      <KEYWORD2>padding-inline-end</KEYWORD2>
+      <KEYWORD2>padding-inline-start</KEYWORD2>
+      <!-- ── Flexbox ── -->
+      <KEYWORD2>align-content</KEYWORD2>
+      <KEYWORD2>align-items</KEYWORD2>
+      <KEYWORD2>align-self</KEYWORD2>
+      <KEYWORD2>flex</KEYWORD2>
+      <KEYWORD2>flex-basis</KEYWORD2>
+      <KEYWORD2>flex-direction</KEYWORD2>
+      <KEYWORD2>flex-flow</KEYWORD2>
+      <KEYWORD2>flex-grow</KEYWORD2>
+      <KEYWORD2>flex-shrink</KEYWORD2>
+      <KEYWORD2>flex-wrap</KEYWORD2>
+      <KEYWORD2>justify-content</KEYWORD2>
+      <KEYWORD2>justify-items</KEYWORD2>
+      <KEYWORD2>justify-self</KEYWORD2>
+      <KEYWORD2>order</KEYWORD2>
+      <KEYWORD2>place-content</KEYWORD2>
+      <KEYWORD2>place-items</KEYWORD2>
+      <KEYWORD2>place-self</KEYWORD2>
+      <KEYWORD2>row-gap</KEYWORD2>
+      <!-- ── Grid ── -->
+      <KEYWORD2>grid</KEYWORD2>
+      <KEYWORD2>grid-area</KEYWORD2>
+      <KEYWORD2>grid-auto-columns</KEYWORD2>
+      <KEYWORD2>grid-auto-flow</KEYWORD2>
+      <KEYWORD2>grid-auto-rows</KEYWORD2>
+      <KEYWORD2>grid-column</KEYWORD2>
+      <KEYWORD2>grid-column-end</KEYWORD2>
+      <KEYWORD2>grid-column-start</KEYWORD2>
+      <KEYWORD2>grid-row</KEYWORD2>
+      <KEYWORD2>grid-row-end</KEYWORD2>
+      <KEYWORD2>grid-row-start</KEYWORD2>
+      <KEYWORD2>grid-template</KEYWORD2>
+      <KEYWORD2>grid-template-areas</KEYWORD2>
+      <KEYWORD2>grid-template-columns</KEYWORD2>
+      <KEYWORD2>grid-template-rows</KEYWORD2>
+      <!-- ── Gap (standard, replaces grid-*-gap) ── -->
+      <KEYWORD2>gap</KEYWORD2>
+      <KEYWORD2>column-gap</KEYWORD2>
+      <!-- ── Animation ── -->
+      <KEYWORD2>animation</KEYWORD2>
+      <KEYWORD2>animation-composition</KEYWORD2>
+      <KEYWORD2>animation-delay</KEYWORD2>
+      <KEYWORD2>animation-direction</KEYWORD2>
+      <KEYWORD2>animation-duration</KEYWORD2>
+      <KEYWORD2>animation-fill-mode</KEYWORD2>
+      <KEYWORD2>animation-iteration-count</KEYWORD2>
+      <KEYWORD2>animation-name</KEYWORD2>
+      <KEYWORD2>animation-play-state</KEYWORD2>
+      <KEYWORD2>animation-timeline</KEYWORD2>
+      <KEYWORD2>animation-timing-function</KEYWORD2>
+      <KEYWORD2>animation-range</KEYWORD2>
+      <KEYWORD2>animation-range-start</KEYWORD2>
+      <KEYWORD2>animation-range-end</KEYWORD2>
+      <!-- ── Transition ── -->
+      <KEYWORD2>transition</KEYWORD2>
+      <KEYWORD2>transition-behavior</KEYWORD2>
+      <KEYWORD2>transition-delay</KEYWORD2>
+      <KEYWORD2>transition-duration</KEYWORD2>
+      <KEYWORD2>transition-property</KEYWORD2>
+      <KEYWORD2>transition-timing-function</KEYWORD2>
+      <!-- ── Transform / 3D ── -->
+      <KEYWORD2>backface-visibility</KEYWORD2>
+      <KEYWORD2>perspective</KEYWORD2>
+      <KEYWORD2>perspective-origin</KEYWORD2>
+      <KEYWORD2>rotate</KEYWORD2>
+      <KEYWORD2>scale</KEYWORD2>
+      <KEYWORD2>transform</KEYWORD2>
+      <KEYWORD2>transform-box</KEYWORD2>
+      <KEYWORD2>transform-origin</KEYWORD2>
+      <KEYWORD2>transform-style</KEYWORD2>
+      <KEYWORD2>translate</KEYWORD2>
+      <!-- ── Color and background ── -->
+      <KEYWORD2>accent-color</KEYWORD2>
+      <KEYWORD2>background</KEYWORD2>
+      <KEYWORD2>background-attachment</KEYWORD2>
+      <KEYWORD2>background-blend-mode</KEYWORD2>
+      <KEYWORD2>background-clip</KEYWORD2>
+      <KEYWORD2>background-color</KEYWORD2>
+      <KEYWORD2>background-image</KEYWORD2>
+      <KEYWORD2>background-origin</KEYWORD2>
+      <KEYWORD2>background-position</KEYWORD2>
+      <KEYWORD2>background-position-x</KEYWORD2>
+      <KEYWORD2>background-position-y</KEYWORD2>
+      <KEYWORD2>background-repeat</KEYWORD2>
+      <KEYWORD2>background-size</KEYWORD2>
+      <KEYWORD2>color</KEYWORD2>
+      <KEYWORD2>color-scheme</KEYWORD2>
+      <KEYWORD2>forced-color-adjust</KEYWORD2>
+      <KEYWORD2>mix-blend-mode</KEYWORD2>
+      <KEYWORD2>opacity</KEYWORD2>
+      <KEYWORD2>print-color-adjust</KEYWORD2>
+      <!-- ── Font ── -->
+      <KEYWORD2>font</KEYWORD2>
+      <KEYWORD2>font-display</KEYWORD2>
+      <KEYWORD2>font-family</KEYWORD2>
+      <KEYWORD2>font-feature-settings</KEYWORD2>
+      <KEYWORD2>font-kerning</KEYWORD2>
+      <KEYWORD2>font-language-override</KEYWORD2>
+      <KEYWORD2>font-optical-sizing</KEYWORD2>
+      <KEYWORD2>font-palette</KEYWORD2>
+      <KEYWORD2>font-size</KEYWORD2>
+      <KEYWORD2>font-size-adjust</KEYWORD2>
+      <KEYWORD2>font-stretch</KEYWORD2>
+      <KEYWORD2>font-style</KEYWORD2>
+      <KEYWORD2>font-synthesis</KEYWORD2>
+      <KEYWORD2>font-synthesis-small-caps</KEYWORD2>
+      <KEYWORD2>font-synthesis-style</KEYWORD2>
+      <KEYWORD2>font-synthesis-weight</KEYWORD2>
+      <KEYWORD2>font-variant</KEYWORD2>
+      <KEYWORD2>font-variant-alternates</KEYWORD2>
+      <KEYWORD2>font-variant-caps</KEYWORD2>
+      <KEYWORD2>font-variant-east-asian</KEYWORD2>
+      <KEYWORD2>font-variant-emoji</KEYWORD2>
+      <KEYWORD2>font-variant-ligatures</KEYWORD2>
+      <KEYWORD2>font-variant-numeric</KEYWORD2>
+      <KEYWORD2>font-variant-position</KEYWORD2>
+      <KEYWORD2>font-variation-settings</KEYWORD2>
+      <KEYWORD2>font-weight</KEYWORD2>
+      <KEYWORD2>src</KEYWORD2>
+      <KEYWORD2>unicode-range</KEYWORD2>
+      <!-- ── Text ── -->
+      <KEYWORD2>direction</KEYWORD2>
+      <KEYWORD2>hanging-punctuation</KEYWORD2>
+      <KEYWORD2>hyphenate-character</KEYWORD2>
+      <KEYWORD2>hyphenate-limit-chars</KEYWORD2>
+      <KEYWORD2>hyphens</KEYWORD2>
+      <KEYWORD2>initial-letter</KEYWORD2>
+      <KEYWORD2>initial-letter-align</KEYWORD2>
+      <KEYWORD2>letter-spacing</KEYWORD2>
+      <KEYWORD2>line-break</KEYWORD2>
+      <KEYWORD2>line-height</KEYWORD2>
+      <KEYWORD2>overflow-wrap</KEYWORD2>
+      <KEYWORD2>tab-size</KEYWORD2>
+      <KEYWORD2>text-align</KEYWORD2>
+      <KEYWORD2>text-align-last</KEYWORD2>
+      <KEYWORD2>text-combine-upright</KEYWORD2>
+      <KEYWORD2>text-decoration</KEYWORD2>
+      <KEYWORD2>text-decoration-color</KEYWORD2>
+      <KEYWORD2>text-decoration-line</KEYWORD2>
+      <KEYWORD2>text-decoration-skip</KEYWORD2>
+      <KEYWORD2>text-decoration-skip-ink</KEYWORD2>
+      <KEYWORD2>text-decoration-style</KEYWORD2>
+      <KEYWORD2>text-decoration-thickness</KEYWORD2>
+      <KEYWORD2>text-emphasis</KEYWORD2>
+      <KEYWORD2>text-emphasis-color</KEYWORD2>
+      <KEYWORD2>text-emphasis-position</KEYWORD2>
+      <KEYWORD2>text-emphasis-style</KEYWORD2>
+      <KEYWORD2>text-indent</KEYWORD2>
+      <KEYWORD2>text-justify</KEYWORD2>
+      <KEYWORD2>text-orientation</KEYWORD2>
+      <KEYWORD2>text-overflow</KEYWORD2>
+      <KEYWORD2>text-rendering</KEYWORD2>
+      <KEYWORD2>text-shadow</KEYWORD2>
+      <KEYWORD2>text-size-adjust</KEYWORD2>
+      <KEYWORD2>text-transform</KEYWORD2>
+      <KEYWORD2>text-underline-offset</KEYWORD2>
+      <KEYWORD2>text-underline-position</KEYWORD2>
+      <KEYWORD2>text-wrap</KEYWORD2>
+      <KEYWORD2>text-wrap-mode</KEYWORD2>
+      <KEYWORD2>text-wrap-style</KEYWORD2>
+      <KEYWORD2>unicode-bidi</KEYWORD2>
+      <KEYWORD2>vertical-align</KEYWORD2>
+      <KEYWORD2>white-space</KEYWORD2>
+      <KEYWORD2>white-space-collapse</KEYWORD2>
+      <KEYWORD2>word-break</KEYWORD2>
+      <KEYWORD2>word-spacing</KEYWORD2>
+      <KEYWORD2>word-wrap</KEYWORD2>
+      <KEYWORD2>writing-mode</KEYWORD2>
+      <!-- ── Box model ── -->
+      <KEYWORD2>border</KEYWORD2>
+      <KEYWORD2>border-bottom</KEYWORD2>
+      <KEYWORD2>border-bottom-color</KEYWORD2>
+      <KEYWORD2>border-bottom-left-radius</KEYWORD2>
+      <KEYWORD2>border-bottom-right-radius</KEYWORD2>
+      <KEYWORD2>border-bottom-style</KEYWORD2>
+      <KEYWORD2>border-bottom-width</KEYWORD2>
+      <KEYWORD2>border-collapse</KEYWORD2>
+      <KEYWORD2>border-color</KEYWORD2>
+      <KEYWORD2>border-image</KEYWORD2>
+      <KEYWORD2>border-image-outset</KEYWORD2>
+      <KEYWORD2>border-image-repeat</KEYWORD2>
+      <KEYWORD2>border-image-slice</KEYWORD2>
+      <KEYWORD2>border-image-source</KEYWORD2>
+      <KEYWORD2>border-image-width</KEYWORD2>
+      <KEYWORD2>border-left</KEYWORD2>
+      <KEYWORD2>border-left-color</KEYWORD2>
+      <KEYWORD2>border-left-style</KEYWORD2>
+      <KEYWORD2>border-left-width</KEYWORD2>
+      <KEYWORD2>border-radius</KEYWORD2>
+      <KEYWORD2>border-right</KEYWORD2>
+      <KEYWORD2>border-right-color</KEYWORD2>
+      <KEYWORD2>border-right-style</KEYWORD2>
+      <KEYWORD2>border-right-width</KEYWORD2>
+      <KEYWORD2>border-spacing</KEYWORD2>
+      <KEYWORD2>border-style</KEYWORD2>
+      <KEYWORD2>border-top</KEYWORD2>
+      <KEYWORD2>border-top-color</KEYWORD2>
+      <KEYWORD2>border-top-left-radius</KEYWORD2>
+      <KEYWORD2>border-top-right-radius</KEYWORD2>
+      <KEYWORD2>border-top-style</KEYWORD2>
+      <KEYWORD2>border-top-width</KEYWORD2>
+      <KEYWORD2>border-width</KEYWORD2>
+      <KEYWORD2>bottom</KEYWORD2>
+      <KEYWORD2>box-shadow</KEYWORD2>
+      <KEYWORD2>box-sizing</KEYWORD2>
+      <KEYWORD2>clear</KEYWORD2>
+      <KEYWORD2>float</KEYWORD2>
+      <KEYWORD2>height</KEYWORD2>
+      <KEYWORD2>left</KEYWORD2>
+      <KEYWORD2>margin</KEYWORD2>
+      <KEYWORD2>margin-bottom</KEYWORD2>
+      <KEYWORD2>margin-left</KEYWORD2>
+      <KEYWORD2>margin-right</KEYWORD2>
+      <KEYWORD2>margin-top</KEYWORD2>
+      <KEYWORD2>max-height</KEYWORD2>
+      <KEYWORD2>max-width</KEYWORD2>
+      <KEYWORD2>min-height</KEYWORD2>
+      <KEYWORD2>min-width</KEYWORD2>
+      <KEYWORD2>outline</KEYWORD2>
+      <KEYWORD2>outline-color</KEYWORD2>
+      <KEYWORD2>outline-offset</KEYWORD2>
+      <KEYWORD2>outline-style</KEYWORD2>
+      <KEYWORD2>outline-width</KEYWORD2>
+      <KEYWORD2>padding</KEYWORD2>
+      <KEYWORD2>padding-bottom</KEYWORD2>
+      <KEYWORD2>padding-left</KEYWORD2>
+      <KEYWORD2>padding-right</KEYWORD2>
+      <KEYWORD2>padding-top</KEYWORD2>
+      <KEYWORD2>right</KEYWORD2>
+      <KEYWORD2>top</KEYWORD2>
+      <KEYWORD2>width</KEYWORD2>
+      <!-- ── Sizing CSS4 ── -->
+      <KEYWORD2>aspect-ratio</KEYWORD2>
+      <KEYWORD2>contain-intrinsic-size</KEYWORD2>
+      <KEYWORD2>contain-intrinsic-width</KEYWORD2>
+      <KEYWORD2>contain-intrinsic-height</KEYWORD2>
+      <KEYWORD2>contain-intrinsic-inline-size</KEYWORD2>
+      <KEYWORD2>contain-intrinsic-block-size</KEYWORD2>
+      <!-- ── Layout / Positioning ── -->
+      <KEYWORD2>display</KEYWORD2>
+      <KEYWORD2>position</KEYWORD2>
+      <KEYWORD2>z-index</KEYWORD2>
+      <!-- ── Visual effects ── -->
+      <KEYWORD2>clip</KEYWORD2>
+      <KEYWORD2>clip-path</KEYWORD2>
+      <KEYWORD2>filter</KEYWORD2>
+      <KEYWORD2>backdrop-filter</KEYWORD2>
+      <KEYWORD2>image-rendering</KEYWORD2>
+      <KEYWORD2>isolation</KEYWORD2>
+      <KEYWORD2>mask</KEYWORD2>
+      <KEYWORD2>mask-border</KEYWORD2>
+      <KEYWORD2>mask-border-mode</KEYWORD2>
+      <KEYWORD2>mask-border-outset</KEYWORD2>
+      <KEYWORD2>mask-border-repeat</KEYWORD2>
+      <KEYWORD2>mask-border-slice</KEYWORD2>
+      <KEYWORD2>mask-border-source</KEYWORD2>
+      <KEYWORD2>mask-border-width</KEYWORD2>
+      <KEYWORD2>mask-clip</KEYWORD2>
+      <KEYWORD2>mask-composite</KEYWORD2>
+      <KEYWORD2>mask-image</KEYWORD2>
+      <KEYWORD2>mask-mode</KEYWORD2>
+      <KEYWORD2>mask-origin</KEYWORD2>
+      <KEYWORD2>mask-position</KEYWORD2>
+      <KEYWORD2>mask-repeat</KEYWORD2>
+      <KEYWORD2>mask-size</KEYWORD2>
+      <KEYWORD2>mask-type</KEYWORD2>
+      <KEYWORD2>object-fit</KEYWORD2>
+      <KEYWORD2>object-position</KEYWORD2>
+      <KEYWORD2>overflow</KEYWORD2>
+      <KEYWORD2>overflow-block</KEYWORD2>
+      <KEYWORD2>overflow-clip-margin</KEYWORD2>
+      <KEYWORD2>overflow-inline</KEYWORD2>
+      <KEYWORD2>overflow-x</KEYWORD2>
+      <KEYWORD2>overflow-y</KEYWORD2>
+      <KEYWORD2>shape-image-threshold</KEYWORD2>
+      <KEYWORD2>shape-margin</KEYWORD2>
+      <KEYWORD2>shape-outside</KEYWORD2>
+      <KEYWORD2>visibility</KEYWORD2>
+      <!-- ── Scroll ── -->
+      <KEYWORD2>overscroll-behavior</KEYWORD2>
+      <KEYWORD2>overscroll-behavior-block</KEYWORD2>
+      <KEYWORD2>overscroll-behavior-inline</KEYWORD2>
+      <KEYWORD2>overscroll-behavior-x</KEYWORD2>
+      <KEYWORD2>overscroll-behavior-y</KEYWORD2>
+      <KEYWORD2>scroll-behavior</KEYWORD2>
+      <KEYWORD2>scroll-margin</KEYWORD2>
+      <KEYWORD2>scroll-margin-block</KEYWORD2>
+      <KEYWORD2>scroll-margin-block-end</KEYWORD2>
+      <KEYWORD2>scroll-margin-block-start</KEYWORD2>
+      <KEYWORD2>scroll-margin-bottom</KEYWORD2>
+      <KEYWORD2>scroll-margin-inline</KEYWORD2>
+      <KEYWORD2>scroll-margin-inline-end</KEYWORD2>
+      <KEYWORD2>scroll-margin-inline-start</KEYWORD2>
+      <KEYWORD2>scroll-margin-left</KEYWORD2>
+      <KEYWORD2>scroll-margin-right</KEYWORD2>
+      <KEYWORD2>scroll-margin-top</KEYWORD2>
+      <KEYWORD2>scroll-padding</KEYWORD2>
+      <KEYWORD2>scroll-padding-block</KEYWORD2>
+      <KEYWORD2>scroll-padding-block-end</KEYWORD2>
+      <KEYWORD2>scroll-padding-block-start</KEYWORD2>
+      <KEYWORD2>scroll-padding-bottom</KEYWORD2>
+      <KEYWORD2>scroll-padding-inline</KEYWORD2>
+      <KEYWORD2>scroll-padding-inline-end</KEYWORD2>
+      <KEYWORD2>scroll-padding-inline-start</KEYWORD2>
+      <KEYWORD2>scroll-padding-left</KEYWORD2>
+      <KEYWORD2>scroll-padding-right</KEYWORD2>
+      <KEYWORD2>scroll-padding-top</KEYWORD2>
+      <KEYWORD2>scroll-snap-align</KEYWORD2>
+      <KEYWORD2>scroll-snap-stop</KEYWORD2>
+      <KEYWORD2>scroll-snap-type</KEYWORD2>
+      <KEYWORD2>scroll-timeline</KEYWORD2>
+      <KEYWORD2>scroll-timeline-axis</KEYWORD2>
+      <KEYWORD2>scroll-timeline-name</KEYWORD2>
+      <KEYWORD2>scrollbar-color</KEYWORD2>
+      <KEYWORD2>scrollbar-gutter</KEYWORD2>
+      <KEYWORD2>scrollbar-width</KEYWORD2>
+      <!-- ── Multi-column ── -->
+      <KEYWORD2>column-count</KEYWORD2>
+      <KEYWORD2>column-fill</KEYWORD2>
+      <KEYWORD2>column-rule</KEYWORD2>
+      <KEYWORD2>column-rule-color</KEYWORD2>
+      <KEYWORD2>column-rule-style</KEYWORD2>
+      <KEYWORD2>column-rule-width</KEYWORD2>
+      <KEYWORD2>column-span</KEYWORD2>
+      <KEYWORD2>column-width</KEYWORD2>
+      <KEYWORD2>columns</KEYWORD2>
+      <!-- ── Container Queries ── -->
+      <KEYWORD2>container</KEYWORD2>
+      <KEYWORD2>container-name</KEYWORD2>
+      <KEYWORD2>container-type</KEYWORD2>
+      <!-- ── Content visibility / containment ── -->
+      <KEYWORD2>contain</KEYWORD2>
+      <KEYWORD2>content-visibility</KEYWORD2>
+      <KEYWORD2>will-change</KEYWORD2>
+      <!-- ── Pointer / Interaction ── -->
+      <KEYWORD2>appearance</KEYWORD2>
+      <KEYWORD2>cursor</KEYWORD2>
+      <KEYWORD2>pointer-events</KEYWORD2>
+      <KEYWORD2>resize</KEYWORD2>
+      <KEYWORD2>touch-action</KEYWORD2>
+      <KEYWORD2>user-select</KEYWORD2>
+      <KEYWORD2>caret-color</KEYWORD2>
+      <KEYWORD2>caret-shape</KEYWORD2>
+      <!-- ── Page ── -->
+      <KEYWORD2>break-after</KEYWORD2>
+      <KEYWORD2>break-before</KEYWORD2>
+      <KEYWORD2>break-inside</KEYWORD2>
+      <KEYWORD2>orphans</KEYWORD2>
+      <KEYWORD2>page-break-after</KEYWORD2>
+      <KEYWORD2>page-break-before</KEYWORD2>
+      <KEYWORD2>page-break-inside</KEYWORD2>
+      <KEYWORD2>widows</KEYWORD2>
+      <!-- ── Table ── -->
+      <KEYWORD2>caption-side</KEYWORD2>
+      <KEYWORD2>empty-cells</KEYWORD2>
+      <KEYWORD2>table-layout</KEYWORD2>
+      <!-- ── View Transitions ── -->
+      <KEYWORD2>view-transition-name</KEYWORD2>
+      <!-- ── Math ── -->
+      <KEYWORD2>math-depth</KEYWORD2>
+      <KEYWORD2>math-style</KEYWORD2>
+      <!-- ── @font-face descriptors ── -->
+      <KEYWORD2>ascent-override</KEYWORD2>
+      <KEYWORD2>descent-override</KEYWORD2>
+      <KEYWORD2>line-gap-override</KEYWORD2>
+      <KEYWORD2>size-adjust</KEYWORD2>
+      <!-- ── @property descriptors ── -->
+      <KEYWORD2>syntax</KEYWORD2>
+      <KEYWORD2>inherits</KEYWORD2>
+      <KEYWORD2>initial-value</KEYWORD2>
+      <KEYWORD2>anchor-name</KEYWORD2>
+      <KEYWORD2>anchor-scope</KEYWORD2>
+      <KEYWORD2>position-anchor</KEYWORD2>
+      <KEYWORD2>position-area</KEYWORD2>
+      <KEYWORD2>position-try-fallbacks</KEYWORD2>
+      <KEYWORD2>interpolate-size</KEYWORD2>
+      <KEYWORD2>field-sizing</KEYWORD2>
+      <KEYWORD2>view-transition-class</KEYWORD2>
+      <KEYWORD2>timeline-scope</KEYWORD2>
+    </KEYWORDS>
+  </RULES>
+  <!-- ═══════════════════════════════════════════════════════
+	     PROP_VALUE — right-hand side of a CSS declaration
+	     ═══════════════════════════════════════════════════════ -->
+  <RULES SET="PROP_VALUE" HIGHLIGHT_DIGITS="TRUE" DIGIT_RE="-?(\d+\.?\d*|\.\d+)(pt|pc|in|mm|cm|rlh|lh|rem|em|ex|ch|vw|vh|vmin|vmax|dvh|dvw|dvmin|dvmax|svh|svw|lvh|lvw|cqw|cqh|cqi|cqb|cqmin|cqmax|px|ms|s|fr|deg|rad|grad|turn|dpi|dpcm|dppx|%)?" NO_WORD_SEP="-_%">
+    <!-- Strings -->
+    <SPAN_REGEXP TYPE="LITERAL1" ESCAPE="\" HASH_CHARS="&quot;'">
+      <BEGIN>(["'])</BEGIN>
+      <END>$1</END>
+    </SPAN_REGEXP>
+    <!-- url() without quotes -->
+    <SPAN_REGEXP TYPE="FUNCTION" MATCH_TYPE="FUNCTION" HASH_CHAR="url(" ESCAPE="\">
+      <BEGIN>url\((?=\s*[^"'])</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <!-- CSS Custom Property reference: var(—foo) -->
+    <SPAN_REGEXP TYPE="FUNCTION" HASH_CHAR="var" DELEGATE="VAR_INNER">
+      <BEGIN>var\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <!-- env() -->
+    <SPAN_REGEXP TYPE="FUNCTION" HASH_CHAR="env">
+      <BEGIN>env\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <!-- Proprietary IE expression() -->
+    <SPAN_REGEXP TYPE="FUNCTION" DELEGATE="javascript::MAIN" HASH_CHAR="expression">
+      <BEGIN>expression\s*\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <!-- All other functions: rgb(), rgba(), hsl(), calc(), min(), max(), clamp(), etc. -->
+    <SPAN_REGEXP TYPE="FUNCTION" DELEGATE="PROP_VALUE">
+      <BEGIN>[\w-]+\(</BEGIN>
+      <END>)</END>
+    </SPAN_REGEXP>
+    <!-- Hex color values: #rgb #rrggbb #rrggbbaa -->
+    <MARK_FOLLOWING TYPE="DIGIT">#</MARK_FOLLOWING>
+    <!-- !important -->
+    <SEQ_REGEXP HASH_CHAR="!" TYPE="KEYWORD2">!\s*important</SEQ_REGEXP>
+    <!-- Delegate back -->
+    <IMPORT DELEGATE="GLOBAL"/>
+    <KEYWORDS>
+      <!-- ── Generic values ── -->
+      <KEYWORD3>auto</KEYWORD3>
+      <KEYWORD3>inherit</KEYWORD3>
+      <KEYWORD3>initial</KEYWORD3>
+      <KEYWORD3>unset</KEYWORD3>
+      <KEYWORD3>revert</KEYWORD3>
+      <KEYWORD3>revert-layer</KEYWORD3>
+      <KEYWORD3>none</KEYWORD3>
+      <KEYWORD3>normal</KEYWORD3>
+      <!-- ── Display values ── -->
+      <KEYWORD3>block</KEYWORD3>
+      <KEYWORD3>inline</KEYWORD3>
+      <KEYWORD3>inline-block</KEYWORD3>
+      <KEYWORD3>inline-flex</KEYWORD3>
+      <KEYWORD3>inline-grid</KEYWORD3>
+      <KEYWORD3>inline-table</KEYWORD3>
+      <KEYWORD3>flex</KEYWORD3>
+      <KEYWORD3>grid</KEYWORD3>
+      <KEYWORD3>contents</KEYWORD3>
+      <KEYWORD3>flow-root</KEYWORD3>
+      <KEYWORD3>list-item</KEYWORD3>
+      <KEYWORD3>run-in</KEYWORD3>
+      <KEYWORD3>table</KEYWORD3>
+      <KEYWORD3>table-caption</KEYWORD3>
+      <KEYWORD3>table-cell</KEYWORD3>
+      <KEYWORD3>table-column</KEYWORD3>
+      <KEYWORD3>table-column-group</KEYWORD3>
+      <KEYWORD3>table-footer-group</KEYWORD3>
+      <KEYWORD3>table-header-group</KEYWORD3>
+      <KEYWORD3>table-row</KEYWORD3>
+      <KEYWORD3>table-row-group</KEYWORD3>
+      <KEYWORD3>ruby</KEYWORD3>
+      <KEYWORD3>ruby-base</KEYWORD3>
+      <KEYWORD3>ruby-text</KEYWORD3>
+      <KEYWORD3>math</KEYWORD3>
+      <!-- ── Position values ── -->
+      <KEYWORD3>static</KEYWORD3>
+      <KEYWORD3>relative</KEYWORD3>
+      <KEYWORD3>absolute</KEYWORD3>
+      <KEYWORD3>fixed</KEYWORD3>
+      <KEYWORD3>sticky</KEYWORD3>
+      <!-- ── Flex / Grid values ── -->
+      <KEYWORD3>row</KEYWORD3>
+      <KEYWORD3>row-reverse</KEYWORD3>
+      <KEYWORD3>column</KEYWORD3>
+      <KEYWORD3>column-reverse</KEYWORD3>
+      <KEYWORD3>wrap</KEYWORD3>
+      <KEYWORD3>wrap-reverse</KEYWORD3>
+      <KEYWORD3>nowrap</KEYWORD3>
+      <KEYWORD3>stretch</KEYWORD3>
+      <KEYWORD3>center</KEYWORD3>
+      <KEYWORD3>start</KEYWORD3>
+      <KEYWORD3>end</KEYWORD3>
+      <KEYWORD3>flex-start</KEYWORD3>
+      <KEYWORD3>flex-end</KEYWORD3>
+      <KEYWORD3>space-between</KEYWORD3>
+      <KEYWORD3>space-around</KEYWORD3>
+      <KEYWORD3>space-evenly</KEYWORD3>
+      <KEYWORD3>baseline</KEYWORD3>
+      <KEYWORD3>first baseline</KEYWORD3>
+      <KEYWORD3>last baseline</KEYWORD3>
+      <KEYWORD3>safe</KEYWORD3>
+      <KEYWORD3>unsafe</KEYWORD3>
+      <KEYWORD3>subgrid</KEYWORD3>
+      <KEYWORD3>masonry</KEYWORD3>
+      <KEYWORD3>min-content</KEYWORD3>
+      <KEYWORD3>max-content</KEYWORD3>
+      <KEYWORD3>auto-fill</KEYWORD3>
+      <KEYWORD3>auto-fit</KEYWORD3>
+      <KEYWORD3>dense</KEYWORD3>
+      <!-- ── Overflow values ── -->
+      <KEYWORD3>visible</KEYWORD3>
+      <KEYWORD3>hidden</KEYWORD3>
+      <KEYWORD3>scroll</KEYWORD3>
+      <KEYWORD3>clip</KEYWORD3>
+      <!-- ── Float / Clear ── -->
+      <KEYWORD3>left</KEYWORD3>
+      <KEYWORD3>right</KEYWORD3>
+      <KEYWORD3>both</KEYWORD3>
+      <KEYWORD3>inline-start</KEYWORD3>
+      <KEYWORD3>inline-end</KEYWORD3>
+      <!-- ── Border style values ── -->
+      <KEYWORD3>solid</KEYWORD3>
+      <KEYWORD3>dashed</KEYWORD3>
+      <KEYWORD3>dotted</KEYWORD3>
+      <KEYWORD3>double</KEYWORD3>
+      <KEYWORD3>groove</KEYWORD3>
+      <KEYWORD3>ridge</KEYWORD3>
+      <KEYWORD3>outset</KEYWORD3>
+      <KEYWORD3>collapse</KEYWORD3>
+      <KEYWORD3>separate</KEYWORD3>
+      <!-- ── Size keywords ── -->
+      <KEYWORD3>thin</KEYWORD3>
+      <KEYWORD3>medium</KEYWORD3>
+      <KEYWORD3>thick</KEYWORD3>
+      <KEYWORD3>xx-small</KEYWORD3>
+      <KEYWORD3>x-small</KEYWORD3>
+      <KEYWORD3>small</KEYWORD3>
+      <KEYWORD3>large</KEYWORD3>
+      <KEYWORD3>x-large</KEYWORD3>
+      <KEYWORD3>xx-large</KEYWORD3>
+      <KEYWORD3>xxx-large</KEYWORD3>
+      <KEYWORD3>smaller</KEYWORD3>
+      <KEYWORD3>larger</KEYWORD3>
+      <!-- ── Font values ── -->
+      <KEYWORD3>serif</KEYWORD3>
+      <KEYWORD3>sans-serif</KEYWORD3>
+      <KEYWORD3>monospace</KEYWORD3>
+      <KEYWORD3>cursive</KEYWORD3>
+      <KEYWORD3>fantasy</KEYWORD3>
+      <KEYWORD3>system-ui</KEYWORD3>
+      <KEYWORD3>ui-serif</KEYWORD3>
+      <KEYWORD3>ui-sans-serif</KEYWORD3>
+      <KEYWORD3>ui-monospace</KEYWORD3>
+      <KEYWORD3>ui-rounded</KEYWORD3>
+      <KEYWORD3>emoji</KEYWORD3>
+      <KEYWORD3>fangsong</KEYWORD3>
+      <KEYWORD3>bold</KEYWORD3>
+      <KEYWORD3>bolder</KEYWORD3>
+      <KEYWORD3>lighter</KEYWORD3>
+      <KEYWORD3>italic</KEYWORD3>
+      <KEYWORD3>oblique</KEYWORD3>
+      <KEYWORD3>small-caps</KEYWORD3>
+      <KEYWORD3>all-small-caps</KEYWORD3>
+      <KEYWORD3>petite-caps</KEYWORD3>
+      <KEYWORD3>all-petite-caps</KEYWORD3>
+      <KEYWORD3>unicase</KEYWORD3>
+      <KEYWORD3>titling-caps</KEYWORD3>
+      <KEYWORD3>ultra-condensed</KEYWORD3>
+      <KEYWORD3>extra-condensed</KEYWORD3>
+      <KEYWORD3>condensed</KEYWORD3>
+      <KEYWORD3>semi-condensed</KEYWORD3>
+      <KEYWORD3>semi-expanded</KEYWORD3>
+      <KEYWORD3>expanded</KEYWORD3>
+      <KEYWORD3>extra-expanded</KEYWORD3>
+      <KEYWORD3>ultra-expanded</KEYWORD3>
+      <!-- ── Text values ── -->
+      <KEYWORD3>justify</KEYWORD3>
+      <KEYWORD3>justify-all</KEYWORD3>
+      <KEYWORD3>match-parent</KEYWORD3>
+      <KEYWORD3>capitalize</KEYWORD3>
+      <KEYWORD3>uppercase</KEYWORD3>
+      <KEYWORD3>lowercase</KEYWORD3>
+      <KEYWORD3>full-width</KEYWORD3>
+      <KEYWORD3>full-size-kana</KEYWORD3>
+      <KEYWORD3>underline</KEYWORD3>
+      <KEYWORD3>overline</KEYWORD3>
+      <KEYWORD3>line-through</KEYWORD3>
+      <KEYWORD3>blink</KEYWORD3>
+      <KEYWORD3>wavy</KEYWORD3>
+      <KEYWORD3>ellipsis</KEYWORD3>
+      <KEYWORD3>pre</KEYWORD3>
+      <KEYWORD3>pre-wrap</KEYWORD3>
+      <KEYWORD3>pre-line</KEYWORD3>
+      <KEYWORD3>break-spaces</KEYWORD3>
+      <KEYWORD3>break-all</KEYWORD3>
+      <KEYWORD3>break-word</KEYWORD3>
+      <KEYWORD3>keep-all</KEYWORD3>
+      <KEYWORD3>balance</KEYWORD3>
+      <KEYWORD3>pretty</KEYWORD3>
+      <KEYWORD3>stable</KEYWORD3>
+      <KEYWORD3>ltr</KEYWORD3>
+      <KEYWORD3>rtl</KEYWORD3>
+      <KEYWORD3>embed</KEYWORD3>
+      <KEYWORD3>bidi-override</KEYWORD3>
+      <KEYWORD3>isolate</KEYWORD3>
+      <KEYWORD3>isolate-override</KEYWORD3>
+      <KEYWORD3>plaintext</KEYWORD3>
+      <!-- ── Vertical align ── -->
+      <KEYWORD3>top</KEYWORD3>
+      <KEYWORD3>bottom</KEYWORD3>
+      <KEYWORD3>middle</KEYWORD3>
+      <KEYWORD3>sub</KEYWORD3>
+      <KEYWORD3>super</KEYWORD3>
+      <KEYWORD3>text-top</KEYWORD3>
+      <KEYWORD3>text-bottom</KEYWORD3>
+      <!-- ── Background values ── -->
+      <KEYWORD3>repeat-x</KEYWORD3>
+      <KEYWORD3>repeat-y</KEYWORD3>
+      <KEYWORD3>no-repeat</KEYWORD3>
+      <KEYWORD3>space</KEYWORD3>
+      <KEYWORD3>cover</KEYWORD3>
+      <KEYWORD3>contain</KEYWORD3>
+      <KEYWORD3>border-box</KEYWORD3>
+      <KEYWORD3>padding-box</KEYWORD3>
+      <KEYWORD3>content-box</KEYWORD3>
+      <KEYWORD3>text</KEYWORD3>
+      <!-- ── Animation / Transition ── -->
+      <KEYWORD3>ease</KEYWORD3>
+      <KEYWORD3>ease-in</KEYWORD3>
+      <KEYWORD3>ease-out</KEYWORD3>
+      <KEYWORD3>ease-in-out</KEYWORD3>
+      <KEYWORD3>linear</KEYWORD3>
+      <KEYWORD3>step-start</KEYWORD3>
+      <KEYWORD3>step-end</KEYWORD3>
+      <KEYWORD3>alternate</KEYWORD3>
+      <KEYWORD3>alternate-reverse</KEYWORD3>
+      <KEYWORD3>reverse</KEYWORD3>
+      <KEYWORD3>forwards</KEYWORD3>
+      <KEYWORD3>backwards</KEYWORD3>
+      <KEYWORD3>infinite</KEYWORD3>
+      <KEYWORD3>running</KEYWORD3>
+      <KEYWORD3>paused</KEYWORD3>
+      <KEYWORD3>allow-discrete</KEYWORD3>
+      <!-- ── Transform values ── -->
+      <KEYWORD3>flat</KEYWORD3>
+      <KEYWORD3>preserve-3d</KEYWORD3>
+      <!-- ── Cursor values ── -->
+      <KEYWORD3>pointer</KEYWORD3>
+      <KEYWORD3>default</KEYWORD3>
+      <KEYWORD3>crosshair</KEYWORD3>
+      <KEYWORD3>move</KEYWORD3>
+      <KEYWORD3>grab</KEYWORD3>
+      <KEYWORD3>grabbing</KEYWORD3>
+      <KEYWORD3>not-allowed</KEYWORD3>
+      <KEYWORD3>no-drop</KEYWORD3>
+      <KEYWORD3>wait</KEYWORD3>
+      <KEYWORD3>progress</KEYWORD3>
+      <KEYWORD3>help</KEYWORD3>
+      <KEYWORD3>vertical-text</KEYWORD3>
+      <KEYWORD3>zoom-in</KEYWORD3>
+      <KEYWORD3>zoom-out</KEYWORD3>
+      <KEYWORD3>cell</KEYWORD3>
+      <KEYWORD3>context-menu</KEYWORD3>
+      <KEYWORD3>alias</KEYWORD3>
+      <KEYWORD3>copy</KEYWORD3>
+      <KEYWORD3>col-resize</KEYWORD3>
+      <KEYWORD3>row-resize</KEYWORD3>
+      <KEYWORD3>n-resize</KEYWORD3>
+      <KEYWORD3>e-resize</KEYWORD3>
+      <KEYWORD3>s-resize</KEYWORD3>
+      <KEYWORD3>w-resize</KEYWORD3>
+      <KEYWORD3>ne-resize</KEYWORD3>
+      <KEYWORD3>nw-resize</KEYWORD3>
+      <KEYWORD3>se-resize</KEYWORD3>
+      <KEYWORD3>sw-resize</KEYWORD3>
+      <KEYWORD3>ew-resize</KEYWORD3>
+      <KEYWORD3>ns-resize</KEYWORD3>
+      <KEYWORD3>nesw-resize</KEYWORD3>
+      <KEYWORD3>nwse-resize</KEYWORD3>
+      <KEYWORD3>all-scroll</KEYWORD3>
+      <!-- ── Blend mode values ── -->
+      <KEYWORD3>multiply</KEYWORD3>
+      <KEYWORD3>screen</KEYWORD3>
+      <KEYWORD3>overlay</KEYWORD3>
+      <KEYWORD3>darken</KEYWORD3>
+      <KEYWORD3>lighten</KEYWORD3>
+      <KEYWORD3>color-dodge</KEYWORD3>
+      <KEYWORD3>color-burn</KEYWORD3>
+      <KEYWORD3>hard-light</KEYWORD3>
+      <KEYWORD3>soft-light</KEYWORD3>
+      <KEYWORD3>difference</KEYWORD3>
+      <KEYWORD3>exclusion</KEYWORD3>
+      <KEYWORD3>hue</KEYWORD3>
+      <KEYWORD3>saturation</KEYWORD3>
+      <KEYWORD3>luminosity</KEYWORD3>
+      <KEYWORD3>plus-darker</KEYWORD3>
+      <KEYWORD3>plus-lighter</KEYWORD3>
+      <!-- ── Object-fit values ── -->
+      <KEYWORD3>fill</KEYWORD3>
+      <KEYWORD3>scale-down</KEYWORD3>
+      <!-- ── Scroll snap values ── -->
+      <KEYWORD3>mandatory</KEYWORD3>
+      <KEYWORD3>proximity</KEYWORD3>
+      <KEYWORD3>always</KEYWORD3>
+      <!-- ── Overscroll values ── -->
+      <!-- ── Content-visibility ── -->
+      <!-- ── Container-type values ── -->
+      <KEYWORD3>inline-size</KEYWORD3>
+      <KEYWORD3>block-size</KEYWORD3>
+      <KEYWORD3>size</KEYWORD3>
+      <!-- ── Color scheme values ── -->
+      <KEYWORD3>light</KEYWORD3>
+      <KEYWORD3>dark</KEYWORD3>
+      <KEYWORD3>only</KEYWORD3>
+      <!-- ── Misc ── -->
+      <KEYWORD3>transparent</KEYWORD3>
+      <KEYWORD3>currentcolor</KEYWORD3>
+      <KEYWORD3>canvas</KEYWORD3>
+      <KEYWORD3>canvastext</KEYWORD3>
+      <KEYWORD3>linktext</KEYWORD3>
+      <KEYWORD3>visitedtext</KEYWORD3>
+      <KEYWORD3>activetext</KEYWORD3>
+      <KEYWORD3>buttonface</KEYWORD3>
+      <KEYWORD3>buttontext</KEYWORD3>
+      <KEYWORD3>field</KEYWORD3>
+      <KEYWORD3>fieldtext</KEYWORD3>
+      <KEYWORD3>graytext</KEYWORD3>
+      <KEYWORD3>highlight</KEYWORD3>
+      <KEYWORD3>highlighttext</KEYWORD3>
+      <KEYWORD3>mark</KEYWORD3>
+      <KEYWORD3>marktext</KEYWORD3>
+      <KEYWORD3>oddrow</KEYWORD3>
+      <KEYWORD3>evenrow</KEYWORD3>
+      <KEYWORD3>open-quote</KEYWORD3>
+      <KEYWORD3>close-quote</KEYWORD3>
+      <KEYWORD3>no-open-quote</KEYWORD3>
+      <KEYWORD3>no-close-quote</KEYWORD3>
+      <KEYWORD3>disc</KEYWORD3>
+      <KEYWORD3>square</KEYWORD3>
+      <KEYWORD3>decimal</KEYWORD3>
+      <KEYWORD3>decimal-leading-zero</KEYWORD3>
+      <KEYWORD3>lower-roman</KEYWORD3>
+      <KEYWORD3>upper-roman</KEYWORD3>
+      <KEYWORD3>lower-greek</KEYWORD3>
+      <KEYWORD3>lower-latin</KEYWORD3>
+      <KEYWORD3>upper-latin</KEYWORD3>
+      <KEYWORD3>lower-alpha</KEYWORD3>
+      <KEYWORD3>upper-alpha</KEYWORD3>
+      <KEYWORD3>armenian</KEYWORD3>
+      <KEYWORD3>georgian</KEYWORD3>
+      <KEYWORD3>inside</KEYWORD3>
+      <KEYWORD3>outside</KEYWORD3>
+      <KEYWORD3>show</KEYWORD3>
+      <KEYWORD3>hide</KEYWORD3>
+      <KEYWORD3>portrait</KEYWORD3>
+      <KEYWORD3>landscape</KEYWORD3>
+      <KEYWORD3>above</KEYWORD3>
+      <KEYWORD3>behind</KEYWORD3>
+      <KEYWORD3>leftwards</KEYWORD3>
+      <KEYWORD3>rightwards</KEYWORD3>
+      <KEYWORD3>high</KEYWORD3>
+      <KEYWORD3>low</KEYWORD3>
+      <KEYWORD3>loud</KEYWORD3>
+      <KEYWORD3>soft</KEYWORD3>
+      <KEYWORD3>fast</KEYWORD3>
+      <KEYWORD3>slow</KEYWORD3>
+      <!-- ── Named colors (CSS4 / CSS Color Level 4) ── -->
+      <KEYWORD4>aliceblue</KEYWORD4>
+      <KEYWORD4>antiquewhite</KEYWORD4>
+      <KEYWORD4>aqua</KEYWORD4>
+      <KEYWORD4>aquamarine</KEYWORD4>
+      <KEYWORD4>azure</KEYWORD4>
+      <KEYWORD4>beige</KEYWORD4>
+      <KEYWORD4>bisque</KEYWORD4>
+      <KEYWORD4>black</KEYWORD4>
+      <KEYWORD4>blanchedalmond</KEYWORD4>
+      <KEYWORD4>blue</KEYWORD4>
+      <KEYWORD4>blueviolet</KEYWORD4>
+      <KEYWORD4>brown</KEYWORD4>
+      <KEYWORD4>burlywood</KEYWORD4>
+      <KEYWORD4>cadetblue</KEYWORD4>
+      <KEYWORD4>chartreuse</KEYWORD4>
+      <KEYWORD4>chocolate</KEYWORD4>
+      <KEYWORD4>coral</KEYWORD4>
+      <KEYWORD4>cornflowerblue</KEYWORD4>
+      <KEYWORD4>cornsilk</KEYWORD4>
+      <KEYWORD4>crimson</KEYWORD4>
+      <KEYWORD4>cyan</KEYWORD4>
+      <KEYWORD4>darkblue</KEYWORD4>
+      <KEYWORD4>darkcyan</KEYWORD4>
+      <KEYWORD4>darkgoldenrod</KEYWORD4>
+      <KEYWORD4>darkgray</KEYWORD4>
+      <KEYWORD4>darkgreen</KEYWORD4>
+      <KEYWORD4>darkgrey</KEYWORD4>
+      <KEYWORD4>darkkhaki</KEYWORD4>
+      <KEYWORD4>darkmagenta</KEYWORD4>
+      <KEYWORD4>darkolivegreen</KEYWORD4>
+      <KEYWORD4>darkorange</KEYWORD4>
+      <KEYWORD4>darkorchid</KEYWORD4>
+      <KEYWORD4>darkred</KEYWORD4>
+      <KEYWORD4>darksalmon</KEYWORD4>
+      <KEYWORD4>darkseagreen</KEYWORD4>
+      <KEYWORD4>darkslateblue</KEYWORD4>
+      <KEYWORD4>darkslategray</KEYWORD4>
+      <KEYWORD4>darkslategrey</KEYWORD4>
+      <KEYWORD4>darkturquoise</KEYWORD4>
+      <KEYWORD4>darkviolet</KEYWORD4>
+      <KEYWORD4>deeppink</KEYWORD4>
+      <KEYWORD4>deepskyblue</KEYWORD4>
+      <KEYWORD4>dimgray</KEYWORD4>
+      <KEYWORD4>dimgrey</KEYWORD4>
+      <KEYWORD4>dodgerblue</KEYWORD4>
+      <KEYWORD4>firebrick</KEYWORD4>
+      <KEYWORD4>floralwhite</KEYWORD4>
+      <KEYWORD4>forestgreen</KEYWORD4>
+      <KEYWORD4>fuchsia</KEYWORD4>
+      <KEYWORD4>gainsboro</KEYWORD4>
+      <KEYWORD4>ghostwhite</KEYWORD4>
+      <KEYWORD4>gold</KEYWORD4>
+      <KEYWORD4>goldenrod</KEYWORD4>
+      <KEYWORD4>gray</KEYWORD4>
+      <KEYWORD4>green</KEYWORD4>
+      <KEYWORD4>greenyellow</KEYWORD4>
+      <KEYWORD4>grey</KEYWORD4>
+      <KEYWORD4>honeydew</KEYWORD4>
+      <KEYWORD4>hotpink</KEYWORD4>
+      <KEYWORD4>indianred</KEYWORD4>
+      <KEYWORD4>indigo</KEYWORD4>
+      <KEYWORD4>ivory</KEYWORD4>
+      <KEYWORD4>khaki</KEYWORD4>
+      <KEYWORD4>lavender</KEYWORD4>
+      <KEYWORD4>lavenderblush</KEYWORD4>
+      <KEYWORD4>lawngreen</KEYWORD4>
+      <KEYWORD4>lemonchiffon</KEYWORD4>
+      <KEYWORD4>lightblue</KEYWORD4>
+      <KEYWORD4>lightcoral</KEYWORD4>
+      <KEYWORD4>lightcyan</KEYWORD4>
+      <KEYWORD4>lightgoldenrodyellow</KEYWORD4>
+      <KEYWORD4>lightgray</KEYWORD4>
+      <KEYWORD4>lightgreen</KEYWORD4>
+      <KEYWORD4>lightgrey</KEYWORD4>
+      <KEYWORD4>lightpink</KEYWORD4>
+      <KEYWORD4>lightsalmon</KEYWORD4>
+      <KEYWORD4>lightseagreen</KEYWORD4>
+      <KEYWORD4>lightskyblue</KEYWORD4>
+      <KEYWORD4>lightslategray</KEYWORD4>
+      <KEYWORD4>lightslategrey</KEYWORD4>
+      <KEYWORD4>lightsteelblue</KEYWORD4>
+      <KEYWORD4>lightyellow</KEYWORD4>
+      <KEYWORD4>lime</KEYWORD4>
+      <KEYWORD4>limegreen</KEYWORD4>
+      <KEYWORD4>linen</KEYWORD4>
+      <KEYWORD4>magenta</KEYWORD4>
+      <KEYWORD4>maroon</KEYWORD4>
+      <KEYWORD4>mediumaquamarine</KEYWORD4>
+      <KEYWORD4>mediumblue</KEYWORD4>
+      <KEYWORD4>mediumorchid</KEYWORD4>
+      <KEYWORD4>mediumpurple</KEYWORD4>
+      <KEYWORD4>mediumseagreen</KEYWORD4>
+      <KEYWORD4>mediumslateblue</KEYWORD4>
+      <KEYWORD4>mediumspringgreen</KEYWORD4>
+      <KEYWORD4>mediumturquoise</KEYWORD4>
+      <KEYWORD4>mediumvioletred</KEYWORD4>
+      <KEYWORD4>midnightblue</KEYWORD4>
+      <KEYWORD4>mintcream</KEYWORD4>
+      <KEYWORD4>mistyrose</KEYWORD4>
+      <KEYWORD4>moccasin</KEYWORD4>
+      <KEYWORD4>navajowhite</KEYWORD4>
+      <KEYWORD4>navy</KEYWORD4>
+      <KEYWORD4>oldlace</KEYWORD4>
+      <KEYWORD4>olive</KEYWORD4>
+      <KEYWORD4>olivedrab</KEYWORD4>
+      <KEYWORD4>orange</KEYWORD4>
+      <KEYWORD4>orangered</KEYWORD4>
+      <KEYWORD4>orchid</KEYWORD4>
+      <KEYWORD4>palegoldenrod</KEYWORD4>
+      <KEYWORD4>palegreen</KEYWORD4>
+      <KEYWORD4>paleturquoise</KEYWORD4>
+      <KEYWORD4>palevioletred</KEYWORD4>
+      <KEYWORD4>papayawhip</KEYWORD4>
+      <KEYWORD4>peachpuff</KEYWORD4>
+      <KEYWORD4>peru</KEYWORD4>
+      <KEYWORD4>pink</KEYWORD4>
+      <KEYWORD4>plum</KEYWORD4>
+      <KEYWORD4>powderblue</KEYWORD4>
+      <KEYWORD4>purple</KEYWORD4>
+      <KEYWORD4>rebeccapurple</KEYWORD4>
+      <KEYWORD4>red</KEYWORD4>
+      <KEYWORD4>rosybrown</KEYWORD4>
+      <KEYWORD4>royalblue</KEYWORD4>
+      <KEYWORD4>saddlebrown</KEYWORD4>
+      <KEYWORD4>salmon</KEYWORD4>
+      <KEYWORD4>sandybrown</KEYWORD4>
+      <KEYWORD4>seagreen</KEYWORD4>
+      <KEYWORD4>seashell</KEYWORD4>
+      <KEYWORD4>sienna</KEYWORD4>
+      <KEYWORD4>silver</KEYWORD4>
+      <KEYWORD4>skyblue</KEYWORD4>
+      <KEYWORD4>slateblue</KEYWORD4>
+      <KEYWORD4>slategray</KEYWORD4>
+      <KEYWORD4>slategrey</KEYWORD4>
+      <KEYWORD4>snow</KEYWORD4>
+      <KEYWORD4>springgreen</KEYWORD4>
+      <KEYWORD4>steelblue</KEYWORD4>
+      <KEYWORD4>teal</KEYWORD4>
+      <KEYWORD4>thistle</KEYWORD4>
+      <KEYWORD4>tomato</KEYWORD4>
+      <KEYWORD4>turquoise</KEYWORD4>
+      <KEYWORD4>violet</KEYWORD4>
+      <KEYWORD4>wheat</KEYWORD4>
+      <KEYWORD4>white</KEYWORD4>
+      <KEYWORD4>whitesmoke</KEYWORD4>
+      <KEYWORD4>yellow</KEYWORD4>
+      <KEYWORD4>yellowgreen</KEYWORD4>
+      <!-- ── CSS functions (for autocomplete) ── -->
+      <KEYWORD1>rgb</KEYWORD1>
+      <KEYWORD1>rgba</KEYWORD1>
+      <KEYWORD1>hsl</KEYWORD1>
+      <KEYWORD1>hsla</KEYWORD1>
+      <KEYWORD1>hwb</KEYWORD1>
+      <KEYWORD1>lab</KEYWORD1>
+      <KEYWORD1>lch</KEYWORD1>
+      <KEYWORD1>oklab</KEYWORD1>
+      <KEYWORD1>oklch</KEYWORD1>
+      <KEYWORD1>color</KEYWORD1>
+      <KEYWORD1>color-mix</KEYWORD1>
+      <KEYWORD1>color-contrast</KEYWORD1>
+      <KEYWORD1>device-cmyk</KEYWORD1>
+      <KEYWORD1>light-dark</KEYWORD1>
+      <KEYWORD1>url</KEYWORD1>
+      <KEYWORD1>var</KEYWORD1>
+      <KEYWORD1>env</KEYWORD1>
+      <KEYWORD1>calc</KEYWORD1>
+      <KEYWORD1>min</KEYWORD1>
+      <KEYWORD1>max</KEYWORD1>
+      <KEYWORD1>clamp</KEYWORD1>
+      <KEYWORD1>round</KEYWORD1>
+      <KEYWORD1>mod</KEYWORD1>
+      <KEYWORD1>rem</KEYWORD1>
+      <KEYWORD1>sin</KEYWORD1>
+      <KEYWORD1>cos</KEYWORD1>
+      <KEYWORD1>tan</KEYWORD1>
+      <KEYWORD1>asin</KEYWORD1>
+      <KEYWORD1>acos</KEYWORD1>
+      <KEYWORD1>atan</KEYWORD1>
+      <KEYWORD1>atan2</KEYWORD1>
+      <KEYWORD1>pow</KEYWORD1>
+      <KEYWORD1>sqrt</KEYWORD1>
+      <KEYWORD1>hypot</KEYWORD1>
+      <KEYWORD1>log</KEYWORD1>
+      <KEYWORD1>exp</KEYWORD1>
+      <KEYWORD1>abs</KEYWORD1>
+      <KEYWORD1>sign</KEYWORD1>
+      <KEYWORD1>linear-gradient</KEYWORD1>
+      <KEYWORD1>radial-gradient</KEYWORD1>
+      <KEYWORD1>conic-gradient</KEYWORD1>
+      <KEYWORD1>repeating-linear-gradient</KEYWORD1>
+      <KEYWORD1>repeating-radial-gradient</KEYWORD1>
+      <KEYWORD1>repeating-conic-gradient</KEYWORD1>
+      <KEYWORD1>image</KEYWORD1>
+      <KEYWORD1>image-set</KEYWORD1>
+      <KEYWORD1>cross-fade</KEYWORD1>
+      <KEYWORD1>element</KEYWORD1>
+      <KEYWORD1>counter</KEYWORD1>
+      <KEYWORD1>counters</KEYWORD1>
+      <KEYWORD1>attr</KEYWORD1>
+      <KEYWORD1>format</KEYWORD1>
+      <KEYWORD1>local</KEYWORD1>
+      <KEYWORD1>rotate</KEYWORD1>
+      <KEYWORD1>rotateX</KEYWORD1>
+      <KEYWORD1>rotateY</KEYWORD1>
+      <KEYWORD1>rotateZ</KEYWORD1>
+      <KEYWORD1>rotate3d</KEYWORD1>
+      <KEYWORD1>scale</KEYWORD1>
+      <KEYWORD1>scaleX</KEYWORD1>
+      <KEYWORD1>scaleY</KEYWORD1>
+      <KEYWORD1>scaleZ</KEYWORD1>
+      <KEYWORD1>scale3d</KEYWORD1>
+      <KEYWORD1>skew</KEYWORD1>
+      <KEYWORD1>skewX</KEYWORD1>
+      <KEYWORD1>skewY</KEYWORD1>
+      <KEYWORD1>translate</KEYWORD1>
+      <KEYWORD1>translateX</KEYWORD1>
+      <KEYWORD1>translateY</KEYWORD1>
+      <KEYWORD1>translateZ</KEYWORD1>
+      <KEYWORD1>translate3d</KEYWORD1>
+      <KEYWORD1>matrix</KEYWORD1>
+      <KEYWORD1>matrix3d</KEYWORD1>
+      <KEYWORD1>perspective</KEYWORD1>
+      <KEYWORD1>blur</KEYWORD1>
+      <KEYWORD1>brightness</KEYWORD1>
+      <KEYWORD1>contrast</KEYWORD1>
+      <KEYWORD1>drop-shadow</KEYWORD1>
+      <KEYWORD1>grayscale</KEYWORD1>
+      <KEYWORD1>hue-rotate</KEYWORD1>
+      <KEYWORD1>invert</KEYWORD1>
+      <KEYWORD1>opacity</KEYWORD1>
+      <KEYWORD1>saturate</KEYWORD1>
+      <KEYWORD1>sepia</KEYWORD1>
+      <KEYWORD1>fit-content</KEYWORD1>
+      <KEYWORD1>minmax</KEYWORD1>
+      <KEYWORD1>repeat</KEYWORD1>
+      <KEYWORD1>cubic-bezier</KEYWORD1>
+      <KEYWORD1>steps</KEYWORD1>
+      <KEYWORD1>path</KEYWORD1>
+      <KEYWORD1>polygon</KEYWORD1>
+      <KEYWORD1>circle</KEYWORD1>
+      <KEYWORD1>ellipse</KEYWORD1>
+      <KEYWORD1>inset</KEYWORD1>
+      <KEYWORD1>supports</KEYWORD1>
+      <KEYWORD1>selector</KEYWORD1>
+      <KEYWORD1>layer</KEYWORD1>
+    </KEYWORDS>
+  </RULES>
+  <!-- ═══════════════════════════════════════════════════════
+	     GLOBAL — shared rules (comments, operators, at-rules)
+	     ═══════════════════════════════════════════════════════ -->
+  <RULES SET="GLOBAL">
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="NULL">;</SEQ>
+    <SPAN TYPE="NULL" ESCAPE="\">
+      <BEGIN>(</BEGIN>
+      <END>)</END>
+    </SPAN>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">!</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <!-- At-rules: faster and more reliable than keyword matching with @ outside word chars. -->
+    <SEQ_REGEXP TYPE="KEYWORD1" HASH_CHAR="@">@[A-Za-z-]+</SEQ_REGEXP>
+    <!-- Block comments -->
+    <SPAN TYPE="COMMENT1">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+    <KEYWORDS>
+      <!-- Generated content / lists -->
+      <KEYWORD2>content</KEYWORD2>
+      <KEYWORD2>quotes</KEYWORD2>
+      <KEYWORD2>counter-reset</KEYWORD2>
+      <KEYWORD2>counter-increment</KEYWORD2>
+      <KEYWORD2>counter-set</KEYWORD2>
+      <KEYWORD2>list-style</KEYWORD2>
+      <KEYWORD2>list-style-image</KEYWORD2>
+      <KEYWORD2>list-style-position</KEYWORD2>
+      <KEYWORD2>list-style-type</KEYWORD2>
+      <KEYWORD2>marker-side</KEYWORD2>
+      <!-- At-rules -->
+      <KEYWORD1>@charset</KEYWORD1>
+      <KEYWORD1>@color-profile</KEYWORD1>
+      <KEYWORD1>@container</KEYWORD1>
+      <KEYWORD1>@counter-style</KEYWORD1>
+      <KEYWORD1>@font-face</KEYWORD1>
+      <KEYWORD1>@font-feature-values</KEYWORD1>
+      <KEYWORD1>@font-palette-values</KEYWORD1>
+      <KEYWORD1>@import</KEYWORD1>
+      <KEYWORD1>@keyframes</KEYWORD1>
+      <KEYWORD1>@layer</KEYWORD1>
+      <KEYWORD1>@media</KEYWORD1>
+      <KEYWORD1>@namespace</KEYWORD1>
+      <KEYWORD1>@page</KEYWORD1>
+      <KEYWORD1>@property</KEYWORD1>
+      <KEYWORD1>@scope</KEYWORD1>
+      <KEYWORD1>@starting-style</KEYWORD1>
+      <KEYWORD1>@supports</KEYWORD1>
+      <KEYWORD1>@viewport</KEYWORD1>
+    </KEYWORDS>
+  </RULES>
+  <!-- ═══════════════════════════════════════════════════════
+	     VAR_INNER — inside var(—custom-prop)
+	     Colors the —name same as declaration (LITERAL3)
+	     ═══════════════════════════════════════════════════════ -->
+  <RULES SET="VAR_INNER" DEFAULT="LITERAL3">
+    <!-- fallback comma for var(—a, fallback) -->
+    <SEQ TYPE="OPERATOR">,</SEQ>
+  </RULES>
+</MODE>

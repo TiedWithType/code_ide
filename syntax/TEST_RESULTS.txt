@@ -1,0 +1,12 @@
+Weryfikacja końcowa: 2026-09-19
+Silnik: jEdit 5.5.0 / Debian 5.5.0+dfsg-2; Java 17.0.20
+
+{
+  "mode_files": 227,
+  "catalog_entries": 231,
+  "errors": []
+}
+
+Regex patterns: 1842, errors: 0
+
+Modes loaded: 231, cases: 36, assertions incl. globs: 190, errors: 0

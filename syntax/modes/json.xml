@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE">
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="&quot;">"(?:\\.|[^"\\\r\n])*"(?=\s*:)</SEQ_REGEXP>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="-0123456789">-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?(?![\w.])</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <KEYWORDS>
+      <LITERAL2>true</LITERAL2>
+      <LITERAL2>false</LITERAL2>
+      <LITERAL2>null</LITERAL2>
+    </KEYWORDS>
+  </RULES>
+</MODE>

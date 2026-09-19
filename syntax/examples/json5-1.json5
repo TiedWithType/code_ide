@@ -1,0 +1,2 @@
+// note
+{unquoted: 'hello', n: +Infinity, hex: 0xA, trailing: .5,}

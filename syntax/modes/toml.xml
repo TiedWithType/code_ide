@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="#"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_-">
+    <EOL_SPAN TYPE="COMMENT1">#</EOL_SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD2" AT_WORD_START="TRUE">(?:[A-Za-z0-9_-]+|"(?:\\.|[^"\\])*"|\x27[^\x27]*\x27)(?:\s*\.\s*(?:[A-Za-z0-9_-]+|"(?:\\.|[^"\\])*"|\x27[^\x27]*\x27))*(?=\s*=)</SEQ_REGEXP>
+    <SPAN TYPE="LABEL" NO_LINE_BREAK="TRUE" AT_WHITESPACE_END="TRUE">
+      <BEGIN>[[</BEGIN>
+      <END>]]</END>
+    </SPAN>
+    <SPAN TYPE="LABEL" NO_LINE_BREAK="TRUE" AT_WHITESPACE_END="TRUE">
+      <BEGIN>[</BEGIN>
+      <END>]</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1" ESCAPE="\">
+      <BEGIN>"""</BEGIN>
+      <END>"""</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1">
+      <BEGIN>'''</BEGIN>
+      <END>'''</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1" NO_LINE_BREAK="TRUE">
+      <BEGIN>'</BEGIN>
+      <END>'</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="LITERAL2" HASH_CHARS="0123456789">(?:\d{4}-\d{2}-\d{2}(?:[Tt ]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:[Zz]|[+-]\d{2}:\d{2})?)?|\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="+-0123456789">[+-]?(?:0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*|0[bB][01](?:_?[01])*|0[oO][0-7](?:_?[0-7])*|[0-9](?:_?[0-9])*(?:\.[0-9](?:_?[0-9])*)?(?:[eE][+-]?[0-9](?:_?[0-9])*)?)(?!\w)</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="+-in">[+-]?(?:inf|nan)\b</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <KEYWORDS>
+      <LITERAL2>true</LITERAL2>
+      <LITERAL2>false</LITERAL2>
+    </KEYWORDS>
+  </RULES>
+</MODE>

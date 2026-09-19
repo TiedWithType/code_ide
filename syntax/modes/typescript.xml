@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="//"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_$">
+    <IMPORT DELEGATE="javascript::MAIN"/>
+    <KEYWORDS>
+      <KEYWORD1>abstract</KEYWORD1>
+      <KEYWORD1>accessor</KEYWORD1>
+      <KEYWORD1>asserts</KEYWORD1>
+      <KEYWORD1>declare</KEYWORD1>
+      <KEYWORD1>enum</KEYWORD1>
+      <KEYWORD1>implements</KEYWORD1>
+      <KEYWORD1>infer</KEYWORD1>
+      <KEYWORD1>interface</KEYWORD1>
+      <KEYWORD1>is</KEYWORD1>
+      <KEYWORD1>keyof</KEYWORD1>
+      <KEYWORD1>namespace</KEYWORD1>
+      <KEYWORD1>override</KEYWORD1>
+      <KEYWORD1>private</KEYWORD1>
+      <KEYWORD1>protected</KEYWORD1>
+      <KEYWORD1>public</KEYWORD1>
+      <KEYWORD1>readonly</KEYWORD1>
+      <KEYWORD1>satisfies</KEYWORD1>
+      <KEYWORD1>type</KEYWORD1>
+      <KEYWORD1>unique</KEYWORD1>
+      <KEYWORD1>out</KEYWORD1>
+      <KEYWORD1>intrinsic</KEYWORD1>
+      <KEYWORD3>any</KEYWORD3>
+      <KEYWORD3>bigint</KEYWORD3>
+      <KEYWORD3>boolean</KEYWORD3>
+      <KEYWORD3>never</KEYWORD3>
+      <KEYWORD3>number</KEYWORD3>
+      <KEYWORD3>object</KEYWORD3>
+      <KEYWORD3>string</KEYWORD3>
+      <KEYWORD3>symbol</KEYWORD3>
+      <KEYWORD3>unknown</KEYWORD3>
+      <KEYWORD2>module</KEYWORD2>
+      <KEYWORD2>require</KEYWORD2>
+    </KEYWORDS>
+  </RULES>
+</MODE>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+
+<MODE>
+	<PROPS>
+    <PROPERTY NAME="lineComment" VALUE="!" />
+		<PROPERTY NAME="contextInsensitive" VALUE="true" />
+	</PROPS>
+
+	<RULES>
+		<!-- Kolory heksadecymalne: #RRGGBB -->
+		<SEQ_REGEXP TYPE="DIGIT">#[0-9a-fA-F]{6}</SEQ_REGEXP>
+
+		<!-- Liczby dziesiętne i całkowite -->
+		<SEQ_REGEXP TYPE="DIGIT">-?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?</SEQ_REGEXP>
+
+		<!-- Operator kropki i przypisania -->
+		<SEQ TYPE="OPERATOR">.</SEQ>
+		<SEQ TYPE="OPERATOR">=</SEQ>
+
+<!-- KEYWORDS children
+<!ELEMENT COMMENT1 ( #PCDATA ) >
+<!ELEMENT COMMENT2 ( #PCDATA ) >
+<!ELEMENT COMMENT3 ( #PCDATA ) >
+<!ELEMENT COMMENT4 ( #PCDATA ) >
+<!ELEMENT DIGIT ( #PCDATA ) >
+<!ELEMENT FUNCTION ( #PCDATA ) >
+<!ELEMENT KEYWORD1 ( #PCDATA ) >
+<!ELEMENT KEYWORD2 ( #PCDATA ) >
+<!ELEMENT KEYWORD3 ( #PCDATA ) >
+<!ELEMENT KEYWORD4 ( #PCDATA ) >
+<!ELEMENT LABEL ( #PCDATA ) >
+<!ELEMENT LITERAL1 ( #PCDATA ) >
+<!ELEMENT LITERAL2 ( #PCDATA ) >
+<!ELEMENT LITERAL3 ( #PCDATA ) >
+<!ELEMENT LITERAL4 ( #PCDATA ) >
+<!ELEMENT MARKUP ( #PCDATA ) >
+<!ELEMENT NULL ( #PCDATA ) >
+<!ELEMENT OPERATOR ( #PCDATA ) >
+<!ELEMENT INVALID ( #PCDATA ) >
+-->
+		<!-- Słowa kluczowe -->
+		<KEYWORDS>
+			<KEYWORD4>theme</KEYWORD4>
+			<LABEL>background</LABEL>
+			<LABEL>normal</LABEL>
+			<LABEL>reserved</LABEL>
+			<LABEL>type</LABEL>
+			<LABEL>literal</LABEL>
+			<LABEL>identifier</LABEL>
+			<LABEL>preprocessor</LABEL>
+			<LABEL>comment</LABEL>
+			<LABEL>error</LABEL>
+			<LABEL>function</LABEL>
+			<LABEL>operator</LABEL>
+		</KEYWORDS>
+	</RULES>
+
+	<!-- Alternatywny zestaw zasad (jeśli wymagany do np. wartości) -->
+	<RULES SET="PROP_VALUE" HIGHLIGHT_DIGITS="TRUE"
+		DIGIT_RE="([\p{Digit}]+|#[\p{XDigit}]+)"
+		NO_WORD_SEP="#">
+		<SPAN TYPE="KEYWORD3" NO_LINE_BREAK="TRUE">
+			<BEGIN>{</BEGIN>
+			<END>}</END>
+		</SPAN>
+
+		<MARK_FOLLOWING TYPE="DIGIT">#</MARK_FOLLOWING>
+	</RULES>
+</MODE>

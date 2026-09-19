@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="//"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_$">
+    <SPAN TYPE="MARKUP" DELEGATE="CHILDREN">
+      <BEGIN>&lt;&gt;</BEGIN>
+      <END>&lt;/&gt;</END>
+    </SPAN>
+    <SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="&lt;" DELEGATE="TAG">
+      <BEGIN>&lt;([A-Za-z_$][\w.$:-]*)(?=[\s/&gt;])</BEGIN>
+      <END REGEXP="TRUE">/&gt;|&lt;/\s*$1\s*&gt;</END>
+    </SPAN_REGEXP>
+    <IMPORT DELEGATE="javascript::MAIN"/>
+  </RULES>
+  <RULES DEFAULT="MARKUP" IGNORE_CASE="FALSE" NO_WORD_SEP="-_:" SET="TAG">
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>'</BEGIN>
+      <END>'</END>
+    </SPAN>
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SEQ TYPE="MARKUP" DELEGATE="CHILDREN">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+  </RULES>
+  <RULES DEFAULT="NULL" IGNORE_CASE="FALSE" SET="CHILDREN">
+    <SPAN TYPE="MARKUP" DELEGATE="CHILDREN">
+      <BEGIN>&lt;&gt;</BEGIN>
+      <END>&lt;/&gt;</END>
+    </SPAN>
+    <SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="&lt;" DELEGATE="TAG">
+      <BEGIN>&lt;([A-Za-z_$][\w.$:-]*)(?=[\s/&gt;])</BEGIN>
+      <END REGEXP="TRUE">/&gt;|&lt;/\s*$1\s*&gt;</END>
+    </SPAN_REGEXP>
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="LITERAL2" HASH_CHAR="&amp;">&amp;(?:#\d+|#x[0-9A-Fa-f]+|[A-Za-z][A-Za-z0-9]+);</SEQ_REGEXP>
+  </RULES>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_$" SET="EXPRESSION">
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>{</BEGIN>
+      <END>}</END>
+    </SPAN>
+    <IMPORT DELEGATE="MAIN"/>
+  </RULES>
+</MODE>

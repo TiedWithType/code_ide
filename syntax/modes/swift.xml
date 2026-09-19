@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <PROPS>
+    <PROPERTY NAME="indentOpenBrackets" VALUE="{["/>
+    <PROPERTY NAME="indentCloseBrackets" VALUE="}]"/>
+    <PROPERTY NAME="noTabs" VALUE="true"/>
+    <PROPERTY NAME="tabSize" VALUE="4"/>
+    <PROPERTY NAME="lineComment" VALUE="//"/>
+  </PROPS>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_">
+    <SPAN TYPE="COMMENT1" DELEGATE="BLOCK_COMMENT">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+    <EOL_SPAN TYPE="COMMENT2">//</EOL_SPAN>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR="#">
+      <BEGIN>(#+)"""</BEGIN>
+      <END>"""$1</END>
+    </SPAN_REGEXP>
+    <SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR="#">
+      <BEGIN>(#+)"</BEGIN>
+      <END>"$1</END>
+    </SPAN_REGEXP>
+    <SPAN TYPE="LITERAL1" DELEGATE="STRING">
+      <BEGIN>"""</BEGIN>
+      <END>"""</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1" NO_LINE_BREAK="TRUE" DELEGATE="STRING">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SPAN TYPE="NULL" NO_LINE_BREAK="TRUE">
+      <BEGIN>`</BEGIN>
+      <END>`</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="@">@[A-Za-z_]\w*</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="#">#[A-Za-z_]\w*</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="0123456789" AT_WORD_START="TRUE">(?:0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*|0[bB][01](?:_?[01])*|0[oO][0-7](?:_?[0-7])*|[0-9](?:_?[0-9])*(?:\.[0-9](?:_?[0-9])*)?(?:[eE][+-]?[0-9](?:_?[0-9])*)?)</SEQ_REGEXP>
+    <SEQ TYPE="OPERATOR">!==</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^=</SEQ>
+    <SEQ TYPE="OPERATOR">**=</SEQ>
+    <SEQ TYPE="OPERATOR">...</SEQ>
+    <SEQ TYPE="OPERATOR">..&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">..=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">===</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">??=</SEQ>
+    <SEQ TYPE="OPERATOR">||=</SEQ>
+    <SEQ TYPE="OPERATOR">!!</SEQ>
+    <SEQ TYPE="OPERATOR">!=</SEQ>
+    <SEQ TYPE="OPERATOR">%=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;^</SEQ>
+    <SEQ TYPE="OPERATOR">**</SEQ>
+    <SEQ TYPE="OPERATOR">*=</SEQ>
+    <SEQ TYPE="OPERATOR">++</SEQ>
+    <SEQ TYPE="OPERATOR">+=</SEQ>
+    <SEQ TYPE="OPERATOR">--</SEQ>
+    <SEQ TYPE="OPERATOR">-=</SEQ>
+    <SEQ TYPE="OPERATOR">-&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">/=</SEQ>
+    <SEQ TYPE="OPERATOR">::</SEQ>
+    <SEQ TYPE="OPERATOR">:=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">==</SEQ>
+    <SEQ TYPE="OPERATOR">=&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?.</SEQ>
+    <SEQ TYPE="OPERATOR">?:</SEQ>
+    <SEQ TYPE="OPERATOR">??</SEQ>
+    <SEQ TYPE="OPERATOR">||</SEQ>
+    <SEQ TYPE="OPERATOR">!</SEQ>
+    <SEQ TYPE="OPERATOR">%</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">(</SEQ>
+    <SEQ TYPE="OPERATOR">)</SEQ>
+    <SEQ TYPE="OPERATOR">*</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">-</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">/</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">^</SEQ>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">|</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <KEYWORDS>
+      <KEYWORD1>associatedtype</KEYWORD1>
+      <KEYWORD1>class</KEYWORD1>
+      <KEYWORD1>deinit</KEYWORD1>
+      <KEYWORD1>enum</KEYWORD1>
+      <KEYWORD1>extension</KEYWORD1>
+      <KEYWORD1>fileprivate</KEYWORD1>
+      <KEYWORD1>func</KEYWORD1>
+      <KEYWORD1>import</KEYWORD1>
+      <KEYWORD1>init</KEYWORD1>
+      <KEYWORD1>inout</KEYWORD1>
+      <KEYWORD1>internal</KEYWORD1>
+      <KEYWORD1>let</KEYWORD1>
+      <KEYWORD1>open</KEYWORD1>
+      <KEYWORD1>operator</KEYWORD1>
+      <KEYWORD1>private</KEYWORD1>
+      <KEYWORD1>precedencegroup</KEYWORD1>
+      <KEYWORD1>protocol</KEYWORD1>
+      <KEYWORD1>public</KEYWORD1>
+      <KEYWORD1>rethrows</KEYWORD1>
+      <KEYWORD1>static</KEYWORD1>
+      <KEYWORD1>struct</KEYWORD1>
+      <KEYWORD1>subscript</KEYWORD1>
+      <KEYWORD1>typealias</KEYWORD1>
+      <KEYWORD1>var</KEYWORD1>
+      <KEYWORD1>break</KEYWORD1>
+      <KEYWORD1>case</KEYWORD1>
+      <KEYWORD1>continue</KEYWORD1>
+      <KEYWORD1>default</KEYWORD1>
+      <KEYWORD1>defer</KEYWORD1>
+      <KEYWORD1>do</KEYWORD1>
+      <KEYWORD1>else</KEYWORD1>
+      <KEYWORD1>fallthrough</KEYWORD1>
+      <KEYWORD1>for</KEYWORD1>
+      <KEYWORD1>guard</KEYWORD1>
+      <KEYWORD1>if</KEYWORD1>
+      <KEYWORD1>in</KEYWORD1>
+      <KEYWORD1>repeat</KEYWORD1>
+      <KEYWORD1>return</KEYWORD1>
+      <KEYWORD1>switch</KEYWORD1>
+      <KEYWORD1>where</KEYWORD1>
+      <KEYWORD1>while</KEYWORD1>
+      <KEYWORD1>as</KEYWORD1>
+      <KEYWORD1>Any</KEYWORD1>
+      <KEYWORD1>catch</KEYWORD1>
+      <KEYWORD1>false</KEYWORD1>
+      <KEYWORD1>is</KEYWORD1>
+      <KEYWORD1>nil</KEYWORD1>
+      <KEYWORD1>super</KEYWORD1>
+      <KEYWORD1>self</KEYWORD1>
+      <KEYWORD1>Self</KEYWORD1>
+      <KEYWORD1>throw</KEYWORD1>
+      <KEYWORD1>throws</KEYWORD1>
+      <KEYWORD1>true</KEYWORD1>
+      <KEYWORD1>try</KEYWORD1>
+      <KEYWORD1>actor</KEYWORD1>
+      <KEYWORD1>async</KEYWORD1>
+      <KEYWORD1>await</KEYWORD1>
+      <KEYWORD1>nonisolated</KEYWORD1>
+      <KEYWORD1>isolated</KEYWORD1>
+      <KEYWORD1>some</KEYWORD1>
+      <KEYWORD1>any</KEYWORD1>
+      <KEYWORD1>borrowing</KEYWORD1>
+      <KEYWORD1>consuming</KEYWORD1>
+      <KEYWORD1>consume</KEYWORD1>
+      <KEYWORD1>copy</KEYWORD1>
+      <KEYWORD1>sending</KEYWORD1>
+      <KEYWORD1>distributed</KEYWORD1>
+      <KEYWORD1>final</KEYWORD1>
+      <KEYWORD1>lazy</KEYWORD1>
+      <KEYWORD1>mutating</KEYWORD1>
+      <KEYWORD1>nonmutating</KEYWORD1>
+      <KEYWORD1>optional</KEYWORD1>
+      <KEYWORD1>override</KEYWORD1>
+      <KEYWORD1>required</KEYWORD1>
+      <KEYWORD1>weak</KEYWORD1>
+      <KEYWORD1>unowned</KEYWORD1>
+      <KEYWORD1>package</KEYWORD1>
+      <KEYWORD1>macro</KEYWORD1>
+      <KEYWORD1>each</KEYWORD1>
+      <KEYWORD3>Bool</KEYWORD3>
+      <KEYWORD3>Character</KEYWORD3>
+      <KEYWORD3>Double</KEYWORD3>
+      <KEYWORD3>Float</KEYWORD3>
+      <KEYWORD3>Int</KEYWORD3>
+      <KEYWORD3>Int8</KEYWORD3>
+      <KEYWORD3>Int16</KEYWORD3>
+      <KEYWORD3>Int32</KEYWORD3>
+      <KEYWORD3>Int64</KEYWORD3>
+      <KEYWORD3>UInt</KEYWORD3>
+      <KEYWORD3>UInt8</KEYWORD3>
+      <KEYWORD3>UInt16</KEYWORD3>
+      <KEYWORD3>UInt32</KEYWORD3>
+      <KEYWORD3>UInt64</KEYWORD3>
+      <KEYWORD3>String</KEYWORD3>
+      <KEYWORD3>Void</KEYWORD3>
+      <KEYWORD3>Never</KEYWORD3>
+    </KEYWORDS>
+  </RULES>
+  <RULES DEFAULT="COMMENT1" SET="BLOCK_COMMENT">
+    <SPAN TYPE="COMMENT1" DELEGATE="BLOCK_COMMENT">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+  </RULES>
+  <RULES DEFAULT="LITERAL1" SET="STRING">
+    <SPAN TYPE="OPERATOR" DELEGATE="INTERPOLATION">
+      <BEGIN>\(</BEGIN>
+      <END>)</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="LITERAL2" HASH_CHAR="\">\\.</SEQ_REGEXP>
+  </RULES>
+  <RULES IGNORE_CASE="FALSE" SET="INTERPOLATION">
+    <SPAN TYPE="OPERATOR" DELEGATE="INTERPOLATION">
+      <BEGIN>(</BEGIN>
+      <END>)</END>
+    </SPAN>
+    <IMPORT DELEGATE="MAIN"/>
+  </RULES>
+</MODE>
