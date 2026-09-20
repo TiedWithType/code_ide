@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/keyboardLayout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.aor.droidedit.custom.ObservableScrollView android:id="@id/scrollview" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:id="@id/editorInnerLayout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <EditText android:textSize="@dimen/text" android:typeface="monospace" android:gravity="right|top" android:id="@id/lineNumbers" android:padding="2.0dip" android:includeFontPadding="false" android:focusable="false" android:layout_width="40.0dip" android:layout_height="fill_parent" android:maxLength="1000000" />
+            <View android:id="@id/lineDivider" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <com.aor.droidedit.custom.FastHorizontalScrollView android:id="@id/editorHorizontalLayout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+                <com.aor.droidedit.custom.ObservableEditText android:typeface="monospace" android:gravity="left|top" android:id="@id/textEditor" android:padding="2.0dip" android:includeFontPadding="false" android:nextFocusRight="@id/textEditor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLength="1000000" android:inputType="textMultiLine" android:imeOptions="flagNoExtractUi" android:textCursorDrawable="@null" />
+            </com.aor.droidedit.custom.FastHorizontalScrollView>
+        </LinearLayout>
+    </com.aor.droidedit.custom.ObservableScrollView>
+    <android.inputmethodservice.KeyboardView android:id="@id/keyboard" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:keyBackground="@drawable/key_selector" android:keyTextSize="22.0sp" android:popupLayout="@layout/keyboard_popup_layout" android:keyboardLayout="@xml/keyboard" />
+</LinearLayout>

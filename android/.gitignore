@@ -1,0 +1,8 @@
+/build/
+*.apk
+*.idsig
+*.pem
+*.pk8
+*.p12
+*.jks
+*.keystore

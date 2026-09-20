@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <ImageView android:textSize="@dimen/text" android:id="@id/home_up" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/home_up" android:layout_gravity="center_vertical" android:scaleType="centerInside" />
+        <TextView android:textSize="@dimen/text" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/current_path" android:padding="6.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/generic_loading" android:lines="1" android:scrollHorizontally="true" android:singleLine="true" android:layout_weight="1.0" />
+        <ImageView android:textSize="@dimen/text" android:id="@id/home_folder" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/home" android:layout_gravity="center_vertical" android:scaleType="centerInside" />
+        <ImageView android:textSize="@dimen/text" android:id="@id/add_folder" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/add_folder" android:layout_gravity="center_vertical" android:scaleType="centerInside" />
+    </LinearLayout>
+    <ImageView android:id="@id/getfilesprogress" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" />
+    <ListView android:id="@id/file_list" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/new_file_layout" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:textSize="@dimen/text" android:id="@id/new_file_name" android:padding="4.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:layout_weight="2.0" android:inputType="textVisiblePassword|textNoSuggestions" android:imeOptions="flagNoFullscreen|flagNoExtractUi" android:minHeight="48dp" />
+        <Button android:textSize="@dimen/text" android:textColor="@android:color/white" android:id="@id/new_file_button" android:background="@drawable/bg_toggle_on" android:padding="4.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="@string/generic_create" android:layout_weight="1.0" android:minHeight="48dp" />
+    </LinearLayout>
+</LinearLayout>

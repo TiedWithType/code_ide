@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TabText">
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault">
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="android:textColorPrimary">@color/txt</item>
+        <item name="android:textColorSecondary">@color/txt2</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:textSize">@dimen/text</item>
+        <item name="android:fontFamily">@font/default</item>
+        <item name="android:colorControlActivated">@color/accent</item>
+        <item name="android:colorAccent">@color/accent</item>
+    </style>
+    <style name="AppButton" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:textSize">@dimen/text</item>
+        <item name="android:textColor">@color/btn_text</item>
+        <item name="android:fontFamily">@font/default</item>
+    </style>
+    <style name="dummy_ae_0" />
+    <style name="FileDialog" parent="@style/AppTheme">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+    <style name="DroidEdit.Theme" parent="@style/AppTheme">
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:actionBarTabTextStyle">@style/TabText</item>
+    </style>
+    <style name="custom_actionbar_tab_text_style" parent="@style/TabText" />
+    <style name="UndoBar">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/key_background_default</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">72.0dip</item>
+        <item name="android:layout_marginLeft">8.0dip</item>
+        <item name="android:layout_marginRight">8.0dip</item>
+        <item name="android:layout_marginBottom">16.0dip</item>
+        <item name="android:divider">@android:drawable/divider_horizontal_bright</item>
+        <item name="android:dividerHeight">1.0dip</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:dividerPadding">10.0dip</item>
+    </style>
+    <style name="UndoBarMessage">
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16.0dip</item>
+        <item name="android:layout_marginRight">16.0dip</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="UndoBarButton">
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:background">@drawable/undobar_button</item>
+        <item name="android:paddingLeft">16.0dip</item>
+        <item name="android:paddingRight">16.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:text">@string/got_it</item>
+        <item name="android:drawableLeft">@drawable/ic_got_it</item>
+        <item name="android:drawablePadding">12.0dip</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="MyCustomTheme" parent="@style/AppTheme" />
+    <style name="MyCustomButton" parent="@style/AppButton" />
+    <style name="dummy_ae_1" />
+    <style name="dummy_ae_2" />
+    <style name="dummy_ae_3" />
+    <style name="Swatch">
+        <item name="android:padding">@dimen/gap</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/gap</item>
+        <item name="android:fontFamily">@font/default</item>
+    </style>
+    <style name="MenuIcon">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+</resources>
