@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta charset="utf-8">
+		<link rel="stylesheet" href="../style.css">
+	<title>Remote Files — Code IDE</title>
+</head>
+	<body>
+		<nav class="back" aria-label="Help navigation"><a href="../index.html">← Help home</a></nav><h2>Remote Files</h2>
+		<p>How to connect and manage files in remote locations using Dropbox, Box, SFTP, FTP and FTPS.</p>
+		<h3>Summary</h3>
+		<ul>
+			<li><a href="#dropbox">Dropbox</a></li>
+			<li><a href="#box">Box</a></li>
+			<li><a href="#sftp">SFTP</a></li>
+			<li><a href="#ftp">FTP</a></li>
+			<li><a href="#ftps">FTPS and FTPES</a></li>
+		</ul>
+
+		<h3 id="dropbox">Dropbox</h3>
+		
+		<p>Dropbox is a file hosting service that offers cloud storage and file synchronization. To use Dropbox with Code IDE you first have to create a Dropbox account at <a href="https://www.dropbox.com/">www.dropbox.com</a>.</p>
+
+		<p>To open and save files on your Dropbox account, you just have to choose the Dropbox option when executing one of those actions.</p>
+
+		<p>If you have the Dropbox app installed in your phone, it will be used to authorize Code IDE to access your Dropbox account, if you don't have the app, the browser will be used for it. After authorizing Code IDE, you don't have to do it again.</p>
+		
+		<p>After the initial authorization process, you just use your Dropbox file system like you would normally use your local one. If you wan't to revoke Code IDE access to tour account, just use the <span class="setting">Remote Files → Disconnect from Dropbox</span> option in preferences.</p>
+
+		<p>If you don't use Dropbox and don't want the Dropbox option to show every time you open or save a file, just use the <span class="setting">Remote Files → Show Dropbox Option</span> option in preferences.</p>
+		
+		<h3 id="box">Box</h3>
+
+		<p>Box is another file hosting service that offers cloud storage and file synchronization. To use Box with Code IDE you first have to create a Box account at <a href="https://www.box.com/">www.box.com</a>.</p>
+
+		<p>To open and save files on your Box account, you just have to choose the Box option when executing one of those actions.</p>
+
+		<p>The browser will be used to authorize Code IDE to access your Box account. After authorizing Code IDE, you don't have to do it again.</p>
+		
+		<p>After the initial authorization process, you just use your Box file system like you would normally use your local one. If you wan't to revoke Code IDE access to tour account, just use the <span class="setting">Remote Files → Disconnect from Box</span> option in preferences.</p>
+
+		<p>If you don't use Box and don't want the Box option to show every time you open or save a file, just use the <span class="setting">Remote Files → Show Box Option</span> option in preferences.</p>
+		
+		<h3 id="sftp">SFTP</h3>
+		
+		<p>SFTP (SSH File Transfer Protocol) is a network protocol that provides file access, file transfer, and file management functionalities over a secure connection.</p>
+		
+		<p>To use SFTP, you need a server with SSH capabilities and an account. You can add a connection to a SFTP server by using the preference <span class="setting">Remote Files → Add Remote Server</span>. You should set <span class="setting">Server Type</span> to SFTP, give it a <span class="setting">Server Name</span>, that will be used in the select file system menu, and enter the <span class="setting">Server Address</span> (either as an IP address or a hostname) and <span class="setting">Username</span>. If you don't set a <span class="setting">Password</span>, Code IDE will ask for it every time you connect to the server.</p>
+		
+		<p>The <span class="setting">Server Port</span> and <span class="setting">Initial Folder</span> are optional. You can also set a <span class="setting">Base URL</span> so Code IDE knows how to preview remote scripts in the browser.</p>
+			
+		<p>If you prefer to use a private key to authenticate against the remote server, you can set the <span class="setting">Private Key Path</span>. This path should point to a file containing the private key of a DSA or RSA key pair using the OpenSSH format. If the key is protected with a passphrase it will be asked every time you connect to the server. You can also set a global private key that will be used with all your SFTP connections using the <span class="setting">Remote Files → Global Private Key Path</span> preference.</p> 
+
+		<blockquote>If Code IDE is asking for a passphrase even when you didn't set one, then you are probably using a private key in the wrong format.</blockquote>
+
+		<p>After setting all needed parameters you can press <span class="setting">Test</span> to test your connection, save it using <span class="setting">Save</span> or cancel the whole process using <span class="setting">Cancel</span>. After saving the connection, it will appear in the choose file system menu every time you open or save a file.</p>
+
+		<p>To edit an SFTP connection, just go to <span class="setting">Remote Files → Server</span> and press on the desired server. You'll then be able to edit, test and delete your connection.</p>
+		
+		<p>If you chose not to save passwords with your SFTP connections, they will be saved in memory only while Code IDE is running. If you want Code IDE to forget those temporary passwords just use the <span class="setting">Remote Files → Forget Session Passwords</span> preference.</p>
+		
+		<h3 id="ftp">FTP</h3>
+
+		<p>FTP (File Transfer Protocol) is a standard network protocol used to transfer files from one host or to another host over a TCP-based network.</p>
+		
+		<p>To use FTP, you need a server with FTP capabilities and an account. You can add a connection to a FTP server by using the preference <span class="setting">Remote Files → Add Remote Server</span>. You should set <span class="setting">Server Type</span> to FTP, give it a <span class="setting">Server Name</span>, that will be used in the select file system menu, and enter the <span class="setting">Server Address</span> (either as an IP address or a hostname) and <span class="setting">Username</span>. If you don't set a <span class="setting">Password</span>, Code IDE will ask for it every time you connect to the server.</p>
+		
+		<p>The <span class="setting">Server Port</span> and <span class="setting">Initial Folder</span> are optional. You can also set a <span class="setting">Base URL</span> so Code IDE knows how to preview remote scripts in the browser.</p>
+			
+		<p>After setting all needed parameters you can press <span class="setting">Test</span> to test your connection, save it using <span class="setting">Save</span> or cancel the whole process using <span class="setting">Cancel</span>. After saving the connection, it will appear in the choose file system menu every time you open or save a file.</p>
+
+		<p>To edit an FTP connection, just go to <span class="setting">Remote Files → Server</span> and press on the desired server. You'll then be able to edit, test and delete your connection.</p>
+		
+		<h3 id="ftps">FTPS and FTPES</h3>
+		
+		<p>FTPS and FTPES are extensions to the File Transfer Protocol (FTP) that add support for the Transport Layer Security (TLS) and the Secure Sockets Layer (SSL) cryptographic protocols.</p>
+		
+		<p>You can create FTPS and FTPES connections the same way you create an FTP connection. You'll just have to check the <span class="setting">Use FTPS</span> and the <span class="setting">Use FTPES</span> options when creating the connection.</p>
+		
+	</body>
+</html>

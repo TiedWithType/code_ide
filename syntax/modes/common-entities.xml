@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <RULES IGNORE_CASE="FALSE">
+    <SEQ_REGEXP TYPE="LITERAL2" HASH_CHAR="&amp;">&amp;(?:#[0-9]+|#[xX][0-9A-Fa-f]+|[A-Za-z][A-Za-z0-9]+);</SEQ_REGEXP>
+  </RULES>
+</MODE>

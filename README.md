@@ -2,6 +2,9 @@
 
 DroidEdit redesigned UI
 
+Definicje składni: [syntax/README_PL.md](syntax/README_PL.md).
+Zmiany Androida i instrukcja budowania: [android/README.md](android/README.md).
+
 #### main features
 - refreshed UI look
 - customized fonts

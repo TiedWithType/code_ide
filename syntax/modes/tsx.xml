@@ -13,11 +13,16 @@
       <BEGIN>&lt;&gt;</BEGIN>
       <END>&lt;/&gt;</END>
     </SPAN>
-    <SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="&lt;" DELEGATE="TAG">
+    <SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="&lt;" DELEGATE="TAG" AT_WORD_START="TRUE">
       <BEGIN>&lt;([A-Za-z_$][\w.$:-]*)(?=[\s/&gt;])</BEGIN>
       <END REGEXP="TRUE">/&gt;|&lt;/\s*$1\s*&gt;</END>
     </SPAN_REGEXP>
-    <IMPORT DELEGATE="typescript::MAIN"/>
+    <SPAN TYPE="LITERAL3" ESCAPE="\" DELEGATE="TEMPLATE_LITERAL">
+      <BEGIN>`</BEGIN>
+      <END>`</END>
+    </SPAN>
+    <IMPORT DELEGATE="common-ts-types::MAIN"/>
+    <IMPORT DELEGATE="common-ecmascript::MAIN"/>
   </RULES>
   <RULES DEFAULT="MARKUP" IGNORE_CASE="FALSE" NO_WORD_SEP="-_:" SET="TAG">
     <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
@@ -48,7 +53,7 @@
       <BEGIN>{</BEGIN>
       <END>}</END>
     </SPAN>
-    <SEQ_REGEXP TYPE="LITERAL2" HASH_CHAR="&amp;">&amp;(?:#\d+|#x[0-9A-Fa-f]+|[A-Za-z][A-Za-z0-9]+);</SEQ_REGEXP>
+    <IMPORT DELEGATE="common-entities::MAIN"/>
   </RULES>
   <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_$" SET="EXPRESSION">
     <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
@@ -56,5 +61,11 @@
       <END>}</END>
     </SPAN>
     <IMPORT DELEGATE="MAIN"/>
+  </RULES>
+  <RULES DEFAULT="LITERAL3" ESCAPE="\" SET="TEMPLATE_LITERAL">
+    <SPAN TYPE="OPERATOR" DELEGATE="EXPRESSION">
+      <BEGIN>${</BEGIN>
+      <END>}</END>
+    </SPAN>
   </RULES>
 </MODE>

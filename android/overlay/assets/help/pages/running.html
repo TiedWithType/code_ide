@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta charset="utf-8">
+		<link rel="stylesheet" href="../style.css">
+	<title>Running — Code IDE</title>
+</head>
+	<body>
+		<nav class="back" aria-label="Help navigation"><a href="../index.html">← Help home</a></nav><h2>Running</h2>
+		<p>Code IDE is a code editor, not an IDE. So there is no compile and run features included. However, there are a few ways you can run your applications directly from Code IDE.</p>
+		<h3>Summary</h3>
+		<ul>
+			<li><a href="#sl4a">Using SL4A</a></li>
+			<li><a href="#sftp">Using an SFTP server</a></li>
+			<li><a href="#local">Using a local command</a></li>
+		</ul>
+
+		<h3 id="sl4a">Using SL4A</h3>
+		
+		<p>SL4A (<a href="http://code.google.com/p/android-scripting/">Scripting Layer for Android</a>) brings scripting languages to Android by allowing you to execute scripts directly on the Android device. These scripts have access to many of the APIs available to full-fledged Android applications, but with a greatly simplified interface that make it easy to get things done.</p>
+		
+		<p>To execute a file written in one of the supported languages (Python, Perl, JRuby, Lua, BeanShell, JavaScript, Tcl, and shell) just use the menu item <span class="menu">File Actions → Execute Using SL4A</span>. You can either execute in the background or in a terminal window.</p>
+
+		<p>Don't forget to install <a href="http://code.google.com/p/android-scripting/">SL4A</a> first. You also need to install the <a href="http://code.google.com/p/android-scripting/downloads/list">module</a> for the language you want to use.</p>
+		
+		<h3 id="sftp">Using an SFTP server</h3>
+		
+		<p>If you're editing a file that resides in an SFTP server (see the <a href="remote.html">Remote Files</a> section), you can execute the file directly on the server.</p>
+		
+		<p>To do this you have to create a new external command using the <span class="setting">External Commands → Add External Command</span> preference.</p>
+		
+		<p>An external command has a name (that is used to identify it when picking a command from a list), the command <em>per se</em> and a result action (how to show the result of the command).</p>   
+
+		<p>When writing the command you can use a few predefined placeholders: ${file} for the current filename, ${name} for the filename but without the extension and ${path} for the file path. You can also define your own placeholders, using the same format, that will be asked at runtime.</p>
+
+		<p>The result action can be:</p>
+		
+		<ul>
+			<li>Do nothing: self explanatory</li>
+			<li>Show results: in a dialog</li>
+			<li>Open in a new document: useful if you want to do something with the output of the command</li>
+			<li>Replace current document: useful if the command is some kind of transformation filter</li>
+		</ul>
+		
+		<p>To run an external command, you just have to use the <span class="menu">File Actions → Run External Command</span> menu item when editing an SFTP file.</p>
+		
+		<h3 id="local">Using a local command</h3>
+		
+		<p>External commands can also run locally. This feature is most useful if your phone is rooted and you have busybox installed.</p>
+
+		<p>To run an external command locally, you just have to use the <span class="menu">File Actions → Run External Command</span> menu item when editing a local file.</p>
+
+	</body>
+</html>

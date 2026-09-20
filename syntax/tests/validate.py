@@ -15,10 +15,12 @@ if not cdtd.validate(cat):
     errors.append(str(cdtd.error_log))
 entries = list(cat.getroot())
 names = [e.get('NAME') for e in entries]
+if names != sorted(names) or any(n != n.upper() for n in names):
+    errors.append('Catalog names must be uppercase and sorted A-Z')
 if len(names) != len(set(names)):
     errors.append('Duplicate catalog names')
 files = {p.name: E.parse(str(p), parser) for p in (base / 'modes').glob('*.xml')}
-by_name = {e.get('NAME'): e.get('FILE') for e in entries}
+by_name = {e.get('NAME').lower(): e.get('FILE') for e in entries}
 for name, t in files.items():
     if not dtd.validate(t):
         errors.append(f'{name}: {dtd.error_log}')

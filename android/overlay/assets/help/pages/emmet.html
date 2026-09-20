@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta charset="utf-8">
+		<link rel="stylesheet" href="../style.css">
+	<title>Emmet — Code IDE</title>
+</head>
+	<body>
+		<nav class="back" aria-label="Help navigation"><a href="../index.html">← Help home</a></nav><h2>Emmet</h2>
+		<p>The amazing power of Emmet (previously known as Zen Coding)</p>
+		<h3>Summary</h3>
+		<ul>
+			<li><a href="#whatis">What is Emmet</a></li>
+			<li><a href="#support">Emmet support in Code IDE</a></li>
+		</ul>
+
+		<h3 id="whatis">What is Emmet</h3>
+		
+		<p><a href="http://docs.emmet.io/">Emmet</a> (previously known as Zen Coding) is a web-developer’s toolkit that can greatly improve your HTML &amp; CSS workflow.</p>
+		
+		<p>With Emmet you can transform something like this:</p>
+		
+		<pre>html&gt;body&gt;div#menu&gt;ul&gt;li*5&gt;a[href=link$.html]{Item $}</pre>
+		
+		<p>Into this:</p>
+<pre>&lt;html&gt;
+  &lt;body&gt;
+    &lt;div id="menu"&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="link1.html"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="link2.html"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="link3.html"&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="link4.html"&gt;Link 4&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="link5.html"&gt;Link 5&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+		<p>Using a single <a href="shortcuts.html">shortcut</a> or menu item.</p>
+		
+		<p>To know what else you can do with Emmet you can take a look into <a href="http://docs.emmet.io/cheat-sheet/">Emmet's cheat-sheet</a>.</p>
+
+		<h3 id="support">Emmet support in Code IDE</h3>
+		
+		<p>Emmet was originally implemented using JavaScript. There is a Java version that uses <a href="https://developer.mozilla.org/en-US/docs/Rhino">Rhino</a> (an open-source implementation of JavaScript written entirely in Java) but the footprint of Rhino alone would make Code IDE's size much bigger (almost double in size) than I would like.</p>
+
+		<p>However, as it was a common feature request, I decided to implement a subset of the functionalities of Emmet directly in Java. What works right now: Childs, Siblings, Climb-up, Grouping, Multiplication, Item Numbering, Class and Id attributes, Custom attributes and Text.</p>
+
+		<p>To use Emmet with Code IDE you just have to put the cursor at the end of your expression and either press the <span class="shortcut">Ctrl</span>+<span class="shortcut">Space</span> <a href="shortcuts.html">shortcut</a> or choose the <span class="menu">Edit → Expand XML</span> <a href="menus.html">menu</a> item.
+
+	</p>
+</body>
+</html>

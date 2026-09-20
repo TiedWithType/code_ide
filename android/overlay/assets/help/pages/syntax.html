@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syntax Highlighting — Code IDE</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="back" aria-label="Help navigation"><a href="../index.html">← Help home</a></nav><h1>Syntax Highlighting</h1>
+<p>Code IDE selects a language using the file name or extension. Some modes also recognize a script's first line. Highlighting does not compile or type-check your code.</p>
+<nav aria-label="On this page"><ul>
+<li><a href="#web">HTML, CSS and JavaScript</a></li>
+<li><a href="#forcing">Choose a language</a></li>
+<li><a href="#supported">Languages and file patterns</a></li>
+<li><a href="#turnoff">Disable highlighting</a></li>
+</ul></nav>
+<h2 id="web">HTML, CSS and JavaScript</h2>
+<p>HTML delegates script blocks and event attributes to JavaScript, and style blocks and inline styles to CSS. HTML entities, custom element names and Shadow DOM attributes have dedicated rules.</p>
+<p>JavaScript, TypeScript, JSX and TSX share ECMAScript keywords and browser/Node.js globals, including <code>console</code>, <code>document</code>, <code>fetch</code> and <code>customElements</code>. Common console method names, including <code>log</code>, <code>warn</code> and <code>error</code>, are highlighted as functions; these names also receive that color on other objects. TypeScript adds type keywords and utility types such as <code>Partial</code> and <code>ReturnType</code>.</p>
+<pre><code>const greeting = `Hello ${user.name}`;
+console.log(greeting);
+const response = await fetch('/api/items');</code></pre>
+<p>Use JSX for <code>.jsx</code> and TSX for <code>.tsx</code>. TypeScript handles <code>.ts</code>, <code>.mts</code>, <code>.cts</code> and their declaration files. JSONC supports comments in <code>tsconfig.json</code> and <code>jsconfig.json</code>. CSS mode is intended for CSS; SCSS and Less require their own grammar.</p>
+<h2 id="forcing">Choose a language</h2>
+<ol>
+<li>Open <span class="menu">File Actions → Force Syntax…</span>.</li>
+<li>Select the language.</li>
+<li>Choose whether to remember the association for this extension.</li>
+</ol>
+<p>Saved custom associations can override automatic detection. If a file opens with the wrong language, use Force Syntax to update the association. Shared extensions such as <code>.h</code> cannot uniquely identify a language; select C or C++ as needed. SQL dialects and older ambiguous formats can also be selected manually.</p>
+<h2 id="supported">Languages and file patterns</h2>
+<p>The following table is generated from the bundled catalog. <code>*</code> matches any characters; braces list alternatives. Shared grammar modules are internal and do not appear in the language picker.</p>
+<div class="table-scroll"><table>
+<thead><tr>
+<th scope="col">Language</th>
+<th scope="col">File pattern</th>
+</tr></thead>
+<tbody>
+<tr>
+<th scope="row">ACTIONSCRIPT</th>
+<td><code>*.as</code></td>
+</tr>
+<tr>
+<th scope="row">ADA</th>
+<td><code>*.{ada,adb,ads}</code></td>
+</tr>
+<tr>
+<th scope="row">ADA95</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">ANT</th>
+<td><code>*build.xml</code></td>
+</tr>
+<tr>
+<th scope="row">ANTLR</th>
+<td><code>*.g</code></td>
+</tr>
+<tr>
+<th scope="row">APACHECONF</th>
+<td><code>{/etc/apache2/{*.conf,{conf.d,{mods,sites}-{available,enabled}}/*},*httpd*.conf}</code></td>
+</tr>
+<tr>
+<th scope="row">APDL</th>
+<td><code>*.{ans,inp,mac}</code></td>
+</tr>
+<tr>
+<th scope="row">APPLESCRIPT</th>
+<td><code>*.applescript</code></td>
+</tr>
+<tr>
+<th scope="row">ASP</th>
+<td><code>*.{asp,asa}</code></td>
+</tr>
+<tr>
+<th scope="row">ASPECT-J</th>
+<td><code>*.aj</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-AGC</th>
+<td><code>*.agc</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-AGS</th>
+<td><code>*.aea</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-M68K</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-MACRO32</th>
+<td><code>*.mar</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-MCS51</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-PARROT</th>
+<td><code>*.pasm</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-R2000</th>
+<td><code>*.mips</code></td>
+</tr>
+<tr>
+<th scope="row">ASSEMBLY-X86</th>
+<td><code>*.asm</code></td>
+</tr>
+<tr>
+<th scope="row">AVRO</th>
+<td><code>*.avdl</code></td>
+</tr>
+<tr>
+<th scope="row">AWK</th>
+<td><code>*.awk</code></td>
+</tr>
+<tr>
+<th scope="row">B</th>
+<td><code>*.{imp,ref,mch}</code></td>
+</tr>
+<tr>
+<th scope="row">BATCH</th>
+<td><code>*.{bat,cmd}</code></td>
+</tr>
+<tr>
+<th scope="row">BBJ</th>
+<td><code>*.bbj</code></td>
+</tr>
+<tr>
+<th scope="row">BCEL</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">BEANSHELL</th>
+<td><code>*.bsh</code></td>
+</tr>
+<tr>
+<th scope="row">BIBTEX</th>
+<td><code>*.bib</code></td>
+</tr>
+<tr>
+<th scope="row">BINSOURCE-AGC</th>
+<td><code>*.binsource</code></td>
+</tr>
+<tr>
+<th scope="row">C</th>
+<td><code>*.c</code></td>
+</tr>
+<tr>
+<th scope="row">C#</th>
+<td><code>*.cs</code></td>
+</tr>
+<tr>
+<th scope="row">C++</th>
+<td><code>*.{cc,cpp,h,hh,hpp,hxx,cxx,cppm,ixx}</code></td>
+</tr>
+<tr>
+<th scope="row">CFSCRIPT</th>
+<td><code>*.cfs</code></td>
+</tr>
+<tr>
+<th scope="row">CHILL</th>
+<td><code>*.{chl,mpol}</code></td>
+</tr>
+<tr>
+<th scope="row">CIL</th>
+<td><code>*.il</code></td>
+</tr>
+<tr>
+<th scope="row">CLIPS</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">CLOJURE</th>
+<td><code>*.{clj,cljs,cljc,edn}</code></td>
+</tr>
+<tr>
+<th scope="row">CMAKE</th>
+<td><code>{CMakeLists.txt,*.cmake}</code></td>
+</tr>
+<tr>
+<th scope="row">COBOL</th>
+<td><code>*.{cbl,cob}</code></td>
+</tr>
+<tr>
+<th scope="row">COFFEESCRIPT</th>
+<td><code>*.coffee</code></td>
+</tr>
+<tr>
+<th scope="row">COLDFUSION</th>
+<td><code>*.{cfm,dbm,cfc}</code></td>
+</tr>
+<tr>
+<th scope="row">CPLEX-LP</th>
+<td><code>*.lp</code></td>
+</tr>
+<tr>
+<th scope="row">CSS</th>
+<td><code>*.css</code></td>
+</tr>
+<tr>
+<th scope="row">CSV</th>
+<td><code>*.csv</code></td>
+</tr>
+<tr>
+<th scope="row">CVS-COMMIT</th>
+<td><code>cvs*.tmp</code></td>
+</tr>
+<tr>
+<th scope="row">D</th>
+<td><code>*.d</code></td>
+</tr>
+<tr>
+<th scope="row">DART</th>
+<td><code>*.dart</code></td>
+</tr>
+<tr>
+<th scope="row">DJANGO</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">DOCKERFILE</th>
+<td><code>{Dockerfile,Dockerfile.*,*.Dockerfile,Containerfile,Containerfile.*}</code></td>
+</tr>
+<tr>
+<th scope="row">DOT</th>
+<td><code>*.dot</code></td>
+</tr>
+<tr>
+<th scope="row">DOXYGEN</th>
+<td><code>doxyfile*</code></td>
+</tr>
+<tr>
+<th scope="row">DSSSL</th>
+<td><code>*.dsl</code></td>
+</tr>
+<tr>
+<th scope="row">EIFFEL</th>
+<td><code>*.e</code></td>
+</tr>
+<tr>
+<th scope="row">EMBPERL</th>
+<td><code>*.epl</code></td>
+</tr>
+<tr>
+<th scope="row">ERLANG</th>
+<td><code>*.{erl,hrl}</code></td>
+</tr>
+<tr>
+<th scope="row">FACTOR</th>
+<td><code>*.factor</code></td>
+</tr>
+<tr>
+<th scope="row">FHTML</th>
+<td><code>*.{furnace,fhtml}</code></td>
+</tr>
+<tr>
+<th scope="row">FORTH</th>
+<td><code>*.{forth,fth,4th}</code></td>
+</tr>
+<tr>
+<th scope="row">FORTRAN</th>
+<td><code>*.{f,for,fort,f77}</code></td>
+</tr>
+<tr>
+<th scope="row">FORTRAN90</th>
+<td><code>*.{f90,f95,f03,f08,f18}</code></td>
+</tr>
+<tr>
+<th scope="row">FOXPRO</th>
+<td><code>*.prg</code></td>
+</tr>
+<tr>
+<th scope="row">FREEMARKER</th>
+<td><code>*.ftl</code></td>
+</tr>
+<tr>
+<th scope="row">GCBASIC</th>
+<td><code>*.{gc,gcb}</code></td>
+</tr>
+<tr>
+<th scope="row">GETTEXT</th>
+<td><code>*.{po,pot}</code></td>
+</tr>
+<tr>
+<th scope="row">GNUPLOT</th>
+<td><code>*.{dem,plt}</code></td>
+</tr>
+<tr>
+<th scope="row">GO</th>
+<td><code>*.go</code></td>
+</tr>
+<tr>
+<th scope="row">GRADLE</th>
+<td><code>*.gradle</code></td>
+</tr>
+<tr>
+<th scope="row">GRAPHQL</th>
+<td><code>*.{graphql,gql,graphqls}</code></td>
+</tr>
+<tr>
+<th scope="row">GROOVY</th>
+<td><code>*.{gant,groovy,grv}</code></td>
+</tr>
+<tr>
+<th scope="row">GSP</th>
+<td><code>*.gsp</code></td>
+</tr>
+<tr>
+<th scope="row">HASKELL</th>
+<td><code>*.hs</code></td>
+</tr>
+<tr>
+<th scope="row">HAXE</th>
+<td><code>*.hx</code></td>
+</tr>
+<tr>
+<th scope="row">HCL</th>
+<td><code>*.{hcl,tf,tfvars}</code></td>
+</tr>
+<tr>
+<th scope="row">HEX</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">HLSL</th>
+<td><code>*.{hlsl,hlsli}</code></td>
+</tr>
+<tr>
+<th scope="row">HTACCESS</th>
+<td><code>.htaccess</code></td>
+</tr>
+<tr>
+<th scope="row">HTML</th>
+<td><code>*.{html,htm,hta}</code></td>
+</tr>
+<tr>
+<th scope="row">HXML</th>
+<td><code>*.hxml</code></td>
+</tr>
+<tr>
+<th scope="row">I4GL</th>
+<td><code>*.4gl</code></td>
+</tr>
+<tr>
+<th scope="row">ICALENDAR</th>
+<td><code>*.ics</code></td>
+</tr>
+<tr>
+<th scope="row">ICON</th>
+<td><code>*.icn</code></td>
+</tr>
+<tr>
+<th scope="row">IDL</th>
+<td><code>*.idl</code></td>
+</tr>
+<tr>
+<th scope="row">INFORM</th>
+<td><code>*.inf</code></td>
+</tr>
+<tr>
+<th scope="row">INI</th>
+<td><code>*.{ini,reg}</code></td>
+</tr>
+<tr>
+<th scope="row">INNO-SETUP</th>
+<td><code>*.iss</code></td>
+</tr>
+<tr>
+<th scope="row">INTERLIS</th>
+<td><code>*.ili</code></td>
+</tr>
+<tr>
+<th scope="row">IO</th>
+<td><code>*.io</code></td>
+</tr>
+<tr>
+<th scope="row">JAMON</th>
+<td><code>*.jamon</code></td>
+</tr>
+<tr>
+<th scope="row">JAVA</th>
+<td><code>*.java</code></td>
+</tr>
+<tr>
+<th scope="row">JAVACC</th>
+<td><code>*.{jj,jjt}</code></td>
+</tr>
+<tr>
+<th scope="row">JAVAFX</th>
+<td><code>*.fx</code></td>
+</tr>
+<tr>
+<th scope="row">JAVASCRIPT</th>
+<td><code>*.{js,mjs,cjs,jsonp}</code></td>
+</tr>
+<tr>
+<th scope="row">JCL</th>
+<td><code>*.jcl</code></td>
+</tr>
+<tr>
+<th scope="row">JEDIT-ACTIONS</th>
+<td><code>actions.xml</code></td>
+</tr>
+<tr>
+<th scope="row">JFLEX</th>
+<td><code>*.flex</code></td>
+</tr>
+<tr>
+<th scope="row">JHTML</th>
+<td><code>*.jhtml</code></td>
+</tr>
+<tr>
+<th scope="row">JMK</th>
+<td><code>*.jmk</code></td>
+</tr>
+<tr>
+<th scope="row">JSON</th>
+<td><code>*.json</code></td>
+</tr>
+<tr>
+<th scope="row">JSON5</th>
+<td><code>*.json5</code></td>
+</tr>
+<tr>
+<th scope="row">JSONC</th>
+<td><code>{*.jsonc,tsconfig.json,tsconfig.*.json,jsconfig.json,jsconfig.*.json}</code></td>
+</tr>
+<tr>
+<th scope="row">JSP</th>
+<td><code>*.{jsp,jsf,jspf,tag}</code></td>
+</tr>
+<tr>
+<th scope="row">JSX</th>
+<td><code>*.jsx</code></td>
+</tr>
+<tr>
+<th scope="row">KOTLIN</th>
+<td><code>*.{kt,kts}</code></td>
+</tr>
+<tr>
+<th scope="row">LATEX</th>
+<td><code>*.{tex,sty,ltx}</code></td>
+</tr>
+<tr>
+<th scope="row">LEX</th>
+<td><code>*.l</code></td>
+</tr>
+<tr>
+<th scope="row">LILYPOND</th>
+<td><code>*.{ly,ily}</code></td>
+</tr>
+<tr>
+<th scope="row">LISP</th>
+<td><code>*.{lisp,lsp,el}</code></td>
+</tr>
+<tr>
+<th scope="row">LITERATE-HASKELL</th>
+<td><code>*.lhs</code></td>
+</tr>
+<tr>
+<th scope="row">LOGS</th>
+<td><code>*.log</code></td>
+</tr>
+<tr>
+<th scope="row">LOGTALK</th>
+<td><code>*.lgt</code></td>
+</tr>
+<tr>
+<th scope="row">LOTOS</th>
+<td><code>*.{lot,lotos}</code></td>
+</tr>
+<tr>
+<th scope="row">LUA</th>
+<td><code>*.lua</code></td>
+</tr>
+<tr>
+<th scope="row">MACROSCHEDULER</th>
+<td><code>*.scp</code></td>
+</tr>
+<tr>
+<th scope="row">MAIL</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">MAKEFILE</th>
+<td><code>{Makefile,makefile,GNUmakefile,*.mk,*.mak}</code></td>
+</tr>
+<tr>
+<th scope="row">MAPLE</th>
+<td><code>*.{mpl,mws}</code></td>
+</tr>
+<tr>
+<th scope="row">MARKDOWN</th>
+<td><code>*.{md,markdown,mdown,mkd}</code></td>
+</tr>
+<tr>
+<th scope="row">MAVEN</th>
+<td><code>pom.xml</code></td>
+</tr>
+<tr>
+<th scope="row">METAPOST</th>
+<td><code>*.mp</code></td>
+</tr>
+<tr>
+<th scope="row">ML</th>
+<td><code>*.{sml,ml}</code></td>
+</tr>
+<tr>
+<th scope="row">MODULA3</th>
+<td><code>*.[im]3</code></td>
+</tr>
+<tr>
+<th scope="row">MOIN</th>
+<td><code>*.moin</code></td>
+</tr>
+<tr>
+<th scope="row">MQSC</th>
+<td><code>*.mqsc</code></td>
+</tr>
+<tr>
+<th scope="row">MXML</th>
+<td><code>*.mxml</code></td>
+</tr>
+<tr>
+<th scope="row">MYGHTY</th>
+<td><code>{autohandler,dhandler,*.myt}</code></td>
+</tr>
+<tr>
+<th scope="row">MYSQL</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">N3</th>
+<td><code>*.n3</code></td>
+</tr>
+<tr>
+<th scope="row">NETREXX</th>
+<td><code>*.nrx</code></td>
+</tr>
+<tr>
+<th scope="row">NQC</th>
+<td><code>*.nqc</code></td>
+</tr>
+<tr>
+<th scope="row">NSIS2</th>
+<td><code>*.{nsi,nsh}</code></td>
+</tr>
+<tr>
+<th scope="row">OBJECTIVE-C</th>
+<td><code>*.{objc,m,mm}</code></td>
+</tr>
+<tr>
+<th scope="row">OBJECTREXX</th>
+<td><code>*.{rex,orx}</code></td>
+</tr>
+<tr>
+<th scope="row">OCCAM</th>
+<td><code>*.icc</code></td>
+</tr>
+<tr>
+<th scope="row">OMNIMARK</th>
+<td><code>*.x{om,in}</code></td>
+</tr>
+<tr>
+<th scope="row">OUTLINE</th>
+<td><code>*.{outline}</code></td>
+</tr>
+<tr>
+<th scope="row">PASCAL</th>
+<td><code>*.{pas,dpr,dpk}</code></td>
+</tr>
+<tr>
+<th scope="row">PATCH</th>
+<td><code>*.{diff,patch}</code></td>
+</tr>
+<tr>
+<th scope="row">PERL</th>
+<td><code>*.p{[lmh],od}</code></td>
+</tr>
+<tr>
+<th scope="row">PHP</th>
+<td><code>*.{php,php3,php4,php5,php7,php8,phtml,inc}</code></td>
+</tr>
+<tr>
+<th scope="row">PIKE</th>
+<td><code>*.{pike,pmod}</code></td>
+</tr>
+<tr>
+<th scope="row">PL-SQL</th>
+<td><code>*.{pls,sql}</code></td>
+</tr>
+<tr>
+<th scope="row">PL-SQL9</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">PL1</th>
+<td><code>*.pl[i1]</code></td>
+</tr>
+<tr>
+<th scope="row">PLAINTEX</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">POP11</th>
+<td><code>*.{pop11,p11}</code></td>
+</tr>
+<tr>
+<th scope="row">POSTGRESQL</th>
+<td><code>*.{pg_sql,pg-sql}</code></td>
+</tr>
+<tr>
+<th scope="row">POSTSCRIPT</th>
+<td><code>*.{ps,eps}</code></td>
+</tr>
+<tr>
+<th scope="row">POVRAY</th>
+<td><code>*.{pov,povray}</code></td>
+</tr>
+<tr>
+<th scope="row">POWERDYNAMO</th>
+<td><code>*.stm</code></td>
+</tr>
+<tr>
+<th scope="row">POWERSHELL</th>
+<td><code>*.{ps1,psm1,psd1}</code></td>
+</tr>
+<tr>
+<th scope="row">PROGRESS</th>
+<td><code>*.[piw]</code></td>
+</tr>
+<tr>
+<th scope="row">PROLOG</th>
+<td><code>*.pro</code></td>
+</tr>
+<tr>
+<th scope="row">PROPERTIES</th>
+<td><code>*.{properties,props}</code></td>
+</tr>
+<tr>
+<th scope="row">PSP</th>
+<td><code>*.psp</code></td>
+</tr>
+<tr>
+<th scope="row">PTL</th>
+<td><code>*.ptl</code></td>
+</tr>
+<tr>
+<th scope="row">PURE</th>
+<td><code>*.pure</code></td>
+</tr>
+<tr>
+<th scope="row">PVWAVE</th>
+<td><code>*.jou</code></td>
+</tr>
+<tr>
+<th scope="row">PYREX</th>
+<td><code>*.{pyx,pxd,pxi}</code></td>
+</tr>
+<tr>
+<th scope="row">PYTHON</th>
+<td><code>*.{py,pyw,pyi}</code></td>
+</tr>
+<tr>
+<th scope="row">QUAKE</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">RAKEFILE</th>
+<td><code>*Rakefile</code></td>
+</tr>
+<tr>
+<th scope="row">RCP</th>
+<td><code>*.rcp</code></td>
+</tr>
+<tr>
+<th scope="row">RD</th>
+<td><code>*.rd</code></td>
+</tr>
+<tr>
+<th scope="row">REBOL</th>
+<td><code>*.r</code></td>
+</tr>
+<tr>
+<th scope="row">REDCODE</th>
+<td><code>*.{red,rc}</code></td>
+</tr>
+<tr>
+<th scope="row">REGEX</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">RELAX-NG-COMPACT</th>
+<td><code>*.rnc</code></td>
+</tr>
+<tr>
+<th scope="row">RENDERMAN-RIB</th>
+<td><code>*.rib</code></td>
+</tr>
+<tr>
+<th scope="row">REST</th>
+<td><code>*.{rst,rest}</code></td>
+</tr>
+<tr>
+<th scope="row">RFC</th>
+<td><code>rfc*.txt</code></td>
+</tr>
+<tr>
+<th scope="row">RHTML</th>
+<td><code>*.{rhtml,html.erb}</code></td>
+</tr>
+<tr>
+<th scope="row">ROFF</th>
+<td><code>*.{1,2,3,4,5,6,7,8,9,me,ms,mom,tmac}</code></td>
+</tr>
+<tr>
+<th scope="row">RPM-SPEC</th>
+<td><code>*.spec</code></td>
+</tr>
+<tr>
+<th scope="row">RTF</th>
+<td><code>*.rtf</code></td>
+</tr>
+<tr>
+<th scope="row">RUBY</th>
+<td><code>*.{rb,rbw}</code></td>
+</tr>
+<tr>
+<th scope="row">RUST</th>
+<td><code>*.rs</code></td>
+</tr>
+<tr>
+<th scope="row">RVIEW</th>
+<td><code>*.rvw</code></td>
+</tr>
+<tr>
+<th scope="row">S#</th>
+<td><code>*.{ss,ssw,sts,aml}</code></td>
+</tr>
+<tr>
+<th scope="row">S+</th>
+<td><code>*.{ssc,splus}</code></td>
+</tr>
+<tr>
+<th scope="row">SAS</th>
+<td><code>*.sas</code></td>
+</tr>
+<tr>
+<th scope="row">SBT</th>
+<td><code>*.sbt</code></td>
+</tr>
+<tr>
+<th scope="row">SCALA</th>
+<td><code>*.scala</code></td>
+</tr>
+<tr>
+<th scope="row">SCHEME</th>
+<td><code>*.scm</code></td>
+</tr>
+<tr>
+<th scope="row">SDL/PR</th>
+<td><code>*.pr</code></td>
+</tr>
+<tr>
+<th scope="row">SGML</th>
+<td><code>*.{sgml,sgm,dtd}</code></td>
+</tr>
+<tr>
+<th scope="row">SHELLSCRIPT</th>
+<td><code>{*.{sh,bash,zsh,ksh},.bashrc,.bash_profile,.zshrc,.profile}</code></td>
+</tr>
+<tr>
+<th scope="row">SHTML</th>
+<td><code>*.{shtml,shtm,ssi}</code></td>
+</tr>
+<tr>
+<th scope="row">SIP</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">SLATE</th>
+<td><code>*.slate</code></td>
+</tr>
+<tr>
+<th scope="row">SLAX</th>
+<td><code>*.slax</code></td>
+</tr>
+<tr>
+<th scope="row">SMALI</th>
+<td><code>*.smali</code></td>
+</tr>
+<tr>
+<th scope="row">SMALLTALK</th>
+<td><code>*.{st,sources,changes}</code></td>
+</tr>
+<tr>
+<th scope="row">SMARTY</th>
+<td><code>*.tpl</code></td>
+</tr>
+<tr>
+<th scope="row">SMI-MIB</th>
+<td><code>*{.mib,-MIB.txt}</code></td>
+</tr>
+<tr>
+<th scope="row">SQL-LOADER</th>
+<td><code>*.ctl</code></td>
+</tr>
+<tr>
+<th scope="row">SQR</th>
+<td><code>*.{sqr,sqc}</code></td>
+</tr>
+<tr>
+<th scope="row">SQUIDCONF</th>
+<td><code>squid.conf</code></td>
+</tr>
+<tr>
+<th scope="row">STATA</th>
+<td><code>*.{do,ado,mata}</code></td>
+</tr>
+<tr>
+<th scope="row">SVN-COMMIT</th>
+<td><code>svn-commit*.tmp</code></td>
+</tr>
+<tr>
+<th scope="row">SWIFT</th>
+<td><code>*.swift</code></td>
+</tr>
+<tr>
+<th scope="row">SWIG</th>
+<td><code>*.{i,swg}</code></td>
+</tr>
+<tr>
+<th scope="row">TCL</th>
+<td><code>*.{tcl,tsh,tk}</code></td>
+</tr>
+<tr>
+<th scope="row">TEMPLATE-TOOLKIT</th>
+<td><code>*.tt{html,css,js}</code></td>
+</tr>
+<tr>
+<th scope="row">TEX</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">TEXINFO</th>
+<td><code>*.texi</code></td>
+</tr>
+<tr>
+<th scope="row">TEXT</th>
+<td><code>*.txt</code></td>
+</tr>
+<tr>
+<th scope="row">TLD</th>
+<td><code>*.tld</code></td>
+</tr>
+<tr>
+<th scope="row">TOML</th>
+<td><code>*.toml</code></td>
+</tr>
+<tr>
+<th scope="row">TPL</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">TRANSACT-SQL</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">TSP</th>
+<td><code>*.tsp</code></td>
+</tr>
+<tr>
+<th scope="row">TSX</th>
+<td><code>*.tsx</code></td>
+</tr>
+<tr>
+<th scope="row">TURBOBASIC</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">TWIKI</th>
+<td><code>*.twiki</code></td>
+</tr>
+<tr>
+<th scope="row">TXT</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">TYPESCRIPT</th>
+<td><code>*.{ts,mts,cts}</code></td>
+</tr>
+<tr>
+<th scope="row">TYPOSCRIPT</th>
+<td><code>*.typo</code></td>
+</tr>
+<tr>
+<th scope="row">URL</th>
+<td><code>*.url</code></td>
+</tr>
+<tr>
+<th scope="row">USCRIPT</th>
+<td><code>*.uc</code></td>
+</tr>
+<tr>
+<th scope="row">VALA</th>
+<td><code>*.vala</code></td>
+</tr>
+<tr>
+<th scope="row">VBSCRIPT</th>
+<td><code>*.{vbs,vbe}</code></td>
+</tr>
+<tr>
+<th scope="row">VELOCITY</th>
+<td><code>*.vm</code></td>
+</tr>
+<tr>
+<th scope="row">VELOCITY-LEGACY</th>
+<td><code>Manual selection</code></td>
+</tr>
+<tr>
+<th scope="row">VERILOG</th>
+<td><code>*.{ver,v,vh,sv,svh}</code></td>
+</tr>
+<tr>
+<th scope="row">VHDL</th>
+<td><code>*.{vhd,vhdl}</code></td>
+</tr>
+<tr>
+<th scope="row">VISUALBASIC</th>
+<td><code>*.{vb,bas,cls,frm}</code></td>
+</tr>
+<tr>
+<th scope="row">VRML2</th>
+<td><code>*.{wrl,wrz}</code></td>
+</tr>
+<tr>
+<th scope="row">XML</th>
+<td><code>{*.{xml,xhtml,xsd,qrc,ui,docbook,svg,wsdl,resx},catalog}</code></td>
+</tr>
+<tr>
+<th scope="row">XQ</th>
+<td><code>*.x{q,qm,ql}</code></td>
+</tr>
+<tr>
+<th scope="row">XSL</th>
+<td><code>*.{xsl,xslt}</code></td>
+</tr>
+<tr>
+<th scope="row">YAB</th>
+<td><code>*.yab</code></td>
+</tr>
+<tr>
+<th scope="row">YAML</th>
+<td><code>*.{yaml,yml}</code></td>
+</tr>
+<tr>
+<th scope="row">ZPT</th>
+<td><code>*.{pt,zpt}</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="turnoff">Disable highlighting</h2>
+<p>Use <span class="setting">Editor → Syntax Highlighting</span> in preferences.</p>
+<h2>Grammar files</h2>
+<p>This build uses XML mode definitions in <code>assets/syntax/modes</code>, a catalog of file associations and imported rule sets. Shared ECMAScript rules, JavaScript keywords, TypeScript types, platform APIs and markup entities are kept in separate <code>common-*.xml</code> files.</p>
+</body>
+</html>

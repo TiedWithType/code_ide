@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <meta charset="utf-8">
+		<link rel="stylesheet" href="../style.css">
+	<title>Editing — Code IDE</title>
+</head>
+	<body>
+		<nav class="back" aria-label="Help navigation"><a href="../index.html">← Help home</a></nav><h2>Editing</h2>
+		<p>The main function of Code IDE is to serve as a simple text and code editor. In this page some of the editing functions are explained.</p>
+		<h3>Summary</h3>
+		<ul>
+			<li><a href="#moving">Moving Around</a></li>
+			<li><a href="#ccp">Cut, Copy and Paste</a></li>
+			<li><a href="#undo">Undo / Redo</a></li>
+			<li><a href="#writer">Writer Mode</a></li>
+			<li><a href="#readonly">Read Only Mode</a></li>
+			<li><a href="#tabkey">Tab Key Behavior</a></li>
+			<li><a href="#linebreaks">Line Breaks</a></li>
+		</ul>
+		<h3 id="moving">Moving Around</h3>
+
+		<p>You can press on the screen to move your cursor to any desired position. You can also use swiping movements to scroll up/down and left/right.</p>
+		<p>If you have an external keyboard, you can use the arrow keys <span class="shortcut">←</span> <span class="shortcut">↑</span> <span class="shortcut">↓</span> <span class="shortcut">→</span> to move you cursor around the currently opened file.</p>
+		<p>You can also go directly to the beginning of a line using a keyboard  <a href="shortcuts.html">shortcut</a> <span class="shortcut">Ctrl</span>+<span class="shortcut">Q</span> or to the end of the line <span class="shortcut">Ctrl</span>+<span class="shortcut">E</span>.</p>
+		<p>To go directly to a specific line, you can either use the <span class="menu">Goto Line</span> <a href="menus.html">menu</a> item or use a shortcut <a href="shortcuts.html">shortcut</a> <span class="shortcut">Ctrl</span>+<span class="shortcut">L</span>.
+		</p>
+<p>You can jump to the next/previous word using <span class="shortcut">Ctrl</span>+<span class="shortcut">→</span> and <span class="shortcut">Ctrl</span>+<span class="shortcut">←</span>.</p>
+
+		<h3 id="ccp">Cut, Copy and Paste</h3>
+
+		<p>To select text you can press and hold where you want to select text and then move the handles to fine tune the text selection. You can also use your keyboard <span class="shortcut">Shift</span>+<span class="shortcut">→↑↓←</span>.</p>
+		<p>You can also select the next/previous word using <span class="shortcut">Ctrl</span>+<span class="shortcut">Shift</span>+<span class="shortcut">→</span> and <span class="shortcut">Ctrl</span>+<span class="shortcut">Shift</span>+<span class="shortcut">←</span>.</p>
+		<p>To cut, copy and paste text you have three choices. If you selected text using touch and hold, you should see a contextual action bar with those actions. If not, you can either use a menu item <span class="menu">Edit → (Cut, Copy or Paste)</span> or a <a href="shortcuts.html">shortcut</a> <span class="shortcut">Ctrl</span>+<span class="shortcut">X, C or V</span>.</p>
+		<p>You can also duplicate or delete an entire line using the <a href="shortcuts.html">shortcuts</a> <span class="shortcut">Ctrl</span>+<span class="shortcut">D</span> or <span class="shortcut">Ctrl</span>+<span class="shortcut">Shift</span>+<span class="shortcut">D</span>.</p>  
+
+		<h3 id="undo">Undo / Redo</h3>
+		<p>To undo the last modification to the current file, you can either press the undo <a href="menus.html#condensed">icon</a> or use the default <a href="shortcuts.html">shortcut</a> <span class="shortcut">Ctrl</span>+<span class="shortcut">Z</span>.</p>
+		<p>To redo, you can either press the redo <a href="menus.html#condensed">icon</a> or use the default <a href="shortcuts.html">shortcut</a> <span class="shortcut">Ctrl</span>+<span class="shortcut">Y</span>.</p>
+		<p>You can configure the number of undo levels in the settings <span class="setting">Editor → Undo Level</span>. You can use 0 for infinite undos, but be aware that this might make Code IDE slower if you make a lot of changes.</p>
+
+		<h3 id="writer">Writer Mode</h3>
+		
+		<p>Code IDE was developed primarily for code editing. Many users also use it for writing text in a variety of languages. When in writer mode, Code IDE highlights typos and shows keyboard suggestions. This mode is not active by default as it would make code editing more cumbersome.</p>
+		<p>To turn writer mode on, you can either use the <a href="menus.html">menu</a> item <span class="menu">Writer Mode</span> or change it in the settings <span class="setting">Editor → Writer Mode</span>.</p>
+		
+		<h3 id="readonly">Read Only Mode</h3>
+		
+		<p>If you are using Code IDE just to read code and the virtual keyboard is having a nasty habit of popping up when you are just trying to scroll, you can turn on the Read Only mode.</p>
+		<p>To turn it on, you can either use the <a href="menus.html">menu</a> item <span class="menu">Read Only</span> or change it in the settings <span class="setting">Editor → Read Only Mode</span>.</p>
+		
+		<h3 id="tabkey">Tab Key Behavior</h3>
+
+		<p>Some developers prefer to use tab characters to indent their code while others prefer spaces. To accommodate both kind of users, Code IDE allows you to change the tab key behavior. By default, pressing the tab key inserts a tab character. To use spaces instead of tabs, use the preferences <span class="setting">Editor → Use spaces as Tab</span> and <span class="setting">Editor → Number of spaces</span>.</p>
+		<p>Take a look at the <a href="shortcuts.html">shortcuts</a> section to learn how you can insert tabs if your keyboard (physical or virtual) lacks the tab key.</p>
+				
+		<h3 id="linebreaks">Line Breaks</h3>
+
+		<p>You can change the default character (CR, LF or CR + LF) used for a line break when saving files using the preference <span class="setting">Editor → Line Breaks</span>.</p>
+
+	</body>
+</html>

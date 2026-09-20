@@ -1,0 +1,22 @@
+@font-face {font-family: Quicksand; src: local("Quicksand");}
+:root {color-scheme: dark light; --bg:#141218; --text:#e6e0e9; --muted:#cac4d0; --accent:#cfbcff; --link:#efb8c8; --surface:#211e27; --border:#49454f;}
+* {box-sizing:border-box;}
+html {background:var(--bg); color:var(--text); font-size:16px; -webkit-text-size-adjust:100%;}
+body {font-family:Quicksand,system-ui,sans-serif; line-height:1.65; max-width:48rem; margin:0 auto; padding:1.25rem; overflow-wrap:break-word;}
+h1,h2,h3,h4,h5 {line-height:1.25; color:var(--accent); margin:1.8rem 0 .75rem;}
+h1 {font-size:2rem;} h2 {font-size:1.5rem;} h3 {font-size:1.2rem;}
+p,ul,ol,pre,blockquote {margin:0 0 1rem;} p {color:var(--muted);}
+ul,ol {padding-left:1.5rem;} li,li.other {display:list-item; margin:.45rem 0;} li > ul,li > ol {margin-top:.5rem;}
+a {color:var(--link); text-decoration:underline; text-underline-offset:.18em;}
+a:focus-visible {outline:2px solid var(--accent); outline-offset:4px; border-radius:2px;}
+nav {margin-bottom:1.5rem;} .back a {display:inline-block; padding:.5rem 0;}
+code,pre,.shortcut {font-family:ui-monospace,monospace; font-size:.9em;}
+code {color:var(--link); overflow-wrap:anywhere;} pre {padding:1rem; border:1px solid var(--border); border-radius:.65rem; background:var(--surface); white-space:pre-wrap; overflow-wrap:anywhere;} pre code {color:var(--text);}
+.shortcut {background:var(--surface); color:var(--accent); padding:.12em .4em; border-radius:.25rem;}
+.setting {color:var(--accent); font-weight:600;} .menu {color:var(--link); font-weight:600;}
+img {max-width:100%; height:auto;} aside {max-width:100%;} blockquote {border-left:3px solid var(--border); padding-left:1rem;}
+hr {border:0; border-top:1px solid var(--border); margin:1.5rem 0;}
+.table-scroll {max-width:100%; overflow-x:auto; margin-bottom:1.5rem;} table {width:100%; border-collapse:collapse; font-size:.875rem;} th,td {text-align:left; vertical-align:top; border-bottom:1px solid var(--border); padding:.65rem;} th {color:var(--accent);} td code {word-break:break-word;}
+.modder {border:1px solid var(--accent); border-radius:.75rem; padding:1.25rem; margin-top:2rem; text-align:center;} .title,.subtitle {margin:0 0 .5rem;}
+@media (prefers-color-scheme:light) {:root {--bg:#fffbfe; --text:#1c1b1f; --muted:#49454f; --accent:#6750a4; --link:#85445a; --surface:#f3edf7; --border:#cac4d0;}}
+@media (max-width:360px) {body {padding:1rem;} h1 {font-size:1.7rem;} th,td {padding:.45rem;}}

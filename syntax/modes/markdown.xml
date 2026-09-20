@@ -114,11 +114,11 @@
       <BEGIN> {0,3}(~{3,})[ 	]*json(?:[ \t]+[^\r\n]*)?[ \t]*$</BEGIN>
       <END REGEXP="TRUE" AT_LINE_START="TRUE">^ {0,3}$1~*[ \t]*$</END>
     </SPAN_REGEXP>
-    <SPAN_REGEXP TYPE="LITERAL2" AT_LINE_START="TRUE" HASH_CHARS=" `" DELEGATE="JSON5::MAIN">
+    <SPAN_REGEXP TYPE="LITERAL2" AT_LINE_START="TRUE" HASH_CHARS=" `" DELEGATE="json5::MAIN">
       <BEGIN> {0,3}(`{3,})[ 	]*json5(?:[ \t]+[^\r\n]*)?[ \t]*$</BEGIN>
       <END REGEXP="TRUE" AT_LINE_START="TRUE">^ {0,3}$1`*[ \t]*$</END>
     </SPAN_REGEXP>
-    <SPAN_REGEXP TYPE="LITERAL2" AT_LINE_START="TRUE" HASH_CHARS=" ~" DELEGATE="JSON5::MAIN">
+    <SPAN_REGEXP TYPE="LITERAL2" AT_LINE_START="TRUE" HASH_CHARS=" ~" DELEGATE="json5::MAIN">
       <BEGIN> {0,3}(~{3,})[ 	]*json5(?:[ \t]+[^\r\n]*)?[ \t]*$</BEGIN>
       <END REGEXP="TRUE" AT_LINE_START="TRUE">^ {0,3}$1~*[ \t]*$</END>
     </SPAN_REGEXP>

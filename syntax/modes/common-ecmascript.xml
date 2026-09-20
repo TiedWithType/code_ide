@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE MODE SYSTEM "../xmode.dtd">
+<MODE>
+  <RULES IGNORE_CASE="FALSE" NO_WORD_SEP="_$" HIGHLIGHT_DIGITS="FALSE">
+    <EOL_SPAN TYPE="COMMENT2" AT_LINE_START="TRUE">#!</EOL_SPAN>
+    <SPAN TYPE="COMMENT1">
+      <BEGIN>/*</BEGIN>
+      <END>*/</END>
+    </SPAN>
+    <EOL_SPAN TYPE="COMMENT2">//</EOL_SPAN>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>"</BEGIN>
+      <END>"</END>
+    </SPAN>
+    <SPAN TYPE="LITERAL1" ESCAPE="\" NO_LINE_BREAK="TRUE">
+      <BEGIN>'</BEGIN>
+      <END>'</END>
+    </SPAN>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="@">@[$A-Za-z_][$\w]*(?:\.[$A-Za-z_][$\w]*)*</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="KEYWORD2" HASH_CHAR="#">#[$A-Za-z_][$\w]*</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="DIGIT" HASH_CHARS="0123456789." AT_WORD_START="TRUE">(?:0[xX][0-9a-fA-F](?:_?[0-9a-fA-F])*n?|0[bB][01](?:_?[01])*n?|0[oO][0-7](?:_?[0-7])*n?|(?:0|[1-9](?:_?[0-9])*)n|(?:[0-9](?:_?[0-9])*(?:\.(?:[0-9](?:_?[0-9])*)?)?|\.[0-9](?:_?[0-9])*)(?:[eE][+-]?[0-9](?:_?[0-9])*)?)(?![$\w])</SEQ_REGEXP>
+    <SEQ_REGEXP TYPE="MARKUP" HASH_CHAR="/" AT_WHITESPACE_END="TRUE">/(?![/*])(?:\\[^\r\n]|\[(?:\\[^\r\n]|[^\]\\\r\n])*\]|[^/\\\[\r\n])+/[dgimsuvy]*(?![$\w])</SEQ_REGEXP>
+    <SPAN_REGEXP TYPE="MARKUP" MATCH_TYPE="OPERATOR" NO_LINE_BREAK="TRUE" DELEGATE="common-ecmascript::REGEX_BODY" HASH_CHARS="=(:,!&amp;|?;[">
+      <BEGIN>[=(:,!&amp;|?;\[]\s*/(?![/*])</BEGIN>
+      <END REGEXP="TRUE">/[dgimsuvy]*</END>
+    </SPAN_REGEXP>
+    <SEQ TYPE="OPERATOR">&gt;&gt;&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">===</SEQ>
+    <SEQ TYPE="OPERATOR">!==</SEQ>
+    <SEQ TYPE="OPERATOR">**=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;=</SEQ>
+    <SEQ TYPE="OPERATOR">||=</SEQ>
+    <SEQ TYPE="OPERATOR">??=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">...</SEQ>
+    <SEQ TYPE="OPERATOR">=&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">==</SEQ>
+    <SEQ TYPE="OPERATOR">!=</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;=</SEQ>
+    <SEQ TYPE="OPERATOR">++</SEQ>
+    <SEQ TYPE="OPERATOR">--</SEQ>
+    <SEQ TYPE="OPERATOR">+=</SEQ>
+    <SEQ TYPE="OPERATOR">-=</SEQ>
+    <SEQ TYPE="OPERATOR">*=</SEQ>
+    <SEQ TYPE="OPERATOR">/=</SEQ>
+    <SEQ TYPE="OPERATOR">%=</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;=</SEQ>
+    <SEQ TYPE="OPERATOR">|=</SEQ>
+    <SEQ TYPE="OPERATOR">^=</SEQ>
+    <SEQ TYPE="OPERATOR">**</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">||</SEQ>
+    <SEQ TYPE="OPERATOR">??</SEQ>
+    <SEQ TYPE="OPERATOR">?.</SEQ>
+    <SEQ TYPE="OPERATOR">!</SEQ>
+    <SEQ TYPE="OPERATOR">%</SEQ>
+    <SEQ TYPE="OPERATOR">&amp;</SEQ>
+    <SEQ TYPE="OPERATOR">(</SEQ>
+    <SEQ TYPE="OPERATOR">)</SEQ>
+    <SEQ TYPE="OPERATOR">*</SEQ>
+    <SEQ TYPE="OPERATOR">+</SEQ>
+    <SEQ TYPE="OPERATOR">,</SEQ>
+    <SEQ TYPE="OPERATOR">-</SEQ>
+    <SEQ TYPE="OPERATOR">.</SEQ>
+    <SEQ TYPE="OPERATOR">/</SEQ>
+    <SEQ TYPE="OPERATOR">:</SEQ>
+    <SEQ TYPE="OPERATOR">;</SEQ>
+    <SEQ TYPE="OPERATOR">&lt;</SEQ>
+    <SEQ TYPE="OPERATOR">=</SEQ>
+    <SEQ TYPE="OPERATOR">&gt;</SEQ>
+    <SEQ TYPE="OPERATOR">?</SEQ>
+    <SEQ TYPE="OPERATOR">[</SEQ>
+    <SEQ TYPE="OPERATOR">]</SEQ>
+    <SEQ TYPE="OPERATOR">^</SEQ>
+    <SEQ TYPE="OPERATOR">{</SEQ>
+    <SEQ TYPE="OPERATOR">|</SEQ>
+    <SEQ TYPE="OPERATOR">}</SEQ>
+    <SEQ TYPE="OPERATOR">~</SEQ>
+    <IMPORT DELEGATE="common-js-keywords::MAIN"/>
+    <IMPORT DELEGATE="common-web-platform::MAIN"/>
+  </RULES>
+  <RULES DEFAULT="MARKUP" ESCAPE="\" SET="REGEX_BODY">
+    <SPAN TYPE="MARKUP" ESCAPE="\">
+      <BEGIN>[</BEGIN>
+      <END>]</END>
+    </SPAN>
+  </RULES>
+</MODE>

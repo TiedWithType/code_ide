@@ -1,9 +1,9 @@
 # Zmodyfikowane źródła Androida
 
-`overlay/` zawiera 26 zmienionych lub dodanych plików względem dekompilacji
+`overlay/` zawiera zmienione lub dodane pliki względem dekompilacji
 przesłanego `Code IDE.apk` (com.code.ide, versionCode 20260919).
 To nakładka na projekt Apktool, nie kompletny projekt ani źródła Java/Kotlin.
-Istniejący katalog `syntax/` repozytorium nie jest przez nią modyfikowany.
+Katalog `syntax/` zawiera wspólne definicje kolorowania wgrywane do assets podczas budowania.
 
 ## Zakres zmian
 
@@ -31,6 +31,9 @@ Z głównego katalogu repozytorium, używając nowego katalogu roboczego:
 ```sh
 java -jar /path/to/apktool.jar d '/path/to/Code IDE.apk' -o android/build/project
 cp -R android/overlay/. android/build/project/
+mkdir -p android/build/project/assets/syntax/modes
+cp syntax/modes/* android/build/project/assets/syntax/modes/
+cp syntax/*.dtd android/build/project/assets/syntax/
 java -jar /path/to/apktool.jar b android/build/project -o android/build/Code-IDE-unsigned.apk
 ```
 
@@ -38,8 +41,7 @@ To tworzy **niepodpisany** APK. Do wydania wyrównaj go przez `zipalign`,
 następnie podpisz przez `apksigner` z Android SDK Build Tools, używając
 prywatnie przechowywanych `modded.pk8` i `modded.x509.pem`, i sprawdź podpis
 przez `apksigner verify --verbose`. Klucze i APK nie są częścią repozytorium.
-Poprzedni lokalny APK podpisano wyłącznie schematem JAR/v1; przed publikacją
-na nowe Androidy należy przygotować i zweryfikować podpis v2 lub nowszy.
+Aktualny APK z poprawkami składni i pomocy zweryfikowano z podpisami v2/v3.
 
 ## Weryfikacja i ograniczenia
 
@@ -49,3 +51,15 @@ Nie wykonano testów na telefonie/emulatorze. W szczególności przesunięcie
 edytora, przewijanie panelu, paski systemowe i wprowadzanie emoji wymagają
 potwierdzenia na urządzeniu. Raport nie oznacza, że te błędy zostały
 potwierdzone jako naprawione w działającej aplikacji.
+
+## Składnia i pomoc — 2026-09-20
+
+- Katalog ma nazwy WIELKIMI LITERAMI i kolejność A–Z. ModeCatalogHandler
+  zachowuje małe litery wewnętrznych identyfikatorów, zapewniając zgodność
+  importów XML i wcześniej zapisanych skojarzeń. Theme pokazuje wielkie litery.
+- ModeProvider pomija `common-*` w wyborze języka, ale ładuje je jako zależności.
+- `overlay/assets/help` zawiera poprawioną pomoc HTML/CSS, lokalne obrazki,
+  tabelę języków i poprawione odnośniki.
+- 44 przypadki regresji i 274 sprawdzenia tokenów/rozszerzeń: 0 błędów.
+  Wykonano kontrolę odwołań między regułami i lokalnych linków pomocy.
+- Testy silnika jEdit i przebudowa APK nie zastępują testu na Androidzie.
