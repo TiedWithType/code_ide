@@ -1,5 +1,5 @@
 version: 2.12.1
-apkFileName: Code IDE.apk
+apkFileName: 01-Code-IDE.apk
 usesFramework:
   ids:
   - 1
@@ -9,8 +9,8 @@ sdkInfo:
 packageInfo:
   forcedPackageId: 127
 versionInfo:
-  versionCode: 20260921
-  versionName: Expressive You - UI 20260921
+  versionCode: 20260922
+  versionName: Expressive You - UI 20260921.2
 doNotCompress:
 - arsc
 - png
