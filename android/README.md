@@ -63,3 +63,8 @@ potwierdzone jako naprawione w działającej aplikacji.
 - 44 przypadki regresji i 274 sprawdzenia tokenów/rozszerzeń: 0 błędów.
   Wykonano kontrolę odwołań między regułami i lokalnych linków pomocy.
 - Testy silnika jEdit i przebudowa APK nie zastępują testu na Androidzie.
+
+## Emmet — 2026-09-21
+
+Oficjalny Emmet 2.4.11 zastępuje stary parser XML. Rozwijanie HTML, CSS i JSX/TSX działa offline przez systemowy WebView; zachowane są wcięcia i pierwsze pole edycji. Kod źródłowy, ograniczenia i odtwarzanie pakietu: [emmet/README.md](emmet/README.md). Nakładka zawiera gotowy pakiet JS, mostek smali, zasoby PL/EN oraz aktualną pomoc. Wersja APK: `Expressive You - Emmet 2.4.11`, versionCode `20260923`. Testy JS i przebudowa przeszły; uruchomienie na urządzeniu Android wymaga sprawdzenia.
+

@@ -9,8 +9,8 @@ sdkInfo:
 packageInfo:
   forcedPackageId: 127
 versionInfo:
-  versionCode: 20260922
-  versionName: Expressive You - UI 20260921.2
+  versionCode: 20260923
+  versionName: Expressive You - Emmet 2.4.11
 doNotCompress:
 - arsc
 - png

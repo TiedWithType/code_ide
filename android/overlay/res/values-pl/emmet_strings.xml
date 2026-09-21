@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="emmet_empty">Ustaw kursor za skrótem Emmet albo zaznacz skrót.</string>
+    <string name="emmet_invalid">Nie można rozwinąć tego skrótu Emmet.</string>
+    <string name="emmet_syntax">Emmet obsługuje tryby HTML, XML, JSX/TSX i arkusze stylów.</string>
+    <string name="emmet_context">W tym miejscu kodu nie można rozwinąć skrótu Emmet.</string>
+    <string name="emmet_size">Dokument lub skrót jest zbyt duży dla Emmet.</string>
+    <string name="emmet_engine">Nie udało się uruchomić Emmet. Sprawdź, czy Android System WebView jest włączony.</string>
+    <string name="emmet_timeout">Przekroczono czas rozwijania Emmet. Dokument nie został zmieniony.</string>
+</resources>

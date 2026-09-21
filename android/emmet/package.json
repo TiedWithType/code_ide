@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "emmet": "2.4.11",
+    "esbuild": "0.25.10"
+  },
+  "name": "code-ide-emmet",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.cjs",
+    "test": "node test.cjs"
+  }
+}

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="emmet_empty">Place the caret after an Emmet abbreviation or select it.</string>
+    <string name="emmet_invalid">Cannot expand this Emmet abbreviation.</string>
+    <string name="emmet_syntax">Emmet supports HTML, XML, JSX/TSX and stylesheet modes.</string>
+    <string name="emmet_context">Emmet cannot expand in this code context.</string>
+    <string name="emmet_size">The document or abbreviation is too large for Emmet.</string>
+    <string name="emmet_engine">Emmet could not start. Check that Android System WebView is enabled.</string>
+    <string name="emmet_timeout">Emmet took too long. The document was not changed.</string>
+</resources>

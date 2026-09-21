@@ -44,6 +44,8 @@
 
 .field private closeFileButton:Landroid/widget/ImageView;
 
+.field private compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
 .field private currentDocument:I
 
 .field private currentTheme:Lcom/aor/droidedit/theme/Theme;
@@ -177,8 +179,6 @@
 
 .field private wasOpenedDrawer:Z
 
-
-.field private compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
 
 # direct methods
 .method static constructor <clinit>()V
@@ -6553,11 +6553,14 @@
     move-result-object v12
 
     invoke-direct {v5, v11, v12}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
-    const/4 v11, 0x1
-    invoke-virtual {v5, v11}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
-    const-string v11, "text/html"
-    invoke-virtual {v5, v12, v11}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 
+    const/4 v11, 0x1
+
+    invoke-virtual {v5, v11}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    const-string v11, "text/html"
+
+    invoke-virtual {v5, v12, v11}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 
     .line 1411
     .restart local v5    # "intent":Landroid/content/Intent;
@@ -9465,12 +9468,47 @@
     return-void
 .end method
 
+.method public cancelCompatAction()V
+    .locals 2
+
+    iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    instance-of v1, v0, Lcom/code/ide/compat/RetryListing;
+
+    if-eqz v1, :cond_0
+
+    check-cast v0, Lcom/code/ide/compat/RetryListing;
+
+    invoke-virtual {v0}, Lcom/code/ide/compat/RetryListing;->cancel()V
+
+    :cond_0
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    iput-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    const-string v0, "Brak uprawnienia. Nadaj dost\u0119p i pon\u00f3w operacj\u0119."
+
+    const/4 v1, 0x1
+
+    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    return-void
+.end method
+
 .method protected declared-synchronized changeDocument(IZ)V
     .locals 3
     .param p1, "id"    # I
     .param p2, "saveState"    # Z
 
     .prologue
+    invoke-static {p0}, Lcom/code/ide/compat/EmmetBridge;->cancel(Landroid/app/Activity;)V
+
     .line 2717
     monitor-enter p0
 
@@ -9789,33 +9827,41 @@
 
 .method protected onActivityResult(IILandroid/content/Intent;)V
     .locals 9
-
-    const/16 v0, 0x53a1
-    if-ne p1, v0, :compat_other_result
-    invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->hasStorage(Landroid/content/Context;)Z
-    move-result v0
-    if-eqz v0, :compat_denied
-    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->resumeCompatAction()V
-    return-void
-    :compat_denied
-    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->cancelCompatAction()V
-    return-void
-    :compat_other_result
     .param p1, "requestCode"    # I
     .param p2, "resultCode"    # I
     .param p3, "data"    # Landroid/content/Intent;
 
+    const/16 v0, 0x53a1    # 3.0E-41f
+
+    if-ne p1, v0, :cond_1
+
+    invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->hasStorage(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->resumeCompatAction()V
+
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->cancelCompatAction()V
+
+    return-void
+
     .prologue
     .line 3653
+    :cond_1
     const v5, 0x10633
 
-    if-ne p1, v5, :cond_1
+    if-ne p1, v5, :cond_3
 
     .line 3654
-    if-nez p2, :cond_5
+    if-nez p2, :cond_7
 
     .line 3655
-    if-eqz p3, :cond_0
+    if-eqz p3, :cond_2
 
     .line 3656
     const-string/jumbo v5, "exception"
@@ -9832,7 +9878,7 @@
 
     .line 3659
     .end local v2    # "failMessage":Ljava/lang/String;
-    :cond_0
+    :cond_2
     const-string/jumbo v5, "Box"
 
     sget v6, Lcom/aor/droidedit/lib/R$string;->remote_box_connection_failed:I
@@ -9840,20 +9886,20 @@
     invoke-static {p0, v5, v6}, Lcom/aor/droidedit/util/Alert;->show(Landroid/content/Context;Ljava/lang/String;I)V
 
     .line 3673
-    :cond_1
+    :cond_3
     :goto_0
     const/16 v5, 0x5b43
 
-    if-ne p1, v5, :cond_3
+    if-ne p1, v5, :cond_5
 
     .line 3674
-    if-eqz p3, :cond_2
+    if-eqz p3, :cond_4
 
     invoke-virtual {p3}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
 
     move-result-object v5
 
-    if-eqz v5, :cond_2
+    if-eqz v5, :cond_4
 
     .line 3675
     invoke-virtual {p3}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
@@ -9868,7 +9914,7 @@
 
     .line 3676
     .local v0, "accountName":Ljava/lang/String;
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_4
 
     .line 3677
     invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
@@ -9895,24 +9941,24 @@
     .line 3682
     .end local v0    # "accountName":Ljava/lang/String;
     .end local v4    # "prefs":Landroid/content/SharedPreferences;
-    :cond_2
+    :cond_4
     invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->resumeAction()V
 
     .line 3684
-    :cond_3
+    :cond_5
     const v5, 0xd506
 
-    if-ne p1, v5, :cond_4
+    if-ne p1, v5, :cond_6
 
     .line 3685
     invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->resumeAction()V
 
     .line 3687
-    :cond_4
+    :cond_6
     return-void
 
     .line 3661
-    :cond_5
+    :cond_7
     const-string/jumbo v5, "boxAndroidClient_oauth"
 
     invoke-virtual {p3, v5}, Landroid/content/Intent;->getParcelableExtra(Ljava/lang/String;)Landroid/os/Parcelable;
@@ -11116,8 +11162,11 @@
     invoke-virtual {v3, v4}, Landroid/inputmethodservice/KeyboardView;->setOnKeyboardActionListener(Landroid/inputmethodservice/KeyboardView$OnKeyboardActionListener;)V
 
     const/4 v0, 0x1
+
     iput-boolean v0, p0, Lcom/aor/droidedit/DroidEditActivity;->extraKeys:Z
+
     invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->showCustomKeyboard()V
+
     invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->requestNotifications(Landroid/content/Context;)V
 
     .line 1048
@@ -11385,6 +11434,8 @@
     .locals 0
 
     .prologue
+    invoke-static {p0}, Lcom/code/ide/compat/EmmetBridge;->cancel(Landroid/app/Activity;)V
+
     .line 2671
     invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->saveCurrentState()V
 
@@ -12321,6 +12372,8 @@
     .locals 0
 
     .prologue
+    invoke-static {p0}, Lcom/code/ide/compat/EmmetBridge;->cancel(Landroid/app/Activity;)V
+
     .line 2665
     invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->saveCurrentState()V
 
@@ -12704,6 +12757,45 @@
 
     .line 1548
     goto :goto_6
+.end method
+
+.method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+    .locals 2
+
+    invoke-super {p0, p1, p2, p3}, Landroid/app/Activity;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V
+
+    const/16 v0, 0x53a1    # 3.0E-41f
+
+    if-eq p1, v0, :cond_0
+
+    const/16 v0, 0x53a2    # 3.0002E-41f
+
+    if-ne p1, v0, :cond_2
+
+    invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->hasLan(Landroid/content/Context;)Z
+
+    move-result v0
+
+    goto :goto_0
+
+    :cond_0
+    invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->hasStorage(Landroid/content/Context;)Z
+
+    move-result v0
+
+    :goto_0
+    if-eqz v0, :cond_1
+
+    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->resumeCompatAction()V
+
+    goto :goto_1
+
+    :cond_1
+    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->cancelCompatAction()V
+
+    :cond_2
+    :goto_1
+    return-void
 .end method
 
 .method public onRestoreInstanceState(Landroid/os/Bundle;)V
@@ -13640,6 +13732,25 @@
     return-void
 .end method
 
+.method public resumeCompatAction()V
+    .locals 2
+
+    iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    const/4 v1, 0x0
+
+    iput-object v1, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    iput-object v1, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    if-eqz v0, :cond_0
+
+    invoke-interface {v0}, Lcom/aor/droidedit/DroidEditActivity$Action;->execute()V
+
+    :cond_0
+    return-void
+.end method
+
 .method protected runInSL4A(Z)V
     .locals 5
     .param p1, "terminal"    # Z
@@ -13724,6 +13835,24 @@
     invoke-virtual {v2}, Landroid/widget/Toast;->show()V
 
     goto :goto_1
+.end method
+
+.method public saveCompatAction()V
+    .locals 1
+
+    iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    iput-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    return-void
+.end method
+
+.method public setCompatAction(Lcom/aor/droidedit/DroidEditActivity$Action;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
+
+    return-void
 .end method
 
 .method public showCustomKeyboard()V
@@ -14654,69 +14783,16 @@
     goto :goto_3
 .end method
 
-.method public cancelCompatAction()V
-    .locals 2
-    iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    instance-of v1, v0, Lcom/code/ide/compat/RetryListing;
-    if-eqz v1, :compat_cancel_done
-    check-cast v0, Lcom/code/ide/compat/RetryListing;
-    invoke-virtual {v0}, Lcom/code/ide/compat/RetryListing;->cancel()V
-    :compat_cancel_done
-    const/4 v0, 0x0
-    iput-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    iput-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    const-string v0, "Brak uprawnienia. Nadaj dostęp i ponów operację."
-    const/4 v1, 0x1
-    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-    move-result-object v0
-    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
-    return-void
-.end method
-
-.method public onRequestPermissionsResult(I[Ljava/lang/String;[I)V
-    .locals 2
-    invoke-super {p0, p1, p2, p3}, Landroid/app/Activity;->onRequestPermissionsResult(I[Ljava/lang/String;[I)V
-    const/16 v0, 0x53a1
-    if-eq p1, v0, :storage
-    const/16 v0, 0x53a2
-    if-ne p1, v0, :done
-    invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->hasLan(Landroid/content/Context;)Z
-    move-result v0
-    goto :checked
-    :storage
-    invoke-static {p0}, Lcom/code/ide/compat/StorageAccess;->hasStorage(Landroid/content/Context;)Z
-    move-result v0
-    :checked
-    if-eqz v0, :denied
-    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->resumeCompatAction()V
-    goto :done
-    :denied
-    invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->cancelCompatAction()V
-    :done
-    return-void
-.end method
-
-.method public saveCompatAction()V
+# Expose the active syntax to Emmet without changing stored document identity.
+.method public getEmmetSyntaxName()Ljava/lang/String;
     .locals 1
-    iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    iput-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    return-void
-.end method
-
-.method public resumeCompatAction()V
-    .locals 2
-    iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    const/4 v1, 0x0
-    iput-object v1, p0, Lcom/aor/droidedit/DroidEditActivity;->compatWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    iput-object v1, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    if-eqz v0, :done
-    invoke-interface {v0}, Lcom/aor/droidedit/DroidEditActivity$Action;->execute()V
-    :done
-    return-void
-.end method
-
-.method public setCompatAction(Lcom/aor/droidedit/DroidEditActivity$Action;)V
-    .locals 0
-    iput-object p1, p0, Lcom/aor/droidedit/DroidEditActivity;->mWaitingAction:Lcom/aor/droidedit/DroidEditActivity$Action;
-    return-void
+    invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->getCurrentDocument()Lcom/aor/droidedit/document/Document;
+    move-result-object v0
+    if-eqz v0, :plain
+    invoke-virtual {v0, p0}, Lcom/aor/droidedit/document/Document;->getSyntaxName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v0
+    return-object v0
+    :plain
+    const-string v0, "text"
+    return-object v0
 .end method
