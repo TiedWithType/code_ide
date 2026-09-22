@@ -33,6 +33,7 @@ public final class EmmetBridge {
         return start >= 0 && end >= 0 && (start != end || start > 0);
     }
     public static void cancel(Activity activity) {
+        EmmetFields.cancel(activity);
         Request request = ACTIVE.get(activity);
         if (request != null) request.close();
     }
@@ -107,6 +108,7 @@ public final class EmmetBridge {
                 request.put("text", original); request.put("start", selectionStart); request.put("end", selectionEnd);
                 request.put("syntax", syntax == null ? "" : syntax); request.put("indent", indent == null ? "    " : indent);
                 request.put("lang", Locale.getDefault().getLanguage());
+                request.put("snippets", EmmetSnippets.get(activity));
                 String json = request.toString().replace("\u2028", "\\u2028").replace("\u2029", "\\u2029");
                 engine.evaluateJavascript("CodeIDEEmmet.expand(" + json + ")", new ValueCallback<String>() {
                     @Override public void onReceiveValue(String result) { apply(result); }
@@ -133,7 +135,7 @@ public final class EmmetBridge {
                 }
                 close(); // Detach watcher before making exactly one undoable replacement.
                 editor.beginBatchEdit();
-                try { editor.getText().replace(start,end,replacement); editor.setSelection(start+from,start+to); }
+                try { editor.getText().replace(start,end,replacement); editor.setSelection(start+from,start+to); EmmetFields.start(activity,editor,start,value); }
                 finally { editor.endBatchEdit(); }
             } catch (Exception e) { fail("invalid"); }
         }

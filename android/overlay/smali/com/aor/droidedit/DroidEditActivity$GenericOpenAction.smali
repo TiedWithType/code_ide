@@ -330,7 +330,7 @@
     move-result-object v8
 
     .line 3278
-    invoke-virtual {v8}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v8}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto :goto_0
 

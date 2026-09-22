@@ -12,8 +12,8 @@ lightweight: style blocks/attributes, comments, scripts and implicit parent tags
 This is abbreviation expansion, not the full Emmet editor command suite.
 
 The adapter preserves indentation and CRLF, replaces a selected abbreviation or
-extracts one at the caret, and selects the first editable field. It does not
-implement Tab navigation, completion suggestions or user-defined snippets.
+extracts one at the caret, and selects the first editable field. It supports Tab/Shift+Tab navigation and locally stored custom snippets from the
+editor menu. Completion suggestions and linked-field mirroring are not implemented.
 The bridge cancels stale results after editing, changing selection/document,
 pausing or destroying the activity. Limits: 512 Ki UTF-16 code units per document,
 4096 per abbreviation, 256 Ki output, bounded repetitions and a 10-second timeout.
@@ -50,7 +50,9 @@ integration, lifecycle hooks in the base activity, localized strings and help.
 Apply the overlay to the matching decoded APK, rebuild with Apktool 2.12.1 and
 sign with the existing application key (not included here).
 
-Release: versionCode 20260923, versionName `Expressive You - Emmet 2.4.11`.
-Validation: 37 JS regression cases, help/delegate integrity, APK resource/dex rebuild,
+Release: versionCode 20260925, versionName `Expressive You - Editor 20260922`.
+Validation: 43 JS regression cases, help/delegate integrity, APK resource/dex rebuild,
 asset comparison and signing verification. Android device installation, WebView
 execution and interaction with the editor's undo stack still need device testing.
+
+Additional Android sources: see android/improvements/src (AppUi, EmmetFields, EmmetSnippets, FieldRanges, AtomicStore, StateIo, RecoveryTicker). Compile these together with EmmetBridge.

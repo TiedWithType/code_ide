@@ -47,10 +47,10 @@
 .method constructor <init>(Landroid/app/Activity;Landroid/widget/EditText;Ljava/lang/String;Ljava/lang/String;)V
     .registers 7
 
-    .line 75
+    .line 76
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 71
+    .line 72
     new-instance v0, Landroid/os/Handler;
 
     invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
@@ -61,14 +61,14 @@
 
     iput-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->handler:Landroid/os/Handler;
 
-    .line 74
+    .line 75
     new-instance v0, Lcom/code/ide/compat/EmmetBridge$Request$1;
 
     invoke-direct {v0, p0}, Lcom/code/ide/compat/EmmetBridge$Request$1;-><init>(Lcom/code/ide/compat/EmmetBridge$Request;)V
 
     iput-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->timeout:Ljava/lang/Runnable;
 
-    .line 76
+    .line 77
     iput-object p1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->activity:Landroid/app/Activity;
 
     iput-object p2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
@@ -77,7 +77,7 @@
 
     iput-object p4, p0, Lcom/code/ide/compat/EmmetBridge$Request;->indent:Ljava/lang/String;
 
-    .line 77
+    .line 78
     invoke-virtual {p2}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
 
     move-result-object p1
@@ -88,7 +88,7 @@
 
     iput-object p1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->original:Ljava/lang/String;
 
-    .line 78
+    .line 79
     invoke-virtual {p2}, Landroid/widget/EditText;->getSelectionStart()I
 
     move-result p1
@@ -101,7 +101,7 @@
 
     iput p1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->selectionEnd:I
 
-    .line 79
+    .line 80
     return-void
 .end method
 
@@ -110,14 +110,14 @@
 .method public afterTextChanged(Landroid/text/Editable;)V
     .registers 2
 
-    .line 153
+    .line 155
     return-void
 .end method
 
 .method apply(Ljava/lang/String;)V
-    .registers 9
+    .registers 10
 
-    .line 117
+    .line 119
     const-string v0, "invalid"
 
     iget-boolean v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->closed:Z
@@ -126,7 +126,7 @@
 
     return-void
 
-    .line 119
+    .line 121
     :cond_7
     :try_start_7
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->activity:Landroid/app/Activity;
@@ -135,7 +135,7 @@
 
     move-result v1
 
-    if-nez v1, :cond_dd
+    if-nez v1, :cond_e4
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->activity:Landroid/app/Activity;
 
@@ -143,18 +143,18 @@
 
     move-result v1
 
-    if-nez v1, :cond_dd
+    if-nez v1, :cond_e4
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
-    .line 120
+    .line 122
     invoke-virtual {v1}, Landroid/widget/EditText;->getSelectionStart()I
 
     move-result v1
 
     iget v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->selectionStart:I
 
-    if-ne v1, v2, :cond_dd
+    if-ne v1, v2, :cond_e4
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
@@ -164,13 +164,13 @@
 
     iget v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->selectionEnd:I
 
-    if-ne v1, v2, :cond_dd
+    if-ne v1, v2, :cond_e4
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->original:Ljava/lang/String;
 
     iget-object v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
-    .line 121
+    .line 123
     invoke-virtual {v2}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
 
     move-result-object v2
@@ -185,15 +185,15 @@
 
     if-nez v1, :cond_3f
 
-    goto/16 :goto_dd
+    goto/16 :goto_e4
 
-    .line 122
+    .line 124
     :cond_3f
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 123
+    .line 125
     const-string p1, "ok"
 
     invoke-virtual {v1, p1}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z
@@ -202,14 +202,14 @@
 
     if-nez p1, :cond_77
 
-    .line 124
+    .line 126
     const-string p1, "error"
 
     invoke-virtual {v1, p1, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p1
 
-    .line 125
+    .line 127
     const-string v1, "syntax"
 
     invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -244,13 +244,13 @@
 
     move-object p1, v0
 
-    .line 126
+    .line 128
     :cond_73
     invoke-virtual {p0, p1}, Lcom/code/ide/compat/EmmetBridge$Request;->fail(Ljava/lang/String;)V
 
     return-void
 
-    .line 128
+    .line 130
     :cond_77
     const-string p1, "start"
 
@@ -264,14 +264,14 @@
 
     move-result v2
 
-    .line 129
+    .line 131
     const-string v3, "text"
 
     invoke-virtual {v1, v3}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 130
+    .line 132
     const-string v4, "selectionStart"
 
     invoke-virtual {v1, v4}, Lorg/json/JSONObject;->getInt(Ljava/lang/String;)I
@@ -282,83 +282,89 @@
 
     invoke-virtual {v1, v5}, Lorg/json/JSONObject;->getInt(Ljava/lang/String;)I
 
-    move-result v1
-
-    .line 131
-    if-ltz p1, :cond_d9
-
-    if-lt v2, p1, :cond_d9
-
-    iget-object v5, p0, Lcom/code/ide/compat/EmmetBridge$Request;->original:Ljava/lang/String;
-
-    invoke-virtual {v5}, Ljava/lang/String;->length()I
-
     move-result v5
 
-    if-gt v2, v5, :cond_d9
+    .line 133
+    if-ltz p1, :cond_e0
 
-    if-ltz v4, :cond_d9
+    if-lt v2, p1, :cond_e0
 
-    if-lt v1, v4, :cond_d9
+    iget-object v6, p0, Lcom/code/ide/compat/EmmetBridge$Request;->original:Ljava/lang/String;
+
+    invoke-virtual {v6}, Ljava/lang/String;->length()I
+
+    move-result v6
+
+    if-gt v2, v6, :cond_e0
+
+    if-ltz v4, :cond_e0
+
+    if-lt v5, v4, :cond_e0
 
     invoke-virtual {v3}, Ljava/lang/String;->length()I
 
-    move-result v5
+    move-result v6
 
-    if-gt v1, v5, :cond_d9
+    if-gt v5, v6, :cond_e0
 
     invoke-virtual {v3}, Ljava/lang/String;->length()I
 
-    move-result v5
+    move-result v6
 
-    const/high16 v6, 0x40000
+    const/high16 v7, 0x40000
 
-    if-le v5, v6, :cond_b4
+    if-le v6, v7, :cond_b4
 
-    goto :goto_d9
+    goto :goto_e0
 
-    .line 134
+    .line 136
     :cond_b4
     invoke-virtual {p0}, Lcom/code/ide/compat/EmmetBridge$Request;->close()V
 
-    .line 135
-    iget-object v5, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
+    .line 137
+    iget-object v6, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
-    invoke-virtual {v5}, Landroid/widget/EditText;->beginBatchEdit()V
+    invoke-virtual {v6}, Landroid/widget/EditText;->beginBatchEdit()V
     :try_end_bc
-    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_bc} :catch_e1
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_bc} :catch_e8
 
-    .line 136
+    .line 138
     :try_start_bc
-    iget-object v5, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
+    iget-object v6, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
-    invoke-virtual {v5}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
+    invoke-virtual {v6}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
 
-    move-result-object v5
+    move-result-object v6
 
-    invoke-interface {v5, p1, v2, v3}, Landroid/text/Editable;->replace(IILjava/lang/CharSequence;)Landroid/text/Editable;
+    invoke-interface {v6, p1, v2, v3}, Landroid/text/Editable;->replace(IILjava/lang/CharSequence;)Landroid/text/Editable;
 
     iget-object v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
     add-int/2addr v4, p1
 
-    add-int/2addr p1, v1
+    add-int/2addr v5, p1
 
-    invoke-virtual {v2, v4, p1}, Landroid/widget/EditText;->setSelection(II)V
-    :try_end_cc
-    .catchall {:try_start_bc .. :try_end_cc} :catchall_d2
+    invoke-virtual {v2, v4, v5}, Landroid/widget/EditText;->setSelection(II)V
 
-    .line 137
-    :try_start_cc
+    iget-object v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->activity:Landroid/app/Activity;
+
+    iget-object v3, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
+
+    invoke-static {v2, v3, p1, v1}, Lcom/code/ide/compat/EmmetFields;->start(Landroid/app/Activity;Landroid/widget/EditText;ILorg/json/JSONObject;)V
+    :try_end_d3
+    .catchall {:try_start_bc .. :try_end_d3} :catchall_d9
+
+    .line 139
+    :try_start_d3
     iget-object p1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
     invoke-virtual {p1}, Landroid/widget/EditText;->endBatchEdit()V
 
-    .line 138
-    goto :goto_e5
+    .line 140
+    goto :goto_ec
 
-    .line 137
-    :catchall_d2
+    .line 139
+    :catchall_d9
     move-exception p1
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
@@ -367,69 +373,69 @@
 
     throw p1
 
-    .line 132
-    :cond_d9
-    :goto_d9
+    .line 134
+    :cond_e0
+    :goto_e0
     invoke-virtual {p0, v0}, Lcom/code/ide/compat/EmmetBridge$Request;->fail(Ljava/lang/String;)V
 
     return-void
 
-    .line 121
-    :cond_dd
-    :goto_dd
+    .line 123
+    :cond_e4
+    :goto_e4
     invoke-virtual {p0}, Lcom/code/ide/compat/EmmetBridge$Request;->close()V
-    :try_end_e0
-    .catch Ljava/lang/Exception; {:try_start_cc .. :try_end_e0} :catch_e1
+    :try_end_e7
+    .catch Ljava/lang/Exception; {:try_start_d3 .. :try_end_e7} :catch_e8
 
     return-void
 
-    .line 138
-    :catch_e1
+    .line 140
+    :catch_e8
     move-exception p1
 
     invoke-virtual {p0, v0}, Lcom/code/ide/compat/EmmetBridge$Request;->fail(Ljava/lang/String;)V
 
-    .line 139
-    :goto_e5
+    .line 141
+    :goto_ec
     return-void
 .end method
 
 .method public beforeTextChanged(Ljava/lang/CharSequence;III)V
     .registers 5
 
-    .line 151
+    .line 153
     return-void
 .end method
 
 .method close()V
     .registers 4
 
-    .line 142
+    .line 144
     iget-boolean v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->closed:Z
 
     if-eqz v0, :cond_5
 
     return-void
 
-    .line 143
+    .line 145
     :cond_5
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->closed:Z
 
-    .line 144
+    .line 146
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->handler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->timeout:Ljava/lang/Runnable;
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 145
+    .line 147
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
     invoke-virtual {v0, p0}, Landroid/widget/EditText;->removeTextChangedListener(Landroid/text/TextWatcher;)V
 
-    .line 146
+    .line 148
     # getter for: Lcom/code/ide/compat/EmmetBridge;->ACTIVE:Ljava/util/Map;
     invoke-static {}, Lcom/code/ide/compat/EmmetBridge;->access$200()Ljava/util/Map;
 
@@ -452,7 +458,7 @@
 
     invoke-interface {v0, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 147
+    .line 149
     :cond_29
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
@@ -460,7 +466,7 @@
 
     iput-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
-    .line 149
+    .line 151
     if-eqz v0, :cond_3a
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->handler:Landroid/os/Handler;
@@ -471,7 +477,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 150
+    .line 152
     :cond_3a
     return-void
 .end method
@@ -479,30 +485,30 @@
 .method evaluate()V
     .registers 5
 
-    .line 103
+    .line 104
     iget-boolean v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->closed:Z
 
-    if-nez v0, :cond_8f
+    if-nez v0, :cond_9a
 
     iget-boolean v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->evaluated:Z
 
     if-eqz v0, :cond_a
 
-    goto/16 :goto_8f
+    goto/16 :goto_9a
 
-    .line 104
+    .line 105
     :cond_a
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->evaluated:Z
 
-    .line 106
+    .line 107
     :try_start_d
     new-instance v0, Lorg/json/JSONObject;
 
     invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
 
-    .line 107
+    .line 108
     const-string v1, "text"
 
     iget-object v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->original:Ljava/lang/String;
@@ -521,7 +527,7 @@
 
     invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
 
-    .line 108
+    .line 109
     const-string v1, "syntax"
 
     iget-object v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->syntax:Ljava/lang/String;
@@ -554,7 +560,7 @@
     :goto_40
     invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 109
+    .line 110
     const-string v1, "lang"
 
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
@@ -567,7 +573,18 @@
 
     invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 110
+    .line 111
+    const-string v1, "snippets"
+
+    iget-object v2, p0, Lcom/code/ide/compat/EmmetBridge$Request;->activity:Landroid/app/Activity;
+
+    invoke-static {v2}, Lcom/code/ide/compat/EmmetSnippets;->get(Landroid/content/Context;)Lorg/json/JSONObject;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 112
     invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
 
     move-result-object v0
@@ -588,7 +605,7 @@
 
     move-result-object v0
 
-    .line 111
+    .line 113
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -620,33 +637,33 @@
     invoke-direct {v2, p0}, Lcom/code/ide/compat/EmmetBridge$Request$3;-><init>(Lcom/code/ide/compat/EmmetBridge$Request;)V
 
     invoke-virtual {v1, v0, v2}, Landroid/webkit/WebView;->evaluateJavascript(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-    :try_end_87
-    .catch Ljava/lang/Exception; {:try_start_d .. :try_end_87} :catch_88
+    :try_end_92
+    .catch Ljava/lang/Exception; {:try_start_d .. :try_end_92} :catch_93
 
-    .line 114
-    goto :goto_8e
+    .line 116
+    goto :goto_99
 
-    :catch_88
+    :catch_93
     move-exception v0
 
     const-string v0, "engine"
 
     invoke-virtual {p0, v0}, Lcom/code/ide/compat/EmmetBridge$Request;->fail(Ljava/lang/String;)V
 
-    .line 115
-    :goto_8e
+    .line 117
+    :goto_99
     return-void
 
-    .line 103
-    :cond_8f
-    :goto_8f
+    .line 104
+    :cond_9a
+    :goto_9a
     return-void
 .end method
 
 .method fail(Ljava/lang/String;)V
     .registers 3
 
-    .line 140
+    .line 142
     iget-boolean v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->closed:Z
 
     if-nez v0, :cond_c
@@ -665,7 +682,7 @@
 .method public onTextChanged(Ljava/lang/CharSequence;III)V
     .registers 5
 
-    .line 152
+    .line 154
     invoke-virtual {p0}, Lcom/code/ide/compat/EmmetBridge$Request;->close()V
 
     return-void
@@ -674,13 +691,13 @@
 .method start()V
     .registers 11
 
-    .line 82
+    .line 83
     :try_start_0
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->editor:Landroid/widget/EditText;
 
     invoke-virtual {v0, p0}, Landroid/widget/EditText;->addTextChangedListener(Landroid/text/TextWatcher;)V
 
-    .line 83
+    .line 84
     new-instance v0, Landroid/webkit/WebView;
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->activity:Landroid/app/Activity;
@@ -689,42 +706,42 @@
 
     iput-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
-    .line 84
+    .line 85
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
     invoke-virtual {v0}, Landroid/webkit/WebView;->getSettings()Landroid/webkit/WebSettings;
 
     move-result-object v0
 
-    .line 85
+    .line 86
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebSettings;->setJavaScriptEnabled(Z)V
 
-    .line 86
+    .line 87
     const/4 v2, 0x0
 
     invoke-virtual {v0, v2}, Landroid/webkit/WebSettings;->setAllowFileAccess(Z)V
 
-    .line 87
+    .line 88
     invoke-virtual {v0, v2}, Landroid/webkit/WebSettings;->setAllowContentAccess(Z)V
 
-    .line 88
+    .line 89
     invoke-virtual {v0, v2}, Landroid/webkit/WebSettings;->setAllowFileAccessFromFileURLs(Z)V
 
-    .line 89
+    .line 90
     invoke-virtual {v0, v2}, Landroid/webkit/WebSettings;->setAllowUniversalAccessFromFileURLs(Z)V
 
-    .line 90
+    .line 91
     invoke-virtual {v0, v1}, Landroid/webkit/WebSettings;->setBlockNetworkLoads(Z)V
 
-    .line 91
+    .line 92
     invoke-virtual {v0, v1}, Landroid/webkit/WebSettings;->setBlockNetworkImage(Z)V
 
-    .line 92
+    .line 93
     invoke-virtual {v0, v2}, Landroid/webkit/WebSettings;->setDomStorageEnabled(Z)V
 
-    .line 93
+    .line 94
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
     new-instance v1, Lcom/code/ide/compat/EmmetBridge$Request$2;
@@ -733,7 +750,7 @@
 
     invoke-virtual {v0, v1}, Landroid/webkit/WebView;->setWebViewClient(Landroid/webkit/WebViewClient;)V
 
-    .line 98
+    .line 99
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request;->handler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/code/ide/compat/EmmetBridge$Request;->timeout:Ljava/lang/Runnable;
@@ -742,7 +759,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 99
+    .line 100
     iget-object v4, p0, Lcom/code/ide/compat/EmmetBridge$Request;->engine:Landroid/webkit/WebView;
 
     const-string v5, "https://emmet.invalid/"
@@ -764,7 +781,7 @@
     :try_end_53
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_53} :catch_54
 
-    .line 100
+    .line 101
     goto :goto_5a
 
     :catch_54
@@ -774,7 +791,7 @@
 
     invoke-virtual {p0, v0}, Lcom/code/ide/compat/EmmetBridge$Request;->fail(Ljava/lang/String;)V
 
-    .line 101
+    .line 102
     :goto_5a
     return-void
 .end method

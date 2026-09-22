@@ -1374,17 +1374,6 @@
 
 .method public initialize(Landroid/content/Context;Z)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
     .locals 8
-
-    invoke-static {p1, p0}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
-    move-result v0
-    if-eqz v0, :compat_ready
-    if-eqz p2, :compat_failed
-    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-    return-object v0
-    :compat_failed
-    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-    return-object v0
-    :compat_ready
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "startAuthProcess"    # Z
     .annotation system Ldalvik/annotation/Throws;
@@ -1393,11 +1382,29 @@
         }
     .end annotation
 
+    invoke-static {p1, p0}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    if-eqz p2, :cond_0
+
+    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    return-object v0
+
+    :cond_0
+    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    return-object v0
+
     .prologue
     .line 108
+    :cond_1
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_2
 
     .line 109
     sget-object v0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mSavedConnections:Ljava/util/HashMap;
@@ -1417,7 +1424,7 @@
     .line 110
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_2
 
     .line 111
     new-instance v0, Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
@@ -1450,12 +1457,12 @@
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 116
-    :cond_0
+    :cond_2
     invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->isInitializationCanceled()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_3
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
@@ -1464,7 +1471,7 @@
     return-object v0
 
     .line 119
-    :cond_1
+    :cond_3
     :try_start_0
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
@@ -1476,7 +1483,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_5
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
@@ -1484,7 +1491,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_5
 
     .line 120
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
@@ -1517,20 +1524,20 @@
 
     move-result v0
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_4
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto :goto_0
 
     .line 123
-    :cond_2
+    :cond_4
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->SUCCESS:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto :goto_0
 
     .line 125
-    :cond_3
+    :cond_5
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
     invoke-virtual {v0}, Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;->getClient()Lorg/apache/commons/net/ftp/FTPClient;
@@ -1541,7 +1548,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_5
+    if-eqz v0, :cond_7
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
@@ -1549,21 +1556,21 @@
 
     move-result v0
 
-    if-nez v0, :cond_5
+    if-nez v0, :cond_7
 
     .line 126
     invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->isInitializationCanceled()Z
 
     move-result v0
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_6
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto :goto_0
 
     .line 127
-    :cond_4
+    :cond_6
     invoke-direct {p0, p1}, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->askForPassword(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
@@ -1586,7 +1593,7 @@
 
     .line 133
     .end local v7    # "e":Ljava/lang/Exception;
-    :cond_5
+    :cond_7
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
@@ -1605,14 +1612,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_8
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto :goto_0
 
     .line 137
-    :cond_6
+    :cond_8
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto :goto_0
@@ -1620,19 +1627,22 @@
 
 .method public isInitialized(Landroid/content/Context;)Z
     .locals 1
+    .param p1, "context"    # Landroid/content/Context;
 
     invoke-static {p1}, Lcom/code/ide/compat/StorageAccess;->hasLan(Landroid/content/Context;)Z
+
     move-result v0
-    if-nez v0, :compat_ready
+
+    if-nez v0, :cond_0
+
     return v0
-    :compat_ready
-    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 103
+    :cond_0
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/ftp/FTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/ftp/FTPConnection;
 
@@ -1640,14 +1650,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     const/4 v0, 0x1
 
     :goto_0
     return v0
 
-    :cond_0
+    :cond_1
     const/4 v0, 0x0
 
     goto :goto_0

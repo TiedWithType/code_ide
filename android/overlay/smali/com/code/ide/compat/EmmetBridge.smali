@@ -134,6 +134,9 @@
     .registers 2
 
     .line 36
+    invoke-static {p0}, Lcom/code/ide/compat/EmmetFields;->cancel(Landroid/app/Activity;)V
+
+    .line 37
     sget-object v0, Lcom/code/ide/compat/EmmetBridge;->ACTIVE:Ljava/util/Map;
 
     invoke-interface {v0, p0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -142,20 +145,20 @@
 
     check-cast p0, Lcom/code/ide/compat/EmmetBridge$Request;
 
-    .line 37
-    if-eqz p0, :cond_d
+    .line 38
+    if-eqz p0, :cond_10
 
     invoke-virtual {p0}, Lcom/code/ide/compat/EmmetBridge$Request;->close()V
 
-    .line 38
-    :cond_d
+    .line 39
+    :cond_10
     return-void
 .end method
 
 .method public static expand(Landroid/app/Activity;Landroid/widget/EditText;Ljava/lang/String;Ljava/lang/String;)V
     .registers 6
 
-    .line 44
+    .line 45
     invoke-static {p2}, Lcom/code/ide/compat/EmmetBridge;->supported(Ljava/lang/String;)Z
 
     move-result v0
@@ -168,7 +171,7 @@
 
     return-void
 
-    .line 45
+    .line 46
     :cond_c
     invoke-static {p1, p2}, Lcom/code/ide/compat/EmmetBridge;->canExpand(Landroid/widget/EditText;Ljava/lang/String;)Z
 
@@ -182,7 +185,7 @@
 
     return-void
 
-    .line 46
+    .line 47
     :cond_18
     invoke-virtual {p1}, Landroid/widget/EditText;->length()I
 
@@ -198,31 +201,31 @@
 
     return-void
 
-    .line 47
+    .line 48
     :cond_26
     invoke-static {p0}, Lcom/code/ide/compat/EmmetBridge;->cancel(Landroid/app/Activity;)V
 
-    .line 48
+    .line 49
     new-instance v0, Lcom/code/ide/compat/EmmetBridge$Request;
 
     invoke-direct {v0, p0, p1, p2, p3}, Lcom/code/ide/compat/EmmetBridge$Request;-><init>(Landroid/app/Activity;Landroid/widget/EditText;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 49
+    .line 50
     sget-object p1, Lcom/code/ide/compat/EmmetBridge;->ACTIVE:Ljava/util/Map;
 
     invoke-interface {p1, p0, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 50
+    .line 51
     invoke-virtual {v0}, Lcom/code/ide/compat/EmmetBridge$Request;->start()V
 
-    .line 51
+    .line 52
     return-void
 .end method
 
 .method private static message(Landroid/content/Context;Ljava/lang/String;)V
     .registers 5
 
-    .line 40
+    .line 41
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -255,7 +258,7 @@
 
     move-result p1
 
-    .line 41
+    .line 42
     if-eqz p1, :cond_2b
 
     const/4 v0, 0x0
@@ -266,7 +269,7 @@
 
     invoke-virtual {p0}, Landroid/widget/Toast;->show()V
 
-    .line 42
+    .line 43
     :cond_2b
     return-void
 .end method
@@ -283,13 +286,13 @@
 
     monitor-enter v0
 
-    .line 53
+    .line 54
     :try_start_3
     sget-object v1, Lcom/code/ide/compat/EmmetBridge;->page:Ljava/lang/String;
 
     if-nez v1, :cond_5d
 
-    .line 54
+    .line 55
     invoke-virtual {p0}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object p0
@@ -300,14 +303,14 @@
 
     move-result-object p0
 
-    .line 55
+    .line 56
     new-instance v1, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v1}, Ljava/io/ByteArrayOutputStream;-><init>()V
     :try_end_16
     .catchall {:try_start_3 .. :try_end_16} :catchall_61
 
-    .line 56
+    .line 57
     const/16 v2, 0x2000
 
     :try_start_18
@@ -330,12 +333,12 @@
 
     goto :goto_1a
 
-    .line 57
+    .line 58
     :cond_26
     :try_start_26
     invoke-virtual {p0}, Ljava/io/InputStream;->close()V
 
-    .line 59
+    .line 60
     new-instance p0, Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
@@ -354,7 +357,7 @@
 
     move-result-object p0
 
-    .line 60
+    .line 61
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -383,7 +386,7 @@
 
     goto :goto_5d
 
-    .line 57
+    .line 58
     :catchall_58
     move-exception v1
 
@@ -391,7 +394,7 @@
 
     throw v1
 
-    .line 64
+    .line 65
     :cond_5d
     :goto_5d
     sget-object p0, Lcom/code/ide/compat/EmmetBridge;->page:Ljava/lang/String;
@@ -402,7 +405,7 @@
 
     return-object p0
 
-    .line 52
+    .line 53
     :catchall_61
     move-exception p0
 

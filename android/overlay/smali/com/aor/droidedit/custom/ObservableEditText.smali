@@ -688,6 +688,7 @@
 
     .line 201
     const v2, 0x20001
+
     iput v2, p1, Landroid/view/inputmethod/EditorInfo;->inputType:I
 
     .line 202

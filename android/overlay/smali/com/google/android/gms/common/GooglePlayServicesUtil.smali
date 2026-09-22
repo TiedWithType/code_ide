@@ -1769,7 +1769,9 @@
     const/high16 v1, 0x10000000
 
     invoke-static {v1}, Lcom/code/ide/compat/PlatformCompat;->immutable(I)I
+
     move-result v1
+
     invoke-static {p1, p2, v0, v1}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0

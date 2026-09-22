@@ -150,19 +150,27 @@
     iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mListener:Lcom/aor/droidedit/fs/tasks/listeners/InitializationListener;
 
     invoke-interface {v0, p1}, Lcom/aor/droidedit/fs/tasks/listeners/InitializationListener;->initializationResult(Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;)V
-    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-    if-ne p1, v0, :compat_done
-    iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mContext:Landroid/content/Context;
-    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
-    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
-    move-result v1
-    if-eqz v1, :compat_done
-    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
-    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->request(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)V
-    :compat_done
 
+    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    if-ne p1, v0, :cond_1
+
+    iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mContext:Landroid/content/Context;
+
+    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
+
+    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/InitializationTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
+
+    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->request(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)V
 
     .line 60
+    :cond_1
     return-void
 
     .line 58
@@ -227,7 +235,7 @@
     move-result-object v0
 
     .line 41
-    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v0}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     move-result-object v0
 

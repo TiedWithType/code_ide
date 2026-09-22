@@ -1,904 +1,912 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <public type="attr" name="adSize" id="0x7f010000"/>
-    <public type="attr" name="adSizes" id="0x7f010001"/>
-    <public type="attr" name="adUnitId" id="0x7f010002"/>
-    <public type="attr" name="mapType" id="0x7f010003"/>
-    <public type="attr" name="cameraBearing" id="0x7f010004"/>
-    <public type="attr" name="cameraTargetLat" id="0x7f010005"/>
-    <public type="attr" name="cameraTargetLng" id="0x7f010006"/>
-    <public type="attr" name="cameraTilt" id="0x7f010007"/>
-    <public type="attr" name="cameraZoom" id="0x7f010008"/>
-    <public type="attr" name="uiCompass" id="0x7f010009"/>
-    <public type="attr" name="uiRotateGestures" id="0x7f01000a"/>
-    <public type="attr" name="uiScrollGestures" id="0x7f01000b"/>
-    <public type="attr" name="uiTiltGestures" id="0x7f01000c"/>
-    <public type="attr" name="uiZoomControls" id="0x7f01000d"/>
-    <public type="attr" name="uiZoomGestures" id="0x7f01000e"/>
-    <public type="attr" name="useViewLifecycle" id="0x7f01000f"/>
-    <public type="attr" name="zOrderOnTop" id="0x7f010010"/>
-    <public type="attr" name="theme" id="0x7f010011"/>
-    <public type="attr" name="environment" id="0x7f010012"/>
-    <public type="attr" name="fragmentStyle" id="0x7f010013"/>
-    <public type="attr" name="fragmentMode" id="0x7f010014"/>
-    <public type="attr" name="buyButtonHeight" id="0x7f010015"/>
-    <public type="attr" name="buyButtonWidth" id="0x7f010016"/>
-    <public type="attr" name="buyButtonText" id="0x7f010017"/>
-    <public type="attr" name="buyButtonAppearance" id="0x7f010018"/>
-    <public type="attr" name="maskedWalletDetailsTextAppearance" id="0x7f010019"/>
-    <public type="attr" name="maskedWalletDetailsHeaderTextAppearance" id="0x7f01001a"/>
-    <public type="attr" name="maskedWalletDetailsBackground" id="0x7f01001b"/>
-    <public type="attr" name="maskedWalletDetailsButtonTextAppearance" id="0x7f01001c"/>
-    <public type="attr" name="maskedWalletDetailsButtonBackground" id="0x7f01001d"/>
-    <public type="attr" name="maskedWalletDetailsLogoTextColor" id="0x7f01001e"/>
-    <public type="attr" name="maskedWalletDetailsLogoImageType" id="0x7f01001f"/>
-    <public type="attr" name="color_wheel_radius" id="0x7f010020"/>
-    <public type="attr" name="color_wheel_thickness" id="0x7f010021"/>
-    <public type="attr" name="color_center_radius" id="0x7f010022"/>
-    <public type="attr" name="color_center_halo_radius" id="0x7f010023"/>
-    <public type="attr" name="color_pointer_radius" id="0x7f010024"/>
-    <public type="attr" name="color_pointer_halo_radius" id="0x7f010025"/>
-    <public type="attr" name="bar_thickness" id="0x7f010026"/>
-    <public type="attr" name="bar_length" id="0x7f010027"/>
-    <public type="attr" name="bar_pointer_radius" id="0x7f010028"/>
-    <public type="attr" name="bar_pointer_halo_radius" id="0x7f010029"/>
-    <public type="attr" name="bar_orientation_horizontal" id="0x7f01002a"/>
-    <public type="drawable" name="add_folder" id="0x7f020000"/>
-    <public type="drawable" name="find_selector" id="0x7f020001"/>
-    <public type="drawable" name="dummy_ae_2" id="0x7f020002"/>
-    <public type="drawable" name="dummy_ae_3" id="0x7f020003"/>
-    <public type="drawable" name="dummy_ae_4" id="0x7f020004"/>
-    <public type="drawable" name="dummy_ae_5" id="0x7f020005"/>
-    <public type="drawable" name="dummy_ae_6" id="0x7f020006"/>
-    <public type="drawable" name="dummy_ae_7" id="0x7f020007"/>
-    <public type="drawable" name="dummy_ae_8" id="0x7f020008"/>
-    <public type="drawable" name="dummy_ae_9" id="0x7f020009"/>
-    <public type="drawable" name="dummy_ae_a" id="0x7f02000a"/>
-    <public type="drawable" name="dummy_ae_b" id="0x7f02000b"/>
-    <public type="drawable" name="dummy_ae_c" id="0x7f02000c"/>
-    <public type="drawable" name="box" id="0x7f02000d"/>
-    <public type="drawable" name="close" id="0x7f02000e"/>
-    <public type="drawable" name="close_drawer" id="0x7f02000f"/>
-    <public type="drawable" name="close_drawer_h" id="0x7f020010"/>
-    <public type="drawable" name="close_file_selector" id="0x7f020011"/>
-    <public type="drawable" name="dummy_ae_12" id="0x7f020012"/>
-    <public type="drawable" name="color" id="0x7f020013"/>
-    <public type="drawable" name="dummy_ae_14" id="0x7f020014"/>
-    <public type="drawable" name="dummy_ae_15" id="0x7f020015"/>
-    <public type="drawable" name="dummy_ae_16" id="0x7f020016"/>
-    <public type="drawable" name="dummy_ae_17" id="0x7f020017"/>
-    <public type="drawable" name="dummy_ae_18" id="0x7f020018"/>
-    <public type="drawable" name="dummy_ae_19" id="0x7f020019"/>
-    <public type="drawable" name="dummy_ae_1a" id="0x7f02001a"/>
-    <public type="drawable" name="dummy_ae_1b" id="0x7f02001b"/>
-    <public type="drawable" name="dummy_ae_1c" id="0x7f02001c"/>
-    <public type="drawable" name="dummy_ae_1d" id="0x7f02001d"/>
-    <public type="drawable" name="dummy_ae_1e" id="0x7f02001e"/>
-    <public type="drawable" name="dummy_ae_1f" id="0x7f02001f"/>
-    <public type="drawable" name="dummy_ae_20" id="0x7f020020"/>
-    <public type="drawable" name="dummy_ae_21" id="0x7f020021"/>
-    <public type="drawable" name="dummy_ae_22" id="0x7f020022"/>
-    <public type="drawable" name="dummy_ae_23" id="0x7f020023"/>
-    <public type="drawable" name="dummy_ae_24" id="0x7f020024"/>
-    <public type="drawable" name="dummy_ae_25" id="0x7f020025"/>
-    <public type="drawable" name="dummy_ae_26" id="0x7f020026"/>
-    <public type="drawable" name="dummy_ae_27" id="0x7f020027"/>
-    <public type="drawable" name="dummy_ae_28" id="0x7f020028"/>
-    <public type="drawable" name="dummy_ae_29" id="0x7f020029"/>
-    <public type="drawable" name="dummy_ae_2a" id="0x7f02002a"/>
-    <public type="drawable" name="dummy_ae_2b" id="0x7f02002b"/>
-    <public type="drawable" name="copy" id="0x7f02002c"/>
-    <public type="drawable" name="cut" id="0x7f02002d"/>
-    <public type="drawable" name="drive" id="0x7f02002e"/>
-    <public type="drawable" name="dropbox" id="0x7f02002f"/>
-    <public type="drawable" name="expand" id="0x7f020030"/>
-    <public type="drawable" name="file" id="0x7f020031"/>
-    <public type="drawable" name="file_menu" id="0x7f020032"/>
-    <public type="drawable" name="find" id="0x7f020033"/>
-    <public type="drawable" name="dummy_ae_34" id="0x7f020034"/>
-    <public type="drawable" name="dummy_ae_35" id="0x7f020035"/>
-    <public type="drawable" name="folder" id="0x7f020036"/>
-    <public type="drawable" name="force" id="0x7f020037"/>
-    <public type="drawable" name="git" id="0x7f020038"/>
-    <public type="drawable" name="git_add" id="0x7f020039"/>
-    <public type="drawable" name="git_conflicting" id="0x7f02003a"/>
-    <public type="drawable" name="git_remove" id="0x7f02003b"/>
-    <public type="drawable" name="git_update" id="0x7f02003c"/>
-    <public type="drawable" name="home" id="0x7f02003d"/>
-    <public type="drawable" name="dummy_ae_3e" id="0x7f02003e"/>
-    <public type="drawable" name="home_up" id="0x7f02003f"/>
-    <public type="drawable" name="dummy_ae_40" id="0x7f020040"/>
-    <public type="drawable" name="ic_got_it" id="0x7f020041"/>
-    <public type="drawable" name="dummy_ae_42" id="0x7f020042"/>
-    <public type="drawable" name="ic_menu_edit" id="0x7f020043"/>
-    <public type="drawable" name="ic_menu_manage" id="0x7f020044"/>
-    <public type="drawable" name="ic_menu_play_clip" id="0x7f020045"/>
-    <public type="drawable" name="ic_menu_sort_alphabetically" id="0x7f020046"/>
-    <public type="drawable" name="ic_menu_upload" id="0x7f020047"/>
-    <public type="drawable" name="ic_menu_view" id="0x7f020048"/>
-    <public type="drawable" name="dummy_ae_49" id="0x7f020049"/>
-    <public type="drawable" name="dummy_ae_4a" id="0x7f02004a"/>
-    <public type="drawable" name="dummy_ae_4b" id="0x7f02004b"/>
-    <public type="drawable" name="dummy_ae_4c" id="0x7f02004c"/>
-    <public type="drawable" name="ignorecase" id="0x7f02004d"/>
-    <public type="drawable" name="indent" id="0x7f02004e"/>
-    <public type="drawable" name="dummy_ae_4f" id="0x7f02004f"/>
-    <public type="drawable" name="dummy_ae_50" id="0x7f020050"/>
-    <public type="drawable" name="key_selector" id="0x7f020051"/>
-    <public type="drawable" name="local" id="0x7f020052"/>
-    <public type="drawable" name="mini_dropbox" id="0x7f020053"/>
-    <public type="drawable" name="mini_local" id="0x7f020054"/>
-    <public type="drawable" name="mini_remote" id="0x7f020055"/>
-    <public type="drawable" name="new_file" id="0x7f020056"/>
-    <public type="drawable" name="dummy_ae_57" id="0x7f020057"/>
-    <public type="drawable" name="new_file_selector" id="0x7f020058"/>
-    <public type="drawable" name="open" id="0x7f020059"/>
-    <public type="drawable" name="open_drawer" id="0x7f02005a"/>
-    <public type="drawable" name="open_drawer_h" id="0x7f02005b"/>
-    <public type="drawable" name="open_file_selector" id="0x7f02005c"/>
-    <public type="drawable" name="dummy_ae_5d" id="0x7f02005d"/>
-    <public type="drawable" name="paste" id="0x7f02005e"/>
-    <public type="drawable" name="play" id="0x7f02005f"/>
-    <public type="drawable" name="play_sl4a" id="0x7f020060"/>
-    <public type="drawable" name="dummy_ae_61" id="0x7f020061"/>
-    <public type="drawable" name="dummy_ae_62" id="0x7f020062"/>
-    <public type="drawable" name="preferences" id="0x7f020063"/>
-    <public type="drawable" name="dummy_ae_64" id="0x7f020064"/>
-    <public type="drawable" name="preview" id="0x7f020065"/>
-    <public type="drawable" name="recent" id="0x7f020066"/>
-    <public type="drawable" name="redo" id="0x7f020067"/>
-    <public type="drawable" name="dummy_ae_68" id="0x7f020068"/>
-    <public type="drawable" name="redo_selector" id="0x7f020069"/>
-    <public type="drawable" name="regexp" id="0x7f02006a"/>
-    <public type="drawable" name="remote" id="0x7f02006b"/>
-    <public type="drawable" name="replace" id="0x7f02006c"/>
-    <public type="drawable" name="replace_all" id="0x7f02006d"/>
-    <public type="drawable" name="save" id="0x7f02006e"/>
-    <public type="drawable" name="save_as" id="0x7f02006f"/>
-    <public type="drawable" name="save_file_selector" id="0x7f020070"/>
-    <public type="drawable" name="dummy_ae_71" id="0x7f020071"/>
-    <public type="drawable" name="select_all" id="0x7f020072"/>
-    <public type="drawable" name="settings_selector" id="0x7f020073"/>
-    <public type="drawable" name="share" id="0x7f020074"/>
-    <public type="drawable" name="share_action" id="0x7f020075"/>
-    <public type="drawable" name="dummy_ae_76" id="0x7f020076"/>
-    <public type="drawable" name="share_selector" id="0x7f020077"/>
-    <public type="drawable" name="shortcut" id="0x7f020078"/>
-    <public type="drawable" name="text" id="0x7f020079"/>
-    <public type="drawable" name="dummy_ae_7a" id="0x7f02007a"/>
-    <public type="drawable" name="undo" id="0x7f02007b"/>
-    <public type="drawable" name="dummy_ae_7c" id="0x7f02007c"/>
-    <public type="drawable" name="undo_selector" id="0x7f02007d"/>
-    <public type="drawable" name="dummy_ae_7e" id="0x7f02007e"/>
-    <public type="drawable" name="undobar_button" id="0x7f02007f"/>
-    <public type="drawable" name="dummy_ae_80" id="0x7f020080"/>
-    <public type="drawable" name="dummy_ae_81" id="0x7f020081"/>
-    <public type="drawable" name="dummy_ae_82" id="0x7f020082"/>
-    <public type="drawable" name="unindent" id="0x7f020083"/>
-    <public type="drawable" name="wraparound" id="0x7f020084"/>
-    <public type="drawable" name="dummy_ae_85" id="0x7f020085"/>
-    <public type="drawable" name="key_background_default" id="0x7f020086"/>
-    <public type="drawable" name="key_background_pressed" id="0x7f020087"/>
-    <public type="drawable" name="ic_launcher_foreground" id="0x7f020088"/>
-    <public type="drawable" name="dummy_ae_89" id="0x7f020089"/>
-    <public type="drawable" name="ic_launcher_background" id="0x7f02008a"/>
-    <public type="drawable" name="bg_toggle_off" id="0x7f02008b"/>
-    <public type="drawable" name="bg_toggle_on" id="0x7f02008c"/>
-    <public type="drawable" name="toggle_style" id="0x7f02008d"/>
-    <public type="drawable" name="divider" id="0x7f02008e"/>
-    <public type="layout" name="activity_chooser" id="0x7f030000"/>
-    <public type="layout" name="browser_list" id="0x7f030001"/>
-    <public type="layout" name="color_picker_halo" id="0x7f030002"/>
-    <public type="layout" name="document_row" id="0x7f030003"/>
-    <public type="layout" name="dropdown_line" id="0x7f030004"/>
-    <public type="layout" name="edit_theme" id="0x7f030005"/>
-    <public type="layout" name="editor_view" id="0x7f030006"/>
-    <public type="layout" name="editor_view_wrapped" id="0x7f030007"/>
-    <public type="layout" name="external_preferences" id="0x7f030008"/>
-    <public type="layout" name="file_dialog" id="0x7f030009"/>
-    <public type="layout" name="file_row" id="0x7f03000a"/>
-    <public type="layout" name="find_view" id="0x7f03000b"/>
-    <public type="layout" name="get_passphrase" id="0x7f03000c"/>
-    <public type="layout" name="get_password" id="0x7f03000d"/>
-    <public type="layout" name="git_change_layout" id="0x7f03000e"/>
-    <public type="layout" name="git_commit_view" id="0x7f03000f"/>
-    <public type="layout" name="git_preferences" id="0x7f030010"/>
-    <public type="layout" name="info_panel" id="0x7f030011"/>
-    <public type="layout" name="item_row" id="0x7f030012"/>
-    <public type="layout" name="keyboard_popup_layout" id="0x7f030013"/>
-    <public type="layout" name="left_drawer" id="0x7f030014"/>
-    <public type="layout" name="main_window" id="0x7f030015"/>
-    <public type="layout" name="main_window_wrapped" id="0x7f030016"/>
-    <public type="layout" name="menu_view" id="0x7f030017"/>
-    <public type="layout" name="navigation_dropdown" id="0x7f030018"/>
-    <public type="layout" name="navigation_list" id="0x7f030019"/>
-    <public type="layout" name="progress_bar" id="0x7f03001a"/>
-    <public type="layout" name="pull_to_refresh_header" id="0x7f03001b"/>
-    <public type="layout" name="right_panel_view" id="0x7f03001c"/>
-    <public type="layout" name="sftp_preferences" id="0x7f03001d"/>
-    <public type="layout" name="shortcut" id="0x7f03001e"/>
-    <public type="layout" name="theme_row" id="0x7f03001f"/>
-    <public type="layout" name="toast_layout" id="0x7f030020"/>
-    <public type="xml" name="keyboard" id="0x7f040000"/>
-    <public type="xml" name="keyboard_comp" id="0x7f040001"/>
-    <public type="xml" name="keyboard_punct" id="0x7f040002"/>
-    <public type="xml" name="keyboard_quote" id="0x7f040003"/>
-    <public type="xml" name="keyboard_slash" id="0x7f040004"/>
-    <public type="xml" name="keyboard_symbol" id="0x7f040005"/>
-    <public type="xml" name="keyboard_web" id="0x7f040006"/>
-    <public type="xml" name="compat_file_paths" id="0x7f040007"/>
-    <public type="string" name="auth_client_using_bad_version_title" id="0x7f050000"/>
-    <public type="string" name="auth_client_needs_enabling_title" id="0x7f050001"/>
-    <public type="string" name="auth_client_needs_installation_title" id="0x7f050002"/>
-    <public type="string" name="auth_client_needs_update_title" id="0x7f050003"/>
-    <public type="string" name="auth_client_play_services_err_notification_msg" id="0x7f050004"/>
-    <public type="string" name="auth_client_requested_by_msg" id="0x7f050005"/>
-    <public type="string" name="common_google_play_services_notification_ticker" id="0x7f050006"/>
-    <public type="string" name="common_google_play_services_notification_needs_installation_title" id="0x7f050007"/>
-    <public type="string" name="common_google_play_services_notification_needs_update_title" id="0x7f050008"/>
-    <public type="string" name="common_google_play_services_needs_enabling_title" id="0x7f050009"/>
-    <public type="string" name="common_google_play_services_error_notification_requested_by_msg" id="0x7f05000a"/>
-    <public type="string" name="common_google_play_services_install_title" id="0x7f05000b"/>
-    <public type="string" name="common_google_play_services_install_text_phone" id="0x7f05000c"/>
-    <public type="string" name="common_google_play_services_install_text_tablet" id="0x7f05000d"/>
-    <public type="string" name="common_google_play_services_install_button" id="0x7f05000e"/>
-    <public type="string" name="common_google_play_services_enable_title" id="0x7f05000f"/>
-    <public type="string" name="common_google_play_services_enable_text" id="0x7f050010"/>
-    <public type="string" name="common_google_play_services_enable_button" id="0x7f050011"/>
-    <public type="string" name="common_google_play_services_update_title" id="0x7f050012"/>
-    <public type="string" name="common_google_play_services_update_text" id="0x7f050013"/>
-    <public type="string" name="common_google_play_services_network_error_title" id="0x7f050014"/>
-    <public type="string" name="common_google_play_services_network_error_text" id="0x7f050015"/>
-    <public type="string" name="common_google_play_services_invalid_account_title" id="0x7f050016"/>
-    <public type="string" name="common_google_play_services_invalid_account_text" id="0x7f050017"/>
-    <public type="string" name="common_google_play_services_unknown_issue" id="0x7f050018"/>
-    <public type="string" name="common_google_play_services_unsupported_title" id="0x7f050019"/>
-    <public type="string" name="common_google_play_services_unsupported_text" id="0x7f05001a"/>
-    <public type="string" name="common_google_play_services_unsupported_date_text" id="0x7f05001b"/>
-    <public type="string" name="common_google_play_services_update_button" id="0x7f05001c"/>
-    <public type="string" name="common_signin_button_text" id="0x7f05001d"/>
-    <public type="string" name="common_signin_button_text_long" id="0x7f05001e"/>
-    <public type="string" name="wallet_buy_button_place_holder" id="0x7f05001f"/>
-    <public type="string" name="com.crashlytics.android.build_id" id="0x7f050020"/>
-    <public type="string" name="app_name" id="0x7f050021"/>
-    <public type="string" name="action_bar_file" id="0x7f050022"/>
-    <public type="string" name="action_bar_new" id="0x7f050023"/>
-    <public type="string" name="action_bar_open" id="0x7f050024"/>
-    <public type="string" name="action_bar_save" id="0x7f050025"/>
-    <public type="string" name="action_bar_save_as" id="0x7f050026"/>
-    <public type="string" name="action_bar_close" id="0x7f050027"/>
-    <public type="string" name="action_bar_select_all" id="0x7f050028"/>
-    <public type="string" name="action_bar_cut" id="0x7f050029"/>
-    <public type="string" name="action_bar_copy" id="0x7f05002a"/>
-    <public type="string" name="action_bar_indent" id="0x7f05002b"/>
-    <public type="string" name="action_bar_unindent" id="0x7f05002c"/>
-    <public type="string" name="action_bar_paste" id="0x7f05002d"/>
-    <public type="string" name="action_bar_insert_color" id="0x7f05002e"/>
-    <public type="string" name="action_bar_expand" id="0x7f05002f"/>
-    <public type="string" name="action_bar_expand_condensed" id="0x7f050030"/>
-    <public type="string" name="action_bar_undo" id="0x7f050031"/>
-    <public type="string" name="action_bar_redo" id="0x7f050032"/>
-    <public type="string" name="action_bar_find_replace" id="0x7f050033"/>
-    <public type="string" name="action_bar_goto_line" id="0x7f050034"/>
-    <public type="string" name="action_bar_force_syntax" id="0x7f050035"/>
-    <public type="string" name="action_bar_create_shortcut" id="0x7f050036"/>
-    <public type="string" name="action_bar_search_files" id="0x7f050037"/>
-    <public type="string" name="action_bar_read_only" id="0x7f050038"/>
-    <public type="string" name="action_bar_writer_mode" id="0x7f050039"/>
-    <public type="string" name="action_bar_extra_keys" id="0x7f05003a"/>
-    <public type="string" name="action_bar_ask_encoding" id="0x7f05003b"/>
-    <public type="string" name="action_bar_settings" id="0x7f05003c"/>
-    <public type="string" name="action_bar_file_actions" id="0x7f05003d"/>
-    <public type="string" name="action_bar_text_actions" id="0x7f05003e"/>
-    <public type="string" name="action_bar_exit" id="0x7f05003f"/>
-    <public type="string" name="action_bar_git_actions" id="0x7f050040"/>
-    <public type="string" name="action_bar_git_commit" id="0x7f050041"/>
-    <public type="string" name="action_bar_git_push" id="0x7f050042"/>
-    <public type="string" name="action_bar_git_pull" id="0x7f050043"/>
-    <public type="string" name="action_bar_new_encoding" id="0x7f050044"/>
-    <public type="string" name="action_bar_open_encoding" id="0x7f050045"/>
-    <public type="string" name="action_bar_toggle_document_list" id="0x7f050046"/>
-    <public type="string" name="action_bar_duplicate_line" id="0x7f050047"/>
-    <public type="string" name="action_bar_delete_line" id="0x7f050048"/>
-    <public type="string" name="action_bar_find_again" id="0x7f050049"/>
-    <public type="string" name="action_bar_goto_line_start" id="0x7f05004a"/>
-    <public type="string" name="action_bar_goto_line_end" id="0x7f05004b"/>
-    <public type="string" name="action_bar_next_tab" id="0x7f05004c"/>
-    <public type="string" name="action_bar_prev_tab" id="0x7f05004d"/>
-    <public type="string" name="theme_background" id="0x7f05004e"/>
-    <public type="string" name="theme_normal_text" id="0x7f05004f"/>
-    <public type="string" name="theme_reserved_keyword" id="0x7f050050"/>
-    <public type="string" name="theme_data_type" id="0x7f050051"/>
-    <public type="string" name="theme_literal" id="0x7f050052"/>
-    <public type="string" name="theme_variable" id="0x7f050053"/>
-    <public type="string" name="theme_preprocessor" id="0x7f050054"/>
-    <public type="string" name="theme_comment" id="0x7f050055"/>
-    <public type="string" name="theme_parsing_error" id="0x7f050056"/>
-    <public type="string" name="theme_function" id="0x7f050057"/>
-    <public type="string" name="theme_operator" id="0x7f050058"/>
-    <public type="string" name="theme_create" id="0x7f050059"/>
-    <public type="string" name="theme_edit" id="0x7f05005a"/>
-    <public type="string" name="theme_custom" id="0x7f05005b"/>
-    <public type="string" name="theme_select_color" id="0x7f05005c"/>
-    <public type="string" name="generic_ok" id="0x7f05005d"/>
-    <public type="string" name="generic_cancel" id="0x7f05005e"/>
-    <public type="string" name="generic_yes" id="0x7f05005f"/>
-    <public type="string" name="generic_no" id="0x7f050060"/>
-    <public type="string" name="generic_ignore" id="0x7f050061"/>
-    <public type="string" name="generic_delete" id="0x7f050062"/>
-    <public type="string" name="generic_test" id="0x7f050063"/>
-    <public type="string" name="generic_save" id="0x7f050064"/>
-    <public type="string" name="generic_saved" id="0x7f050065"/>
-    <public type="string" name="generic_create" id="0x7f050066"/>
-    <public type="string" name="generic_close" id="0x7f050067"/>
-    <public type="string" name="generic_not_found" id="0x7f050068"/>
-    <public type="string" name="generic_reload" id="0x7f050069"/>
-    <public type="string" name="generic_retry" id="0x7f05006a"/>
-    <public type="string" name="generic_commit" id="0x7f05006b"/>
-    <public type="string" name="generic_loading" id="0x7f05006c"/>
-    <public type="string" name="find" id="0x7f05006d"/>
-    <public type="string" name="find_replace" id="0x7f05006e"/>
-    <public type="string" name="find_replace_all" id="0x7f05006f"/>
-    <public type="string" name="find_ignore_case" id="0x7f050070"/>
-    <public type="string" name="find_wrap_around" id="0x7f050071"/>
-    <public type="string" name="find_regular_expression" id="0x7f050072"/>
-    <public type="string" name="goto_line" id="0x7f050073"/>
-    <public type="string" name="goto_line_number" id="0x7f050074"/>
-    <public type="string" name="goto_line_go" id="0x7f050075"/>
-    <public type="string" name="file_management_overwrite" id="0x7f050076"/>
-    <public type="string" name="file_management_close_file_warning" id="0x7f050077"/>
-    <public type="string" name="file_management_file_exists" id="0x7f050078"/>
-    <public type="string" name="file_management_file_exists_msg" id="0x7f050079"/>
-    <public type="string" name="file_management_file_not_exists_msg" id="0x7f05007a"/>
-    <public type="string" name="file_management_close_file" id="0x7f05007b"/>
-    <public type="string" name="file_management_open_file" id="0x7f05007c"/>
-    <public type="string" name="file_management_save_file" id="0x7f05007d"/>
-    <public type="string" name="file_management_choose_filesystem" id="0x7f05007e"/>
-    <public type="string" name="file_management_new_file" id="0x7f05007f"/>
-    <public type="string" name="file_management_select_encoding" id="0x7f050080"/>
-    <public type="string" name="file_management_file_changed" id="0x7f050081"/>
-    <public type="string" name="file_management_file_changed_on_disk" id="0x7f050082"/>
-    <public type="string" name="file_management_file_changed_on_dropbox" id="0x7f050083"/>
-    <public type="string" name="file_management_file_changed_on_box" id="0x7f050084"/>
-    <public type="string" name="file_management_add_folder" id="0x7f050085"/>
-    <public type="string" name="remote_open_sftp_file" id="0x7f050086"/>
-    <public type="string" name="remote_save_sftp_file" id="0x7f050087"/>
-    <public type="string" name="remote_connection_successful" id="0x7f050088"/>
-    <public type="string" name="remote_public_key_auth" id="0x7f050089"/>
-    <public type="string" name="remote_password_auth" id="0x7f05008a"/>
-    <public type="string" name="remote_connecting" id="0x7f05008b"/>
-    <public type="string" name="remote_establishing_connection" id="0x7f05008c"/>
-    <public type="string" name="remote_login" id="0x7f05008d"/>
-    <public type="string" name="remote_open_dropbox_file" id="0x7f05008e"/>
-    <public type="string" name="remote_save_dropbox_file" id="0x7f05008f"/>
-    <public type="string" name="remote_dropbox_connection_successful" id="0x7f050090"/>
-    <public type="string" name="remote_dropbox_connection_failed" id="0x7f050091"/>
-    <public type="string" name="remote_open_box_file" id="0x7f050092"/>
-    <public type="string" name="remote_save_box_file" id="0x7f050093"/>
-    <public type="string" name="remote_box_connection_successful" id="0x7f050094"/>
-    <public type="string" name="remote_box_connection_failed" id="0x7f050095"/>
-    <public type="string" name="error_save_failed" id="0x7f050096"/>
-    <public type="string" name="error_save_failed_msg" id="0x7f050097"/>
-    <public type="string" name="error_open_failed" id="0x7f050098"/>
-    <public type="string" name="error_open_failed_msg" id="0x7f050099"/>
-    <public type="string" name="error_file_too_big_msg" id="0x7f05009a"/>
-    <public type="string" name="error_download_failed" id="0x7f05009b"/>
-    <public type="string" name="error_download_failed_msg" id="0x7f05009c"/>
-    <public type="string" name="error_auth_failed_msg" id="0x7f05009d"/>
-    <public type="string" name="error_upload_failed" id="0x7f05009e"/>
-    <public type="string" name="error_upload_failed_msg" id="0x7f05009f"/>
-    <public type="string" name="error_connecting" id="0x7f0500a0"/>
-    <public type="string" name="error_authenticating" id="0x7f0500a1"/>
-    <public type="string" name="error_invalid_key" id="0x7f0500a2"/>
-    <public type="string" name="error_dropbox_unlinked_msg" id="0x7f0500a3"/>
-    <public type="string" name="error_box_unlinked_msg" id="0x7f0500a4"/>
-    <public type="string" name="error_permission_denied_msg" id="0x7f0500a5"/>
-    <public type="string" name="error_color" id="0x7f0500a6"/>
-    <public type="string" name="error_unknown" id="0x7f0500a7"/>
-    <public type="string" name="error_opening" id="0x7f0500a8"/>
-    <public type="string" name="error_market" id="0x7f0500a9"/>
-    <public type="string" name="error_not_in_initial_folder" id="0x7f0500aa"/>
-    <public type="string" name="error_no_initial_folder" id="0x7f0500ab"/>
-    <public type="string" name="error_no_base_url" id="0x7f0500ac"/>
-    <public type="string" name="error_failed_open_browser" id="0x7f0500ad"/>
-    <public type="string" name="error_failed_add_folder" id="0x7f0500ae"/>
-    <public type="string" name="error_failed_getting_files" id="0x7f0500af"/>
-    <public type="string" name="error_creating_shortcut" id="0x7f0500b0"/>
-    <public type="string" name="external_choose_action" id="0x7f0500b1"/>
-    <public type="string" name="external_choose_command" id="0x7f0500b2"/>
-    <public type="string" name="external_preview_broser" id="0x7f0500b3"/>
-    <public type="string" name="external_sl4a_error" id="0x7f0500b4"/>
-    <public type="string" name="external_run_in_sl4a_terminal" id="0x7f0500b5"/>
-    <public type="string" name="external_run_in_sl4a_background" id="0x7f0500b6"/>
-    <public type="string" name="external_send_file" id="0x7f0500b7"/>
-    <public type="string" name="external_run_external" id="0x7f0500b8"/>
-    <public type="string" name="external_command_data" id="0x7f0500b9"/>
-    <public type="string" name="external_command_name" id="0x7f0500ba"/>
-    <public type="string" name="external_command_name_summary" id="0x7f0500bb"/>
-    <public type="string" name="external_command_expression" id="0x7f0500bc"/>
-    <public type="string" name="external_command_expression_summary" id="0x7f0500bd"/>
-    <public type="string" name="external_command_action" id="0x7f0500be"/>
-    <public type="string" name="external_command_action_summary" id="0x7f0500bf"/>
-    <public type="string" name="external_insert_token" id="0x7f0500c0"/>
-    <public type="string" name="external_value_for" id="0x7f0500c1"/>
-    <public type="string" name="external_do_nothing" id="0x7f0500c2"/>
-    <public type="string" name="external_show_results" id="0x7f0500c3"/>
-    <public type="string" name="external_open_in_new_document" id="0x7f0500c4"/>
-    <public type="string" name="external_replace_current_document" id="0x7f0500c5"/>
-    <public type="string" name="external_save_file_first" id="0x7f0500c6"/>
-    <public type="string" name="external_no_output" id="0x7f0500c7"/>
-    <public type="string" name="external_command_output" id="0x7f0500c8"/>
-    <public type="string" name="external_command_error" id="0x7f0500c9"/>
-    <public type="string" name="install_droidgrep_title" id="0x7f0500ca"/>
-    <public type="string" name="install_droidgrep_message" id="0x7f0500cb"/>
-    <public type="string" name="shortcut_title_general" id="0x7f0500cc"/>
-    <public type="string" name="shortcut_title_filemanagement" id="0x7f0500cd"/>
-    <public type="string" name="shortcut_title_editor" id="0x7f0500ce"/>
-    <public type="string" name="shortcut_title_menus" id="0x7f0500cf"/>
-    <public type="string" name="shortcut_title_external" id="0x7f0500d0"/>
-    <public type="string" name="shortcut_title_documents" id="0x7f0500d1"/>
-    <public type="string" name="shortcut_special_keys" id="0x7f0500d2"/>
-    <public type="string" name="shortcut_message" id="0x7f0500d3"/>
-    <public type="string" name="exit" id="0x7f0500d4"/>
-    <public type="string" name="exit_really" id="0x7f0500d5"/>
-    <public type="string" name="exit_really_msg" id="0x7f0500d6"/>
-    <public type="string" name="syntax_change" id="0x7f0500d7"/>
-    <public type="string" name="syntax_save" id="0x7f0500d8"/>
-    <public type="string" name="syntax_always_open" id="0x7f0500d9"/>
-    <public type="string" name="syntax_default" id="0x7f0500da"/>
-    <public type="string" name="pull_to_refresh_pull_label" id="0x7f0500db"/>
-    <public type="string" name="pull_to_refresh_release_label" id="0x7f0500dc"/>
-    <public type="string" name="pull_to_refresh_refreshing_label" id="0x7f0500dd"/>
-    <public type="string" name="pull_to_refresh_tap_label" id="0x7f0500de"/>
-    <public type="string" name="got_it" id="0x7f0500df"/>
-    <public type="string" name="navigation_drawer_tip" id="0x7f0500e0"/>
-    <public type="string" name="find_dialog_tip" id="0x7f0500e1"/>
-    <public type="string" name="pref_yes" id="0x7f0500e2"/>
-    <public type="string" name="pref_no" id="0x7f0500e3"/>
-    <public type="string" name="pref_cat_appearance" id="0x7f0500e4"/>
-    <public type="string" name="pref_cat_appearance_summary" id="0x7f0500e5"/>
-    <public type="string" name="pref_theme" id="0x7f0500e6"/>
-    <public type="string" name="pref_theme_summary" id="0x7f0500e7"/>
-    <public type="string" name="pref_select_theme" id="0x7f0500e8"/>
-    <public type="string" name="pref_custom_theme" id="0x7f0500e9"/>
-    <public type="string" name="pref_custom_theme_summary" id="0x7f0500ea"/>
-    <public type="string" name="pref_font_size" id="0x7f0500eb"/>
-    <public type="string" name="pref_font_size_summary" id="0x7f0500ec"/>
-    <public type="string" name="pref_select_font_size" id="0x7f0500ed"/>
-    <public type="string" name="pref_font_face" id="0x7f0500ee"/>
-    <public type="string" name="pref_font_face_summary" id="0x7f0500ef"/>
-    <public type="string" name="pref_select_font_face" id="0x7f0500f0"/>
-    <public type="string" name="pref_info_panel" id="0x7f0500f1"/>
-    <public type="string" name="pref_info_panel_active" id="0x7f0500f2"/>
-    <public type="string" name="pref_info_panel_inactive" id="0x7f0500f3"/>
-    <public type="string" name="pref_cat_editor" id="0x7f0500f4"/>
-    <public type="string" name="pref_cat_editor_summary" id="0x7f0500f5"/>
-    <public type="string" name="pref_line_numbers" id="0x7f0500f6"/>
-    <public type="string" name="pref_show_line_numbers" id="0x7f0500f7"/>
-    <public type="string" name="pref_hide_line_numbers" id="0x7f0500f8"/>
-    <public type="string" name="pref_syntax_highlighting" id="0x7f0500f9"/>
-    <public type="string" name="pref_syntax_highlighting_active" id="0x7f0500fa"/>
-    <public type="string" name="pref_syntax_highlighting_inactive" id="0x7f0500fb"/>
-    <public type="string" name="pref_line_break" id="0x7f0500fc"/>
-    <public type="string" name="pref_line_break_summary" id="0x7f0500fd"/>
-    <public type="string" name="pref_default_encoding" id="0x7f0500fe"/>
-    <public type="string" name="pref_default_encoding_summary" id="0x7f0500ff"/>
-    <public type="string" name="pref_line_wrap" id="0x7f050100"/>
-    <public type="string" name="pref_line_wrap_active" id="0x7f050101"/>
-    <public type="string" name="pref_line_wrap_inactive" id="0x7f050102"/>
-    <public type="string" name="pref_extra_keys" id="0x7f050103"/>
-    <public type="string" name="pref_extra_keys_active" id="0x7f050104"/>
-    <public type="string" name="pref_extra_keys_inactive" id="0x7f050105"/>
-    <public type="string" name="pref_space_tab" id="0x7f050106"/>
-    <public type="string" name="pref_space_tab_active" id="0x7f050107"/>
-    <public type="string" name="pref_space_tab_inactive" id="0x7f050108"/>
-    <public type="string" name="pref_bugsense" id="0x7f050109"/>
-    <public type="string" name="pref_bugsense_active" id="0x7f05010a"/>
-    <public type="string" name="pref_bugsense_inactive" id="0x7f05010b"/>
-    <public type="string" name="pref_low_profile" id="0x7f05010c"/>
-    <public type="string" name="pref_low_profile_active" id="0x7f05010d"/>
-    <public type="string" name="pref_low_profile_inactive" id="0x7f05010e"/>
-    <public type="string" name="pref_spell_check" id="0x7f05010f"/>
-    <public type="string" name="pref_spell_check_active" id="0x7f050110"/>
-    <public type="string" name="pref_spell_check_inactive" id="0x7f050111"/>
-    <public type="string" name="pref_space_tab_size" id="0x7f050112"/>
-    <public type="string" name="pref_space_tab_size_summary" id="0x7f050113"/>
-    <public type="string" name="pref_highlight_size" id="0x7f050114"/>
-    <public type="string" name="pref_highlight_size_summary" id="0x7f050115"/>
-    <public type="string" name="pref_select_encoding" id="0x7f050116"/>
-    <public type="string" name="pref_select_encoding_active" id="0x7f050117"/>
-    <public type="string" name="pref_select_encoding_inactive" id="0x7f050118"/>
-    <public type="string" name="pref_read_only" id="0x7f050119"/>
-    <public type="string" name="pref_read_only_active" id="0x7f05011a"/>
-    <public type="string" name="pref_read_only_inactive" id="0x7f05011b"/>
-    <public type="string" name="pref_position_hack" id="0x7f05011c"/>
-    <public type="string" name="pref_position_hack_active" id="0x7f05011d"/>
-    <public type="string" name="pref_position_hack_inactive" id="0x7f05011e"/>
-    <public type="string" name="pref_ad_margin" id="0x7f05011f"/>
-    <public type="string" name="pref_ad_margin_active" id="0x7f050120"/>
-    <public type="string" name="pref_ad_margin_inactive" id="0x7f050121"/>
-    <public type="string" name="pref_root_mode" id="0x7f050122"/>
-    <public type="string" name="pref_root_mode_active" id="0x7f050123"/>
-    <public type="string" name="pref_root_mode_inactive" id="0x7f050124"/>
-    <public type="string" name="pref_undo_level" id="0x7f050125"/>
-    <public type="string" name="pref_undo_level_summary" id="0x7f050126"/>
-    <public type="string" name="pref_cat_remote" id="0x7f050127"/>
-    <public type="string" name="pref_cat_remote_summary" id="0x7f050128"/>
-    <public type="string" name="pref_cat_external" id="0x7f050129"/>
-    <public type="string" name="pref_cat_external_summary" id="0x7f05012a"/>
-    <public type="string" name="pref_cat_other" id="0x7f05012b"/>
-    <public type="string" name="pref_cat_other_summary" id="0x7f05012c"/>
-    <public type="string" name="pref_action_bar" id="0x7f05012d"/>
-    <public type="string" name="pref_action_bar_enabled" id="0x7f05012e"/>
-    <public type="string" name="pref_action_bar_disabled" id="0x7f05012f"/>
-    <public type="string" name="pref_alternative_action_bar" id="0x7f050130"/>
-    <public type="string" name="pref_alternative_action_bar_enabled" id="0x7f050131"/>
-    <public type="string" name="pref_alternative_action_bar_disabled" id="0x7f050132"/>
-    <public type="string" name="pref_hide_document_list" id="0x7f050133"/>
-    <public type="string" name="pref_hide_document_list_enabled" id="0x7f050134"/>
-    <public type="string" name="pref_hide_document_list_disabled" id="0x7f050135"/>
-    <public type="string" name="pref_action_bar_tabs" id="0x7f050136"/>
-    <public type="string" name="pref_action_bar_tabs_enabled" id="0x7f050137"/>
-    <public type="string" name="pref_action_bar_tabs_disabled" id="0x7f050138"/>
-    <public type="string" name="pref_split_action_bar" id="0x7f050139"/>
-    <public type="string" name="pref_split_action_bar_enabled" id="0x7f05013a"/>
-    <public type="string" name="pref_split_action_bar_disabled" id="0x7f05013b"/>
-    <public type="string" name="pref_save_temp" id="0x7f05013c"/>
-    <public type="string" name="pref_save_temp_enabled" id="0x7f05013d"/>
-    <public type="string" name="pref_save_temp_disabled" id="0x7f05013e"/>
-    <public type="string" name="pref_reuse_connections" id="0x7f05013f"/>
-    <public type="string" name="pref_reuse_connections_enabled" id="0x7f050140"/>
-    <public type="string" name="pref_reuse_connections_disabled" id="0x7f050141"/>
-    <public type="string" name="pref_help" id="0x7f050142"/>
-    <public type="string" name="pref_rate" id="0x7f050143"/>
-    <public type="string" name="pref_rate_summary" id="0x7f050144"/>
-    <public type="string" name="pref_forget_dropbox" id="0x7f050145"/>
-    <public type="string" name="pref_forget_box" id="0x7f050146"/>
-    <public type="string" name="pref_dropbox_active" id="0x7f050147"/>
-    <public type="string" name="pref_box_active" id="0x7f050148"/>
-    <public type="string" name="pref_drive_active" id="0x7f050149"/>
-    <public type="string" name="pref_dropbox_active_enabled" id="0x7f05014a"/>
-    <public type="string" name="pref_dropbox_active_disabled" id="0x7f05014b"/>
-    <public type="string" name="pref_box_active_enabled" id="0x7f05014c"/>
-    <public type="string" name="pref_box_active_disabled" id="0x7f05014d"/>
-    <public type="string" name="pref_drive_active_enabled" id="0x7f05014e"/>
-    <public type="string" name="pref_drive_active_disabled" id="0x7f05014f"/>
-    <public type="string" name="pref_sftp_actions" id="0x7f050150"/>
-    <public type="string" name="pref_sftp_options" id="0x7f050151"/>
-    <public type="string" name="pref_sftp_servers" id="0x7f050152"/>
-    <public type="string" name="pref_global_options" id="0x7f050153"/>
-    <public type="string" name="pref_external_commands" id="0x7f050154"/>
-    <public type="string" name="pref_add_external_command" id="0x7f050155"/>
-    <public type="string" name="pref_edit_external_command_summary" id="0x7f050156"/>
-    <public type="string" name="pref_add_external_command_summary" id="0x7f050157"/>
-    <public type="string" name="pref_sftp_add_server" id="0x7f050158"/>
-    <public type="string" name="pref_sftp_edit_server_summary" id="0x7f050159"/>
-    <public type="string" name="pref_sftp_add_server_summary" id="0x7f05015a"/>
-    <public type="string" name="pref_sftp_no_name" id="0x7f05015b"/>
-    <public type="string" name="pref_sftp_server_data" id="0x7f05015c"/>
-    <public type="string" name="pref_sftp_specific_server_data" id="0x7f05015d"/>
-    <public type="string" name="pref_ftp_specific_server_data" id="0x7f05015e"/>
-    <public type="string" name="pref_ftps" id="0x7f05015f"/>
-    <public type="string" name="pref_ftpes" id="0x7f050160"/>
-    <public type="string" name="pref_sftp_server_name" id="0x7f050161"/>
-    <public type="string" name="pref_sftp_server_type" id="0x7f050162"/>
-    <public type="string" name="pref_sftp_server_address" id="0x7f050163"/>
-    <public type="string" name="pref_sftp_server_username" id="0x7f050164"/>
-    <public type="string" name="pref_sftp_server_password" id="0x7f050165"/>
-    <public type="string" name="pref_sftp_server_passphrase" id="0x7f050166"/>
-    <public type="string" name="pref_sftp_ask_password_everytime" id="0x7f050167"/>
-    <public type="string" name="pref_sftp_save_passphrase" id="0x7f050168"/>
-    <public type="string" name="pref_sftp_save_password" id="0x7f050169"/>
-    <public type="string" name="pref_sftp_password_saved" id="0x7f05016a"/>
-    <public type="string" name="pref_sftp_server_port" id="0x7f05016b"/>
-    <public type="string" name="pref_sftp_initial_folder" id="0x7f05016c"/>
-    <public type="string" name="pref_sftp_base_url" id="0x7f05016d"/>
-    <public type="string" name="pref_sftp_use_global_private_key" id="0x7f05016e"/>
-    <public type="string" name="pref_forget_session_passwords" id="0x7f05016f"/>
-    <public type="string" name="pref_forget_session_passwords_summary" id="0x7f050170"/>
-    <public type="string" name="pref_session_passwords_cleared" id="0x7f050171"/>
-    <public type="string" name="pref_private_key_path" id="0x7f050172"/>
-    <public type="string" name="pref_global_private_key_path" id="0x7f050173"/>
-    <public type="string" name="pref_cat_shortcuts" id="0x7f050174"/>
-    <public type="string" name="pref_cat_shortcuts_summary" id="0x7f050175"/>
-    <public type="string" name="pref_raw_keys" id="0x7f050176"/>
-    <public type="string" name="pref_raw_keys_active" id="0x7f050177"/>
-    <public type="string" name="pref_raw_keys_inactive" id="0x7f050178"/>
-    <public type="string" name="pref_volume_up_as_ctrl" id="0x7f050179"/>
-    <public type="string" name="pref_volume_up_as_ctrl_active" id="0x7f05017a"/>
-    <public type="string" name="pref_volume_up_as_ctrl_inactive" id="0x7f05017b"/>
-    <public type="string" name="pref_volume_down_as_tab" id="0x7f05017c"/>
-    <public type="string" name="pref_volume_down_as_tab_active" id="0x7f05017d"/>
-    <public type="string" name="pref_volume_down_as_tab_inactive" id="0x7f05017e"/>
-    <public type="string" name="premium_feature" id="0x7f05017f"/>
-    <public type="string" name="premium_dropbox_feature_summary" id="0x7f050180"/>
-    <public type="string" name="premium_box_feature_summary" id="0x7f050181"/>
-    <public type="string" name="premium_drive_feature_summary" id="0x7f050182"/>
-    <public type="string" name="premium_sftp_feature_summary" id="0x7f050183"/>
-    <public type="string" name="premium_external_summary" id="0x7f050184"/>
-    <public type="string" name="premium_emmet_summary" id="0x7f050185"/>
-    <public type="string" name="premium_theme_feature_summary" id="0x7f050186"/>
-    <public type="string" name="premium_upgrade" id="0x7f050187"/>
-    <public type="string" name="premium_no_thanks" id="0x7f050188"/>
-    <public type="string" name="fontFamily" id="0x7f050189"/>
-    <public type="string" name="Text" id="0x7f05018a"/>
-    <public type="string" name="Keyword" id="0x7f05018b"/>
-    <public type="string" name="Type" id="0x7f05018c"/>
-    <public type="string" name="String" id="0x7f05018d"/>
-    <public type="string" name="Variable" id="0x7f05018e"/>
-    <public type="string" name="Macro" id="0x7f05018f"/>
-    <public type="string" name="Comment" id="0x7f050190"/>
-    <public type="string" name="Error" id="0x7f050191"/>
-    <public type="string" name="Method" id="0x7f050192"/>
-    <public type="string" name="Operator" id="0x7f050193"/>
-    <public type="string" name="Background" id="0x7f050194"/>
-    <public type="color" name="backgroundDefault" id="0x7f060000"/>
-    <public type="color" name="backgroundPressed" id="0x7f060001"/>
-    <public type="color" name="bg" id="0x7f060002"/>
-    <public type="color" name="key_bg" id="0x7f060003"/>
-    <public type="color" name="key_down" id="0x7f060004"/>
-    <public type="color" name="txt" id="0x7f060005"/>
-    <public type="color" name="txt2" id="0x7f060006"/>
-    <public type="color" name="accent" id="0x7f060007"/>
-    <public type="color" name="icon_bg" id="0x7f060008"/>
-    <public type="color" name="icon_bg2" id="0x7f060009"/>
-    <public type="color" name="icon_fg" id="0x7f06000a"/>
-    <public type="color" name="btn_text" id="0x7f06000b"/>
-    <public type="color" name="dummy_ae_c" id="0x7f06000c"/>
-    <public type="color" name="dummy_ae_d" id="0x7f06000d"/>
-    <public type="color" name="dummy_ae_e" id="0x7f06000e"/>
-    <public type="color" name="dummy_ae_f" id="0x7f06000f"/>
-    <public type="color" name="dummy_ae_10" id="0x7f060010"/>
-    <public type="color" name="dummy_ae_11" id="0x7f060011"/>
-    <public type="color" name="dummy_ae_12" id="0x7f060012"/>
-    <public type="color" name="dummy_ae_13" id="0x7f060013"/>
-    <public type="color" name="dummy_ae_14" id="0x7f060014"/>
-    <public type="color" name="dummy_ae_15" id="0x7f060015"/>
-    <public type="color" name="dummy_ae_16" id="0x7f060016"/>
-    <public type="color" name="dummy_ae_17" id="0x7f060017"/>
-    <public type="color" name="dummy_ae_18" id="0x7f060018"/>
-    <public type="color" name="dummy_ae_19" id="0x7f060019"/>
-    <public type="color" name="dummy_ae_1a" id="0x7f06001a"/>
-    <public type="color" name="textColorPrimary" id="0x7f06001b"/>
-    <public type="color" name="textColorSecondary" id="0x7f06001c"/>
-    <public type="color" name="appBackground" id="0x7f06001d"/>
-    <public type="color" name="dummy_ae_1e" id="0x7f06001e"/>
-    <public type="color" name="dummy_ae_1f" id="0x7f06001f"/>
-    <public type="color" name="accentPrimary" id="0x7f060020"/>
-    <public type="color" name="accentSecondary" id="0x7f060021"/>
-    <public type="integer" name="google_play_services_version" id="0x7f070000"/>
-    <public type="style" name="TabText" id="0x7f080000"/>
-    <public type="style" name="AppTheme" id="0x7f080001"/>
-    <public type="style" name="AppButton" id="0x7f080002"/>
-    <public type="style" name="dummy_ae_0" id="0x7f080003"/>
-    <public type="style" name="FileDialog" id="0x7f080004"/>
-    <public type="style" name="DroidEdit.Theme" id="0x7f080005"/>
-    <public type="style" name="custom_actionbar_tab_text_style" id="0x7f080006"/>
-    <public type="style" name="UndoBar" id="0x7f080007"/>
-    <public type="style" name="UndoBarMessage" id="0x7f080008"/>
-    <public type="style" name="UndoBarButton" id="0x7f080009"/>
-    <public type="style" name="MyCustomTheme" id="0x7f08000a"/>
-    <public type="style" name="MyCustomButton" id="0x7f08000b"/>
-    <public type="style" name="dummy_ae_1" id="0x7f08000c"/>
-    <public type="style" name="dummy_ae_2" id="0x7f08000d"/>
-    <public type="style" name="dummy_ae_3" id="0x7f08000e"/>
-    <public type="style" name="Swatch" id="0x7f08000f"/>
-    <public type="style" name="MenuIcon" id="0x7f080010"/>
-    <public type="dimen" name="color_wheel_radius" id="0x7f090000"/>
-    <public type="dimen" name="color_wheel_thickness" id="0x7f090001"/>
-    <public type="dimen" name="color_center_halo_radius" id="0x7f090002"/>
-    <public type="dimen" name="color_center_radius" id="0x7f090003"/>
-    <public type="dimen" name="color_pointer_halo_radius" id="0x7f090004"/>
-    <public type="dimen" name="color_pointer_radius" id="0x7f090005"/>
-    <public type="dimen" name="bar_thickness" id="0x7f090006"/>
-    <public type="dimen" name="bar_length" id="0x7f090007"/>
-    <public type="dimen" name="bar_pointer_radius" id="0x7f090008"/>
-    <public type="dimen" name="bar_pointer_halo_radius" id="0x7f090009"/>
-    <public type="dimen" name="ad_bottom_padding" id="0x7f09000a"/>
-    <public type="dimen" name="textSize" id="0x7f09000b"/>
-    <public type="dimen" name="text" id="0x7f09000c"/>
-    <public type="dimen" name="text_sm" id="0x7f09000d"/>
-    <public type="dimen" name="r_key" id="0x7f09000e"/>
-    <public type="dimen" name="r_toggle" id="0x7f09000f"/>
-    <public type="dimen" name="gap" id="0x7f090010"/>
-    <public type="menu" name="action_bar" id="0x7f0a0000"/>
-    <public type="menu" name="alternative_action_bar" id="0x7f0a0001"/>
-    <public type="menu" name="git_menu" id="0x7f0a0002"/>
-    <public type="id" name="hybrid" id="0x7f0b0000"/>
-    <public type="id" name="none" id="0x7f0b0001"/>
-    <public type="id" name="normal" id="0x7f0b0002"/>
-    <public type="id" name="satellite" id="0x7f0b0003"/>
-    <public type="id" name="terrain" id="0x7f0b0004"/>
-    <public type="id" name="holo_dark" id="0x7f0b0005"/>
-    <public type="id" name="holo_light" id="0x7f0b0006"/>
-    <public type="id" name="production" id="0x7f0b0007"/>
-    <public type="id" name="sandbox" id="0x7f0b0008"/>
-    <public type="id" name="strict_sandbox" id="0x7f0b0009"/>
-    <public type="id" name="buyButton" id="0x7f0b000a"/>
-    <public type="id" name="selectionDetails" id="0x7f0b000b"/>
-    <public type="id" name="match_parent" id="0x7f0b000c"/>
-    <public type="id" name="wrap_content" id="0x7f0b000d"/>
-    <public type="id" name="book_now" id="0x7f0b000e"/>
-    <public type="id" name="buy_now" id="0x7f0b000f"/>
-    <public type="id" name="buy_with_google" id="0x7f0b0010"/>
-    <public type="id" name="classic" id="0x7f0b0011"/>
-    <public type="id" name="grayscale" id="0x7f0b0012"/>
-    <public type="id" name="monochrome" id="0x7f0b0013"/>
-    <public type="id" name="list_item" id="0x7f0b0014"/>
-    <public type="id" name="icon" id="0x7f0b0015"/>
-    <public type="id" name="title" id="0x7f0b0016"/>
-    <public type="id" name="browser_list" id="0x7f0b0017"/>
-    <public type="id" name="LinearLayout2" id="0x7f0b0018"/>
-    <public type="id" name="picker" id="0x7f0b0019"/>
-    <public type="id" name="saturation_bar" id="0x7f0b001a"/>
-    <public type="id" name="value_bar" id="0x7f0b001b"/>
-    <public type="id" name="hexcolor" id="0x7f0b001c"/>
-    <public type="id" name="RelativeLayout1" id="0x7f0b001d"/>
-    <public type="id" name="scrollView1" id="0x7f0b001e"/>
-    <public type="id" name="linearLayout" id="0x7f0b001f"/>
-    <public type="id" name="style_list" id="0x7f0b0020"/>
-    <public type="id" name="theme_color_background" id="0x7f0b0021"/>
-    <public type="id" name="theme_color_1" id="0x7f0b0022"/>
-    <public type="id" name="theme_color_2" id="0x7f0b0023"/>
-    <public type="id" name="theme_color_3" id="0x7f0b0024"/>
-    <public type="id" name="theme_color_4" id="0x7f0b0025"/>
-    <public type="id" name="theme_color_5" id="0x7f0b0026"/>
-    <public type="id" name="theme_color_6" id="0x7f0b0027"/>
-    <public type="id" name="theme_color_7" id="0x7f0b0028"/>
-    <public type="id" name="theme_color_8" id="0x7f0b0029"/>
-    <public type="id" name="theme_color_9" id="0x7f0b002a"/>
-    <public type="id" name="theme_color_10" id="0x7f0b002b"/>
-    <public type="id" name="button_ok" id="0x7f0b002c"/>
-    <public type="id" name="button_delete" id="0x7f0b002d"/>
-    <public type="id" name="button_cancel" id="0x7f0b002e"/>
-    <public type="id" name="keyboardLayout" id="0x7f0b002f"/>
-    <public type="id" name="scrollview" id="0x7f0b0030"/>
-    <public type="id" name="editorInnerLayout" id="0x7f0b0031"/>
-    <public type="id" name="lineNumbers" id="0x7f0b0032"/>
-    <public type="id" name="lineDivider" id="0x7f0b0033"/>
-    <public type="id" name="editorHorizontalLayout" id="0x7f0b0034"/>
-    <public type="id" name="textEditor" id="0x7f0b0035"/>
-    <public type="id" name="keyboard" id="0x7f0b0036"/>
-    <public type="id" name="external_save" id="0x7f0b0037"/>
-    <public type="id" name="external_cancel" id="0x7f0b0038"/>
-    <public type="id" name="external_delete" id="0x7f0b0039"/>
-    <public type="id" name="home_up" id="0x7f0b003a"/>
-    <public type="id" name="current_path" id="0x7f0b003b"/>
-    <public type="id" name="home_folder" id="0x7f0b003c"/>
-    <public type="id" name="add_folder" id="0x7f0b003d"/>
-    <public type="id" name="getfilesprogress" id="0x7f0b003e"/>
-    <public type="id" name="file_list" id="0x7f0b003f"/>
-    <public type="id" name="new_file_layout" id="0x7f0b0040"/>
-    <public type="id" name="new_file_name" id="0x7f0b0041"/>
-    <public type="id" name="new_file_button" id="0x7f0b0042"/>
-    <public type="id" name="file_image" id="0x7f0b0043"/>
-    <public type="id" name="file_row_layout" id="0x7f0b0044"/>
-    <public type="id" name="file_name" id="0x7f0b0045"/>
-    <public type="id" name="file_data" id="0x7f0b0046"/>
-    <public type="id" name="file_date" id="0x7f0b0047"/>
-    <public type="id" name="file_size" id="0x7f0b0048"/>
-    <public type="id" name="LinearLayout1" id="0x7f0b0049"/>
-    <public type="id" name="findEdit" id="0x7f0b004a"/>
-    <public type="id" name="replaceEdit" id="0x7f0b004b"/>
-    <public type="id" name="checkBoxWrap" id="0x7f0b004c"/>
-    <public type="id" name="checkBoxRegularExpression" id="0x7f0b004d"/>
-    <public type="id" name="checkBoxIgnoreCase" id="0x7f0b004e"/>
-    <public type="id" name="LinearLayout3" id="0x7f0b004f"/>
-    <public type="id" name="findButton" id="0x7f0b0050"/>
-    <public type="id" name="replaceButton" id="0x7f0b0051"/>
-    <public type="id" name="replaceAllButton" id="0x7f0b0052"/>
-    <public type="id" name="LinearLayout" id="0x7f0b0053"/>
-    <public type="id" name="session_passphrase" id="0x7f0b0054"/>
-    <public type="id" name="save_session_passphrase" id="0x7f0b0055"/>
-    <public type="id" name="passphrase_text_view" id="0x7f0b0056"/>
-    <public type="id" name="session_password" id="0x7f0b0057"/>
-    <public type="id" name="save_session_password" id="0x7f0b0058"/>
-    <public type="id" name="password_text_view" id="0x7f0b0059"/>
-    <public type="id" name="text" id="0x7f0b005a"/>
-    <public type="id" name="selected" id="0x7f0b005b"/>
-    <public type="id" name="message" id="0x7f0b005c"/>
-    <public type="id" name="list" id="0x7f0b005d"/>
-    <public type="id" name="git_info" id="0x7f0b005e"/>
-    <public type="id" name="git_save" id="0x7f0b005f"/>
-    <public type="id" name="git_clone" id="0x7f0b0060"/>
-    <public type="id" name="git_delete" id="0x7f0b0061"/>
-    <public type="id" name="text_info" id="0x7f0b0062"/>
-    <public type="id" name="icon1" id="0x7f0b0063"/>
-    <public type="id" name="text1" id="0x7f0b0064"/>
-    <public type="id" name="top" id="0x7f0b0065"/>
-    <public type="id" name="filesystem_spinner" id="0x7f0b0066"/>
-    <public type="id" name="drawer_layout" id="0x7f0b0067"/>
-    <public type="id" name="mainLayout" id="0x7f0b0068"/>
-    <public type="id" name="undobar" id="0x7f0b0069"/>
-    <public type="id" name="undobar_message" id="0x7f0b006a"/>
-    <public type="id" name="undobar_button" id="0x7f0b006b"/>
-    <public type="id" name="SlidingDrawerMenu" id="0x7f0b006c"/>
-    <public type="id" name="menu" id="0x7f0b006d"/>
-    <public type="id" name="footerLayout" id="0x7f0b006e"/>
-    <public type="id" name="newFileButton" id="0x7f0b006f"/>
-    <public type="id" name="openFileButton" id="0x7f0b0070"/>
-    <public type="id" name="saveFileButton" id="0x7f0b0071"/>
-    <public type="id" name="closeFileButton" id="0x7f0b0072"/>
-    <public type="id" name="undoButton" id="0x7f0b0073"/>
-    <public type="id" name="redoButton" id="0x7f0b0074"/>
-    <public type="id" name="openFindButton" id="0x7f0b0075"/>
-    <public type="id" name="share" id="0x7f0b0076"/>
-    <public type="id" name="settings" id="0x7f0b0077"/>
-    <public type="id" name="footer" id="0x7f0b0078"/>
-    <public type="id" name="menudrawerbutton" id="0x7f0b0079"/>
-    <public type="id" name="footer_encoding" id="0x7f0b007a"/>
-    <public type="id" name="navigation_list" id="0x7f0b007b"/>
-    <public type="id" name="nl_title" id="0x7f0b007c"/>
-    <public type="id" name="nl_subtitle" id="0x7f0b007d"/>
-    <public type="id" name="progress" id="0x7f0b007e"/>
-    <public type="id" name="pull_to_refresh_header" id="0x7f0b007f"/>
-    <public type="id" name="pull_to_refresh_progress" id="0x7f0b0080"/>
-    <public type="id" name="pull_to_refresh_text" id="0x7f0b0081"/>
-    <public type="id" name="pull_to_refresh_updated_at" id="0x7f0b0082"/>
-    <public type="id" name="SlidingDrawer" id="0x7f0b0083"/>
-    <public type="id" name="documentListFrame" id="0x7f0b0084"/>
-    <public type="id" name="documentListButton" id="0x7f0b0085"/>
-    <public type="id" name="documentsFindAnimator" id="0x7f0b0086"/>
-    <public type="id" name="documentList" id="0x7f0b0087"/>
-    <public type="id" name="sftp_save" id="0x7f0b0088"/>
-    <public type="id" name="sftp_test" id="0x7f0b0089"/>
-    <public type="id" name="sftp_cancel" id="0x7f0b008a"/>
-    <public type="id" name="sftp_delete" id="0x7f0b008b"/>
-    <public type="id" name="textView1" id="0x7f0b008c"/>
-    <public type="id" name="textCtrl" id="0x7f0b008d"/>
-    <public type="id" name="textAlt" id="0x7f0b008e"/>
-    <public type="id" name="textShift" id="0x7f0b008f"/>
-    <public type="id" name="textKey" id="0x7f0b0090"/>
-    <public type="id" name="editTextDummy" id="0x7f0b0091"/>
-    <public type="id" name="buttonRemove" id="0x7f0b0092"/>
-    <public type="id" name="buttonDefault" id="0x7f0b0093"/>
-    <public type="id" name="theme_checkbox" id="0x7f0b0094"/>
-    <public type="id" name="action_new" id="0x7f0b0095"/>
-    <public type="id" name="action_open" id="0x7f0b0096"/>
-    <public type="id" name="action_save" id="0x7f0b0097"/>
-    <public type="id" name="action_close" id="0x7f0b0098"/>
-    <public type="id" name="action_save_as" id="0x7f0b0099"/>
-    <public type="id" name="action_undo" id="0x7f0b009a"/>
-    <public type="id" name="action_redo" id="0x7f0b009b"/>
-    <public type="id" name="action_find" id="0x7f0b009c"/>
-    <public type="id" name="action_goto" id="0x7f0b009d"/>
-    <public type="id" name="action_file_actions" id="0x7f0b009e"/>
-    <public type="id" name="action_share" id="0x7f0b009f"/>
-    <public type="id" name="action_syntax" id="0x7f0b00a0"/>
-    <public type="id" name="action_git_actions" id="0x7f0b00a1"/>
-    <public type="id" name="action_run_external" id="0x7f0b00a2"/>
-    <public type="id" name="action_run_sl4a_back" id="0x7f0b00a3"/>
-    <public type="id" name="action_run_sl4a_term" id="0x7f0b00a4"/>
-    <public type="id" name="action_preview" id="0x7f0b00a5"/>
-    <public type="id" name="action_create_shortcut" id="0x7f0b00a6"/>
-    <public type="id" name="action_text_actions" id="0x7f0b00a7"/>
-    <public type="id" name="action_select_all" id="0x7f0b00a8"/>
-    <public type="id" name="action_cut" id="0x7f0b00a9"/>
-    <public type="id" name="action_copy" id="0x7f0b00aa"/>
-    <public type="id" name="action_paste" id="0x7f0b00ab"/>
-    <public type="id" name="action_insert_color" id="0x7f0b00ac"/>
-    <public type="id" name="action_indent" id="0x7f0b00ad"/>
-    <public type="id" name="action_unindent" id="0x7f0b00ae"/>
-    <public type="id" name="action_expand" id="0x7f0b00af"/>
-    <public type="id" name="action_read_only" id="0x7f0b00b0"/>
-    <public type="id" name="action_extra_keys" id="0x7f0b00b1"/>
-    <public type="id" name="action_writer_mode" id="0x7f0b00b2"/>
-    <public type="id" name="action_ask_encoding" id="0x7f0b00b3"/>
-    <public type="id" name="action_settings" id="0x7f0b00b4"/>
-    <public type="id" name="action_help" id="0x7f0b00b5"/>
-    <public type="id" name="action_exit" id="0x7f0b00b6"/>
-    <public type="id" name="action_file" id="0x7f0b00b7"/>
-    <public type="id" name="action_commit" id="0x7f0b00b8"/>
-    <public type="id" name="action_push" id="0x7f0b00b9"/>
-    <public type="id" name="action_pull" id="0x7f0b00ba"/>
-    <public type="id" name="iconTextView" id="0x7f0b00bb"/>
-    <public type="id" name="keyboardView" id="0x7f0b00bc"/>
-    <public type="id" name="closeButton" id="0x7f0b00bd"/>
-    <public type="id" name="button_layout" id="0x7f0b00be"/>
-    <public type="id" name="ScrollView01" id="0x7f0b00bf"/>
-    <public type="id" name="ScrollView02" id="0x7f0b00c0"/>
-    <public type="font" name="dummy_ae_0" id="0x7f0c0000"/>
-    <public type="font" name="dummy_ae_1" id="0x7f0c0001"/>
-    <public type="font" name="default" id="0x7f0c0002"/>
-    <public type="mipmap" name="ic_launcher" id="0x7f0d0000"/>
-<public type="string" name="file_system_local" id="0x7f050195"/><public type="string" name="file_system_recent" id="0x7f050196"/><public type="layout" name="file_system_dialog_title" id="0x7f030021"/></resources>
+  <public type="attr" name="adSize" id="0x7f010000" />
+  <public type="attr" name="adSizes" id="0x7f010001" />
+  <public type="attr" name="adUnitId" id="0x7f010002" />
+  <public type="attr" name="mapType" id="0x7f010003" />
+  <public type="attr" name="cameraBearing" id="0x7f010004" />
+  <public type="attr" name="cameraTargetLat" id="0x7f010005" />
+  <public type="attr" name="cameraTargetLng" id="0x7f010006" />
+  <public type="attr" name="cameraTilt" id="0x7f010007" />
+  <public type="attr" name="cameraZoom" id="0x7f010008" />
+  <public type="attr" name="uiCompass" id="0x7f010009" />
+  <public type="attr" name="uiRotateGestures" id="0x7f01000a" />
+  <public type="attr" name="uiScrollGestures" id="0x7f01000b" />
+  <public type="attr" name="uiTiltGestures" id="0x7f01000c" />
+  <public type="attr" name="uiZoomControls" id="0x7f01000d" />
+  <public type="attr" name="uiZoomGestures" id="0x7f01000e" />
+  <public type="attr" name="useViewLifecycle" id="0x7f01000f" />
+  <public type="attr" name="zOrderOnTop" id="0x7f010010" />
+  <public type="attr" name="theme" id="0x7f010011" />
+  <public type="attr" name="environment" id="0x7f010012" />
+  <public type="attr" name="fragmentStyle" id="0x7f010013" />
+  <public type="attr" name="fragmentMode" id="0x7f010014" />
+  <public type="attr" name="buyButtonHeight" id="0x7f010015" />
+  <public type="attr" name="buyButtonWidth" id="0x7f010016" />
+  <public type="attr" name="buyButtonText" id="0x7f010017" />
+  <public type="attr" name="buyButtonAppearance" id="0x7f010018" />
+  <public type="attr" name="maskedWalletDetailsTextAppearance" id="0x7f010019" />
+  <public type="attr" name="maskedWalletDetailsHeaderTextAppearance" id="0x7f01001a" />
+  <public type="attr" name="maskedWalletDetailsBackground" id="0x7f01001b" />
+  <public type="attr" name="maskedWalletDetailsButtonTextAppearance" id="0x7f01001c" />
+  <public type="attr" name="maskedWalletDetailsButtonBackground" id="0x7f01001d" />
+  <public type="attr" name="maskedWalletDetailsLogoTextColor" id="0x7f01001e" />
+  <public type="attr" name="maskedWalletDetailsLogoImageType" id="0x7f01001f" />
+  <public type="attr" name="color_wheel_radius" id="0x7f010020" />
+  <public type="attr" name="color_wheel_thickness" id="0x7f010021" />
+  <public type="attr" name="color_center_radius" id="0x7f010022" />
+  <public type="attr" name="color_center_halo_radius" id="0x7f010023" />
+  <public type="attr" name="color_pointer_radius" id="0x7f010024" />
+  <public type="attr" name="color_pointer_halo_radius" id="0x7f010025" />
+  <public type="attr" name="bar_thickness" id="0x7f010026" />
+  <public type="attr" name="bar_length" id="0x7f010027" />
+  <public type="attr" name="bar_pointer_radius" id="0x7f010028" />
+  <public type="attr" name="bar_pointer_halo_radius" id="0x7f010029" />
+  <public type="attr" name="bar_orientation_horizontal" id="0x7f01002a" />
+  <public type="drawable" name="add_folder" id="0x7f020000" />
+  <public type="drawable" name="find_selector" id="0x7f020001" />
+  <public type="drawable" name="dummy_ae_2" id="0x7f020002" />
+  <public type="drawable" name="dummy_ae_3" id="0x7f020003" />
+  <public type="drawable" name="dummy_ae_4" id="0x7f020004" />
+  <public type="drawable" name="dummy_ae_5" id="0x7f020005" />
+  <public type="drawable" name="dummy_ae_6" id="0x7f020006" />
+  <public type="drawable" name="dummy_ae_7" id="0x7f020007" />
+  <public type="drawable" name="dummy_ae_8" id="0x7f020008" />
+  <public type="drawable" name="dummy_ae_9" id="0x7f020009" />
+  <public type="drawable" name="dummy_ae_a" id="0x7f02000a" />
+  <public type="drawable" name="dummy_ae_b" id="0x7f02000b" />
+  <public type="drawable" name="dummy_ae_c" id="0x7f02000c" />
+  <public type="drawable" name="box" id="0x7f02000d" />
+  <public type="drawable" name="close" id="0x7f02000e" />
+  <public type="drawable" name="close_drawer" id="0x7f02000f" />
+  <public type="drawable" name="close_drawer_h" id="0x7f020010" />
+  <public type="drawable" name="close_file_selector" id="0x7f020011" />
+  <public type="drawable" name="dummy_ae_12" id="0x7f020012" />
+  <public type="drawable" name="color" id="0x7f020013" />
+  <public type="drawable" name="dummy_ae_14" id="0x7f020014" />
+  <public type="drawable" name="dummy_ae_15" id="0x7f020015" />
+  <public type="drawable" name="dummy_ae_16" id="0x7f020016" />
+  <public type="drawable" name="dummy_ae_17" id="0x7f020017" />
+  <public type="drawable" name="dummy_ae_18" id="0x7f020018" />
+  <public type="drawable" name="dummy_ae_19" id="0x7f020019" />
+  <public type="drawable" name="dummy_ae_1a" id="0x7f02001a" />
+  <public type="drawable" name="dummy_ae_1b" id="0x7f02001b" />
+  <public type="drawable" name="dummy_ae_1c" id="0x7f02001c" />
+  <public type="drawable" name="dummy_ae_1d" id="0x7f02001d" />
+  <public type="drawable" name="dummy_ae_1e" id="0x7f02001e" />
+  <public type="drawable" name="dummy_ae_1f" id="0x7f02001f" />
+  <public type="drawable" name="dummy_ae_20" id="0x7f020020" />
+  <public type="drawable" name="dummy_ae_21" id="0x7f020021" />
+  <public type="drawable" name="dummy_ae_22" id="0x7f020022" />
+  <public type="drawable" name="dummy_ae_23" id="0x7f020023" />
+  <public type="drawable" name="dummy_ae_24" id="0x7f020024" />
+  <public type="drawable" name="dummy_ae_25" id="0x7f020025" />
+  <public type="drawable" name="dummy_ae_26" id="0x7f020026" />
+  <public type="drawable" name="dummy_ae_27" id="0x7f020027" />
+  <public type="drawable" name="dummy_ae_28" id="0x7f020028" />
+  <public type="drawable" name="dummy_ae_29" id="0x7f020029" />
+  <public type="drawable" name="dummy_ae_2a" id="0x7f02002a" />
+  <public type="drawable" name="dummy_ae_2b" id="0x7f02002b" />
+  <public type="drawable" name="copy" id="0x7f02002c" />
+  <public type="drawable" name="cut" id="0x7f02002d" />
+  <public type="drawable" name="drive" id="0x7f02002e" />
+  <public type="drawable" name="dropbox" id="0x7f02002f" />
+  <public type="drawable" name="expand" id="0x7f020030" />
+  <public type="drawable" name="file" id="0x7f020031" />
+  <public type="drawable" name="file_menu" id="0x7f020032" />
+  <public type="drawable" name="find" id="0x7f020033" />
+  <public type="drawable" name="dummy_ae_34" id="0x7f020034" />
+  <public type="drawable" name="dummy_ae_35" id="0x7f020035" />
+  <public type="drawable" name="folder" id="0x7f020036" />
+  <public type="drawable" name="force" id="0x7f020037" />
+  <public type="drawable" name="git" id="0x7f020038" />
+  <public type="drawable" name="git_add" id="0x7f020039" />
+  <public type="drawable" name="git_conflicting" id="0x7f02003a" />
+  <public type="drawable" name="git_remove" id="0x7f02003b" />
+  <public type="drawable" name="git_update" id="0x7f02003c" />
+  <public type="drawable" name="home" id="0x7f02003d" />
+  <public type="drawable" name="dummy_ae_3e" id="0x7f02003e" />
+  <public type="drawable" name="home_up" id="0x7f02003f" />
+  <public type="drawable" name="dummy_ae_40" id="0x7f020040" />
+  <public type="drawable" name="ic_got_it" id="0x7f020041" />
+  <public type="drawable" name="dummy_ae_42" id="0x7f020042" />
+  <public type="drawable" name="ic_menu_edit" id="0x7f020043" />
+  <public type="drawable" name="ic_menu_manage" id="0x7f020044" />
+  <public type="drawable" name="ic_menu_play_clip" id="0x7f020045" />
+  <public type="drawable" name="ic_menu_sort_alphabetically" id="0x7f020046" />
+  <public type="drawable" name="ic_menu_upload" id="0x7f020047" />
+  <public type="drawable" name="ic_menu_view" id="0x7f020048" />
+  <public type="drawable" name="dummy_ae_49" id="0x7f020049" />
+  <public type="drawable" name="dummy_ae_4a" id="0x7f02004a" />
+  <public type="drawable" name="dummy_ae_4b" id="0x7f02004b" />
+  <public type="drawable" name="dummy_ae_4c" id="0x7f02004c" />
+  <public type="drawable" name="ignorecase" id="0x7f02004d" />
+  <public type="drawable" name="indent" id="0x7f02004e" />
+  <public type="drawable" name="dummy_ae_4f" id="0x7f02004f" />
+  <public type="drawable" name="dummy_ae_50" id="0x7f020050" />
+  <public type="drawable" name="key_selector" id="0x7f020051" />
+  <public type="drawable" name="local" id="0x7f020052" />
+  <public type="drawable" name="mini_dropbox" id="0x7f020053" />
+  <public type="drawable" name="mini_local" id="0x7f020054" />
+  <public type="drawable" name="mini_remote" id="0x7f020055" />
+  <public type="drawable" name="new_file" id="0x7f020056" />
+  <public type="drawable" name="dummy_ae_57" id="0x7f020057" />
+  <public type="drawable" name="new_file_selector" id="0x7f020058" />
+  <public type="drawable" name="open" id="0x7f020059" />
+  <public type="drawable" name="open_drawer" id="0x7f02005a" />
+  <public type="drawable" name="open_drawer_h" id="0x7f02005b" />
+  <public type="drawable" name="open_file_selector" id="0x7f02005c" />
+  <public type="drawable" name="dummy_ae_5d" id="0x7f02005d" />
+  <public type="drawable" name="paste" id="0x7f02005e" />
+  <public type="drawable" name="play" id="0x7f02005f" />
+  <public type="drawable" name="play_sl4a" id="0x7f020060" />
+  <public type="drawable" name="dummy_ae_61" id="0x7f020061" />
+  <public type="drawable" name="dummy_ae_62" id="0x7f020062" />
+  <public type="drawable" name="preferences" id="0x7f020063" />
+  <public type="drawable" name="dummy_ae_64" id="0x7f020064" />
+  <public type="drawable" name="preview" id="0x7f020065" />
+  <public type="drawable" name="recent" id="0x7f020066" />
+  <public type="drawable" name="redo" id="0x7f020067" />
+  <public type="drawable" name="dummy_ae_68" id="0x7f020068" />
+  <public type="drawable" name="redo_selector" id="0x7f020069" />
+  <public type="drawable" name="regexp" id="0x7f02006a" />
+  <public type="drawable" name="remote" id="0x7f02006b" />
+  <public type="drawable" name="replace" id="0x7f02006c" />
+  <public type="drawable" name="replace_all" id="0x7f02006d" />
+  <public type="drawable" name="save" id="0x7f02006e" />
+  <public type="drawable" name="save_as" id="0x7f02006f" />
+  <public type="drawable" name="save_file_selector" id="0x7f020070" />
+  <public type="drawable" name="dummy_ae_71" id="0x7f020071" />
+  <public type="drawable" name="select_all" id="0x7f020072" />
+  <public type="drawable" name="settings_selector" id="0x7f020073" />
+  <public type="drawable" name="share" id="0x7f020074" />
+  <public type="drawable" name="share_action" id="0x7f020075" />
+  <public type="drawable" name="dummy_ae_76" id="0x7f020076" />
+  <public type="drawable" name="share_selector" id="0x7f020077" />
+  <public type="drawable" name="shortcut" id="0x7f020078" />
+  <public type="drawable" name="text" id="0x7f020079" />
+  <public type="drawable" name="dummy_ae_7a" id="0x7f02007a" />
+  <public type="drawable" name="undo" id="0x7f02007b" />
+  <public type="drawable" name="dummy_ae_7c" id="0x7f02007c" />
+  <public type="drawable" name="undo_selector" id="0x7f02007d" />
+  <public type="drawable" name="dummy_ae_7e" id="0x7f02007e" />
+  <public type="drawable" name="undobar_button" id="0x7f02007f" />
+  <public type="drawable" name="dummy_ae_80" id="0x7f020080" />
+  <public type="drawable" name="dummy_ae_81" id="0x7f020081" />
+  <public type="drawable" name="dummy_ae_82" id="0x7f020082" />
+  <public type="drawable" name="unindent" id="0x7f020083" />
+  <public type="drawable" name="wraparound" id="0x7f020084" />
+  <public type="drawable" name="dummy_ae_85" id="0x7f020085" />
+  <public type="drawable" name="key_background_default" id="0x7f020086" />
+  <public type="drawable" name="key_background_pressed" id="0x7f020087" />
+  <public type="drawable" name="ic_launcher_foreground" id="0x7f020088" />
+  <public type="drawable" name="dummy_ae_89" id="0x7f020089" />
+  <public type="drawable" name="ic_launcher_background" id="0x7f02008a" />
+  <public type="drawable" name="bg_toggle_off" id="0x7f02008b" />
+  <public type="drawable" name="bg_toggle_on" id="0x7f02008c" />
+  <public type="drawable" name="toggle_style" id="0x7f02008d" />
+  <public type="drawable" name="divider" id="0x7f02008e" />
+  <public type="layout" name="activity_chooser" id="0x7f030000" />
+  <public type="layout" name="browser_list" id="0x7f030001" />
+  <public type="layout" name="color_picker_halo" id="0x7f030002" />
+  <public type="layout" name="document_row" id="0x7f030003" />
+  <public type="layout" name="dropdown_line" id="0x7f030004" />
+  <public type="layout" name="edit_theme" id="0x7f030005" />
+  <public type="layout" name="editor_view" id="0x7f030006" />
+  <public type="layout" name="editor_view_wrapped" id="0x7f030007" />
+  <public type="layout" name="external_preferences" id="0x7f030008" />
+  <public type="layout" name="file_dialog" id="0x7f030009" />
+  <public type="layout" name="file_row" id="0x7f03000a" />
+  <public type="layout" name="find_view" id="0x7f03000b" />
+  <public type="layout" name="get_passphrase" id="0x7f03000c" />
+  <public type="layout" name="get_password" id="0x7f03000d" />
+  <public type="layout" name="git_change_layout" id="0x7f03000e" />
+  <public type="layout" name="git_commit_view" id="0x7f03000f" />
+  <public type="layout" name="git_preferences" id="0x7f030010" />
+  <public type="layout" name="info_panel" id="0x7f030011" />
+  <public type="layout" name="item_row" id="0x7f030012" />
+  <public type="layout" name="keyboard_popup_layout" id="0x7f030013" />
+  <public type="layout" name="left_drawer" id="0x7f030014" />
+  <public type="layout" name="main_window" id="0x7f030015" />
+  <public type="layout" name="main_window_wrapped" id="0x7f030016" />
+  <public type="layout" name="menu_view" id="0x7f030017" />
+  <public type="layout" name="navigation_dropdown" id="0x7f030018" />
+  <public type="layout" name="navigation_list" id="0x7f030019" />
+  <public type="layout" name="progress_bar" id="0x7f03001a" />
+  <public type="layout" name="pull_to_refresh_header" id="0x7f03001b" />
+  <public type="layout" name="right_panel_view" id="0x7f03001c" />
+  <public type="layout" name="sftp_preferences" id="0x7f03001d" />
+  <public type="layout" name="shortcut" id="0x7f03001e" />
+  <public type="layout" name="theme_row" id="0x7f03001f" />
+  <public type="layout" name="toast_layout" id="0x7f030020" />
+  <public type="xml" name="keyboard" id="0x7f040000" />
+  <public type="xml" name="keyboard_comp" id="0x7f040001" />
+  <public type="xml" name="keyboard_punct" id="0x7f040002" />
+  <public type="xml" name="keyboard_quote" id="0x7f040003" />
+  <public type="xml" name="keyboard_slash" id="0x7f040004" />
+  <public type="xml" name="keyboard_symbol" id="0x7f040005" />
+  <public type="xml" name="keyboard_web" id="0x7f040006" />
+  <public type="xml" name="compat_file_paths" id="0x7f040007" />
+  <public type="string" name="auth_client_using_bad_version_title" id="0x7f050000" />
+  <public type="string" name="auth_client_needs_enabling_title" id="0x7f050001" />
+  <public type="string" name="auth_client_needs_installation_title" id="0x7f050002" />
+  <public type="string" name="auth_client_needs_update_title" id="0x7f050003" />
+  <public type="string" name="auth_client_play_services_err_notification_msg" id="0x7f050004" />
+  <public type="string" name="auth_client_requested_by_msg" id="0x7f050005" />
+  <public type="string" name="common_google_play_services_notification_ticker" id="0x7f050006" />
+  <public type="string" name="common_google_play_services_notification_needs_installation_title" id="0x7f050007" />
+  <public type="string" name="common_google_play_services_notification_needs_update_title" id="0x7f050008" />
+  <public type="string" name="common_google_play_services_needs_enabling_title" id="0x7f050009" />
+  <public type="string" name="common_google_play_services_error_notification_requested_by_msg" id="0x7f05000a" />
+  <public type="string" name="common_google_play_services_install_title" id="0x7f05000b" />
+  <public type="string" name="common_google_play_services_install_text_phone" id="0x7f05000c" />
+  <public type="string" name="common_google_play_services_install_text_tablet" id="0x7f05000d" />
+  <public type="string" name="common_google_play_services_install_button" id="0x7f05000e" />
+  <public type="string" name="common_google_play_services_enable_title" id="0x7f05000f" />
+  <public type="string" name="common_google_play_services_enable_text" id="0x7f050010" />
+  <public type="string" name="common_google_play_services_enable_button" id="0x7f050011" />
+  <public type="string" name="common_google_play_services_update_title" id="0x7f050012" />
+  <public type="string" name="common_google_play_services_update_text" id="0x7f050013" />
+  <public type="string" name="common_google_play_services_network_error_title" id="0x7f050014" />
+  <public type="string" name="common_google_play_services_network_error_text" id="0x7f050015" />
+  <public type="string" name="common_google_play_services_invalid_account_title" id="0x7f050016" />
+  <public type="string" name="common_google_play_services_invalid_account_text" id="0x7f050017" />
+  <public type="string" name="common_google_play_services_unknown_issue" id="0x7f050018" />
+  <public type="string" name="common_google_play_services_unsupported_title" id="0x7f050019" />
+  <public type="string" name="common_google_play_services_unsupported_text" id="0x7f05001a" />
+  <public type="string" name="common_google_play_services_unsupported_date_text" id="0x7f05001b" />
+  <public type="string" name="common_google_play_services_update_button" id="0x7f05001c" />
+  <public type="string" name="common_signin_button_text" id="0x7f05001d" />
+  <public type="string" name="common_signin_button_text_long" id="0x7f05001e" />
+  <public type="string" name="wallet_buy_button_place_holder" id="0x7f05001f" />
+  <public type="string" name="com.crashlytics.android.build_id" id="0x7f050020" />
+  <public type="string" name="app_name" id="0x7f050021" />
+  <public type="string" name="action_bar_file" id="0x7f050022" />
+  <public type="string" name="action_bar_new" id="0x7f050023" />
+  <public type="string" name="action_bar_open" id="0x7f050024" />
+  <public type="string" name="action_bar_save" id="0x7f050025" />
+  <public type="string" name="action_bar_save_as" id="0x7f050026" />
+  <public type="string" name="action_bar_close" id="0x7f050027" />
+  <public type="string" name="action_bar_select_all" id="0x7f050028" />
+  <public type="string" name="action_bar_cut" id="0x7f050029" />
+  <public type="string" name="action_bar_copy" id="0x7f05002a" />
+  <public type="string" name="action_bar_indent" id="0x7f05002b" />
+  <public type="string" name="action_bar_unindent" id="0x7f05002c" />
+  <public type="string" name="action_bar_paste" id="0x7f05002d" />
+  <public type="string" name="action_bar_insert_color" id="0x7f05002e" />
+  <public type="string" name="action_bar_expand" id="0x7f05002f" />
+  <public type="string" name="action_bar_expand_condensed" id="0x7f050030" />
+  <public type="string" name="action_bar_undo" id="0x7f050031" />
+  <public type="string" name="action_bar_redo" id="0x7f050032" />
+  <public type="string" name="action_bar_find_replace" id="0x7f050033" />
+  <public type="string" name="action_bar_goto_line" id="0x7f050034" />
+  <public type="string" name="action_bar_force_syntax" id="0x7f050035" />
+  <public type="string" name="action_bar_create_shortcut" id="0x7f050036" />
+  <public type="string" name="action_bar_search_files" id="0x7f050037" />
+  <public type="string" name="action_bar_read_only" id="0x7f050038" />
+  <public type="string" name="action_bar_writer_mode" id="0x7f050039" />
+  <public type="string" name="action_bar_extra_keys" id="0x7f05003a" />
+  <public type="string" name="action_bar_ask_encoding" id="0x7f05003b" />
+  <public type="string" name="action_bar_settings" id="0x7f05003c" />
+  <public type="string" name="action_bar_file_actions" id="0x7f05003d" />
+  <public type="string" name="action_bar_text_actions" id="0x7f05003e" />
+  <public type="string" name="action_bar_exit" id="0x7f05003f" />
+  <public type="string" name="action_bar_git_actions" id="0x7f050040" />
+  <public type="string" name="action_bar_git_commit" id="0x7f050041" />
+  <public type="string" name="action_bar_git_push" id="0x7f050042" />
+  <public type="string" name="action_bar_git_pull" id="0x7f050043" />
+  <public type="string" name="action_bar_new_encoding" id="0x7f050044" />
+  <public type="string" name="action_bar_open_encoding" id="0x7f050045" />
+  <public type="string" name="action_bar_toggle_document_list" id="0x7f050046" />
+  <public type="string" name="action_bar_duplicate_line" id="0x7f050047" />
+  <public type="string" name="action_bar_delete_line" id="0x7f050048" />
+  <public type="string" name="action_bar_find_again" id="0x7f050049" />
+  <public type="string" name="action_bar_goto_line_start" id="0x7f05004a" />
+  <public type="string" name="action_bar_goto_line_end" id="0x7f05004b" />
+  <public type="string" name="action_bar_next_tab" id="0x7f05004c" />
+  <public type="string" name="action_bar_prev_tab" id="0x7f05004d" />
+  <public type="string" name="theme_background" id="0x7f05004e" />
+  <public type="string" name="theme_normal_text" id="0x7f05004f" />
+  <public type="string" name="theme_reserved_keyword" id="0x7f050050" />
+  <public type="string" name="theme_data_type" id="0x7f050051" />
+  <public type="string" name="theme_literal" id="0x7f050052" />
+  <public type="string" name="theme_variable" id="0x7f050053" />
+  <public type="string" name="theme_preprocessor" id="0x7f050054" />
+  <public type="string" name="theme_comment" id="0x7f050055" />
+  <public type="string" name="theme_parsing_error" id="0x7f050056" />
+  <public type="string" name="theme_function" id="0x7f050057" />
+  <public type="string" name="theme_operator" id="0x7f050058" />
+  <public type="string" name="theme_create" id="0x7f050059" />
+  <public type="string" name="theme_edit" id="0x7f05005a" />
+  <public type="string" name="theme_custom" id="0x7f05005b" />
+  <public type="string" name="theme_select_color" id="0x7f05005c" />
+  <public type="string" name="generic_ok" id="0x7f05005d" />
+  <public type="string" name="generic_cancel" id="0x7f05005e" />
+  <public type="string" name="generic_yes" id="0x7f05005f" />
+  <public type="string" name="generic_no" id="0x7f050060" />
+  <public type="string" name="generic_ignore" id="0x7f050061" />
+  <public type="string" name="generic_delete" id="0x7f050062" />
+  <public type="string" name="generic_test" id="0x7f050063" />
+  <public type="string" name="generic_save" id="0x7f050064" />
+  <public type="string" name="generic_saved" id="0x7f050065" />
+  <public type="string" name="generic_create" id="0x7f050066" />
+  <public type="string" name="generic_close" id="0x7f050067" />
+  <public type="string" name="generic_not_found" id="0x7f050068" />
+  <public type="string" name="generic_reload" id="0x7f050069" />
+  <public type="string" name="generic_retry" id="0x7f05006a" />
+  <public type="string" name="generic_commit" id="0x7f05006b" />
+  <public type="string" name="generic_loading" id="0x7f05006c" />
+  <public type="string" name="find" id="0x7f05006d" />
+  <public type="string" name="find_replace" id="0x7f05006e" />
+  <public type="string" name="find_replace_all" id="0x7f05006f" />
+  <public type="string" name="find_ignore_case" id="0x7f050070" />
+  <public type="string" name="find_wrap_around" id="0x7f050071" />
+  <public type="string" name="find_regular_expression" id="0x7f050072" />
+  <public type="string" name="goto_line" id="0x7f050073" />
+  <public type="string" name="goto_line_number" id="0x7f050074" />
+  <public type="string" name="goto_line_go" id="0x7f050075" />
+  <public type="string" name="file_management_overwrite" id="0x7f050076" />
+  <public type="string" name="file_management_close_file_warning" id="0x7f050077" />
+  <public type="string" name="file_management_file_exists" id="0x7f050078" />
+  <public type="string" name="file_management_file_exists_msg" id="0x7f050079" />
+  <public type="string" name="file_management_file_not_exists_msg" id="0x7f05007a" />
+  <public type="string" name="file_management_close_file" id="0x7f05007b" />
+  <public type="string" name="file_management_open_file" id="0x7f05007c" />
+  <public type="string" name="file_management_save_file" id="0x7f05007d" />
+  <public type="string" name="file_management_choose_filesystem" id="0x7f05007e" />
+  <public type="string" name="file_management_new_file" id="0x7f05007f" />
+  <public type="string" name="file_management_select_encoding" id="0x7f050080" />
+  <public type="string" name="file_management_file_changed" id="0x7f050081" />
+  <public type="string" name="file_management_file_changed_on_disk" id="0x7f050082" />
+  <public type="string" name="file_management_file_changed_on_dropbox" id="0x7f050083" />
+  <public type="string" name="file_management_file_changed_on_box" id="0x7f050084" />
+  <public type="string" name="file_management_add_folder" id="0x7f050085" />
+  <public type="string" name="remote_open_sftp_file" id="0x7f050086" />
+  <public type="string" name="remote_save_sftp_file" id="0x7f050087" />
+  <public type="string" name="remote_connection_successful" id="0x7f050088" />
+  <public type="string" name="remote_public_key_auth" id="0x7f050089" />
+  <public type="string" name="remote_password_auth" id="0x7f05008a" />
+  <public type="string" name="remote_connecting" id="0x7f05008b" />
+  <public type="string" name="remote_establishing_connection" id="0x7f05008c" />
+  <public type="string" name="remote_login" id="0x7f05008d" />
+  <public type="string" name="remote_open_dropbox_file" id="0x7f05008e" />
+  <public type="string" name="remote_save_dropbox_file" id="0x7f05008f" />
+  <public type="string" name="remote_dropbox_connection_successful" id="0x7f050090" />
+  <public type="string" name="remote_dropbox_connection_failed" id="0x7f050091" />
+  <public type="string" name="remote_open_box_file" id="0x7f050092" />
+  <public type="string" name="remote_save_box_file" id="0x7f050093" />
+  <public type="string" name="remote_box_connection_successful" id="0x7f050094" />
+  <public type="string" name="remote_box_connection_failed" id="0x7f050095" />
+  <public type="string" name="error_save_failed" id="0x7f050096" />
+  <public type="string" name="error_save_failed_msg" id="0x7f050097" />
+  <public type="string" name="error_open_failed" id="0x7f050098" />
+  <public type="string" name="error_open_failed_msg" id="0x7f050099" />
+  <public type="string" name="error_file_too_big_msg" id="0x7f05009a" />
+  <public type="string" name="error_download_failed" id="0x7f05009b" />
+  <public type="string" name="error_download_failed_msg" id="0x7f05009c" />
+  <public type="string" name="error_auth_failed_msg" id="0x7f05009d" />
+  <public type="string" name="error_upload_failed" id="0x7f05009e" />
+  <public type="string" name="error_upload_failed_msg" id="0x7f05009f" />
+  <public type="string" name="error_connecting" id="0x7f0500a0" />
+  <public type="string" name="error_authenticating" id="0x7f0500a1" />
+  <public type="string" name="error_invalid_key" id="0x7f0500a2" />
+  <public type="string" name="error_dropbox_unlinked_msg" id="0x7f0500a3" />
+  <public type="string" name="error_box_unlinked_msg" id="0x7f0500a4" />
+  <public type="string" name="error_permission_denied_msg" id="0x7f0500a5" />
+  <public type="string" name="error_color" id="0x7f0500a6" />
+  <public type="string" name="error_unknown" id="0x7f0500a7" />
+  <public type="string" name="error_opening" id="0x7f0500a8" />
+  <public type="string" name="error_market" id="0x7f0500a9" />
+  <public type="string" name="error_not_in_initial_folder" id="0x7f0500aa" />
+  <public type="string" name="error_no_initial_folder" id="0x7f0500ab" />
+  <public type="string" name="error_no_base_url" id="0x7f0500ac" />
+  <public type="string" name="error_failed_open_browser" id="0x7f0500ad" />
+  <public type="string" name="error_failed_add_folder" id="0x7f0500ae" />
+  <public type="string" name="error_failed_getting_files" id="0x7f0500af" />
+  <public type="string" name="error_creating_shortcut" id="0x7f0500b0" />
+  <public type="string" name="external_choose_action" id="0x7f0500b1" />
+  <public type="string" name="external_choose_command" id="0x7f0500b2" />
+  <public type="string" name="external_preview_broser" id="0x7f0500b3" />
+  <public type="string" name="external_sl4a_error" id="0x7f0500b4" />
+  <public type="string" name="external_run_in_sl4a_terminal" id="0x7f0500b5" />
+  <public type="string" name="external_run_in_sl4a_background" id="0x7f0500b6" />
+  <public type="string" name="external_send_file" id="0x7f0500b7" />
+  <public type="string" name="external_run_external" id="0x7f0500b8" />
+  <public type="string" name="external_command_data" id="0x7f0500b9" />
+  <public type="string" name="external_command_name" id="0x7f0500ba" />
+  <public type="string" name="external_command_name_summary" id="0x7f0500bb" />
+  <public type="string" name="external_command_expression" id="0x7f0500bc" />
+  <public type="string" name="external_command_expression_summary" id="0x7f0500bd" />
+  <public type="string" name="external_command_action" id="0x7f0500be" />
+  <public type="string" name="external_command_action_summary" id="0x7f0500bf" />
+  <public type="string" name="external_insert_token" id="0x7f0500c0" />
+  <public type="string" name="external_value_for" id="0x7f0500c1" />
+  <public type="string" name="external_do_nothing" id="0x7f0500c2" />
+  <public type="string" name="external_show_results" id="0x7f0500c3" />
+  <public type="string" name="external_open_in_new_document" id="0x7f0500c4" />
+  <public type="string" name="external_replace_current_document" id="0x7f0500c5" />
+  <public type="string" name="external_save_file_first" id="0x7f0500c6" />
+  <public type="string" name="external_no_output" id="0x7f0500c7" />
+  <public type="string" name="external_command_output" id="0x7f0500c8" />
+  <public type="string" name="external_command_error" id="0x7f0500c9" />
+  <public type="string" name="install_droidgrep_title" id="0x7f0500ca" />
+  <public type="string" name="install_droidgrep_message" id="0x7f0500cb" />
+  <public type="string" name="shortcut_title_general" id="0x7f0500cc" />
+  <public type="string" name="shortcut_title_filemanagement" id="0x7f0500cd" />
+  <public type="string" name="shortcut_title_editor" id="0x7f0500ce" />
+  <public type="string" name="shortcut_title_menus" id="0x7f0500cf" />
+  <public type="string" name="shortcut_title_external" id="0x7f0500d0" />
+  <public type="string" name="shortcut_title_documents" id="0x7f0500d1" />
+  <public type="string" name="shortcut_special_keys" id="0x7f0500d2" />
+  <public type="string" name="shortcut_message" id="0x7f0500d3" />
+  <public type="string" name="exit" id="0x7f0500d4" />
+  <public type="string" name="exit_really" id="0x7f0500d5" />
+  <public type="string" name="exit_really_msg" id="0x7f0500d6" />
+  <public type="string" name="syntax_change" id="0x7f0500d7" />
+  <public type="string" name="syntax_save" id="0x7f0500d8" />
+  <public type="string" name="syntax_always_open" id="0x7f0500d9" />
+  <public type="string" name="syntax_default" id="0x7f0500da" />
+  <public type="string" name="pull_to_refresh_pull_label" id="0x7f0500db" />
+  <public type="string" name="pull_to_refresh_release_label" id="0x7f0500dc" />
+  <public type="string" name="pull_to_refresh_refreshing_label" id="0x7f0500dd" />
+  <public type="string" name="pull_to_refresh_tap_label" id="0x7f0500de" />
+  <public type="string" name="got_it" id="0x7f0500df" />
+  <public type="string" name="navigation_drawer_tip" id="0x7f0500e0" />
+  <public type="string" name="find_dialog_tip" id="0x7f0500e1" />
+  <public type="string" name="pref_yes" id="0x7f0500e2" />
+  <public type="string" name="pref_no" id="0x7f0500e3" />
+  <public type="string" name="pref_cat_appearance" id="0x7f0500e4" />
+  <public type="string" name="pref_cat_appearance_summary" id="0x7f0500e5" />
+  <public type="string" name="pref_theme" id="0x7f0500e6" />
+  <public type="string" name="pref_theme_summary" id="0x7f0500e7" />
+  <public type="string" name="pref_select_theme" id="0x7f0500e8" />
+  <public type="string" name="pref_custom_theme" id="0x7f0500e9" />
+  <public type="string" name="pref_custom_theme_summary" id="0x7f0500ea" />
+  <public type="string" name="pref_font_size" id="0x7f0500eb" />
+  <public type="string" name="pref_font_size_summary" id="0x7f0500ec" />
+  <public type="string" name="pref_select_font_size" id="0x7f0500ed" />
+  <public type="string" name="pref_font_face" id="0x7f0500ee" />
+  <public type="string" name="pref_font_face_summary" id="0x7f0500ef" />
+  <public type="string" name="pref_select_font_face" id="0x7f0500f0" />
+  <public type="string" name="pref_info_panel" id="0x7f0500f1" />
+  <public type="string" name="pref_info_panel_active" id="0x7f0500f2" />
+  <public type="string" name="pref_info_panel_inactive" id="0x7f0500f3" />
+  <public type="string" name="pref_cat_editor" id="0x7f0500f4" />
+  <public type="string" name="pref_cat_editor_summary" id="0x7f0500f5" />
+  <public type="string" name="pref_line_numbers" id="0x7f0500f6" />
+  <public type="string" name="pref_show_line_numbers" id="0x7f0500f7" />
+  <public type="string" name="pref_hide_line_numbers" id="0x7f0500f8" />
+  <public type="string" name="pref_syntax_highlighting" id="0x7f0500f9" />
+  <public type="string" name="pref_syntax_highlighting_active" id="0x7f0500fa" />
+  <public type="string" name="pref_syntax_highlighting_inactive" id="0x7f0500fb" />
+  <public type="string" name="pref_line_break" id="0x7f0500fc" />
+  <public type="string" name="pref_line_break_summary" id="0x7f0500fd" />
+  <public type="string" name="pref_default_encoding" id="0x7f0500fe" />
+  <public type="string" name="pref_default_encoding_summary" id="0x7f0500ff" />
+  <public type="string" name="pref_line_wrap" id="0x7f050100" />
+  <public type="string" name="pref_line_wrap_active" id="0x7f050101" />
+  <public type="string" name="pref_line_wrap_inactive" id="0x7f050102" />
+  <public type="string" name="pref_extra_keys" id="0x7f050103" />
+  <public type="string" name="pref_extra_keys_active" id="0x7f050104" />
+  <public type="string" name="pref_extra_keys_inactive" id="0x7f050105" />
+  <public type="string" name="pref_space_tab" id="0x7f050106" />
+  <public type="string" name="pref_space_tab_active" id="0x7f050107" />
+  <public type="string" name="pref_space_tab_inactive" id="0x7f050108" />
+  <public type="string" name="pref_bugsense" id="0x7f050109" />
+  <public type="string" name="pref_bugsense_active" id="0x7f05010a" />
+  <public type="string" name="pref_bugsense_inactive" id="0x7f05010b" />
+  <public type="string" name="pref_low_profile" id="0x7f05010c" />
+  <public type="string" name="pref_low_profile_active" id="0x7f05010d" />
+  <public type="string" name="pref_low_profile_inactive" id="0x7f05010e" />
+  <public type="string" name="pref_spell_check" id="0x7f05010f" />
+  <public type="string" name="pref_spell_check_active" id="0x7f050110" />
+  <public type="string" name="pref_spell_check_inactive" id="0x7f050111" />
+  <public type="string" name="pref_space_tab_size" id="0x7f050112" />
+  <public type="string" name="pref_space_tab_size_summary" id="0x7f050113" />
+  <public type="string" name="pref_highlight_size" id="0x7f050114" />
+  <public type="string" name="pref_highlight_size_summary" id="0x7f050115" />
+  <public type="string" name="pref_select_encoding" id="0x7f050116" />
+  <public type="string" name="pref_select_encoding_active" id="0x7f050117" />
+  <public type="string" name="pref_select_encoding_inactive" id="0x7f050118" />
+  <public type="string" name="pref_read_only" id="0x7f050119" />
+  <public type="string" name="pref_read_only_active" id="0x7f05011a" />
+  <public type="string" name="pref_read_only_inactive" id="0x7f05011b" />
+  <public type="string" name="pref_position_hack" id="0x7f05011c" />
+  <public type="string" name="pref_position_hack_active" id="0x7f05011d" />
+  <public type="string" name="pref_position_hack_inactive" id="0x7f05011e" />
+  <public type="string" name="pref_ad_margin" id="0x7f05011f" />
+  <public type="string" name="pref_ad_margin_active" id="0x7f050120" />
+  <public type="string" name="pref_ad_margin_inactive" id="0x7f050121" />
+  <public type="string" name="pref_root_mode" id="0x7f050122" />
+  <public type="string" name="pref_root_mode_active" id="0x7f050123" />
+  <public type="string" name="pref_root_mode_inactive" id="0x7f050124" />
+  <public type="string" name="pref_undo_level" id="0x7f050125" />
+  <public type="string" name="pref_undo_level_summary" id="0x7f050126" />
+  <public type="string" name="pref_cat_remote" id="0x7f050127" />
+  <public type="string" name="pref_cat_remote_summary" id="0x7f050128" />
+  <public type="string" name="pref_cat_external" id="0x7f050129" />
+  <public type="string" name="pref_cat_external_summary" id="0x7f05012a" />
+  <public type="string" name="pref_cat_other" id="0x7f05012b" />
+  <public type="string" name="pref_cat_other_summary" id="0x7f05012c" />
+  <public type="string" name="pref_action_bar" id="0x7f05012d" />
+  <public type="string" name="pref_action_bar_enabled" id="0x7f05012e" />
+  <public type="string" name="pref_action_bar_disabled" id="0x7f05012f" />
+  <public type="string" name="pref_alternative_action_bar" id="0x7f050130" />
+  <public type="string" name="pref_alternative_action_bar_enabled" id="0x7f050131" />
+  <public type="string" name="pref_alternative_action_bar_disabled" id="0x7f050132" />
+  <public type="string" name="pref_hide_document_list" id="0x7f050133" />
+  <public type="string" name="pref_hide_document_list_enabled" id="0x7f050134" />
+  <public type="string" name="pref_hide_document_list_disabled" id="0x7f050135" />
+  <public type="string" name="pref_action_bar_tabs" id="0x7f050136" />
+  <public type="string" name="pref_action_bar_tabs_enabled" id="0x7f050137" />
+  <public type="string" name="pref_action_bar_tabs_disabled" id="0x7f050138" />
+  <public type="string" name="pref_split_action_bar" id="0x7f050139" />
+  <public type="string" name="pref_split_action_bar_enabled" id="0x7f05013a" />
+  <public type="string" name="pref_split_action_bar_disabled" id="0x7f05013b" />
+  <public type="string" name="pref_save_temp" id="0x7f05013c" />
+  <public type="string" name="pref_save_temp_enabled" id="0x7f05013d" />
+  <public type="string" name="pref_save_temp_disabled" id="0x7f05013e" />
+  <public type="string" name="pref_reuse_connections" id="0x7f05013f" />
+  <public type="string" name="pref_reuse_connections_enabled" id="0x7f050140" />
+  <public type="string" name="pref_reuse_connections_disabled" id="0x7f050141" />
+  <public type="string" name="pref_help" id="0x7f050142" />
+  <public type="string" name="pref_rate" id="0x7f050143" />
+  <public type="string" name="pref_rate_summary" id="0x7f050144" />
+  <public type="string" name="pref_forget_dropbox" id="0x7f050145" />
+  <public type="string" name="pref_forget_box" id="0x7f050146" />
+  <public type="string" name="pref_dropbox_active" id="0x7f050147" />
+  <public type="string" name="pref_box_active" id="0x7f050148" />
+  <public type="string" name="pref_drive_active" id="0x7f050149" />
+  <public type="string" name="pref_dropbox_active_enabled" id="0x7f05014a" />
+  <public type="string" name="pref_dropbox_active_disabled" id="0x7f05014b" />
+  <public type="string" name="pref_box_active_enabled" id="0x7f05014c" />
+  <public type="string" name="pref_box_active_disabled" id="0x7f05014d" />
+  <public type="string" name="pref_drive_active_enabled" id="0x7f05014e" />
+  <public type="string" name="pref_drive_active_disabled" id="0x7f05014f" />
+  <public type="string" name="pref_sftp_actions" id="0x7f050150" />
+  <public type="string" name="pref_sftp_options" id="0x7f050151" />
+  <public type="string" name="pref_sftp_servers" id="0x7f050152" />
+  <public type="string" name="pref_global_options" id="0x7f050153" />
+  <public type="string" name="pref_external_commands" id="0x7f050154" />
+  <public type="string" name="pref_add_external_command" id="0x7f050155" />
+  <public type="string" name="pref_edit_external_command_summary" id="0x7f050156" />
+  <public type="string" name="pref_add_external_command_summary" id="0x7f050157" />
+  <public type="string" name="pref_sftp_add_server" id="0x7f050158" />
+  <public type="string" name="pref_sftp_edit_server_summary" id="0x7f050159" />
+  <public type="string" name="pref_sftp_add_server_summary" id="0x7f05015a" />
+  <public type="string" name="pref_sftp_no_name" id="0x7f05015b" />
+  <public type="string" name="pref_sftp_server_data" id="0x7f05015c" />
+  <public type="string" name="pref_sftp_specific_server_data" id="0x7f05015d" />
+  <public type="string" name="pref_ftp_specific_server_data" id="0x7f05015e" />
+  <public type="string" name="pref_ftps" id="0x7f05015f" />
+  <public type="string" name="pref_ftpes" id="0x7f050160" />
+  <public type="string" name="pref_sftp_server_name" id="0x7f050161" />
+  <public type="string" name="pref_sftp_server_type" id="0x7f050162" />
+  <public type="string" name="pref_sftp_server_address" id="0x7f050163" />
+  <public type="string" name="pref_sftp_server_username" id="0x7f050164" />
+  <public type="string" name="pref_sftp_server_password" id="0x7f050165" />
+  <public type="string" name="pref_sftp_server_passphrase" id="0x7f050166" />
+  <public type="string" name="pref_sftp_ask_password_everytime" id="0x7f050167" />
+  <public type="string" name="pref_sftp_save_passphrase" id="0x7f050168" />
+  <public type="string" name="pref_sftp_save_password" id="0x7f050169" />
+  <public type="string" name="pref_sftp_password_saved" id="0x7f05016a" />
+  <public type="string" name="pref_sftp_server_port" id="0x7f05016b" />
+  <public type="string" name="pref_sftp_initial_folder" id="0x7f05016c" />
+  <public type="string" name="pref_sftp_base_url" id="0x7f05016d" />
+  <public type="string" name="pref_sftp_use_global_private_key" id="0x7f05016e" />
+  <public type="string" name="pref_forget_session_passwords" id="0x7f05016f" />
+  <public type="string" name="pref_forget_session_passwords_summary" id="0x7f050170" />
+  <public type="string" name="pref_session_passwords_cleared" id="0x7f050171" />
+  <public type="string" name="pref_private_key_path" id="0x7f050172" />
+  <public type="string" name="pref_global_private_key_path" id="0x7f050173" />
+  <public type="string" name="pref_cat_shortcuts" id="0x7f050174" />
+  <public type="string" name="pref_cat_shortcuts_summary" id="0x7f050175" />
+  <public type="string" name="pref_raw_keys" id="0x7f050176" />
+  <public type="string" name="pref_raw_keys_active" id="0x7f050177" />
+  <public type="string" name="pref_raw_keys_inactive" id="0x7f050178" />
+  <public type="string" name="pref_volume_up_as_ctrl" id="0x7f050179" />
+  <public type="string" name="pref_volume_up_as_ctrl_active" id="0x7f05017a" />
+  <public type="string" name="pref_volume_up_as_ctrl_inactive" id="0x7f05017b" />
+  <public type="string" name="pref_volume_down_as_tab" id="0x7f05017c" />
+  <public type="string" name="pref_volume_down_as_tab_active" id="0x7f05017d" />
+  <public type="string" name="pref_volume_down_as_tab_inactive" id="0x7f05017e" />
+  <public type="string" name="premium_feature" id="0x7f05017f" />
+  <public type="string" name="premium_dropbox_feature_summary" id="0x7f050180" />
+  <public type="string" name="premium_box_feature_summary" id="0x7f050181" />
+  <public type="string" name="premium_drive_feature_summary" id="0x7f050182" />
+  <public type="string" name="premium_sftp_feature_summary" id="0x7f050183" />
+  <public type="string" name="premium_external_summary" id="0x7f050184" />
+  <public type="string" name="premium_emmet_summary" id="0x7f050185" />
+  <public type="string" name="premium_theme_feature_summary" id="0x7f050186" />
+  <public type="string" name="premium_upgrade" id="0x7f050187" />
+  <public type="string" name="premium_no_thanks" id="0x7f050188" />
+  <public type="string" name="fontFamily" id="0x7f050189" />
+  <public type="string" name="Text" id="0x7f05018a" />
+  <public type="string" name="Keyword" id="0x7f05018b" />
+  <public type="string" name="Type" id="0x7f05018c" />
+  <public type="string" name="String" id="0x7f05018d" />
+  <public type="string" name="Variable" id="0x7f05018e" />
+  <public type="string" name="Macro" id="0x7f05018f" />
+  <public type="string" name="Comment" id="0x7f050190" />
+  <public type="string" name="Error" id="0x7f050191" />
+  <public type="string" name="Method" id="0x7f050192" />
+  <public type="string" name="Operator" id="0x7f050193" />
+  <public type="string" name="Background" id="0x7f050194" />
+  <public type="color" name="backgroundDefault" id="0x7f060000" />
+  <public type="color" name="backgroundPressed" id="0x7f060001" />
+  <public type="color" name="bg" id="0x7f060002" />
+  <public type="color" name="key_bg" id="0x7f060003" />
+  <public type="color" name="key_down" id="0x7f060004" />
+  <public type="color" name="txt" id="0x7f060005" />
+  <public type="color" name="txt2" id="0x7f060006" />
+  <public type="color" name="accent" id="0x7f060007" />
+  <public type="color" name="icon_bg" id="0x7f060008" />
+  <public type="color" name="icon_bg2" id="0x7f060009" />
+  <public type="color" name="icon_fg" id="0x7f06000a" />
+  <public type="color" name="btn_text" id="0x7f06000b" />
+  <public type="color" name="dummy_ae_c" id="0x7f06000c" />
+  <public type="color" name="dummy_ae_d" id="0x7f06000d" />
+  <public type="color" name="dummy_ae_e" id="0x7f06000e" />
+  <public type="color" name="dummy_ae_f" id="0x7f06000f" />
+  <public type="color" name="dummy_ae_10" id="0x7f060010" />
+  <public type="color" name="dummy_ae_11" id="0x7f060011" />
+  <public type="color" name="dummy_ae_12" id="0x7f060012" />
+  <public type="color" name="dummy_ae_13" id="0x7f060013" />
+  <public type="color" name="dummy_ae_14" id="0x7f060014" />
+  <public type="color" name="dummy_ae_15" id="0x7f060015" />
+  <public type="color" name="dummy_ae_16" id="0x7f060016" />
+  <public type="color" name="dummy_ae_17" id="0x7f060017" />
+  <public type="color" name="dummy_ae_18" id="0x7f060018" />
+  <public type="color" name="dummy_ae_19" id="0x7f060019" />
+  <public type="color" name="dummy_ae_1a" id="0x7f06001a" />
+  <public type="color" name="textColorPrimary" id="0x7f06001b" />
+  <public type="color" name="textColorSecondary" id="0x7f06001c" />
+  <public type="color" name="appBackground" id="0x7f06001d" />
+  <public type="color" name="dummy_ae_1e" id="0x7f06001e" />
+  <public type="color" name="dummy_ae_1f" id="0x7f06001f" />
+  <public type="color" name="accentPrimary" id="0x7f060020" />
+  <public type="color" name="accentSecondary" id="0x7f060021" />
+  <public type="integer" name="google_play_services_version" id="0x7f070000" />
+  <public type="style" name="TabText" id="0x7f080000" />
+  <public type="style" name="AppTheme" id="0x7f080001" />
+  <public type="style" name="AppButton" id="0x7f080002" />
+  <public type="style" name="dummy_ae_0" id="0x7f080003" />
+  <public type="style" name="FileDialog" id="0x7f080004" />
+  <public type="style" name="DroidEdit.Theme" id="0x7f080005" />
+  <public type="style" name="custom_actionbar_tab_text_style" id="0x7f080006" />
+  <public type="style" name="UndoBar" id="0x7f080007" />
+  <public type="style" name="UndoBarMessage" id="0x7f080008" />
+  <public type="style" name="UndoBarButton" id="0x7f080009" />
+  <public type="style" name="MyCustomTheme" id="0x7f08000a" />
+  <public type="style" name="MyCustomButton" id="0x7f08000b" />
+  <public type="style" name="dummy_ae_1" id="0x7f08000c" />
+  <public type="style" name="dummy_ae_2" id="0x7f08000d" />
+  <public type="style" name="dummy_ae_3" id="0x7f08000e" />
+  <public type="style" name="Swatch" id="0x7f08000f" />
+  <public type="style" name="MenuIcon" id="0x7f080010" />
+  <public type="dimen" name="color_wheel_radius" id="0x7f090000" />
+  <public type="dimen" name="color_wheel_thickness" id="0x7f090001" />
+  <public type="dimen" name="color_center_halo_radius" id="0x7f090002" />
+  <public type="dimen" name="color_center_radius" id="0x7f090003" />
+  <public type="dimen" name="color_pointer_halo_radius" id="0x7f090004" />
+  <public type="dimen" name="color_pointer_radius" id="0x7f090005" />
+  <public type="dimen" name="bar_thickness" id="0x7f090006" />
+  <public type="dimen" name="bar_length" id="0x7f090007" />
+  <public type="dimen" name="bar_pointer_radius" id="0x7f090008" />
+  <public type="dimen" name="bar_pointer_halo_radius" id="0x7f090009" />
+  <public type="dimen" name="ad_bottom_padding" id="0x7f09000a" />
+  <public type="dimen" name="textSize" id="0x7f09000b" />
+  <public type="dimen" name="text" id="0x7f09000c" />
+  <public type="dimen" name="text_sm" id="0x7f09000d" />
+  <public type="dimen" name="r_key" id="0x7f09000e" />
+  <public type="dimen" name="r_toggle" id="0x7f09000f" />
+  <public type="dimen" name="gap" id="0x7f090010" />
+  <public type="menu" name="action_bar" id="0x7f0a0000" />
+  <public type="menu" name="alternative_action_bar" id="0x7f0a0001" />
+  <public type="menu" name="git_menu" id="0x7f0a0002" />
+  <public type="id" name="hybrid" id="0x7f0b0000" />
+  <public type="id" name="none" id="0x7f0b0001" />
+  <public type="id" name="normal" id="0x7f0b0002" />
+  <public type="id" name="satellite" id="0x7f0b0003" />
+  <public type="id" name="terrain" id="0x7f0b0004" />
+  <public type="id" name="holo_dark" id="0x7f0b0005" />
+  <public type="id" name="holo_light" id="0x7f0b0006" />
+  <public type="id" name="production" id="0x7f0b0007" />
+  <public type="id" name="sandbox" id="0x7f0b0008" />
+  <public type="id" name="strict_sandbox" id="0x7f0b0009" />
+  <public type="id" name="buyButton" id="0x7f0b000a" />
+  <public type="id" name="selectionDetails" id="0x7f0b000b" />
+  <public type="id" name="match_parent" id="0x7f0b000c" />
+  <public type="id" name="wrap_content" id="0x7f0b000d" />
+  <public type="id" name="book_now" id="0x7f0b000e" />
+  <public type="id" name="buy_now" id="0x7f0b000f" />
+  <public type="id" name="buy_with_google" id="0x7f0b0010" />
+  <public type="id" name="classic" id="0x7f0b0011" />
+  <public type="id" name="grayscale" id="0x7f0b0012" />
+  <public type="id" name="monochrome" id="0x7f0b0013" />
+  <public type="id" name="list_item" id="0x7f0b0014" />
+  <public type="id" name="icon" id="0x7f0b0015" />
+  <public type="id" name="title" id="0x7f0b0016" />
+  <public type="id" name="browser_list" id="0x7f0b0017" />
+  <public type="id" name="LinearLayout2" id="0x7f0b0018" />
+  <public type="id" name="picker" id="0x7f0b0019" />
+  <public type="id" name="saturation_bar" id="0x7f0b001a" />
+  <public type="id" name="value_bar" id="0x7f0b001b" />
+  <public type="id" name="hexcolor" id="0x7f0b001c" />
+  <public type="id" name="RelativeLayout1" id="0x7f0b001d" />
+  <public type="id" name="scrollView1" id="0x7f0b001e" />
+  <public type="id" name="linearLayout" id="0x7f0b001f" />
+  <public type="id" name="style_list" id="0x7f0b0020" />
+  <public type="id" name="theme_color_background" id="0x7f0b0021" />
+  <public type="id" name="theme_color_1" id="0x7f0b0022" />
+  <public type="id" name="theme_color_2" id="0x7f0b0023" />
+  <public type="id" name="theme_color_3" id="0x7f0b0024" />
+  <public type="id" name="theme_color_4" id="0x7f0b0025" />
+  <public type="id" name="theme_color_5" id="0x7f0b0026" />
+  <public type="id" name="theme_color_6" id="0x7f0b0027" />
+  <public type="id" name="theme_color_7" id="0x7f0b0028" />
+  <public type="id" name="theme_color_8" id="0x7f0b0029" />
+  <public type="id" name="theme_color_9" id="0x7f0b002a" />
+  <public type="id" name="theme_color_10" id="0x7f0b002b" />
+  <public type="id" name="button_ok" id="0x7f0b002c" />
+  <public type="id" name="button_delete" id="0x7f0b002d" />
+  <public type="id" name="button_cancel" id="0x7f0b002e" />
+  <public type="id" name="keyboardLayout" id="0x7f0b002f" />
+  <public type="id" name="scrollview" id="0x7f0b0030" />
+  <public type="id" name="editorInnerLayout" id="0x7f0b0031" />
+  <public type="id" name="lineNumbers" id="0x7f0b0032" />
+  <public type="id" name="lineDivider" id="0x7f0b0033" />
+  <public type="id" name="editorHorizontalLayout" id="0x7f0b0034" />
+  <public type="id" name="textEditor" id="0x7f0b0035" />
+  <public type="id" name="keyboard" id="0x7f0b0036" />
+  <public type="id" name="external_save" id="0x7f0b0037" />
+  <public type="id" name="external_cancel" id="0x7f0b0038" />
+  <public type="id" name="external_delete" id="0x7f0b0039" />
+  <public type="id" name="home_up" id="0x7f0b003a" />
+  <public type="id" name="current_path" id="0x7f0b003b" />
+  <public type="id" name="home_folder" id="0x7f0b003c" />
+  <public type="id" name="add_folder" id="0x7f0b003d" />
+  <public type="id" name="getfilesprogress" id="0x7f0b003e" />
+  <public type="id" name="file_list" id="0x7f0b003f" />
+  <public type="id" name="new_file_layout" id="0x7f0b0040" />
+  <public type="id" name="new_file_name" id="0x7f0b0041" />
+  <public type="id" name="new_file_button" id="0x7f0b0042" />
+  <public type="id" name="file_image" id="0x7f0b0043" />
+  <public type="id" name="file_row_layout" id="0x7f0b0044" />
+  <public type="id" name="file_name" id="0x7f0b0045" />
+  <public type="id" name="file_data" id="0x7f0b0046" />
+  <public type="id" name="file_date" id="0x7f0b0047" />
+  <public type="id" name="file_size" id="0x7f0b0048" />
+  <public type="id" name="LinearLayout1" id="0x7f0b0049" />
+  <public type="id" name="findEdit" id="0x7f0b004a" />
+  <public type="id" name="replaceEdit" id="0x7f0b004b" />
+  <public type="id" name="checkBoxWrap" id="0x7f0b004c" />
+  <public type="id" name="checkBoxRegularExpression" id="0x7f0b004d" />
+  <public type="id" name="checkBoxIgnoreCase" id="0x7f0b004e" />
+  <public type="id" name="LinearLayout3" id="0x7f0b004f" />
+  <public type="id" name="findButton" id="0x7f0b0050" />
+  <public type="id" name="replaceButton" id="0x7f0b0051" />
+  <public type="id" name="replaceAllButton" id="0x7f0b0052" />
+  <public type="id" name="LinearLayout" id="0x7f0b0053" />
+  <public type="id" name="session_passphrase" id="0x7f0b0054" />
+  <public type="id" name="save_session_passphrase" id="0x7f0b0055" />
+  <public type="id" name="passphrase_text_view" id="0x7f0b0056" />
+  <public type="id" name="session_password" id="0x7f0b0057" />
+  <public type="id" name="save_session_password" id="0x7f0b0058" />
+  <public type="id" name="password_text_view" id="0x7f0b0059" />
+  <public type="id" name="text" id="0x7f0b005a" />
+  <public type="id" name="selected" id="0x7f0b005b" />
+  <public type="id" name="message" id="0x7f0b005c" />
+  <public type="id" name="list" id="0x7f0b005d" />
+  <public type="id" name="git_info" id="0x7f0b005e" />
+  <public type="id" name="git_save" id="0x7f0b005f" />
+  <public type="id" name="git_clone" id="0x7f0b0060" />
+  <public type="id" name="git_delete" id="0x7f0b0061" />
+  <public type="id" name="text_info" id="0x7f0b0062" />
+  <public type="id" name="icon1" id="0x7f0b0063" />
+  <public type="id" name="text1" id="0x7f0b0064" />
+  <public type="id" name="top" id="0x7f0b0065" />
+  <public type="id" name="filesystem_spinner" id="0x7f0b0066" />
+  <public type="id" name="drawer_layout" id="0x7f0b0067" />
+  <public type="id" name="mainLayout" id="0x7f0b0068" />
+  <public type="id" name="undobar" id="0x7f0b0069" />
+  <public type="id" name="undobar_message" id="0x7f0b006a" />
+  <public type="id" name="undobar_button" id="0x7f0b006b" />
+  <public type="id" name="SlidingDrawerMenu" id="0x7f0b006c" />
+  <public type="id" name="menu" id="0x7f0b006d" />
+  <public type="id" name="footerLayout" id="0x7f0b006e" />
+  <public type="id" name="newFileButton" id="0x7f0b006f" />
+  <public type="id" name="openFileButton" id="0x7f0b0070" />
+  <public type="id" name="saveFileButton" id="0x7f0b0071" />
+  <public type="id" name="closeFileButton" id="0x7f0b0072" />
+  <public type="id" name="undoButton" id="0x7f0b0073" />
+  <public type="id" name="redoButton" id="0x7f0b0074" />
+  <public type="id" name="openFindButton" id="0x7f0b0075" />
+  <public type="id" name="share" id="0x7f0b0076" />
+  <public type="id" name="settings" id="0x7f0b0077" />
+  <public type="id" name="footer" id="0x7f0b0078" />
+  <public type="id" name="menudrawerbutton" id="0x7f0b0079" />
+  <public type="id" name="footer_encoding" id="0x7f0b007a" />
+  <public type="id" name="navigation_list" id="0x7f0b007b" />
+  <public type="id" name="nl_title" id="0x7f0b007c" />
+  <public type="id" name="nl_subtitle" id="0x7f0b007d" />
+  <public type="id" name="progress" id="0x7f0b007e" />
+  <public type="id" name="pull_to_refresh_header" id="0x7f0b007f" />
+  <public type="id" name="pull_to_refresh_progress" id="0x7f0b0080" />
+  <public type="id" name="pull_to_refresh_text" id="0x7f0b0081" />
+  <public type="id" name="pull_to_refresh_updated_at" id="0x7f0b0082" />
+  <public type="id" name="SlidingDrawer" id="0x7f0b0083" />
+  <public type="id" name="documentListFrame" id="0x7f0b0084" />
+  <public type="id" name="documentListButton" id="0x7f0b0085" />
+  <public type="id" name="documentsFindAnimator" id="0x7f0b0086" />
+  <public type="id" name="documentList" id="0x7f0b0087" />
+  <public type="id" name="sftp_save" id="0x7f0b0088" />
+  <public type="id" name="sftp_test" id="0x7f0b0089" />
+  <public type="id" name="sftp_cancel" id="0x7f0b008a" />
+  <public type="id" name="sftp_delete" id="0x7f0b008b" />
+  <public type="id" name="textView1" id="0x7f0b008c" />
+  <public type="id" name="textCtrl" id="0x7f0b008d" />
+  <public type="id" name="textAlt" id="0x7f0b008e" />
+  <public type="id" name="textShift" id="0x7f0b008f" />
+  <public type="id" name="textKey" id="0x7f0b0090" />
+  <public type="id" name="editTextDummy" id="0x7f0b0091" />
+  <public type="id" name="buttonRemove" id="0x7f0b0092" />
+  <public type="id" name="buttonDefault" id="0x7f0b0093" />
+  <public type="id" name="theme_checkbox" id="0x7f0b0094" />
+  <public type="id" name="action_new" id="0x7f0b0095" />
+  <public type="id" name="action_open" id="0x7f0b0096" />
+  <public type="id" name="action_save" id="0x7f0b0097" />
+  <public type="id" name="action_close" id="0x7f0b0098" />
+  <public type="id" name="action_save_as" id="0x7f0b0099" />
+  <public type="id" name="action_undo" id="0x7f0b009a" />
+  <public type="id" name="action_redo" id="0x7f0b009b" />
+  <public type="id" name="action_find" id="0x7f0b009c" />
+  <public type="id" name="action_goto" id="0x7f0b009d" />
+  <public type="id" name="action_file_actions" id="0x7f0b009e" />
+  <public type="id" name="action_share" id="0x7f0b009f" />
+  <public type="id" name="action_syntax" id="0x7f0b00a0" />
+  <public type="id" name="action_git_actions" id="0x7f0b00a1" />
+  <public type="id" name="action_run_external" id="0x7f0b00a2" />
+  <public type="id" name="action_run_sl4a_back" id="0x7f0b00a3" />
+  <public type="id" name="action_run_sl4a_term" id="0x7f0b00a4" />
+  <public type="id" name="action_preview" id="0x7f0b00a5" />
+  <public type="id" name="action_create_shortcut" id="0x7f0b00a6" />
+  <public type="id" name="action_text_actions" id="0x7f0b00a7" />
+  <public type="id" name="action_select_all" id="0x7f0b00a8" />
+  <public type="id" name="action_cut" id="0x7f0b00a9" />
+  <public type="id" name="action_copy" id="0x7f0b00aa" />
+  <public type="id" name="action_paste" id="0x7f0b00ab" />
+  <public type="id" name="action_insert_color" id="0x7f0b00ac" />
+  <public type="id" name="action_indent" id="0x7f0b00ad" />
+  <public type="id" name="action_unindent" id="0x7f0b00ae" />
+  <public type="id" name="action_expand" id="0x7f0b00af" />
+  <public type="id" name="action_read_only" id="0x7f0b00b0" />
+  <public type="id" name="action_extra_keys" id="0x7f0b00b1" />
+  <public type="id" name="action_writer_mode" id="0x7f0b00b2" />
+  <public type="id" name="action_ask_encoding" id="0x7f0b00b3" />
+  <public type="id" name="action_settings" id="0x7f0b00b4" />
+  <public type="id" name="action_help" id="0x7f0b00b5" />
+  <public type="id" name="action_exit" id="0x7f0b00b6" />
+  <public type="id" name="action_file" id="0x7f0b00b7" />
+  <public type="id" name="action_commit" id="0x7f0b00b8" />
+  <public type="id" name="action_push" id="0x7f0b00b9" />
+  <public type="id" name="action_pull" id="0x7f0b00ba" />
+  <public type="id" name="iconTextView" id="0x7f0b00bb" />
+  <public type="id" name="keyboardView" id="0x7f0b00bc" />
+  <public type="id" name="closeButton" id="0x7f0b00bd" />
+  <public type="id" name="button_layout" id="0x7f0b00be" />
+  <public type="id" name="ScrollView01" id="0x7f0b00bf" />
+  <public type="id" name="ScrollView02" id="0x7f0b00c0" />
+  <public type="font" name="dummy_ae_0" id="0x7f0c0000" />
+  <public type="font" name="dummy_ae_1" id="0x7f0c0001" />
+  <public type="font" name="default" id="0x7f0c0002" />
+  <public type="mipmap" name="ic_launcher" id="0x7f0d0000" />
+  <public type="string" name="file_system_local" id="0x7f050195" />
+  <public type="string" name="file_system_recent" id="0x7f050196" />
+  <public type="layout" name="file_system_dialog_title" id="0x7f030021" />
+  <public type="drawable" name="ic_warning_outline" id="0x7f02008f" />
+  <public type="layout" name="close_file_dialog_title" id="0x7f030022" />
+  <public type="layout" name="warning_dialog_title" id="0x7f030023" />
+  <public type="string" name="save_and_close" id="0x7f050197" />
+  <public type="string" name="close_without_saving" id="0x7f050198" />
+</resources>

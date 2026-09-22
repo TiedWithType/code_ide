@@ -1504,17 +1504,6 @@
 
 .method public initialize(Landroid/content/Context;Z)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
     .locals 7
-
-    invoke-static {p1, p0}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
-    move-result v0
-    if-eqz v0, :compat_ready
-    if-eqz p2, :compat_failed
-    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-    return-object v0
-    :compat_failed
-    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-    return-object v0
-    :compat_ready
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "startAuthProcess"    # Z
     .annotation system Ldalvik/annotation/Throws;
@@ -1523,11 +1512,29 @@
         }
     .end annotation
 
+    invoke-static {p1, p0}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    if-eqz p2, :cond_0
+
+    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    return-object v0
+
+    :cond_0
+    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    return-object v0
+
     .prologue
     .line 101
+    :cond_1
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_2
 
     .line 102
     sget-object v0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mSavedConnections:Ljava/util/HashMap;
@@ -1547,7 +1554,7 @@
     .line 103
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_2
 
     .line 104
     new-instance v0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
@@ -1578,12 +1585,12 @@
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 109
-    :cond_0
+    :cond_2
     invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->isInitializationCanceled()Z
 
     move-result v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_3
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
@@ -1592,7 +1599,7 @@
     return-object v0
 
     .line 112
-    :cond_1
+    :cond_3
     :try_start_0
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
 
@@ -1604,7 +1611,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_a
 
     .line 113
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
@@ -1618,14 +1625,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_4
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto :goto_0
 
     .line 115
-    :cond_2
+    :cond_4
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->SUCCESS:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
@@ -1648,67 +1655,13 @@
 
     move-result v0
 
-    if-eqz v0, :cond_5
-
-    if-eqz p2, :cond_5
-
-    iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mPrivateKey:Ljava/lang/String;
-
-    if-eqz v0, :cond_3
-
-    iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mPrivateKey:Ljava/lang/String;
-
-    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string/jumbo v1, ""
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_5
-
-    .line 119
-    :cond_3
-    invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->isInitializationCanceled()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_4
-
-    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-
-    goto :goto_0
-
-    .line 120
-    :cond_4
-    invoke-direct {p0, p1}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->askForPassword(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
-
-    move-result-object v0
-
-    goto :goto_0
-
-    .line 122
-    :cond_5
-    invoke-virtual {v6}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string/jumbo v1, "Auth fail"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
     if-eqz v0, :cond_7
 
     if-eqz p2, :cond_7
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mPrivateKey:Ljava/lang/String;
 
-    if-eqz v0, :cond_7
+    if-eqz v0, :cond_5
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mPrivateKey:Ljava/lang/String;
 
@@ -1722,9 +1675,10 @@
 
     move-result v0
 
-    if-nez v0, :cond_7
+    if-eqz v0, :cond_7
 
-    .line 123
+    .line 119
+    :cond_5
     invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->isInitializationCanceled()Z
 
     move-result v0
@@ -1735,8 +1689,61 @@
 
     goto :goto_0
 
-    .line 124
+    .line 120
     :cond_6
+    invoke-direct {p0, p1}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->askForPassword(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    move-result-object v0
+
+    goto :goto_0
+
+    .line 122
+    :cond_7
+    invoke-virtual {v6}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string/jumbo v1, "Auth fail"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_9
+
+    if-eqz p2, :cond_9
+
+    iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mPrivateKey:Ljava/lang/String;
+
+    if-eqz v0, :cond_9
+
+    iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mPrivateKey:Ljava/lang/String;
+
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string/jumbo v1, ""
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_9
+
+    .line 123
+    invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->isInitializationCanceled()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_8
+
+    sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
+    goto :goto_0
+
+    .line 124
+    :cond_8
     invoke-direct {p0, p1}, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->askForPassphrase(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     move-result-object v0
@@ -1744,7 +1751,7 @@
     goto :goto_0
 
     .line 126
-    :cond_7
+    :cond_9
     const-string/jumbo v0, "DroidEdit"
 
     const-string/jumbo v1, ""
@@ -1753,7 +1760,7 @@
 
     .line 129
     .end local v6    # "e":Ljava/lang/Exception;
-    :cond_8
+    :cond_a
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
@@ -1772,14 +1779,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_9
+    if-eqz v0, :cond_b
 
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->CANCELED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto/16 :goto_0
 
     .line 133
-    :cond_9
+    :cond_b
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
 
     goto/16 :goto_0
@@ -1787,19 +1794,22 @@
 
 .method public isInitialized(Landroid/content/Context;)Z
     .locals 1
+    .param p1, "context"    # Landroid/content/Context;
 
     invoke-static {p1}, Lcom/code/ide/compat/StorageAccess;->hasLan(Landroid/content/Context;)Z
+
     move-result v0
-    if-nez v0, :compat_ready
+
+    if-nez v0, :cond_0
+
     return v0
-    :compat_ready
-    .param p1, "context"    # Landroid/content/Context;
 
     .prologue
     .line 96
+    :cond_0
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/implementation/sftp/SFTPFileSystem;->mConnection:Lcom/aor/droidedit/fs/implementation/sftp/SFTPConnection;
 
@@ -1807,14 +1817,14 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     const/4 v0, 0x1
 
     :goto_0
     return v0
 
-    :cond_0
+    :cond_1
     const/4 v0, 0x0
 
     goto :goto_0

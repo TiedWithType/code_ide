@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="save_and_close">Zapisz i zamknij</string>
+  <string name="close_without_saving">Odrzuć zmiany</string>
+  <string name="file_untitled">Bez nazwy</string>
+  <string name="time_just_now">przed chwilą</string>
+  <string name="time_yesterday">wczoraj</string>
+  <plurals name="time_minutes">
+    <item quantity="one">%d minutę temu</item>
+    <item quantity="few">%d minuty temu</item>
+    <item quantity="many">%d minut temu</item>
+    <item quantity="other">%d minuty temu</item>
+  </plurals>
+  <plurals name="time_hours">
+    <item quantity="one">%d godzinę temu</item>
+    <item quantity="few">%d godziny temu</item>
+    <item quantity="many">%d godzin temu</item>
+    <item quantity="other">%d godziny temu</item>
+  </plurals>
+  <plurals name="time_days">
+    <item quantity="one">%d dzień temu</item>
+    <item quantity="other">%d dni temu</item>
+  </plurals>
+  <string name="emmet_snippets_title">Snippety Emmet</string>
+  <string name="emmet_snippets_help">JSON: język → skrót → rozwinięcie. Zapisz, aby włączyć. Pola: ${1:tekst}, końcowy kursor: ${0}. Puste {} usuwa własne snippety.</string>
+  <string name="emmet_snippets_save">Zapisz</string>
+  <string name="emmet_snippets_invalid">Niepoprawny JSON lub format snippetów (maks. 32 Ki znaków, 200 snippetów).</string>
+  <string name="recovery_write_failed">Nie udało się zapisać kopii odzyskiwania. Zapisz pliki ręcznie.</string>
+</resources>

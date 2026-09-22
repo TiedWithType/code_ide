@@ -392,7 +392,9 @@
     const/4 v3, 0x0
 
     invoke-static {v3}, Lcom/code/ide/compat/PlatformCompat;->immutable(I)I
+
     move-result v3
+
     invoke-static {v1, v2, v0, v3}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
 
     move-result-object v0

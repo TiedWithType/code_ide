@@ -46,4 +46,10 @@ test('malformed expression',()=>assert.equal(run('div)','html',{start:0,end:4}).
 test('repeat budget',()=>assert.equal(run('li*1000000').error,'size'));
 test('document budget',()=>assert.equal(run('a'.repeat(524289)).error,'size'));
 test('abbr budget',()=>assert.equal(run('a'.repeat(4097)).error,'size'));
+test('custom HTML snippet fields',()=>{const r=run('card','html',{snippets:{html:{card:'article.card>h2{${1:Tytuł}}+p{${2:Treść}}'}}});assert(r.ok);assert.equal(r.text.slice(r.fields[0].start,r.fields[0].end),'Tytuł');assert.equal(r.text.slice(r.fields[1].start,r.fields[1].end),'Treść');assert.equal(r.fields.at(-1).index,0);assert.equal(r.fields.at(-1).start,r.text.length);});
+test('custom CSS snippet',()=>output('brand','css','color: #6750a4;',{snippets:{css:{brand:'color: #6750a4;'}}}));
+test('snippet language fallback JSX',()=>{const r=run('card','tsx',{snippets:{html:{card:'div.card'}}});assert.equal(r.text,'<div className="card"></div>');});
+test('tabstop UTF16 offsets',()=>{const r=run('hello','html',{snippets:{html:{hello:'p{😀 ${1:imię}}'}}});assert(r.ok);assert.equal(r.text.slice(r.fields[0].start,r.fields[0].end),'imię');});
+test('tabstop indentation offsets',()=>{const r=run('  ul>li>a','html');assert(r.ok);for(const f of r.fields){assert(f.start>=0&&f.end<=r.text.length);}assert.equal(r.fields.at(-1).index,0);});
+test('snippet cycle bounded by core',()=>output('loop','html','<loop></loop>',{snippets:{html:{loop:'loop'}}}));
 console.log(`${count} Emmet regression cases passed`);

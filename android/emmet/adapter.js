@@ -75,6 +75,7 @@ export function expand(req) {
         const lineStart = text.lastIndexOf('\n', start - 1) + 1;
         const indent = /^[\t ]*/.exec(text.slice(lineStart, start))[0];
         let firstField = null;
+        const fields = [];
         const options = {
             'output.indent': typeof req.indent === 'string' ? req.indent : '    ',
             'output.baseIndent': indent,
@@ -82,12 +83,22 @@ export function expand(req) {
             'output.field': (index, placeholder, offset) => {
                 // Emmet calls this in output order. Prefer the first positive tabstop.
                 const field = {index, start: offset, end: offset + placeholder.length};
+                fields.push(field);
                 if (!firstField || (index > 0 && (firstField.index === 0 || index < firstField.index))) firstField = field;
                 return placeholder;
             }
         };
         if (context.inline) options['output.format'] = false;
         const config = {type, syntax, maxRepeat: 1000, options, variables: {lang: req.lang || 'pl'}};
+        if (req.snippets && typeof req.snippets === 'object') {
+            const custom = req.snippets[syntax] || (type === 'stylesheet' ? req.snippets.css : req.snippets.html);
+            if (custom && typeof custom === 'object') {
+                config.snippets = Object.create(null);
+                for (const key of Object.keys(custom)) {
+                    if (key.length > 0 && key.length <= 64 && typeof custom[key] === 'string' && custom[key].length <= MAX_ABBR) config.snippets[key] = custom[key];
+                }
+            }
+        }
         if (type === 'markup' && context.parent) config.context = {name: context.parent};
         if (type === 'stylesheet') {
             // CSS value abbreviations, e.g. "margin: a" -> "margin: auto".
@@ -98,9 +109,13 @@ export function expand(req) {
         const output = expandAbbreviation(abbr, config);
         if (!output || output === abbr) throw new Error('empty');
         if (output.length > MAX_OUTPUT) throw new Error('size');
+        // One stop per field number. Zero is always the final stop.
+        fields.sort((a,b) => (a.index === 0 ? Infinity : a.index) - (b.index === 0 ? Infinity : b.index));
+        const stops = fields.filter((f,i) => !fields.slice(0,i).some(g => g.index === f.index));
+        if (stops.length && !stops.some(f => f.index === 0)) stops.push({index:0,start:output.length,end:output.length});
         const from = firstField ? firstField.start : output.length;
         const to = firstField ? firstField.end : output.length;
-        return {ok: true, start, end, text: output, selectionStart: Math.min(from, output.length), selectionEnd: Math.min(to, output.length), syntax};
+        return {ok: true, start, end, text: output, fields: stops, selectionStart: Math.min(from, output.length), selectionEnd: Math.min(to, output.length), syntax};
     } catch (e) {
         const code = ['syntax', 'size', 'context', 'empty', 'selection'].includes(e.message) ? e.message : 'invalid';
         return {ok: false, error: code};

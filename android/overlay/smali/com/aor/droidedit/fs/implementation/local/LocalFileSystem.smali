@@ -21,7 +21,9 @@
 
 .method private copyFile(Ljava/io/File;Ljava/io/File;)V
     .locals 0
+
     invoke-static {p1, p2}, Lcom/code/ide/compat/StorageAccess;->copy(Ljava/io/File;Ljava/io/File;)V
+
     return-void
 .end method
 
@@ -279,25 +281,37 @@
 
     .line 41
     .local v2, "list":Ljava/util/List;, "Ljava/util/List<Lcom/aor/droidedit/fs/implementation/FSElement;>;"
-    if-nez v1, :compat_list_ok
+    if-nez v1, :cond_0
+
     new-instance v5, Ljava/io/IOException;
+
     new-instance v6, Ljava/lang/StringBuilder;
-    const-string v7, "Nie można odczytać katalogu: "
+
+    const-string v7, "Nie mo\u017cna odczyta\u0107 katalogu: "
+
     invoke-direct {v6, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     invoke-virtual {p2}, Lcom/aor/droidedit/fs/implementation/FSFolder;->getPath()Ljava/lang/String;
+
     move-result-object v7
+
     invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     move-result-object v6
+
     invoke-direct {v5, v6}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
     throw v5
-    :compat_list_ok
+
+    :cond_0
     array-length v6, v1
 
     const/4 v5, 0x0
 
     :goto_0
-    if-lt v5, v6, :cond_1
+    if-lt v5, v6, :cond_2
 
     .line 47
     check-cast p2, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
@@ -313,17 +327,28 @@
 
     .line 48
     .local v4, "parentFile":Ljava/io/File;
-    if-eqz v4, :cond_0
+    if-eqz v4, :cond_1
+
     invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
+
     move-result-object v5
+
     invoke-virtual {p2}, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;->getFile()Ljava/io/File;
+
     move-result-object v6
+
     invoke-virtual {v5, v6}, Ljava/io/File;->equals(Ljava/lang/Object;)Z
+
     move-result v5
-    if-nez v5, :cond_0
+
+    if-nez v5, :cond_1
+
     invoke-static {v4}, Lcom/code/ide/compat/StorageAccess;->readableDirectory(Ljava/io/File;)Z
+
     move-result v5
-    if-eqz v5, :cond_0
+
+    if-eqz v5, :cond_1
+
     new-instance v5, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
 
     const-string/jumbo v6, ".."
@@ -334,12 +359,12 @@
 
     .line 49
     .end local v4    # "parentFile":Ljava/io/File;
-    :cond_0
+    :cond_1
     return-object v2
 
     .line 41
     .restart local p2    # "folder":Lcom/aor/droidedit/fs/implementation/FSFolder;
-    :cond_1
+    :cond_2
     aget-object v0, v1, v5
 
     .line 42
@@ -348,7 +373,7 @@
 
     move-result v7
 
-    if-eqz v7, :cond_2
+    if-eqz v7, :cond_3
 
     .line 43
     new-instance v7, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
@@ -364,7 +389,7 @@
     goto :goto_0
 
     .line 45
-    :cond_2
+    :cond_3
     new-instance v7, Lcom/aor/droidedit/fs/implementation/local/LocalFile;
 
     invoke-direct {v7, v0}, Lcom/aor/droidedit/fs/implementation/local/LocalFile;-><init>(Ljava/io/File;)V
@@ -384,6 +409,41 @@
     return v0
 .end method
 
+.method public getLastFolder(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FSFolder;
+    .locals 2
+
+    invoke-super {p0, p1}, Lcom/aor/droidedit/fs/implementation/FileSystem;->getLastFolder(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FSFolder;
+
+    move-result-object v0
+
+    instance-of v1, v0, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
+
+    if-eqz v1, :cond_0
+
+    move-object v1, v0
+
+    check-cast v1, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
+
+    invoke-virtual {v1}, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;->getFile()Ljava/io/File;
+
+    move-result-object v1
+
+    invoke-static {v1}, Lcom/code/ide/compat/StorageAccess;->readableDirectory(Ljava/io/File;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    return-object v0
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/local/LocalFileSystem;->getDefaultFolder()Lcom/aor/droidedit/fs/implementation/FSFolder;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method public getUID()Ljava/lang/String;
     .locals 1
 
@@ -396,29 +456,46 @@
 
 .method public initialize(Landroid/content/Context;Z)Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
     .locals 1
+
     invoke-static {p1, p0}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
+
     move-result v0
-    if-eqz v0, :ready
-    if-eqz p2, :failed
+
+    if-eqz v0, :cond_1
+
+    if-eqz p2, :cond_0
+
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->WAIT:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
     return-object v0
-    :failed
+
+    :cond_0
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->FAILED:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
     return-object v0
-    :ready
+
+    :cond_1
     sget-object v0, Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;->SUCCESS:Lcom/aor/droidedit/fs/implementation/FileSystem$INIT;
+
     return-object v0
 .end method
 
 .method public isInitialized(Landroid/content/Context;)Z
     .locals 1
+
     invoke-static {p1, p0}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
+
     move-result v0
-    if-nez v0, :missing
+
+    if-nez v0, :cond_0
+
     const/4 v0, 0x1
+
     return v0
-    :missing
+
+    :cond_0
     const/4 v0, 0x0
+
     return v0
 .end method
 
@@ -540,24 +617,4 @@
     invoke-direct {v3, v4}, Lcom/aor/droidedit/fs/exception/FSException;-><init>(Lcom/aor/droidedit/fs/exception/FSException$REASON;)V
 
     throw v3
-.end method
-
-.method public getLastFolder(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FSFolder;
-    .locals 2
-    invoke-super {p0, p1}, Lcom/aor/droidedit/fs/implementation/FileSystem;->getLastFolder(Landroid/content/Context;)Lcom/aor/droidedit/fs/implementation/FSFolder;
-    move-result-object v0
-    instance-of v1, v0, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
-    if-eqz v1, :fallback
-    move-object v1, v0
-    check-cast v1, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;
-    invoke-virtual {v1}, Lcom/aor/droidedit/fs/implementation/local/LocalFolder;->getFile()Ljava/io/File;
-    move-result-object v1
-    invoke-static {v1}, Lcom/code/ide/compat/StorageAccess;->readableDirectory(Ljava/io/File;)Z
-    move-result v1
-    if-eqz v1, :fallback
-    return-object v0
-    :fallback
-    invoke-virtual {p0}, Lcom/aor/droidedit/fs/implementation/local/LocalFileSystem;->getDefaultFolder()Lcom/aor/droidedit/fs/implementation/FSFolder;
-    move-result-object v0
-    return-object v0
 .end method

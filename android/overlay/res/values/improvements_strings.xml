@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="save_and_close">Save and close</string>
+  <string name="close_without_saving">Discard</string>
+  <string name="file_untitled">untitled</string>
+  <string name="time_just_now">just now</string>
+  <string name="time_yesterday">yesterday</string>
+  <plurals name="time_minutes">
+    <item quantity="one">%d minute ago</item>
+    <item quantity="other">%d minutes ago</item>
+  </plurals>
+  <plurals name="time_hours">
+    <item quantity="one">%d hour ago</item>
+    <item quantity="other">%d hours ago</item>
+  </plurals>
+  <plurals name="time_days">
+    <item quantity="one">%d day ago</item>
+    <item quantity="other">%d days ago</item>
+  </plurals>
+  <string name="emmet_snippets_title">Emmet snippets</string>
+  <string name="emmet_snippets_help">JSON: language → abbreviation → expansion. Save to enable. Use ${1:text} for fields and ${0} for the final cursor. Empty {} removes custom snippets.</string>
+  <string name="emmet_snippets_save">Save</string>
+  <string name="emmet_snippets_invalid">Invalid JSON or snippet format (max 32 Ki characters, 200 snippets).</string>
+  <string name="recovery_write_failed">Unable to save the recovery copy. Save your files manually.</string>
+</resources>

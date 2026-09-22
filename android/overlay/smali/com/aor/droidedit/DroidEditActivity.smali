@@ -1604,7 +1604,7 @@
     move-result-object v2
 
     .line 2132
-    invoke-virtual {v2}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v2}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     .line 2133
     return-void
@@ -1788,15 +1788,7 @@
 
     invoke-direct {v0, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v1, 0x1080027
-
-    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setIcon(I)Landroid/app/AlertDialog$Builder;
-
-    move-result-object v0
-
-    sget v1, Lcom/aor/droidedit/lib/R$string;->file_management_close_file:I
-
-    invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
+    invoke-static {v0}, Lcom/code/ide/compat/CloseFileDialogUi;->setTitle(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog$Builder;
 
     move-result-object v0
 
@@ -1806,14 +1798,20 @@
 
     move-result-object v0
 
-    sget v1, Lcom/aor/droidedit/lib/R$string;->file_management_close_file:I
+    const v1, 0x7f050198
 
     new-instance v2, Lcom/aor/droidedit/DroidEditActivity$58;
 
     invoke-direct {v2, p0, p1}, Lcom/aor/droidedit/DroidEditActivity$58;-><init>(Lcom/aor/droidedit/DroidEditActivity;I)V
 
-    invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+    invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setNeutralButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
+    move-result-object v0
+
+    const v1, 0x7f050197
+    new-instance v2, Lcom/aor/droidedit/SaveCloseClick;
+    invoke-direct {v2, p0, p1}, Lcom/aor/droidedit/SaveCloseClick;-><init>(Lcom/aor/droidedit/DroidEditActivity;I)V
+    invoke-virtual {v0, v1, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
     move-result-object v0
 
     .line 2202
@@ -1825,7 +1823,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v0}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     .line 2204
     :goto_0
@@ -2067,7 +2065,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v0}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto/16 :goto_0
 
@@ -3573,7 +3571,7 @@
 
     move-result-object v2
 
-    invoke-virtual {v2}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v2}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     .line 1763
     :goto_1
@@ -6632,7 +6630,7 @@
     move-result-object v11
 
     .line 1420
-    invoke-virtual {v11}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v11}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     move-result-object v2
 
@@ -6928,242 +6926,17 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v0}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     .line 1218
     return-void
 .end method
 
 .method public static readObjectFromFile(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Object;
-    .locals 6
-    .param p0, "context"    # Landroid/content/Context;
-    .param p1, "filename"    # Ljava/lang/String;
-
-    .prologue
-    .line 2839
-    const/4 v2, 0x0
-
-    .line 2840
-    .local v2, "objectIn":Ljava/io/ObjectInputStream;
-    const/4 v1, 0x0
-
-    .line 2842
-    .local v1, "object":Ljava/lang/Object;
-    :try_start_0
-    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v4
-
-    invoke-virtual {v4, p1}, Landroid/content/Context;->openFileInput(Ljava/lang/String;)Ljava/io/FileInputStream;
-
-    move-result-object v0
-
-    .line 2843
-    .local v0, "fileIn":Ljava/io/FileInputStream;
-    new-instance v3, Ljava/io/ObjectInputStream;
-
-    invoke-direct {v3, v0}, Ljava/io/ObjectInputStream;-><init>(Ljava/io/InputStream;)V
-    :try_end_0
-    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2
-    .catch Ljava/lang/ClassNotFoundException; {:try_start_0 .. :try_end_0} :catch_4
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 2844
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .local v3, "objectIn":Ljava/io/ObjectInputStream;
-    :try_start_1
-    invoke-virtual {v3}, Ljava/io/ObjectInputStream;->readObject()Ljava/lang/Object;
-    :try_end_1
-    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_a
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_9
-    .catch Ljava/lang/ClassNotFoundException; {:try_start_1 .. :try_end_1} :catch_8
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
-    move-result-object v1
-
-    .line 2849
-    if-eqz v3, :cond_2
-
-    .line 2851
-    :try_start_2
-    invoke-virtual {v3}, Ljava/io/ObjectInputStream;->close()V
-    :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_6
-
-    move-object v2, v3
-
-    .line 2856
-    .end local v0    # "fileIn":Ljava/io/FileInputStream;
-    .end local v1    # "object":Ljava/lang/Object;
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    :cond_0
-    :goto_0
-    return-object v1
-
-    .line 2845
-    .restart local v1    # "object":Ljava/lang/Object;
-    :catch_0
-    move-exception v4
-
-    .line 2849
-    :goto_1
-    if-eqz v2, :cond_0
-
-    .line 2851
-    :try_start_3
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-    :try_end_3
-    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
-
-    goto :goto_0
-
-    .line 2852
-    :catch_1
-    move-exception v4
-
-    goto :goto_0
-
-    .line 2846
-    :catch_2
-    move-exception v4
-
-    .line 2849
-    :goto_2
-    if-eqz v2, :cond_0
-
-    .line 2851
-    :try_start_4
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-    :try_end_4
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_3
-
-    goto :goto_0
-
-    .line 2852
-    :catch_3
-    move-exception v4
-
-    goto :goto_0
-
-    .line 2847
-    :catch_4
-    move-exception v4
-
-    .line 2849
-    :goto_3
-    if-eqz v2, :cond_0
-
-    .line 2851
-    :try_start_5
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-    :try_end_5
-    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_5
-
-    goto :goto_0
-
-    .line 2852
-    :catch_5
-    move-exception v4
-
-    goto :goto_0
-
-    .line 2848
-    :catchall_0
-    move-exception v4
-
-    .line 2849
-    :goto_4
-    if-eqz v2, :cond_1
-
-    .line 2851
-    :try_start_6
-    invoke-virtual {v2}, Ljava/io/ObjectInputStream;->close()V
-    :try_end_6
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_7
-
-    .line 2855
-    :cond_1
-    :goto_5
-    throw v4
-
-    .line 2852
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v0    # "fileIn":Ljava/io/FileInputStream;
-    .restart local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    :catch_6
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    goto :goto_0
-
-    .end local v0    # "fileIn":Ljava/io/FileInputStream;
-    :catch_7
-    move-exception v5
-
-    goto :goto_5
-
-    .line 2848
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v0    # "fileIn":Ljava/io/FileInputStream;
-    .restart local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    :catchall_1
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    goto :goto_4
-
-    .line 2847
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    :catch_8
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    goto :goto_3
-
-    .line 2846
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    :catch_9
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    goto :goto_2
-
-    .line 2845
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    :catch_a
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    goto :goto_1
-
-    .end local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    :cond_2
-    move-object v2, v3
-
-    .end local v3    # "objectIn":Ljava/io/ObjectInputStream;
-    .restart local v2    # "objectIn":Ljava/io/ObjectInputStream;
-    goto :goto_0
+ .locals 1
+ invoke-static {p0, p1}, Lcom/code/ide/compat/StateIo;->read(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/Object;
+ move-result-object v0
+ return-object v0
 .end method
 
 .method private reallyCloseDocument(I)V
@@ -7577,7 +7350,7 @@
 
     move-result-object v7
 
-    invoke-virtual {v7}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v7}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     .line 1330
     .end local v0    # "c":I
@@ -7741,7 +7514,7 @@
     move-result-object v1
 
     .line 1240
-    invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto :goto_0
 
@@ -7799,7 +7572,7 @@
     move-result-object v1
 
     .line 1252
-    invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto :goto_0
 
@@ -7896,7 +7669,7 @@
     move-result-object v1
 
     .line 1266
-    invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto/16 :goto_0
 
@@ -7978,7 +7751,7 @@
     move-result-object v1
 
     .line 1282
-    invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto/16 :goto_0
 
@@ -8036,7 +7809,7 @@
     move-result-object v1
 
     .line 1294
-    invoke-virtual {v1}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v1}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto/16 :goto_0
 
@@ -8186,7 +7959,7 @@
     move-result-object v3
 
     .line 1721
-    invoke-virtual {v3}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v3}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto :goto_0
 .end method
@@ -8473,7 +8246,7 @@
     move-result-object v0
 
     .line 1823
-    invoke-virtual {v0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v0}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     goto/16 :goto_0
 .end method
@@ -8984,169 +8757,9 @@
 .end method
 
 .method public static writeObjectToFile(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;)V
-    .locals 6
-    .param p0, "context"    # Landroid/content/Context;
-    .param p1, "object"    # Ljava/lang/Object;
-    .param p2, "filename"    # Ljava/lang/String;
-
-    .prologue
-    .line 2818
-    const/4 v2, 0x0
-
-    .line 2821
-    .local v2, "objectOut":Ljava/io/ObjectOutputStream;
-    const/4 v4, 0x0
-
-    :try_start_0
-    invoke-virtual {p0, p2, v4}, Landroid/content/Context;->openFileOutput(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-
-    move-result-object v1
-
-    .line 2822
-    .local v1, "fileOut":Ljava/io/FileOutputStream;
-    new-instance v3, Ljava/io/ObjectOutputStream;
-
-    invoke-direct {v3, v1}, Ljava/io/ObjectOutputStream;-><init>(Ljava/io/OutputStream;)V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 2823
-    .end local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    .local v3, "objectOut":Ljava/io/ObjectOutputStream;
-    :try_start_1
-    invoke-virtual {v3, p1}, Ljava/io/ObjectOutputStream;->writeObject(Ljava/lang/Object;)V
-
-    .line 2824
-    invoke-virtual {v1}, Ljava/io/FileOutputStream;->getFD()Ljava/io/FileDescriptor;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/io/FileDescriptor;->sync()V
-    :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_4
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
-    .line 2829
-    if-eqz v3, :cond_2
-
-    .line 2831
-    :try_start_2
-    invoke-virtual {v3}, Ljava/io/ObjectOutputStream;->close()V
-    :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_2
-
-    move-object v2, v3
-
-    .line 2836
-    .end local v1    # "fileOut":Ljava/io/FileOutputStream;
-    .end local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 2826
-    :catch_0
-    move-exception v0
-
-    .line 2827
-    .local v0, "e":Ljava/io/IOException;
-    :goto_1
-    :try_start_3
-    invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
-
-    .line 2829
-    if-eqz v2, :cond_0
-
-    .line 2831
-    :try_start_4
-    invoke-virtual {v2}, Ljava/io/ObjectOutputStream;->close()V
-    :try_end_4
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
-
-    goto :goto_0
-
-    .line 2832
-    :catch_1
-    move-exception v4
-
-    goto :goto_0
-
-    .line 2828
-    .end local v0    # "e":Ljava/io/IOException;
-    :catchall_0
-    move-exception v4
-
-    .line 2829
-    :goto_2
-    if-eqz v2, :cond_1
-
-    .line 2831
-    :try_start_5
-    invoke-virtual {v2}, Ljava/io/ObjectOutputStream;->close()V
-    :try_end_5
-    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_3
-
-    .line 2835
-    :cond_1
-    :goto_3
-    throw v4
-
-    .line 2832
-    .end local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v1    # "fileOut":Ljava/io/FileOutputStream;
-    .restart local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    :catch_2
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    goto :goto_0
-
-    .end local v1    # "fileOut":Ljava/io/FileOutputStream;
-    :catch_3
-    move-exception v5
-
-    goto :goto_3
-
-    .line 2828
-    .end local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v1    # "fileOut":Ljava/io/FileOutputStream;
-    .restart local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    :catchall_1
-    move-exception v4
-
-    move-object v2, v3
-
-    .end local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    goto :goto_2
-
-    .line 2826
-    .end local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    :catch_4
-    move-exception v0
-
-    move-object v2, v3
-
-    .end local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    goto :goto_1
-
-    .end local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    :cond_2
-    move-object v2, v3
-
-    .end local v3    # "objectOut":Ljava/io/ObjectOutputStream;
-    .restart local v2    # "objectOut":Ljava/io/ObjectOutputStream;
-    goto :goto_0
+ .locals 0
+ invoke-static {p0, p1, p2}, Lcom/code/ide/compat/StateIo;->write(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;)V
+ return-void
 .end method
 
 
@@ -10283,6 +9896,8 @@
     .line 282
     invoke-super {p0, p1}, Landroid/app/Activity;->onCreate(Landroid/os/Bundle;)V
 
+    invoke-static {p0}, Lcom/code/ide/compat/AppText;->init(Landroid/content/Context;)V
+
     .line 284
     invoke-virtual {p0}, Lcom/aor/droidedit/DroidEditActivity;->getBaseContext()Landroid/content/Context;
 
@@ -11372,6 +10987,7 @@
     .param p1, "menu"    # Landroid/view/Menu;
 
     .prologue
+    invoke-static {p0, p1}, Lcom/code/ide/compat/EmmetSnippets;->menu(Landroid/app/Activity;Landroid/view/Menu;)V
     const/4 v2, 0x1
 
     .line 1492
@@ -11434,6 +11050,7 @@
     .locals 0
 
     .prologue
+    invoke-static {p0}, Lcom/code/ide/compat/RecoveryTicker;->stop(Landroid/app/Activity;)V
     invoke-static {p0}, Lcom/code/ide/compat/EmmetBridge;->cancel(Landroid/app/Activity;)V
 
     .line 2671
@@ -11463,6 +11080,11 @@
     .param p1, "item"    # Landroid/view/MenuItem;
 
     .prologue
+    invoke-static {p0, p1}, Lcom/code/ide/compat/EmmetSnippets;->handle(Landroid/app/Activity;Landroid/view/MenuItem;)Z
+    move-result v0
+    if-eqz v0, :compat_menu_continue
+    return v0
+    :compat_menu_continue
     const/4 v9, 0x0
 
     const/4 v7, 0x1
@@ -12372,6 +11994,7 @@
     .locals 0
 
     .prologue
+    invoke-static {p0}, Lcom/code/ide/compat/RecoveryTicker;->stop(Landroid/app/Activity;)V
     invoke-static {p0}, Lcom/code/ide/compat/EmmetBridge;->cancel(Landroid/app/Activity;)V
 
     .line 2665
@@ -12887,6 +12510,7 @@
 
     .line 2698
     :cond_1
+    invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->compatStartRecovery()V
     return-void
 .end method
 
@@ -14795,4 +14419,64 @@
     :plain
     const-string v0, "text"
     return-object v0
+.end method
+
+.method public compatSaveAndClose(I)V
+ .locals 5
+ invoke-direct {p0, p1}, Lcom/aor/droidedit/DroidEditActivity;->getDocument(I)Lcom/aor/droidedit/document/Document;
+ move-result-object v0
+ if-eqz v0, :done
+ invoke-virtual {v0}, Lcom/aor/droidedit/document/Document;->getFile()Lcom/aor/droidedit/fs/implementation/FSFile;
+ move-result-object v1
+ const/4 v2, 0x0
+ if-eqz v1, :create
+ invoke-virtual {v1}, Lcom/aor/droidedit/fs/implementation/FSFile;->getFileSystem()Lcom/aor/droidedit/fs/implementation/FileSystem;
+ move-result-object v2
+ :create
+ new-instance v3, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;
+ invoke-direct {v3, p0, v0, v2, v1}, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;-><init>(Lcom/aor/droidedit/DroidEditActivity;Lcom/aor/droidedit/document/Document;Lcom/aor/droidedit/fs/implementation/FileSystem;Lcom/aor/droidedit/fs/implementation/FSFile;)V
+ const/4 v4, 0x1
+ iput-boolean v4, v3, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->compatCloseAfterSave:Z
+ invoke-virtual {v3}, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->execute()V
+ :done
+ return-void
+.end method
+
+.method public compatCloseSaved(Lcom/aor/droidedit/document/Document;)V
+ .locals 2
+ invoke-virtual {p1}, Lcom/aor/droidedit/document/Document;->changed()Z
+ move-result v0
+ if-nez v0, :done
+ iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->openDocuments:Ljava/util/ArrayList;
+ invoke-virtual {v0, p1}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
+ move-result v1
+ if-ltz v1, :done
+ invoke-direct {p0, v1}, Lcom/aor/droidedit/DroidEditActivity;->reallyCloseDocument(I)V
+ invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->saveCurrentState()V
+ :done
+ return-void
+.end method
+
+.method public compatCheckpoint()V
+ .locals 3
+ invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->getCurrentDocument()Lcom/aor/droidedit/document/Document;
+ move-result-object v0
+ if-eqz v0, :done
+ iget-object v1, p0, Lcom/aor/droidedit/DroidEditActivity;->textEditor:Lcom/aor/droidedit/custom/ObservableEditText;
+ invoke-virtual {v1}, Lcom/aor/droidedit/custom/ObservableEditText;->getSelectionEnd()I
+ move-result v2
+ invoke-virtual {v1}, Lcom/aor/droidedit/custom/ObservableEditText;->getSelectionStart()I
+ move-result v1
+ invoke-virtual {v0, v1, v2}, Lcom/aor/droidedit/document/Document;->setSelection(II)V
+ invoke-direct {p0}, Lcom/aor/droidedit/DroidEditActivity;->saveCurrentState()V
+ :done
+ return-void
+.end method
+.method private compatStartRecovery()V
+ .locals 2
+ iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity;->textEditor:Lcom/aor/droidedit/custom/ObservableEditText;
+ new-instance v1, Lcom/aor/droidedit/RecoverySaveTask;
+ invoke-direct {v1, p0}, Lcom/aor/droidedit/RecoverySaveTask;-><init>(Lcom/aor/droidedit/DroidEditActivity;)V
+ invoke-static {p0, v0, v1}, Lcom/code/ide/compat/RecoveryTicker;->start(Landroid/app/Activity;Landroid/widget/EditText;Ljava/lang/Runnable;)V
+ return-void
 .end method

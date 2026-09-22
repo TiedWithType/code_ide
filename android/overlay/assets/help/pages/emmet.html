@@ -7,7 +7,7 @@
 <p>Oficjalny silnik Emmet rozwija skróty HTML, XML, CSS i JSX. Działa offline dzięki wbudowanemu pakietowi JavaScript i systemowemu Android WebView.</p>
 <h3 id="whatis">Jak używać</h3>
 <p>Wybierz właściwą składnię dokumentu. Wpisz skrót i ustaw kursor na jego końcu albo zaznacz sam skrót. Wybierz <strong>Edytuj → Rozwiń Emmet</strong> lub naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Space</span> na klawiaturze sprzętowej.</p>
-<p>Rozwinięcie zachowuje wcięcie bieżącego wiersza, ustawiony znak tabulacji i zakończenia linii. Kursor trafia do pierwszego pola do uzupełnienia. Nie ma przechodzenia klawiszem Tab po kolejnych polach ani automatycznej listy podpowiedzi.</p>
+<p>Rozwinięcie zachowuje wcięcie bieżącego wiersza, ustawiony znak tabulacji i zakończenia linii. Kursor trafia do pierwszego pola do uzupełnienia. Tab przechodzi do kolejnego pola, Shift+Tab wraca do poprzedniego. Przycisk tab na dodatkowej klawiaturze aplikacji także przechodzi dalej. Edycja poza aktywnym polem lub zmiana dokumentu kończy sesję pól. Nie ma automatycznej listy podpowiedzi; powtórzenia tego samego pola nie są automatycznie synchronizowane.</p>
 <h3 id="support">Przykłady</h3>
 <table><thead><tr><th>Składnia</th><th>Skrót</th><th>Efekt</th></tr></thead><tbody>
 <tr><td>HTML</td><td><code>!</code></td><td>Dokument HTML5</td></tr>
@@ -20,7 +20,11 @@
 </tbody></table>
 <p>Dostępne są zagnieżdżenia <code>&gt;</code>, sąsiedzi <code>+</code>, wyjście poziom wyżej <code>^</code>, grupy, mnożenie, numeracja, identyfikatory, klasy, atrybuty i tekst. Obsługiwane są też tryby XHTML, SCSS, Sass i Stylus, jeśli wybierzesz je jako składnię.</p>
 <p>W HTML silnik rozpoznaje proste bloki <code>&lt;style&gt;</code>, atrybuty <code>style</code> i rodzica dla skrótów takich jak <code>.item</code> w liście. Nie rozwija skrótów w komentarzach, zwykłych atrybutach ani blokach skryptu. Rozpoznawanie kontekstu jest uproszczone; dla złożonych szablonów wybierz odpowiedni tryb dokumentu.</p>
+<h3>Własne snippety</h3>
+<p>Otwórz <strong>Snippety Emmet</strong> w menu edytora. Wprowadź JSON i naciśnij Zapisz. Klucze pierwszego poziomu to języki (html, jsx, xml, xhtml, css, scss, sass, stylus), a następnego: skróty. Wartością jest rozwinięcie Emmet. Przykład:</p>
+<pre>{"html":{"card":"article.card&gt;h2{${1:Tytuł}}+p{${2:Treść}}"},"css":{"brand":"color: #6750a4;"}}</pre>
+<p>Pola zapisuj jako <code>${1:tekst}</code>, <code>${2:tekst}</code> itd.; <code>${0}</code> oznacza pozycję końcową. Snippety zapisują się prywatnie w aplikacji i działają offline. Pusty obiekt <code>{}</code> przywraca sam zestaw wbudowany. Limit: 200 snippetów, 32 Ki znaków JSON, 4096 znaków rozwinięcia. Błędny JSON nie zastępuje poprzednich ustawień.</p>
 <h3>Ograniczenia</h3>
-<p>Emmet wymaga działającego Android WebView. Dokumenty powyżej 512 Ki znaków, skróty powyżej 4096 znaków i wyniki powyżej 256 Ki znaków są odrzucane. Duże powtórzenia są ograniczone. Jeśli podczas obliczania zmienisz tekst, zaznaczenie lub dokument, wynik nie zostanie wstawiony. Ta integracja udostępnia rozwijanie skrótów, bez pozostałych poleceń edytorowych Emmet i własnych snippetów użytkownika.</p>
+<p>Emmet wymaga działającego Android WebView. Dokumenty powyżej 512 Ki znaków, skróty powyżej 4096 znaków i wyniki powyżej 256 Ki znaków są odrzucane. Duże powtórzenia są ograniczone. Jeśli podczas obliczania zmienisz tekst, zaznaczenie lub dokument, wynik nie zostanie wstawiony. Ta integracja udostępnia rozwijanie skrótów, bez pozostałych poleceń edytorowych Emmet.</p>
 <p><a href="https://docs.emmet.io/cheat-sheet/">Ściąga Emmet</a> · <a href="https://github.com/emmetio/emmet">Kod źródłowy silnika</a> · <a href="../../emmet/LICENSE">Licencja MIT</a></p>
 </body></html>

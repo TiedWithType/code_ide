@@ -18,6 +18,8 @@
 
 
 # instance fields
+.field public compatCloseAfterSave:Z
+.field private compatSavedText:Ljava/lang/String;
 .field private mDocument:Lcom/aor/droidedit/document/Document;
 
 .field private mFile:Lcom/aor/droidedit/fs/implementation/FSFile;
@@ -181,7 +183,7 @@
     move-result-object v4
 
     .line 3410
-    invoke-virtual {v4}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+    invoke-static {v4}, Lcom/code/ide/compat/AppUi;->show(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;
 
     .line 3507
     .end local v3    # "fileSystems":Ljava/util/List;, "Ljava/util/List<Lcom/aor/droidedit/fs/implementation/FileSystem;>;"
@@ -350,6 +352,10 @@
 
     const/4 v6, 0x0
 
+    invoke-virtual {v4}, Lcom/aor/droidedit/document/Document;->getText()Ljava/lang/String;
+    move-result-object v9
+    iput-object v9, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->compatSavedText:Ljava/lang/String;
+
     invoke-virtual {v4, v5, v6}, Lcom/aor/droidedit/document/Document;->save(Landroid/content/Context;Z)V
 
     .line 3472
@@ -400,4 +406,29 @@
     invoke-static {v4, v5, v6}, Lcom/aor/droidedit/util/Alert;->show(Landroid/content/Context;II)V
 
     goto/16 :goto_0
+.end method
+
+.method public compatApplySavedState()V
+ .locals 3
+ iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->mDocument:Lcom/aor/droidedit/document/Document;
+ invoke-virtual {v0}, Lcom/aor/droidedit/document/Document;->getText()Ljava/lang/String;
+ move-result-object v1
+ iget-object v2, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->compatSavedText:Ljava/lang/String;
+ invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+ move-result v1
+ xor-int/lit8 v1, v1, 0x1
+ invoke-virtual {v0, v1}, Lcom/aor/droidedit/document/Document;->setChanged(Z)V
+ return-void
+.end method
+.method public compatFinishSave()V
+ .locals 2
+ iget-boolean v0, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->compatCloseAfterSave:Z
+ if-eqz v0, :done
+ const/4 v0, 0x0
+ iput-boolean v0, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->compatCloseAfterSave:Z
+ iget-object v0, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->this$0:Lcom/aor/droidedit/DroidEditActivity;
+ iget-object v1, p0, Lcom/aor/droidedit/DroidEditActivity$GenericSaveAction;->mDocument:Lcom/aor/droidedit/document/Document;
+ invoke-virtual {v0, v1}, Lcom/aor/droidedit/DroidEditActivity;->compatCloseSaved(Lcom/aor/droidedit/document/Document;)V
+ :done
+ return-void
 .end method

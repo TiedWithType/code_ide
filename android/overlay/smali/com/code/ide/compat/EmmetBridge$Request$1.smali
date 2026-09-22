@@ -25,7 +25,7 @@
 .method constructor <init>(Lcom/code/ide/compat/EmmetBridge$Request;)V
     .registers 2
 
-    .line 74
+    .line 75
     iput-object p1, p0, Lcom/code/ide/compat/EmmetBridge$Request$1;->this$0:Lcom/code/ide/compat/EmmetBridge$Request;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public run()V
     .registers 3
 
-    .line 74
+    .line 75
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request$1;->this$0:Lcom/code/ide/compat/EmmetBridge$Request;
 
     const-string v1, "timeout"

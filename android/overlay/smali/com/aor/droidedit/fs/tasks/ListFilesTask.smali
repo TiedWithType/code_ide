@@ -19,6 +19,8 @@
 
 
 # instance fields
+.field private compatFailure:Ljava/lang/String;
+
 .field private mContext:Landroid/content/Context;
 
 .field private mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
@@ -27,8 +29,6 @@
 
 .field private mListener:Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;
 
-
-.field private compatFailure:Ljava/lang/String;
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;Lcom/aor/droidedit/fs/implementation/FSFolder;Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;)V
@@ -60,6 +60,16 @@
 
 
 # virtual methods
+.method public cancelCompat()V
+    .locals 1
+
+    iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mListener:Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;
+
+    invoke-interface {v0}, Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;->listingFailed()V
+
+    return-void
+.end method
+
 .method protected bridge varargs synthetic doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
 
@@ -118,8 +128,11 @@
     .line 34
     :catch_0
     move-exception v0
+
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
     move-result-object v2
+
     iput-object v2, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->compatFailure:Ljava/lang/String;
 
     .line 35
@@ -163,31 +176,50 @@
     .prologue
     .line 42
     .local p1, "result":Ljava/util/List;, "Ljava/util/List<Lcom/aor/droidedit/fs/implementation/FSElement;>;"
-    if-nez p1, :cond_0
+    if-nez p1, :cond_2
 
     iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mContext:Landroid/content/Context;
-    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
-    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
-    move-result v2
-    if-eqz v2, :compat_actual_error
-    invoke-static {v0}, Lcom/code/ide/compat/StorageAccess;->activity(Landroid/content/Context;)Lcom/aor/droidedit/DroidEditActivity;
-    move-result-object v2
-    if-eqz v2, :compat_actual_error
-    new-instance v3, Lcom/code/ide/compat/RetryListing;
-    invoke-direct {v3, p0}, Lcom/code/ide/compat/RetryListing;-><init>(Lcom/aor/droidedit/fs/tasks/ListFilesTask;)V
-    invoke-virtual {v2, v3}, Lcom/aor/droidedit/DroidEditActivity;->setCompatAction(Lcom/aor/droidedit/DroidEditActivity$Action;)V
-    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->request(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)V
-    return-void
-    :compat_actual_error
-    iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->compatFailure:Ljava/lang/String;
-    if-eqz v0, :compat_reported
-    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mContext:Landroid/content/Context;
-    const/4 v2, 0x1
-    invoke-static {v1, v0, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-    move-result-object v0
-    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
-    :compat_reported
 
+    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
+
+    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->missing(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)I
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    invoke-static {v0}, Lcom/code/ide/compat/StorageAccess;->activity(Landroid/content/Context;)Lcom/aor/droidedit/DroidEditActivity;
+
+    move-result-object v2
+
+    if-eqz v2, :cond_0
+
+    new-instance v3, Lcom/code/ide/compat/RetryListing;
+
+    invoke-direct {v3, p0}, Lcom/code/ide/compat/RetryListing;-><init>(Lcom/aor/droidedit/fs/tasks/ListFilesTask;)V
+
+    invoke-virtual {v2, v3}, Lcom/aor/droidedit/DroidEditActivity;->setCompatAction(Lcom/aor/droidedit/DroidEditActivity$Action;)V
+
+    invoke-static {v0, v1}, Lcom/code/ide/compat/StorageAccess;->request(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;)V
+
+    return-void
+
+    :cond_0
+    iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->compatFailure:Ljava/lang/String;
+
+    if-eqz v0, :cond_1
+
+    iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mContext:Landroid/content/Context;
+
+    const/4 v2, 0x1
+
+    invoke-static {v1, v0, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    :cond_1
     iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mListener:Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;
 
     invoke-interface {v0}, Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;->listingFailed()V
@@ -197,7 +229,7 @@
     return-void
 
     .line 43
-    :cond_0
+    :cond_2
     iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mListener:Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;
 
     invoke-interface {v0, p1}, Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;->listingComplete(Ljava/util/List;)V
@@ -207,20 +239,24 @@
 
 .method public retryCompat()V
     .locals 5
+
     new-instance v0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;
+
     iget-object v1, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mContext:Landroid/content/Context;
+
     iget-object v2, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mFileSystem:Lcom/aor/droidedit/fs/implementation/FileSystem;
+
     iget-object v3, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mFolder:Lcom/aor/droidedit/fs/implementation/FSFolder;
+
     iget-object v4, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mListener:Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;
+
     invoke-direct {v0, v1, v2, v3, v4}, Lcom/aor/droidedit/fs/tasks/ListFilesTask;-><init>(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem;Lcom/aor/droidedit/fs/implementation/FSFolder;Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;)V
+
     const/4 v1, 0x0
+
     new-array v1, v1, [Ljava/lang/Void;
+
     invoke-virtual {v0, v1}, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
-    return-void
-.end method
-.method public cancelCompat()V
-    .locals 1
-    iget-object v0, p0, Lcom/aor/droidedit/fs/tasks/ListFilesTask;->mListener:Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;
-    invoke-interface {v0}, Lcom/aor/droidedit/fs/tasks/listeners/FileListingListener;->listingFailed()V
+
     return-void
 .end method

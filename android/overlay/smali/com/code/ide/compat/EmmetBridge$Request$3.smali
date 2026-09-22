@@ -34,7 +34,7 @@
 .method constructor <init>(Lcom/code/ide/compat/EmmetBridge$Request;)V
     .registers 2
 
-    .line 111
+    .line 113
     iput-object p1, p0, Lcom/code/ide/compat/EmmetBridge$Request$3;->this$0:Lcom/code/ide/compat/EmmetBridge$Request;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -47,7 +47,7 @@
 .method public bridge synthetic onReceiveValue(Ljava/lang/Object;)V
     .registers 2
 
-    .line 111
+    .line 113
     check-cast p1, Ljava/lang/String;
 
     invoke-virtual {p0, p1}, Lcom/code/ide/compat/EmmetBridge$Request$3;->onReceiveValue(Ljava/lang/String;)V
@@ -58,7 +58,7 @@
 .method public onReceiveValue(Ljava/lang/String;)V
     .registers 3
 
-    .line 112
+    .line 114
     iget-object v0, p0, Lcom/code/ide/compat/EmmetBridge$Request$3;->this$0:Lcom/code/ide/compat/EmmetBridge$Request;
 
     invoke-virtual {v0, p1}, Lcom/code/ide/compat/EmmetBridge$Request;->apply(Ljava/lang/String;)V
