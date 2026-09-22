@@ -81,3 +81,12 @@ SHA-256: 3b73cb5537d64ac091adafe5c8c2c3b58627e26dabdf48b295ac6b934b9d185d
 - Użytkownik polecił wypchnąć zmiany i APK do TiedWithType/code_ide.
 - Przygotowano źródła, dokumentację i podpisany APK 20260925.
 - Tag wydania: `editor-20260922`. Stan publikacji potwierdza strona GitHub Releases.
+
+### Publikacja zakończona
+
+- [x] Zmiany wypchnięte na main: 0f4ebf83a4b0f7da2458f53a98e175b47256644f.
+- [x] Wydanie editor-20260922 opublikowane jako Latest.
+- [x] Code-IDE-Editor-20260922.apk dodany do wydania; 6284629 bajtów.
+- [x] SHA-256 na GitHubie zgodny z lokalnym APK: 3b73cb5537d64ac091adafe5c8c2c3b58627e26dabdf48b295ac6b934b9d185d.
+- Release: https://github.com/TiedWithType/code_ide/releases/tag/editor-20260922
+- Klucze podpisu nie zostały opublikowane. Test urządzenia nadal pozostaje do wykonania.
