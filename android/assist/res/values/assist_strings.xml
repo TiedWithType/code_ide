@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <string name="assist_heading">Emmet — tap suggestion · tap here to close</string>
+ <string name="snip_add">Add snippet</string>
+ <string name="snip_import">Import JSON</string>
+ <string name="snip_export">Export JSON</string>
+ <string name="snip_options">Typing assistant</string>
+ <string name="snip_suggestions">Emmet suggestions</string>
+ <string name="snip_pairs">Auto-close pairs and HTML</string>
+ <string name="snip_language">Language</string>
+ <string name="snip_shortcut">Shortcut, e.g. card</string>
+ <string name="snip_body">Body, e.g. article.card&gt;h2{${1:Title}}</string>
+ <string name="snip_help">Fields: ${1:text}, final cursor: ${0}. Use Emmet abbreviations for HTML and declarations for CSS.</string>
+ <string name="snip_edit">Edit snippet</string>
+ <string name="snip_delete">Delete snippet</string>
+ <string name="snip_required">Enter a shortcut without spaces and a body.</string>
+ <string name="snip_duplicate">This shortcut already exists for this language.</string>
+ <string name="snip_error">Could not read or save snippets. Check JSON (max. 200 entries and 32 Ki characters).</string>
+ <string name="snip_exported">Snippets exported.</string>
+ <string name="snip_replace_confirm">Replace all custom snippets with the contents of this file?</string>
+ <string name="snip_replace">Replace</string>
+</resources>

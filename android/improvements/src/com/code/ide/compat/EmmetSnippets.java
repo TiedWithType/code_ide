@@ -1,30 +1,34 @@
 package com.code.ide.compat;
-import android.app.*;
-import android.content.*;
-import android.graphics.Typeface;
-import android.view.*;
-import android.widget.*;
-import org.json.*;
-import java.util.Iterator;
+import android.app.*;import android.content.*;import android.graphics.Typeface;import android.os.*;import android.view.*;import android.widget.*;import org.json.*;import java.util.*;import java.io.*;
 public final class EmmetSnippets {
- public static final int MENU_ID=0x7e000101;
- private static final String EXAMPLE="{\n  \"html\": {\n    \"card\": \"article.card>h2{${1:Tytuł}}+p{${2:Treść}}\"\n  },\n  \"css\": {\n    \"brand\": \"color: #6750a4;\"\n  }\n}";
+ public static final int MENU_ID=0x7e000101;static final int IMPORT=0x6e01,EXPORT=0x6e02;
+ static final String[] MODES={"html","xhtml","xml","jsx","css","scss","sass","stylus"};
+ static String text(Context c,String k){return AppUi.text(c,"snip_"+k);}
  public static void menu(Activity a,Menu m){m.add(0,MENU_ID,100,AppUi.text(a,"emmet_snippets_title")).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);}
  public static JSONObject get(Context c){try{return new JSONObject(c.getSharedPreferences("emmet",0).getString("snippets","{}"));}catch(JSONException e){return new JSONObject();}}
- public static boolean handle(final Activity a,MenuItem item){if(item.getItemId()!=MENU_ID)return false;edit(a);return true;}
- public static void edit(final Activity a){
-  final EditText input=new EditText(a);input.setGravity(Gravity.TOP|Gravity.START);input.setMinLines(8);input.setMaxLines(16);input.setTextSize(14);input.setInputType(android.text.InputType.TYPE_CLASS_TEXT|android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE|android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-  input.setText(a.getSharedPreferences("emmet",0).getString("snippets",EXAMPLE));
-  int pad=(int)(20*a.getResources().getDisplayMetrics().density);LinearLayout box=new LinearLayout(a);box.setPadding(pad,0,pad,0);box.addView(input,new LinearLayout.LayoutParams(-1,-2));
-  AlertDialog.Builder b=new AlertDialog.Builder(a).setTitle(AppUi.text(a,"emmet_snippets_title")).setMessage(AppUi.text(a,"emmet_snippets_help")).setView(box).setNegativeButton(android.R.string.cancel,null).setPositiveButton(AppUi.text(a,"emmet_snippets_save"),null);
-  final AlertDialog d=AppUi.show(b);input.setTypeface(Typeface.MONOSPACE);
-  d.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener(){public void onClick(View v){
-   try{String raw=input.getText().toString();validate(raw);if(!a.getSharedPreferences("emmet",0).edit().putString("snippets",raw).commit())throw new Exception();d.dismiss();}
-   catch(Exception e){input.setError(AppUi.text(a,"emmet_snippets_invalid"));}
-  }});
+ public static boolean handle(Activity a,MenuItem item){if(item.getItemId()!=MENU_ID)return false;edit(a);return true;}
+ static void fail(Context a){Toast.makeText(a,text(a,"error"),Toast.LENGTH_LONG).show();}
+ static void save(Context a,JSONObject value)throws Exception{String raw=value.toString();validate(raw);if(!a.getSharedPreferences("emmet",0).edit().putString("snippets",raw).commit())throw new IOException();}
+ public static void edit(final Activity a){final ArrayList<String> modes=new ArrayList<String>(),keys=new ArrayList<String>(),labels=new ArrayList<String>();JSONObject data=get(a);
+  labels.add(text(a,"add"));labels.add(text(a,"import"));labels.add(text(a,"export"));labels.add(text(a,"options"));
+  for(String mode:MODES){JSONObject values=data.optJSONObject(mode);if(values==null)continue;ArrayList<String> names=new ArrayList<String>();Iterator<String> it=values.keys();while(it.hasNext())names.add(it.next());Collections.sort(names);for(String name:names){modes.add(mode);keys.add(name);labels.add(mode+" · "+name);}}
+  AppUi.show(new AlertDialog.Builder(a).setTitle(AppUi.text(a,"emmet_snippets_title")).setItems(labels.toArray(new String[0]),new DialogInterface.OnClickListener(){public void onClick(DialogInterface d,int index){if(index==0)form(a,"html",null);else if(index==1)file(a,false);else if(index==2)file(a,true);else if(index==3)options(a);else form(a,modes.get(index-4),keys.get(index-4));}}).setNegativeButton(android.R.string.cancel,null));
  }
- static void validate(String raw) throws JSONException {
-  if(raw.length()>32768)throw new JSONException("size");JSONObject root=new JSONObject(raw);Iterator<String> modes=root.keys();int count=0;
-  while(modes.hasNext()){String mode=modes.next();if(!"|html|xhtml|xml|jsx|css|scss|sass|stylus|".contains("|"+mode+"|"))throw new JSONException("mode");JSONObject map=root.getJSONObject(mode);Iterator<String> keys=map.keys();while(keys.hasNext()){String key=keys.next();Object value=map.get(key);if(++count>200||key.length()==0||key.length()>64||!(value instanceof String)||((String)value).length()>4096)throw new JSONException("snippet");}}
+ static void options(final Activity a){final SharedPreferences prefs=a.getSharedPreferences("emmet",0);AppUi.show(new AlertDialog.Builder(a).setTitle(text(a,"options")).setMultiChoiceItems(new String[]{text(a,"suggestions"),text(a,"pairs")},new boolean[]{prefs.getBoolean("suggestions",true),prefs.getBoolean("pairs",true)},new DialogInterface.OnMultiChoiceClickListener(){public void onClick(DialogInterface d,int which,boolean checked){prefs.edit().putBoolean(which==0?"suggestions":"pairs",checked).apply();EditorAssist.dismiss(a);}}).setPositiveButton(android.R.string.ok,null));}
+ static void form(final Activity a,final String oldMode,final String oldKey){LinearLayout box=new LinearLayout(a);box.setOrientation(1);int pad=(int)(20*a.getResources().getDisplayMetrics().density);box.setPadding(pad,0,pad,0);
+  TextView language=new TextView(a);language.setText(text(a,"language"));box.addView(language);final Spinner mode=new Spinner(a);mode.setAdapter(new ArrayAdapter<String>(a,android.R.layout.simple_spinner_dropdown_item,MODES));mode.setSelection(Arrays.asList(MODES).indexOf(oldMode));box.addView(mode);
+  final EditText key=new EditText(a);key.setSingleLine();key.setHint(text(a,"shortcut"));key.setText(oldKey==null?"":oldKey);box.addView(key);
+  final EditText value=new EditText(a);value.setHint(text(a,"body"));value.setMinLines(4);value.setMaxLines(8);value.setInputType(0xA0001);if(oldKey!=null)value.setText(get(a).optJSONObject(oldMode).optString(oldKey));box.addView(value);
+  TextView help=new TextView(a);help.setText(text(a,"help"));box.addView(help);ScrollView scroll=new ScrollView(a);scroll.addView(box);
+  AlertDialog.Builder builder=new AlertDialog.Builder(a).setTitle(text(a,oldKey==null?"add":"edit")).setView(scroll).setPositiveButton(AppUi.text(a,"emmet_snippets_save"),null).setNegativeButton(android.R.string.cancel,null);
+  if(oldKey!=null)builder.setNeutralButton(text(a,"delete"),new DialogInterface.OnClickListener(){public void onClick(DialogInterface d,int which){AppUi.show(new AlertDialog.Builder(a).setTitle(text(a,"delete")).setMessage(oldKey).setNegativeButton(android.R.string.cancel,null).setPositiveButton(text(a,"delete"),new DialogInterface.OnClickListener(){public void onClick(DialogInterface d,int which){try{JSONObject all=get(a);all.getJSONObject(oldMode).remove(oldKey);save(a,all);edit(a);}catch(Exception e){fail(a);}}}));}});
+  final AlertDialog dialog=AppUi.show(builder);value.setTypeface(Typeface.MONOSPACE);
+  dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener(){public void onClick(View v){try{String name=key.getText().toString().trim(),lang=(String)mode.getSelectedItem(),body=value.getText().toString();if(name.isEmpty()||name.matches(".*\\s.*")||body.isEmpty()){key.setError(text(a,"required"));return;}JSONObject all=get(a),target=all.optJSONObject(lang);if(target==null){target=new JSONObject();all.put(lang,target);}if(target.has(name)&&!(lang.equals(oldMode)&&name.equals(oldKey))){key.setError(text(a,"duplicate"));return;}if(oldKey!=null)all.getJSONObject(oldMode).remove(oldKey);target.put(name,body);save(a,all);dialog.dismiss();edit(a);}catch(Exception ex){value.setError(text(a,"error"));}}});
  }
+ static void file(Activity a,boolean export){try{Intent i=new Intent(export?Intent.ACTION_CREATE_DOCUMENT:Intent.ACTION_OPEN_DOCUMENT);i.setType(export?"application/json":"*/*");i.addCategory(Intent.CATEGORY_OPENABLE);if(export)i.putExtra(Intent.EXTRA_TITLE,"emmet-snippets.json");a.startActivityForResult(i,export?EXPORT:IMPORT);}catch(Exception e){fail(a);}}
+ public static boolean result(final Activity a,int request,int code,final Intent intent){if(request!=IMPORT&&request!=EXPORT)return false;if(code!=Activity.RESULT_OK||intent==null||intent.getData()==null)return true;final boolean export=request==EXPORT;final String raw=get(a).toString();final Handler h=new Handler(Looper.getMainLooper());new Thread(new Runnable(){public void run(){try{
+  if(export){OutputStream out=a.getContentResolver().openOutputStream(intent.getData(),"wt");if(out==null)throw new IOException();try{out.write(raw.getBytes("UTF-8"));out.flush();}finally{out.close();}h.post(new Runnable(){public void run(){if(!a.isFinishing())Toast.makeText(a,text(a,"exported"),Toast.LENGTH_SHORT).show();}});}
+  else{InputStream in=a.getContentResolver().openInputStream(intent.getData());if(in==null)throw new IOException();ByteArrayOutputStream out=new ByteArrayOutputStream();try{byte[] b=new byte[4096];int n;while((n=in.read(b))!=-1){if(out.size()+n>131072)throw new IOException();out.write(b,0,n);}}finally{in.close();}final String imported=new String(out.toByteArray(),"UTF-8");validate(imported);h.post(new Runnable(){public void run(){if(a.isFinishing()||a.isDestroyed())return;AppUi.show(new AlertDialog.Builder(a).setTitle(text(a,"import")).setMessage(text(a,"replace_confirm")).setNegativeButton(android.R.string.cancel,null).setPositiveButton(text(a,"replace"),new DialogInterface.OnClickListener(){public void onClick(DialogInterface d,int which){try{save(a,new JSONObject(imported));edit(a);}catch(Exception e){fail(a);}}}));}});}
+ }catch(Exception e){h.post(new Runnable(){public void run(){if(!a.isFinishing())fail(a);}});}}},"SnippetFiles").start();return true;}
+ static void validate(String raw)throws JSONException{if(raw.length()>32768)throw new JSONException("size");JSONObject root=new JSONObject(raw);Iterator<String> modes=root.keys();int count=0;while(modes.hasNext()){String mode=modes.next();if(!Arrays.asList(MODES).contains(mode))throw new JSONException("mode");JSONObject map=root.getJSONObject(mode);Iterator<String> keys=map.keys();while(keys.hasNext()){String key=keys.next();Object value=map.get(key);if(++count>200||key.length()==0||key.length()>64||!(value instanceof String)||((String)value).length()>4096)throw new JSONException("snippet");}}}
 }

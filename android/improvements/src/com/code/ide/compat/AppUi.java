@@ -13,6 +13,10 @@ public final class AppUi {
   if(v instanceof ViewGroup){ViewGroup g=(ViewGroup)v;for(int i=0;i<g.getChildCount();i++)fonts(g.getChildAt(i),f);}
  }
  public static AlertDialog show(AlertDialog.Builder b){AlertDialog d=b.show();applyFont(d);return d;}
+ public static void applyFont(View v){
+  if(font==null)font=Typeface.createFromAsset(v.getContext().getAssets(),"fonts/quicksand.ttf");
+  fonts(v,font);
+ }
  public static void applyFont(AlertDialog d){
   if(font==null)font=Typeface.createFromAsset(d.getContext().getAssets(),"fonts/quicksand.ttf");
   fonts(d.getWindow().getDecorView(),font);

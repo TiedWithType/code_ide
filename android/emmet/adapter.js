@@ -121,3 +121,33 @@ export function expand(req) {
         return {ok: false, error: code};
     }
 }
+
+// Suggestions share the same bounded expansion and context validation as commands.
+export function suggest(req) {
+    try {
+        if (req.start !== req.end || req.text.length > MAX_DOC) return [];
+        let syntax = syntaxName(req.syntax);
+        const ctx = ['html','xhtml'].includes(syntax) ? htmlContext(req.text.slice(0,req.start)) : {};
+        if (ctx.blocked) return [];
+        if (ctx.css) syntax='css';
+        const css=['css','scss','sass','stylus'].includes(syntax);
+        const lineStart=req.text.lastIndexOf('\n',req.start-1)+1;
+        const found=extract(req.text.slice(lineStart,req.start),req.start-lineStart,{type:css?'stylesheet':'markup',lookAhead:false});
+        if(!found || !found.abbreviation || found.abbreviation.length>128) return [];
+        const prefix=found.abbreviation;
+        const start=lineStart+found.start;
+        const custom=req.snippets || {};
+        const names=Object.keys(custom[syntax] || custom[css?'css':'html'] || {});
+        const common=css?['m','mt','mb','p','pt','pb','d:f','d:g','pos:a','pos:r','w','h','bgc','c','fz','fw','gap','ai:c','jc:c']:['div','span','section','article','header','footer','main','nav','button','a','a:link','img','input','input:text','form','label','ul','ol','li','p','h1','h2','link:css','script:src','!'];
+        const candidates=[prefix,...names.filter(n=>n.startsWith(prefix)&&n!==prefix).sort(),...common.filter(n=>n.startsWith(prefix)&&n!==prefix)];
+        const result=[], seen=new Set();
+        for(const name of candidates){
+            if(seen.has(name))continue;seen.add(name);
+            const text=req.text.slice(0,start)+name+req.text.slice(req.start);
+            const value=expand({...req,text,start,end:start+name.length});
+            if(value.ok && value.text.length<=8192){value.start=start;value.end=req.start;result.push({name,value});}
+            if(result.length===4)break;
+        }
+        return result;
+    }catch(e){return [];}
+}

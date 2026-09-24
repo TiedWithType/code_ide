@@ -26,8 +26,23 @@ APK:
 Następnie podpisz tym samym kluczem co wcześniejsze wydanie. Kluczy nie ma w archiwum.
 
 Ograniczenia i zakres kontroli: POSTEPY.md oraz ZGODNOSC.md w głównym katalogu archiwum.
-Brak testu urządzenia Android. Publikacja: tag editor-20260922.
+Brak testu urządzenia Android. Nie wykonano push ani publikacji release.
 
-W repozytorium gotowe smali i zasoby znajdują się w android/overlay/.
-Nałóż tę nakładkę na bazowy projekt zgodnie z android/README.md.
-Katalog decoded/ dotyczy pełnego archiwum źródeł, nie układu repozytorium.
+## Asystent pisania (20260926)
+
+EditorAssist integruje podpowiedzi i InputConnection z istniejącym edytorem. PairRules zawiera testowalne przekształcenia par znaków. EmmetSnippets udostępnia formularz i systemowy import/eksport JSON. hooks.py dokumentuje jednorazowe zmiany względem Editor 20260922 — nie uruchamiać ponownie na aktualnej nakładce.
+Nowe testy: PairRulesTest.java (25) i suggestions.test.cjs (15). Gotowy APK do testów, bez publikacji na GitHubie.
+
+## Odtwarzalny hook Assist
+
+Repozytorium nie duplikuje pełnych dużych plików smali tylko po to, aby zapisać kilka wstawek.
+Po skopiowaniu `android/overlay/` do świeżej dekompilacji uruchom:
+
+```sh
+python android/improvements/apply_assist.py android/build/project
+```
+
+Skrypt jest idempotentny: dodaje hooki `EditorAssist` do aktywności, pola edycji oraz listenerów,
+a także ustawia versionCode 20260926 / `Expressive You - Assist 20260922`.
+Jego wynik dla pięciu modyfikowanych plików został porównany bajt po bajcie ze zweryfikowanym drzewem
+użytym do `Code-IDE-Assist-20260922.apk`.

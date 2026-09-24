@@ -75,3 +75,43 @@ APK: Code-IDE-Editor-20260922.apk
 VersionName: Expressive You - Editor 20260922
 VersionCode: 20260925
 SHA-256: 3b73cb5537d64ac091adafe5c8c2c3b58627e26dabdf48b295ac6b934b9d185d
+
+## Publikacja — 2026-09-22
+
+- Użytkownik polecił wypchnąć zmiany i APK do TiedWithType/code_ide.
+- Przygotowano źródła, dokumentację i podpisany APK 20260925.
+- Tag wydania: `editor-20260922`. Stan publikacji potwierdza strona GitHub Releases.
+
+### Publikacja zakończona
+
+- [x] Zmiany wypchnięte na main: 0f4ebf83a4b0f7da2458f53a98e175b47256644f.
+- [x] Wydanie editor-20260922 opublikowane jako Latest.
+- [x] Code-IDE-Editor-20260922.apk dodany do wydania; 6284629 bajtów.
+- [x] SHA-256 na GitHubie zgodny z lokalnym APK: 3b73cb5537d64ac091adafe5c8c2c3b58627e26dabdf48b295ac6b934b9d185d.
+- Release: https://github.com/TiedWithType/code_ide/releases/tag/editor-20260922
+- Klucze podpisu nie zostały opublikowane. Test urządzenia nadal pozostaje do wykonania.
+
+## Asystent pisania — 2026-09-22 (APK do testów)
+
+- [x] Podpowiedzi Emmet po 350 ms bezczynności, do 3 widocznych propozycji z podglądem.
+- [x] Własne snippety, kontekst HTML/CSS/JSX, wspólny silnik rozwijania, zachowanie ustawienia wcięć.
+- [x] Odrzucanie nieaktualnego wyniku po edycji, ruchu kursora i zmianie dokumentu; brak dostępu do sieci.
+- [x] Formularz snippetów: język, skrót, treść, edycja, usuwanie po potwierdzeniu, kontrola duplikatów.
+- [x] Import/eksport JSON przez systemowy wybór pliku, limit rozmiaru, potwierdzenie zastąpienia zestawu.
+- [x] Przełączniki podpowiedzi i automatycznego domykania w Asystencie pisania.
+- [x] Nawiasy i cudzysłowy, otaczanie zaznaczenia, przejście przez istniejące zamknięcie, usuwanie pustej pary.
+- [x] Domykanie HTML/XML z pominięciem znaczników pustych, samozamykających, komentarzy i bloków script/style.
+- [x] Hook rzeczywistego wpisywania IME/klawiatury fizycznej, bez przepisywania otwieranych plików i wieloznakowych wklejeń.
+- [x] Teksty PL/EN w XML, Quicksand panelu podpowiedzi i dialogów, zaktualizowana pomoc.
+- [x] 43 przypadki regresji Emmeta + 15 podpowiedzi + 25 par znaków przeszły.
+- [ ] Test urządzenia: różne klawiatury IME, położenie panelu nad klawiaturą, cofanie i ponawianie, import/eksport.
+
+Wersja: Expressive You - Assist 20260922, versionCode 20260926.
+Ta paczka jest przeznaczona do testów użytkownika; bez nowego push/release.
+Podpowiedzi obejmują bieżący skrót, własny zestaw i popularne skróty, nie pełne LSP.
+Podgląd w liście jest skrócony do dwóch linii. Rozpoznawanie kontekstu domykania jest leksykalne.
+
+- [x] Dodatkowe 14 testów pól i 9 odzyskiwania przeszło — razem 106 przypadków.
+- [x] Podpisany APK przebudowano i ponownie zdekompilowano; sprawdzono hooki, wersję i zgodność assets.
+- [x] Podpisy v2/v3 zgodne z dotychczasowym certyfikatem.
+- SHA-256: 90c8c0a29fb7e9c16357ba9e6ff2ff64f9210eea568a1eb107141e38026d5dd7

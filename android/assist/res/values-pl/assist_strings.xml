@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <string name="assist_heading">Emmet — dotknij podpowiedzi · tutaj zamknij</string>
+ <string name="snip_add">Dodaj snippet</string>
+ <string name="snip_import">Importuj JSON</string>
+ <string name="snip_export">Eksportuj JSON</string>
+ <string name="snip_options">Asystent pisania</string>
+ <string name="snip_suggestions">Podpowiedzi Emmet</string>
+ <string name="snip_pairs">Domykanie znaków i HTML</string>
+ <string name="snip_language">Język</string>
+ <string name="snip_shortcut">Skrót, np. card</string>
+ <string name="snip_body">Treść, np. article.card&gt;h2{${1:Tytuł}}</string>
+ <string name="snip_help">Pola: ${1:tekst}, końcowy kursor: ${0}. HTML przyjmuje skróty Emmet, CSS deklaracje.</string>
+ <string name="snip_edit">Edytuj snippet</string>
+ <string name="snip_delete">Usuń snippet</string>
+ <string name="snip_required">Podaj skrót bez spacji i treść.</string>
+ <string name="snip_duplicate">Taki skrót już istnieje w tym języku.</string>
+ <string name="snip_error">Nie udało się zapisać lub odczytać snippetów. Sprawdź JSON (maks. 200 wpisów i 32 Ki znaków).</string>
+ <string name="snip_exported">Wyeksportowano snippety.</string>
+ <string name="snip_replace_confirm">Zastąpić wszystkie własne snippety zawartością pliku?</string>
+ <string name="snip_replace">Zastąp</string>
+</resources>

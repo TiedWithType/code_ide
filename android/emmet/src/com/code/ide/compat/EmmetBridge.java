@@ -34,6 +34,7 @@ public final class EmmetBridge {
     }
     public static void cancel(Activity activity) {
         EmmetFields.cancel(activity);
+        EditorAssist.dismiss(activity);
         Request request = ACTIVE.get(activity);
         if (request != null) request.close();
     }
@@ -50,7 +51,7 @@ public final class EmmetBridge {
         ACTIVE.put(activity, r);
         r.start();
     }
-    private static synchronized String page(Context context) throws Exception {
+    static synchronized String page(Context context) throws Exception {
         if (page == null) {
             InputStream in = context.getAssets().open("emmet/emmet.js");
             ByteArrayOutputStream out = new ByteArrayOutputStream();

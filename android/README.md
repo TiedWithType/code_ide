@@ -1,32 +1,16 @@
 # Zmodyfikowane źródła Androida
 
-`overlay/` zawiera zmienione lub dodane pliki względem dekompilacji
-przesłanego `Code IDE.apk` (com.code.ide, versionCode 20260919).
-To nakładka na projekt Apktool, nie kompletny projekt ani źródła Java/Kotlin.
-Katalog `syntax/` zawiera wspólne definicje kolorowania wgrywane do assets podczas budowania.
+`overlay/` jest bazową nakładką na dekompilację `Code IDE.apk`. Wersja Assist jest składana
+source-first: czytelne źródła helperów i adaptera Emmet są kompilowane podczas przygotowania drzewa,
+a kilka małych hooków do dużych istniejących plików smali nakłada `apply_assist.py`.
 
-## Zakres zmian
+Aktualna konfiguracja: **minSdk 26 / targetSdk 34**.
 
-- Dostęp do plików: żądanie uprawnień, ponawianie listowania, obsługa błędów
-  i niedostępnego ostatniego katalogu, poprawki kopiowania.
-- Korekty XML panelu plików, wierszy i edytora; włączanie dodatkowej klawiatury.
-- Wieloliniowy typ wejścia dla klawiatury systemowej (w tym emoji).
-- Usunięcie GET_ACCOUNTS, MANAGE_ACCOUNTS i USE_CREDENTIALS.
-- POST_NOTIFICATIONS i żądanie zgody od Androida 13.
-- FileProvider do udostępniania plików, exported, immutable PendingIntent
-  oraz kontrole dostępu do sieci lokalnej w FTP/SFTP.
+## Odtworzenie Assist
 
-Aktualna konfiguracja to **minSdk 26 / targetSdk 34**, nie targetSdk 37.
-Target 34 pozostawiono ze względu na problemy starego UI z edge-to-edge.
-Nie deklarujemy pełnej migracji do najnowszego API ani potwierdzonego działania UI.
-
-## Odtworzenie projektu
-
-Wymagane: Java, Apktool 2.12.1 oraz dokładnie ten sam bazowy APK.
-SHA-256 bazowego APK:
+Wymagane: Java/JDK, Python 3, Node.js/npm, Apktool 2.12.1, Android `android.jar`, R8/D8 oraz baksmali.
+Bazowy APK ma SHA-256:
 `d18dc8805bae05e0895b1b99dcf4b7a77d171c95ca283064598cf21f0c926f41`.
-
-Z głównego katalogu repozytorium, używając nowego katalogu roboczego:
 
 ```sh
 java -jar /path/to/apktool.jar d '/path/to/Code IDE.apk' -o android/build/project
@@ -34,48 +18,30 @@ cp -R android/overlay/. android/build/project/
 mkdir -p android/build/project/assets/syntax/modes
 cp syntax/modes/* android/build/project/assets/syntax/modes/
 cp syntax/*.dtd android/build/project/assets/syntax/
+
+ANDROID_JAR=/path/to/android.jar \
+R8_JAR=/path/to/r8.jar \
+BAKSMALI_CLASSPATH=/path/to/baksmali-and-deps.jar \
+android/assist/build_assist.sh android/build/project
+
 java -jar /path/to/apktool.jar b android/build/project -o android/build/Code-IDE-unsigned.apk
 ```
 
-To tworzy **niepodpisany** APK. Do wydania wyrównaj go przez `zipalign`,
-następnie podpisz przez `apksigner` z Android SDK Build Tools, używając
-prywatnie przechowywanych `modded.pk8` i `modded.x509.pem`, i sprawdź podpis
-przez `apksigner verify --verbose`. Klucze i APK nie są częścią repozytorium.
-Aktualny APK z poprawkami składni i pomocy zweryfikowano z podpisami v2/v3.
+Po złożeniu APK należy wykonać `zipalign`, podpisać przez `apksigner` dotychczasowym prywatnym
+certyfikatem i zweryfikować podpis. Klucze nie należą do repozytorium.
 
-## Weryfikacja i ograniczenia
+## Assist 20260922
 
-Dotychczas wykonano kompilację Apktool i ponowną dekompilację APK,
-sprawdzenie XML oraz zachowania identyfikatorów zasobów i assets.
-Nie wykonano testów na telefonie/emulatorze. W szczególności przesunięcie
-edytora, przewijanie panelu, paski systemowe i wprowadzanie emoji wymagają
-potwierdzenia na urządzeniu. Raport nie oznacza, że te błędy zostały
-potwierdzone jako naprawione w działającej aplikacji.
+VersionName: `Expressive You - Assist 20260922`  
+VersionCode: `20260926`
 
-## Składnia i pomoc — 2026-09-20
+Funkcje: podpowiedzi Emmet, własne snippety i import/eksport JSON, parowanie nawiasów/cudzysłowów,
+leksykalne domykanie HTML/XML oraz integracja z rzeczywistym wpisywaniem IME/klawiatury fizycznej.
+Emmet pozostaje lokalny/offline.
 
-- Katalog ma nazwy WIELKIMI LITERAMI i kolejność A–Z. ModeCatalogHandler
-  zachowuje małe litery wewnętrznych identyfikatorów, zapewniając zgodność
-  importów XML i wcześniej zapisanych skojarzeń. Theme pokazuje wielkie litery.
-- ModeProvider pomija `common-*` w wyborze języka, ale ładuje je jako zależności.
-- `overlay/assets/help` zawiera poprawioną pomoc HTML/CSS, lokalne obrazki,
-  tabelę języków i poprawione odnośniki.
-- 44 przypadki regresji i 274 sprawdzenia tokenów/rozszerzeń: 0 błędów.
-  Wykonano kontrolę odwołań między regułami i lokalnych linków pomocy.
-- Testy silnika jEdit i przebudowa APK nie zastępują testu na Androidzie.
+Weryfikacja hosta: **106 przypadków** (43 Emmet + 15 podpowiedzi + 25 par + 14 pól + 9 odzyskiwania).
+SHA-256 podpisanego APK: `90c8c0a29fb7e9c16357ba9e6ff2ff64f9210eea568a1eb107141e38026d5dd7`.
+Test na urządzeniu Android nadal pozostaje do wykonania.
 
-## Emmet — 2026-09-21
-
-Oficjalny Emmet 2.4.11 zastępuje stary parser XML. Rozwijanie HTML, CSS i JSX/TSX działa offline przez systemowy WebView; zachowane są wcięcia i pierwsze pole edycji. Kod źródłowy, ograniczenia i odtwarzanie pakietu: [emmet/README.md](emmet/README.md). Nakładka zawiera gotowy pakiet JS, mostek smali, zasoby PL/EN oraz aktualną pomoc. Wersja APK: `Expressive You - Emmet 2.4.11`, versionCode `20260923`. Testy JS i przebudowa przeszły; uruchomienie na urządzeniu Android wymaga sprawdzenia.
-
-
-## Edytor — 2026-09-22
-
-Wersja `Expressive You - Editor 20260922`, versionCode `20260925`, tag `editor-20260922`.
-Quicksand w dialogach, wspólne ostrzeżenia, Zapisz i zamknij, polskie nazwy i daty,
-Tab/Shift+Tab oraz własne snippety Emmet, transakcyjna kopia sesji i checkpoint co 15 sekund.
-66 testów hosta: 43 Emmet, 14 nawigacji pól i 9 odzyskiwania danych. Podpisy APK v2/v3 zweryfikowane.
-Nie wykonano testów na urządzeniu Android.
-
-Źródła dodatkowych klas: [improvements](improvements/README.md).
-Szczegóły: [POSTEPY.md](../POSTEPY.md), [ZGODNOSC.md](../ZGODNOSC.md).
+Szczegóły: [assist/README.md](assist/README.md), [improvements/README.md](improvements/README.md),
+[POSTEPY.md](../POSTEPY.md), [ZGODNOSC.md](../ZGODNOSC.md) i [MAPA_KODU.md](../MAPA_KODU.md).

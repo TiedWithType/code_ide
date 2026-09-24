@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../style.css"><title>Emmet — Code IDE</title></head>
+<body>
+<nav class="back" aria-label="Nawigacja pomocy"><a href="../index.html">← Pomoc</a></nav>
+<h2>Emmet 2.4.11</h2>
+<p>Oficjalny silnik Emmet rozwija skróty HTML, XML, CSS i JSX. Działa offline dzięki wbudowanemu pakietowi JavaScript i systemowemu Android WebView.</p>
+<h3 id="whatis">Jak używać</h3>
+<p>Wybierz właściwą składnię dokumentu. Wpisz skrót i ustaw kursor na jego końcu albo zaznacz sam skrót. Wybierz <strong>Edytuj → Rozwiń Emmet</strong> lub naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Space</span> na klawiaturze sprzętowej.</p>
+<p>Rozwinięcie zachowuje wcięcie bieżącego wiersza, ustawiony znak tabulacji i zakończenia linii. Kursor trafia do pierwszego pola do uzupełnienia. Tab przechodzi do kolejnego pola, Shift+Tab wraca do poprzedniego. Przycisk tab na dodatkowej klawiaturze aplikacji także przechodzi dalej. Edycja poza aktywnym polem lub zmiana dokumentu kończy sesję pól. Powtórzenia tego samego pola nie są automatycznie synchronizowane.</p>
+<h3 id="support">Przykłady</h3>
+<table><thead><tr><th>Składnia</th><th>Skrót</th><th>Efekt</th></tr></thead><tbody>
+<tr><td>HTML</td><td><code>!</code></td><td>Dokument HTML5</td></tr>
+<tr><td>HTML</td><td><code>ul&gt;li.item$*3</code></td><td>Lista z trzema numerowanymi klasami</td></tr>
+<tr><td>HTML</td><td><code>a[href=/]{Start}</code></td><td>Link z tekstem i adresem</td></tr>
+<tr><td>CSS</td><td><code>m10-20</code></td><td><code>margin: 10px 20px;</code></td></tr>
+<tr><td>CSS</td><td><code>p16</code></td><td><code>padding: 16px;</code></td></tr>
+<tr><td>CSS</td><td><code>df</code></td><td><code>display: flex;</code></td></tr>
+<tr><td>JSX / TSX</td><td><code>div.card</code></td><td><code>&lt;div className="card"&gt;&lt;/div&gt;</code></td></tr>
+</tbody></table>
+<p>Dostępne są zagnieżdżenia <code>&gt;</code>, sąsiedzi <code>+</code>, wyjście poziom wyżej <code>^</code>, grupy, mnożenie, numeracja, identyfikatory, klasy, atrybuty i tekst. Obsługiwane są też tryby XHTML, SCSS, Sass i Stylus, jeśli wybierzesz je jako składnię.</p>
+<p>W HTML silnik rozpoznaje proste bloki <code>&lt;style&gt;</code>, atrybuty <code>style</code> i rodzica dla skrótów takich jak <code>.item</code> w liście. Nie rozwija skrótów w komentarzach, zwykłych atrybutach ani blokach skryptu. Rozpoznawanie kontekstu jest uproszczone; dla złożonych szablonów wybierz odpowiedni tryb dokumentu.</p>
+<h3>Własne snippety</h3>
+<p>Otwórz <strong>Snippety Emmet</strong> w menu edytora. Wybierz Dodaj snippet, ustaw język, skrót i treść, a następnie naciśnij Zapisz. Dotknij istniejącego wpisu, aby go edytować lub usunąć. Importuj JSON i Eksportuj JSON używają systemowego wyboru pliku. Import po potwierdzeniu zastępuje własny zestaw. Format pliku: Klucze pierwszego poziomu to języki (html, jsx, xml, xhtml, css, scss, sass, stylus), a następnego: skróty. Wartością jest rozwinięcie Emmet. Przykład:</p>
+<pre>{"html":{"card":"article.card&gt;h2{${1:Tytuł}}+p{${2:Treść}}"},"css":{"brand":"color: #6750a4;"}}</pre>
+<p>Pola zapisuj jako <code>${1:tekst}</code>, <code>${2:tekst}</code> itd.; <code>${0}</code> oznacza pozycję końcową. Snippety zapisują się prywatnie w aplikacji i działają offline. Pusty obiekt <code>{}</code> przywraca sam zestaw wbudowany. Limit: 200 snippetów, 32 Ki znaków JSON, 4096 znaków rozwinięcia. Błędny JSON nie zastępuje poprzednich ustawień.</p>
+<h3>Podpowiedzi i domykanie</h3>
+<p>Po krótkiej przerwie we wpisywaniu pojawia się do trzech podpowiedzi z podglądem kodu. Dotknięcie podpowiedzi wstawia rozwinięcie. Dotknięcie nagłówka panelu zamyka listę. Sugestie obejmują bieżący skrót, własne snippety i najczęstsze skróty wbudowane; nie są pełnym autouzupełnianiem języka.</p>
+<p>W menu Snippety Emmet → Asystent pisania można osobno wyłączyć podpowiedzi oraz domykanie. Wpisanie nawiasu lub cudzysłowu wstawia parę, a przy zaznaczeniu otacza tekst. Wpisanie istniejącego znaku zamykającego przesuwa kursor; Backspace pomiędzy pustą parą usuwa oba znaki. W HTML wpisanie &gt; dodaje znacznik zamykający, z pominięciem znaczników pustych i samozamykających.</p>
+<p>Domykanie dotyczy pojedynczych znaków z klawiatury. Wklejanie i odtwarzanie plików nie jest przepisywane. Rozpoznawanie komentarzy, napisów i HTML jest leksykalne — złożone szablony i zachowanie różnych klawiatur wymagają testów.</p>
+<h3>Ograniczenia</h3>
+<p>Emmet wymaga działającego Android WebView. Dokumenty powyżej 512 Ki znaków, skróty powyżej 4096 znaków i wyniki powyżej 256 Ki znaków są odrzucane. Duże powtórzenia są ograniczone. Jeśli podczas obliczania zmienisz tekst, zaznaczenie lub dokument, wynik nie zostanie wstawiony. Ta integracja udostępnia rozwijanie skrótów, bez pozostałych poleceń edytorowych Emmet.</p>
+<p><a href="https://docs.emmet.io/cheat-sheet/">Ściąga Emmet</a> · <a href="https://github.com/emmetio/emmet">Kod źródłowy silnika</a> · <a href="../../emmet/LICENSE">Licencja MIT</a></p>
+</body></html>
