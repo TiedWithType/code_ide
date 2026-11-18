@@ -43,3 +43,17 @@
 - `android/improvements/AtomicStoreTest.java` — 9 przypadków odzyskiwania.
 
 Łącznie dla wersji Assist: 106 przypadków hosta. Test urządzenia Android pozostaje osobnym etapem.
+
+## Linia 2026.11 (`android/editor-2026-11/`)
+
+- `README.md` — zakres zmian, odtworzenie APK, testy; `NOTICE.md` — kod pochodny od AOSP (Apache-2.0).
+- `editor-20261117.patch` + `apply_editor_20261117.py` — idempotentne naniesienie zmian (14 plików + usunięcia) na dekompilację `com.code.ide.apk` 2026.11.14.
+- `build_java.sh`, `build_editor.sh` — kompilacja `src/` do `classes2.dex`, pakowanie, zipalign, podpis (klucze ze zmiennych środowiskowych).
+- `src/com/code/ide/compat/`:
+  - `PieceTable`, `PieceTableEditable`, `PieceTableFactory`, `Grow` — bufor piece table dla dokumentu i `EditText`;
+  - `LargeFileGuard` — wczytywanie dużych plików i odmowa, gdy edytor ich nie udźwignie;
+  - `UriBridge` — otwieranie plików z `content://` z zapisem do oryginału;
+  - `EmmetSnippets`, `SnippetData`, `T`, `Ui`, `EmmetSnippetsActivity`, `EmmetSnippetEditActivity`, `HelpLink` — snippety Emmet (grupy, import/eksport JSON, pomoc).
+- `stubs/` — sygnatury klas istniejących w smali (tylko do kompilacji, nie trafiają do APK).
+- `test/`, `run_host_tests.sh`, `reference/` — testy hosta, w tym test różnicowy portu z oryginalnym AOSP (`port_ssb.py`, `make_reference.py`).
+

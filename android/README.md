@@ -45,3 +45,16 @@ Test na urządzeniu Android nadal pozostaje do wykonania.
 
 Szczegóły: [assist/README.md](assist/README.md), [improvements/README.md](improvements/README.md),
 [POSTEPY.md](../POSTEPY.md), [ZGODNOSC.md](../ZGODNOSC.md) i [MAPA_KODU.md](../MAPA_KODU.md).
+
+## Linia 2026.11 (20261117)
+
+Osobny katalog [editor-2026-11/](editor-2026-11/README.md) zawiera źródła, testy, łatkę i skrypty budowania
+zmian naniesionych na `com.code.ide.apk` 2026.11.14 (minSdk 31 / targetSdk 34). **Nie jest to scalenie z
+`overlay/`** (wydanie 20260922, minSdk 26) — to dwie niezależne linie.
+
+VersionName: `Expressive You - 2026.11.17`  
+VersionCode: `20261117`  
+SHA-256 podpisanego APK: `c8b7f99cdc0931f8106e5dd3f2c07716cd1253a574aeb3e357276bbe7ef298f7`  
+Podpis: `CN=Android APK Signing` (`1cb5322e…`) — **inny niż wydanie 20260922** (`CN=Android Test Key`), patrz [POSTEPY.md](../POSTEPY.md).  
+Test na urządzeniu Android nadal pozostaje do wykonania.
+

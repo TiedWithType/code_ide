@@ -115,3 +115,39 @@ Podgląd w liście jest skrócony do dwóch linii. Rozpoznawanie kontekstu domyk
 - [x] Podpisany APK przebudowano i ponownie zdekompilowano; sprawdzono hooki, wersję i zgodność assets.
 - [x] Podpisy v2/v3 zgodne z dotychczasowym certyfikatem.
 - SHA-256: 90c8c0a29fb7e9c16357ba9e6ff2ff64f9210eea568a1eb107141e38026d5dd7
+
+# Aktualizacja 2026-11-17 — linia 2026.11 (versionCode 20261117)
+
+Zakres: zmiany użytkownika na bazie `com.code.ide.apk` 2026.11.14 (SHA-256 `b45b72111b475af7870f57eceb523837d8c0e37427da190f1fa8d36fcb4b8e6f`). Źródła: `android/editor-2026-11/`.
+
+- [x] Crash przy starcie: baza 20261114 zawiera już poprawkę tła ikony (gradient radialny → liniowy) oraz `try/catch` wokół `Crashlytics.start()`. Przyczyny nie potwierdzono logiem z urządzenia; Crashlytics usunięto całkowicie.
+- [x] Usunięto Crashlytics i RootTools (kod, zasoby, `RootTools.apk`, wpisy Bug reports/Root mode w Ustawieniach); typ systemu plików ROOT mapuje się na lokalny.
+- [x] `Document` korzysta z `PieceTable`; `PieceTableEditable` (port AOSP `SpannableStringBuilder`) podpięty pod `ObservableEditText` od 262144 znaków.
+- [x] Limit 1 MB zastąpiony `LargeFileGuard` (twardy limit 32 MiB + zapas pamięci); zbyt duży plik → wyjątek, plik nie jest otwierany.
+- [x] Duże dokumenty w `onSaveInstanceState` zapisują się do pliku (`files/state/`), by nie przekroczyć limitu Binder.
+- [x] Snippety Emmet: `EmmetSnippetsActivity` + `EmmetSnippetEditActivity`, grupy, import/eksport JSON naprawione (obsługa wyniku w Ustawieniach, BOM, spójne limity), pomoc `emmet.html#custom`. Ostrzeżenie o polach `${…}` poza `{}`/`[]` w HTML.
+- [x] Błąd URI: zapis do oryginału zamiast do pliku tymczasowego (`UriBridge`).
+- [x] Podpis dołączonym kluczem; certyfikat SHA-256 `1cb5322e4d92a990d1a2fa996e68f058da3fd04fc6d526556b1ad10e18fbef57` (zgodny z `com.code.ide.apk` 2026.11.14).
+
+## Weryfikacja
+
+- [x] Testy hosta: SnippetData, PieceTable, LargeFileGuard oraz test różnicowy portu z oryginalnym AOSP (150×700 + 6×6000 operacji) — bez błędów.
+- [x] Odtwarzalność: świeża dekompilacja bazy + `apply_editor_20261117.py` + `build_editor.sh` → `classes.dex`, `classes2.dex`, `resources.arsc`, manifest identyczne z buildem referencyjnym.
+- [x] Spójność wersji: apktool.yml (20261117 / `Expressive You - 2026.11.17`), `assets/help/index.html` (20261117), ta dokumentacja.
+- [x] Kontrola sygnatur wywołań smali → klasy Java (0 braków).
+- Artefakt: `Code-IDE-2026.11.17.apk`, SHA-256 `c8b7f99cdc0931f8106e5dd3f2c07716cd1253a574aeb3e357276bbe7ef298f7`.
+
+## Odstępstwa i ryzyka (reguły.md)
+
+- Nowy kod napisano w **Javie**, nie w Kotlinie (pkt 1). Uzasadnienie: `PieceTableEditable` jest portem kodu Java z AOSP weryfikowanym testem różnicowym; reszta to nowe helpery spójne z istniejącymi w `android/improvements/src/`. Migracja do Kotlina — osobny etap z testami regresji (pkt 2). Kandydaci: `SnippetData`, `LargeFileGuard`, `UriBridge`, aktywności snippetów.
+- `classes2.dex` dołączany przy pakowaniu zamiast baksmali do drzewa (inna droga niż linia Assist; pkt 10 spełnione przez `apply_editor_20261117.py` + `build_editor.sh`).
+- Dwa pliki pochodne od AOSP są na licencji Apache-2.0: `android/editor-2026-11/NOTICE.md`.
+- **Dwie linie, niescalone**: `android/overlay/` = wydanie `editor-20260922` (minSdk 26); linia 2026.11 = minSdk 31, nowsza baza, bez pośrednich źródeł w repo.
+- **Certyfikat różni się od opublikowanego wydania `editor-20260922`**: tamto APK jest podpisane `CN=Android Test Key` (SHA-256 `fc02a40e04cbd0c9e31f97e1917e42ba87684528d923d367f133bc47a227de1f`), nowe `CN=Android APK Signing` (`1cb5322e…`). Ten sam pakiet `com.code.ide`, więc aktualizacja nad wydaniem 20260922 **nie zainstaluje się** (wymaga odinstalowania). Wymaga decyzji przed publikacją.
+
+## Niewykonane
+
+- [ ] Test na urządzeniu Android (brak urządzenia/emulatora) — lista w ZGODNOSC.md.
+- [ ] Pomiary czasu/pamięci dla dużych plików; stałe 32 MiB i 16 B/bajt to szacunki.
+- [ ] Commit, push, tag i GitHub Release — **nie wykonano** (pkt 4 reguł; wymagają wyraźnej zgody). Proponowany tag: `editor-20261117`, plik wydania: `Code-IDE-2026.11.17.apk`.
+

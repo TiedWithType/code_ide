@@ -1,0 +1,1558 @@
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -57,6 +57,8 @@
+             </intent-filter>
+         </activity>
+         <activity android:label="Code IDE" android:name="com.aor.droidedit.custom.HelpPageViewer"/>
++        <activity android:exported="false" android:label="@string/emmet_snippets_title" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:windowSoftInputMode="adjustResize" android:name="com.code.ide.compat.EmmetSnippetsActivity"/>
++        <activity android:exported="false" android:label="@string/emmet_snippets_title" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:windowSoftInputMode="adjustResize" android:name="com.code.ide.compat.EmmetSnippetEditActivity"/>
+         <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode" android:label="Code IDE" android:name="com.aor.droidedit.preferences.Preferences"/>
+         <activity android:label="Code IDE" android:name="com.aor.droidedit.preferences.SftpListPreferences"/>
+         <activity android:label="Code IDE" android:name="com.aor.droidedit.preferences.SftpPreferences"/>
+@@ -73,7 +75,6 @@
+             </intent-filter>
+         </activity>
+         <activity android:name="com.box.boxandroidlibv2.activities.OAuthActivity"/>
+-        <meta-data android:name="com.crashlytics.ApiKey" android:value="bd62e38bb9e04da93a057f8871c76ffa0ae1b1b2"/>
+         <meta-data android:name="com.google.android.gms.version" android:value="5077000"/>
+         <provider android:authorities="com.code.ide.files" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/compat_file_paths"/>
+--- a/apktool.yml
++++ b/apktool.yml
+@@ -12,8 +12,8 @@
+   forcedPackageId: 127
+   renameManifestPackage: null
+ versionInfo:
+-  versionCode: 20261114
+-  versionName: Expressive You - 2026.11.14
++  versionCode: 20261117
++  versionName: Expressive You - 2026.11.17
+ resourcesAreCompressed: false
+ sharedLibrary: false
+ sparseResources: false
+@@ -31,8 +31,6 @@
+   org/spongycastle/x509/CertPathReviewerMessages.properties: 8
+   org/eclipse/jgit/storage/dfs/DfsText.properties: 8
+   org/eclipse/jgit/internal/JGitText.properties: 8
+-  bin/RootTools.apk: 8
+-  bin/resources.ap_: 8
+ doNotCompress:
+ - resources.arsc
+ - webp
+--- a/assets/help/index.html
++++ b/assets/help/index.html
+@@ -1 +1 @@
+-<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><link rel="stylesheet" href="style.css"><title>Code IDE Help — Code IDE</title></head><body><h1>Code IDE Help</h1><p>This is the help page for Code IDE, an Android source code editor with many features.</p><ul><li><a href="pages/editor.html">Editing</a> An overview of the main editing functions of Code IDE</li><li><a href="pages/menus.html">UI Layouts</a> The different possible UI layout configurations</li><li><a href="pages/files.html">File Management</a> How to create, open and save files</li><li><a href="pages/encodings.html">File Encodings</a> Creating and saving files using different encodings.</li><li><a href="pages/remote.html">Remote Files</a> How to connect and manage files in remote locations using Dropbox, Box, SFTP, FTP and FTPS</li><li><a href="pages/syntax.html">Syntax Highlighting</a> Configuring the correct syntax highlighting for each type of file</li><li><a href="pages/emmet.html">Emmet 2.4.11</a> Skróty HTML, CSS i JSX działające offline</li><li><a href="pages/shortcuts.html">Keyboard Shortcuts</a> Configuring and using shortcuts (even without a physical keyboard)</li><li><a href="pages/appearance.html">Appearance</a> Configuring the general appearance of Code IDE</li><li><a href="pages/running.html">Running</a> Ways to execute code directly from Code IDE</li><li><a href="pages/homeshortcuts.html">Home Screen Shortcuts</a> Placing a shortcut to a specific file on you home screen</li></ul><br><ul><li><a href="pages/about.html">About</a> About Code IDE</li><li><a href="pages/licenses.html">Licenses</a> Open source licenses</li></ul><div class="modder"><p class="subtitle">Current version</p><h2 class="title">20261114</h2><a class="modder-link" href="https://github.com/TiedWithType/code_ide/releases/latest">Check for updates →</a></div></body></html>
+\ No newline at end of file
++<!DOCTYPE html><html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><link rel="stylesheet" href="style.css"><title>Code IDE Help — Code IDE</title></head><body><h1>Code IDE Help</h1><p>This is the help page for Code IDE, an Android source code editor with many features.</p><ul><li><a href="pages/editor.html">Editing</a> An overview of the main editing functions of Code IDE</li><li><a href="pages/menus.html">UI Layouts</a> The different possible UI layout configurations</li><li><a href="pages/files.html">File Management</a> How to create, open and save files</li><li><a href="pages/encodings.html">File Encodings</a> Creating and saving files using different encodings.</li><li><a href="pages/remote.html">Remote Files</a> How to connect and manage files in remote locations using Dropbox, Box, SFTP, FTP and FTPS</li><li><a href="pages/syntax.html">Syntax Highlighting</a> Configuring the correct syntax highlighting for each type of file</li><li><a href="pages/emmet.html">Emmet 2.4.11</a> Skróty HTML, CSS i JSX działające offline</li><li><a href="pages/shortcuts.html">Keyboard Shortcuts</a> Configuring and using shortcuts (even without a physical keyboard)</li><li><a href="pages/appearance.html">Appearance</a> Configuring the general appearance of Code IDE</li><li><a href="pages/running.html">Running</a> Ways to execute code directly from Code IDE</li><li><a href="pages/homeshortcuts.html">Home Screen Shortcuts</a> Placing a shortcut to a specific file on you home screen</li></ul><br><ul><li><a href="pages/about.html">About</a> About Code IDE</li><li><a href="pages/licenses.html">Licenses</a> Open source licenses</li></ul><div class="modder"><p class="subtitle">Current version</p><h2 class="title">20261117</h2><a class="modder-link" href="https://github.com/TiedWithType/code_ide/releases/latest">Check for updates →</a></div></body></html>
+\ No newline at end of file
+--- a/assets/help/pages/emmet.html
++++ b/assets/help/pages/emmet.html
+@@ -1 +1,5 @@
+-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../style.css"><title>Emmet — Code IDE</title></head><body><nav class="back" aria-label="Nawigacja pomocy"><a href="../index.html">← Pomoc</a></nav><h2>Emmet 2.4.11</h2><p>Oficjalny silnik Emmet rozwija skróty HTML, XML, CSS i JSX. Działa offline dzięki wbudowanemu pakietowi JavaScript i systemowemu Android WebView.</p><h3 id="whatis">Jak używać</h3><p>Wybierz właściwą składnię dokumentu. Wpisz skrót i ustaw kursor na jego końcu albo zaznacz sam skrót. Wybierz <strong>Edytuj → Rozwiń Emmet</strong> lub naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Space</span> na klawiaturze sprzętowej.</p><p>Rozwinięcie zachowuje wcięcie bieżącego wiersza, ustawiony znak tabulacji i zakończenia linii. Kursor trafia do pierwszego pola do uzupełnienia. Tab przechodzi do kolejnego pola, Shift+Tab wraca do poprzedniego. Przycisk tab na dodatkowej klawiaturze aplikacji także przechodzi dalej. Edycja poza aktywnym polem lub zmiana dokumentu kończy sesję pól. Powtórzenia tego samego pola nie są automatycznie synchronizowane.</p><h3 id="support">Przykłady</h3><table><thead><tr><th>Składnia</th><th>Skrót</th><th>Efekt</th></tr></thead><tbody><tr><td>HTML</td><td><code>!</code></td><td>Dokument HTML5</td></tr><tr><td>HTML</td><td><code>ul&gt;li.item$*3</code></td><td>Lista z trzema numerowanymi klasami</td></tr><tr><td>HTML</td><td><code>a[href=/]{Start}</code></td><td>Link z tekstem i adresem</td></tr><tr><td>CSS</td><td><code>m10-20</code></td><td><code>margin: 10px 20px;</code></td></tr><tr><td>CSS</td><td><code>p16</code></td><td><code>padding: 16px;</code></td></tr><tr><td>CSS</td><td><code>df</code></td><td><code>display: flex;</code></td></tr><tr><td>JSX / TSX</td><td><code>div.card</code></td><td><code>&lt;div className="card"&gt;&lt;/div&gt;</code></td></tr></tbody></table><p>Dostępne są zagnieżdżenia <code>&gt;</code>, sąsiedzi <code>+</code>, wyjście poziom wyżej <code>^</code>, grupy, mnożenie, numeracja, identyfikatory, klasy, atrybuty i tekst. Obsługiwane są też tryby XHTML, SCSS, Sass i Stylus, jeśli wybierzesz je jako składnię.</p><p>W HTML silnik rozpoznaje proste bloki <code>&lt;style&gt;</code>, atrybuty <code>style</code> i rodzica dla skrótów takich jak <code>.item</code> w liście. Nie rozwija skrótów w komentarzach, zwykłych atrybutach ani blokach skryptu. Rozpoznawanie kontekstu jest uproszczone; dla złożonych szablonów wybierz odpowiedni tryb dokumentu.</p><h3>Własne snippety</h3><p>Otwórz <strong>Snippety Emmet</strong> w menu edytora. Wybierz Dodaj snippet, ustaw język, skrót i treść, a następnie naciśnij Zapisz. Dotknij istniejącego wpisu, aby go edytować lub usunąć. Importuj JSON i Eksportuj JSON używają systemowego wyboru pliku. Import po potwierdzeniu zastępuje własny zestaw. Format pliku: Klucze pierwszego poziomu to języki (html, jsx, xml, xhtml, css, scss, sass, stylus), a następnego: skróty. Wartością jest rozwinięcie Emmet. Przykład:</p><pre>{"html":{"card":"article.card&gt;h2{${1:Tytuł}}+p{${2:Treść}}"},"css":{"brand":"color: #6750a4;"}}</pre><p>Pola zapisuj jako <code>${1:tekst}</code>, <code>${2:tekst}</code> itd.; <code>${0}</code> oznacza pozycję końcową. Snippety zapisują się prywatnie w aplikacji i działają offline. Pusty obiekt <code>{}</code> przywraca sam zestaw wbudowany. Limit: 200 snippetów, 32 Ki znaków JSON, 4096 znaków rozwinięcia. Błędny JSON nie zastępuje poprzednich ustawień.</p><h3>Podpowiedzi i domykanie</h3><p>Po krótkiej przerwie we wpisywaniu pojawia się do trzech podpowiedzi z podglądem kodu. Dotknięcie podpowiedzi wstawia rozwinięcie. Dotknięcie nagłówka panelu zamyka listę. Sugestie obejmują bieżący skrót, własne snippety i najczęstsze skróty wbudowane; nie są pełnym autouzupełnianiem języka.</p><p>W menu Snippety Emmet → Asystent pisania można osobno wyłączyć podpowiedzi oraz domykanie. Wpisanie nawiasu lub cudzysłowu wstawia parę, a przy zaznaczeniu otacza tekst. Wpisanie istniejącego znaku zamykającego przesuwa kursor; Backspace pomiędzy pustą parą usuwa oba znaki. W HTML wpisanie &gt; dodaje znacznik zamykający, z pominięciem znaczników pustych i samozamykających.</p><p>Domykanie dotyczy pojedynczych znaków z klawiatury. Wklejanie i odtwarzanie plików nie jest przepisywane. Rozpoznawanie komentarzy, napisów i HTML jest leksykalne — złożone szablony i zachowanie różnych klawiatur wymagają testów.</p><h3>Ograniczenia</h3><p>Emmet wymaga działającego Android WebView. Dokumenty powyżej 512 Ki znaków, skróty powyżej 4096 znaków i wyniki powyżej 256 Ki znaków są odrzucane. Duże powtórzenia są ograniczone. Jeśli podczas obliczania zmienisz tekst, zaznaczenie lub dokument, wynik nie zostanie wstawiony. Ta integracja udostępnia rozwijanie skrótów, bez pozostałych poleceń edytorowych Emmet.</p><p><a href="https://docs.emmet.io/cheat-sheet/">Ściąga Emmet</a> · <a href="https://github.com/emmetio/emmet">Kod źródłowy silnika</a> · <a href="../../emmet/LICENSE">Licencja MIT</a></p></body></html>
+\ No newline at end of file
++<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../style.css"><title>Emmet — Code IDE</title></head><body><nav class="back" aria-label="Nawigacja pomocy"><a href="../index.html">← Pomoc</a></nav><h2>Emmet 2.4.11</h2><p>Oficjalny silnik Emmet rozwija skróty HTML, XML, CSS i JSX. Działa offline dzięki wbudowanemu pakietowi JavaScript i systemowemu Android WebView.</p><h3 id="whatis">Jak używać</h3><p>Wybierz właściwą składnię dokumentu. Wpisz skrót i ustaw kursor na jego końcu albo zaznacz sam skrót. Wybierz <strong>Edytuj → Rozwiń Emmet</strong> lub naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Space</span> na klawiaturze sprzętowej.</p><p>Rozwinięcie zachowuje wcięcie bieżącego wiersza, ustawiony znak tabulacji i zakończenia linii. Kursor trafia do pierwszego pola do uzupełnienia. Tab przechodzi do kolejnego pola, Shift+Tab wraca do poprzedniego. Przycisk tab na dodatkowej klawiaturze aplikacji także przechodzi dalej. Edycja poza aktywnym polem lub zmiana dokumentu kończy sesję pól. Powtórzenia tego samego pola nie są automatycznie synchronizowane.</p><h3 id="support">Przykłady</h3><table><thead><tr><th>Składnia</th><th>Skrót</th><th>Efekt</th></tr></thead><tbody><tr><td>HTML</td><td><code>!</code></td><td>Dokument HTML5</td></tr><tr><td>HTML</td><td><code>ul&gt;li.item$*3</code></td><td>Lista z trzema numerowanymi klasami</td></tr><tr><td>HTML</td><td><code>a[href=/]{Start}</code></td><td>Link z tekstem i adresem</td></tr><tr><td>CSS</td><td><code>m10-20</code></td><td><code>margin: 10px 20px;</code></td></tr><tr><td>CSS</td><td><code>p16</code></td><td><code>padding: 16px;</code></td></tr><tr><td>CSS</td><td><code>df</code></td><td><code>display: flex;</code></td></tr><tr><td>JSX / TSX</td><td><code>div.card</code></td><td><code>&lt;div className="card"&gt;&lt;/div&gt;</code></td></tr></tbody></table><p>Dostępne są zagnieżdżenia <code>&gt;</code>, sąsiedzi <code>+</code>, wyjście poziom wyżej <code>^</code>, grupy, mnożenie, numeracja, identyfikatory, klasy, atrybuty i tekst. Obsługiwane są też tryby XHTML, SCSS, Sass i Stylus, jeśli wybierzesz je jako składnię.</p><p>W HTML silnik rozpoznaje proste bloki <code>&lt;style&gt;</code>, atrybuty <code>style</code> i rodzica dla skrótów takich jak <code>.item</code> w liście. Nie rozwija skrótów w komentarzach, zwykłych atrybutach ani blokach skryptu. Rozpoznawanie kontekstu jest uproszczone; dla złożonych szablonów wybierz odpowiedni tryb dokumentu.</p><h3 id="custom">Własne snippety</h3><p>Własne snippety rozwijają się tak samo jak skróty wbudowane: wpisz skrót, ustaw kursor na jego końcu i rozwiń Emmet. Mają pierwszeństwo przed skrótami wbudowanymi o tej samej nazwie. Zapisują się prywatnie w aplikacji i działają offline.</p><h4>Gdzie to jest</h4><p>Wybierz <strong>Ustawienia → Snippety Emmet</strong>. Pozycje Dodaj snippet, Importuj JSON, Eksportuj JSON i Asystent pisania otwierają ekran zarządzania snippetami (nie okno dialogowe).</p><h4>Organizacja: języki i grupy</h4><p>Ekran główny pokazuje osiem języków: html, xhtml, xml, jsx, css, scss, sass i stylus, każdy z liczbą snippetów i grup. Dotknij języka, aby zobaczyć jego grupy, a grupy, aby zobaczyć snippety. Grupy służą tylko do porządkowania, więc nie wpływają na rozwijanie skrótów. Snippet bez grupy trafia do pozycji <em>Bez grupy</em>.</p><ul><li><strong>Nowa grupa</strong>: menu ⋮ na ekranie języka. Pusta grupa też jest zapamiętywana.</li><li><strong>Zmień nazwę grupy / Usuń grupę</strong>: menu ⋮ na ekranie grupy. Usunięcie grupy nie kasuje snippetów, tylko przenosi je do pozycji Bez grupy.</li><li><strong>Dodaj snippet</strong>: przycisk + w pasku. Na ekranie grupy nowy snippet dostaje tę grupę.</li></ul><h4>Edycja snippetu</h4><p>Dotknij snippetu, aby go edytować. Formularz ma pola: język, grupa (podpowiada istniejące), skrót i treść. Skrót nie może zawierać spacji (maks. 64 znaki), a treść ma maks. 4096 znaków. Przyciski pod treścią wstawiają pole i pozycję końcową w postaci właściwej dla wybranego języka (w HTML/XML/JSX w nawiasach klamrowych). Gdy pole jest użyte błędnie, formularz pokazuje ostrzeżenie. Usuń wymaga dwóch dotknięć. Naciśnięcie Wstecz przy niezapisanych zmianach pokazuje ostrzeżenie; drugie naciśnięcie odrzuca zmiany. Na liście przytrzymaj snippet, aby go usunąć; pasek u dołu pozwala to <strong>Cofnąć</strong> przez kilka sekund.</p><h4 id="fields">Pola i kursor</h4><p>Treść snippetu to zwykły skrót Emmet. Pole <code>${1:tekst}</code> to miejsce, w którym zatrzyma się kursor (numery 1, 2… ustalają kolejność), a <code>${0}</code> to pozycja końcowa. W HTML, XML i JSX pole działa <strong>tylko wewnątrz</strong> <code>{tekst}</code> lub <code>[atrybut]</code>. Poza nimi <code>$</code> jest numeratorem (jak w <code>li.item$*3</code>), więc powstaje błędny znacznik, np. <code>&lt;1&gt;</code>.</p><pre>h1{${1:pole}${0}}              daje &lt;h1&gt;pole&lt;/h1&gt;
++a[href=${1:url}]{${2:tekst}}   daje &lt;a href="url"&gt;tekst&lt;/a&gt;
++h1&gt;${1:pole}${0}              BŁĄD: &lt;h1&gt;&lt;1&gt;1:pole&lt;/1&gt;&lt;1&gt;0&lt;/1&gt;&lt;/h1&gt;</pre><p>W CSS, SCSS, Sass i Stylus pola działają wszędzie, np. <code>color: ${1:#000};${0}</code>.</p><h4>Import i eksport JSON</h4><p><strong>Eksportuj JSON</strong> zapisuje wszystkie snippety do wybranego pliku (UTF-8) w formacie z grupami. <strong>Importuj JSON</strong> najpierw pokazuje podgląd: ile snippetów jest w pliku, ile jest nowych, a ile już istnieje, oraz ewentualne pominięte błędne wpisy. Przed importem wybierz tryb:</p><ul><li><em>Scal, zachowaj moje przy konflikcie</em> (domyślny): dodaje tylko nowe skróty.</li><li><em>Scal, nadpisz moje przy konflikcie</em>: istniejące skróty dostają treść z pliku.</li><li><em>Zastąp wszystkie moje snippety</em>: usuwa obecny zestaw i wstawia zawartość pliku. Plik <code>{}</code> w tym trybie czyści własny zestaw.</li></ul><p>Import akceptuje trzy formaty. Plik z BOM-em UTF-8 jest poprawnie wczytywany. Błędny wpis (zły język, skrót ze spacją, za długa treść) jest pomijany i policzony w podglądzie, a nie przerywa całego importu. Błędny JSON, za duży plik albo przekroczenie limitu nie zmieniają niczego.</p><p>1. Format z grupami (zapisywany przez eksport):</p><pre>{"format":"code-ide-emmet-snippets","version":2,
++ "groups":{"html":["Układ"]},
++ "snippets":{"html":{"card":{"body":"article.card&gt;h2{${1:Tytuł}}+p{${2:Treść}${0}}","group":"Układ"}}}}</pre><p>2. Format prosty (język → skrót → treść), używany w starszych wersjach:</p><pre>{"html":{"card":"article.card&gt;h2{${1:Tytuł}}"},"css":{"brand":"color: #6750a4;"}}</pre><p>3. Konfiguracja w stylu Emmet, gdzie snippety leżą w kluczu <code>snippets</code> danego języka:</p><pre>{"html":{"snippets":{"card":"article.card"}}}</pre><h4>Limity</h4><p>Maksymalnie 300 snippetów, 4096 znaków treści, 64 znaki skrótu, 40 znaków nazwy grupy, 256 Ki znaków łącznej treści i 1 MiB pliku importu. Nazwy języków muszą być dokładnie takie jak wyżej.</p><h3>Podpowiedzi i domykanie</h3><p>Po krótkiej przerwie we wpisywaniu pojawia się do trzech podpowiedzi z podglądem kodu. Dotknięcie podpowiedzi wstawia rozwinięcie. Dotknięcie nagłówka panelu zamyka listę. Sugestie obejmują bieżący skrót, własne snippety i najczęstsze skróty wbudowane; nie są pełnym autouzupełnianiem języka.</p><p>W <strong>Ustawienia → Snippety Emmet → Asystent pisania</strong> można osobno wyłączyć podpowiedzi oraz domykanie. Wpisanie nawiasu lub cudzysłowu wstawia parę, a przy zaznaczeniu otacza tekst. Wpisanie istniejącego znaku zamykającego przesuwa kursor; Backspace pomiędzy pustą parą usuwa oba znaki. W HTML wpisanie &gt; dodaje znacznik zamykający, z pominięciem znaczników pustych i samozamykających.</p><p>Domykanie dotyczy pojedynczych znaków z klawiatury. Wklejanie i odtwarzanie plików nie jest przepisywane. Rozpoznawanie komentarzy, napisów i HTML jest leksykalne — złożone szablony i zachowanie różnych klawiatur wymagają testów.</p><h3>Ograniczenia</h3><p>Emmet wymaga działającego Android WebView. Dokumenty powyżej 512 Ki znaków, skróty powyżej 4096 znaków i wyniki powyżej 256 Ki znaków są odrzucane. Duże powtórzenia są ograniczone. Jeśli podczas obliczania zmienisz tekst, zaznaczenie lub dokument, wynik nie zostanie wstawiony. Ta integracja udostępnia rozwijanie skrótów, bez pozostałych poleceń edytorowych Emmet.</p><p><a href="https://docs.emmet.io/cheat-sheet/">Ściąga Emmet</a> · <a href="https://github.com/emmetio/emmet">Kod źródłowy silnika</a> · <a href="../../emmet/LICENSE">Licencja MIT</a></p></body></html>
+\ No newline at end of file
+--- a/res/values/public.xml
++++ b/res/values/public.xml
+@@ -268,7 +268,6 @@
+     <public type="string" name="common_signin_button_text" id="0x7f05001d" />
+     <public type="string" name="common_signin_button_text_long" id="0x7f05001e" />
+     <public type="string" name="wallet_buy_button_place_holder" id="0x7f05001f" />
+-    <public type="string" name="com.crashlytics.android.build_id" id="0x7f050020" />
+     <public type="string" name="app_name" id="0x7f050021" />
+     <public type="string" name="action_bar_file" id="0x7f050022" />
+     <public type="string" name="action_bar_new" id="0x7f050023" />
+@@ -501,9 +500,6 @@
+     <public type="string" name="pref_space_tab" id="0x7f050106" />
+     <public type="string" name="pref_space_tab_active" id="0x7f050107" />
+     <public type="string" name="pref_space_tab_inactive" id="0x7f050108" />
+-    <public type="string" name="pref_bugsense" id="0x7f050109" />
+-    <public type="string" name="pref_bugsense_active" id="0x7f05010a" />
+-    <public type="string" name="pref_bugsense_inactive" id="0x7f05010b" />
+     <public type="string" name="pref_low_profile" id="0x7f05010c" />
+     <public type="string" name="pref_low_profile_active" id="0x7f05010d" />
+     <public type="string" name="pref_low_profile_inactive" id="0x7f05010e" />
+@@ -526,9 +522,6 @@
+     <public type="string" name="pref_ad_margin" id="0x7f05011f" />
+     <public type="string" name="pref_ad_margin_active" id="0x7f050120" />
+     <public type="string" name="pref_ad_margin_inactive" id="0x7f050121" />
+-    <public type="string" name="pref_root_mode" id="0x7f050122" />
+-    <public type="string" name="pref_root_mode_active" id="0x7f050123" />
+-    <public type="string" name="pref_root_mode_inactive" id="0x7f050124" />
+     <public type="string" name="pref_undo_level" id="0x7f050125" />
+     <public type="string" name="pref_undo_level_summary" id="0x7f050126" />
+     <public type="string" name="pref_cat_remote" id="0x7f050127" />
+--- a/res/values/strings.xml
++++ b/res/values/strings.xml
+@@ -32,7 +32,6 @@
+     <string name="common_signin_button_text">Sign in</string>
+     <string name="common_signin_button_text_long">Sign in with Google</string>
+     <string name="wallet_buy_button_place_holder">Buy with Google</string>
+-    <string name="com.crashlytics.android.build_id">eeb9d683-2429-4923-a830-d680594284c9</string>
+     <string name="app_name">DroidEdit</string>
+     <string name="action_bar_file">File</string>
+     <string name="action_bar_new">New</string>
+@@ -268,9 +267,6 @@
+     <string name="pref_space_tab">Use Spaces as Tab</string>
+     <string name="pref_space_tab_active">Use spaces instead of tab character.</string>
+     <string name="pref_space_tab_inactive">Use tab character.</string>
+-    <string name="pref_bugsense">Automatic Bug Reports</string>
+-    <string name="pref_bugsense_active">File automatic bug reports. No private data is transmitted. Needs restart if changed.</string>
+-    <string name="pref_bugsense_inactive">Automatic bug reports are disabled. Needs restart if changed.</string>
+     <string name="pref_low_profile">No Distraction Mode</string>
+     <string name="pref_low_profile_active">Dim the bottom navigation bar.</string>
+     <string name="pref_low_profile_inactive">Keep the navigation bar fully active.</string>
+@@ -293,9 +289,6 @@
+     <string name="pref_ad_margin">Ad Margin</string>
+     <string name="pref_ad_margin_active">"Add a bottom margin to the editor so that the ad doesn't cover the last lines of text."</string>
+     <string name="pref_ad_margin_inactive">No bottom margin. Ad stays on top of editor. Some text lines may be hidden.</string>
+-    <string name="pref_root_mode">Root Mode</string>
+-    <string name="pref_root_mode_active">If your phone is rooted you can open and save system files. Be extremely careful. Root mode needs BusyBox.</string>
+-    <string name="pref_root_mode_inactive">Turn on to open and save system files. Be extremely careful. Root mode is still in BETA.</string>
+     <string name="pref_undo_level">Undo Level</string>
+     <string name="pref_undo_level_summary">Number of saved undos. Zero for infinite undos.</string>
+     <string name="pref_cat_remote">Remote Files</string>
+--- a/res/values-pl/strings.xml
++++ b/res/values-pl/strings.xml
+@@ -267,9 +267,6 @@
+     <string name="pref_space_tab">Użyj spacji zamiast tabulatorów</string>
+     <string name="pref_space_tab_active">Wyrównywanie do kolumn za pomocą spacji.</string>
+     <string name="pref_space_tab_inactive">Wyrównywanie do kolumn za pomocą tabulatora.</string>
+-    <string name="pref_bugsense">Automatyczne raportowanie błędów</string>
+-    <string name="pref_bugsense_active">Wysyłaj automatyczne raporty o błędach. Żadne prywatne dane nie są przesyłane (wymaga ponownego uruchomienia w przypadku zmiany)</string>
+-    <string name="pref_bugsense_inactive">Automatyczne raporty o błędach są wyłączone. Wymaga ponownego uruchomienia w przypadku zmiany.</string>
+     <string name="pref_low_profile">Tryb \"Nie Zasłaniaj\"</string>
+     <string name="pref_low_profile_active">Przyciemnij dolny pasek nawigacyjny.</string>
+     <string name="pref_low_profile_inactive">Nie przyciemniaj dolnego paska.</string>
+@@ -292,9 +289,6 @@
+     <string name="pref_ad_margin">Margines przy reklamie</string>
+     <string name="pref_ad_margin_active">Dodaj margines w dolnej części edytora, żeby reklama nie zasłaniała treści pliku</string>
+     <string name="pref_ad_margin_inactive">Wyłącz dolny margines (reklama będzie zasłaniać część treści pliku).</string>
+-    <string name="pref_root_mode">Tryb ROOT</string>
+-    <string name="pref_root_mode_active">Jeżeli masz dostęp do konta ROOT, możesz otwierać i zapisywać pliki systemowe (BusyBox wymagany)</string>
+-    <string name="pref_root_mode_inactive">Włącz, by uaktywnić funkcję odczytu/zapisu plików systemowych (Tryb ROOT jest w fazie BETA)</string>
+     <string name="pref_undo_level">Ilość kroków operacji Cofnij</string>
+     <string name="pref_undo_level_summary">Zero = nieograniczona ilość</string>
+     <string name="pref_cat_remote">Zdalne pliki</string>
+--- a/smali/com/aor/droidedit/DroidEditActivity$GenericOpenAction.smali
++++ b/smali/com/aor/droidedit/DroidEditActivity$GenericOpenAction.smali
+@@ -511,11 +511,7 @@
+ 
+     sget v9, Lcom/aor/droidedit/lib/R$string;->error_opening:I
+ 
+-    invoke-static {v8, v9, v14}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+-
+-    move-result-object v8
+-
+-    invoke-virtual {v8}, Landroid/widget/Toast;->show()V
++    invoke-static {v8, v3, v9}, Lcom/code/ide/compat/LargeFileGuard;->report(Landroid/content/Context;Ljava/lang/Exception;I)V
+ 
+     goto/16 :goto_0
+ 
+--- a/smali/com/aor/droidedit/DroidEditActivity.smali
++++ b/smali/com/aor/droidedit/DroidEditActivity.smali
+@@ -2138,32 +2138,7 @@
+ 
+     .line 1360
+     :cond_5
+-    invoke-virtual {p1}, Lcom/aor/droidedit/document/Document;->getFile()Lcom/aor/droidedit/fs/implementation/FSFile;
+-
+-    move-result-object v0
+-
+-    invoke-virtual {v0}, Lcom/aor/droidedit/fs/implementation/FSFile;->getFileSystem()Lcom/aor/droidedit/fs/implementation/FileSystem;
+-
+-    move-result-object v0
+-
+-    instance-of v0, v0, Lcom/aor/droidedit/fs/implementation/root/RootFileSystem;
+-
+-    if-eqz v0, :cond_6
+-
+-    .line 1361
+-    new-instance v0, Lcom/aor/droidedit/fs/tasks/RunRootTask;
+-
+-    invoke-direct {v0, p0, p1, p2, p3}, Lcom/aor/droidedit/fs/tasks/RunRootTask;-><init>(Landroid/content/Context;Lcom/aor/droidedit/document/Document;Ljava/lang/String;Ljava/lang/String;)V
+-
+-    const/4 v1, 0x0
+-
+-    new-array v1, v1, [Ljava/lang/Void;
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/fs/tasks/RunRootTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+-
+-    goto/16 :goto_0
+ 
+-    .line 1362
+     :cond_6
+     invoke-virtual {p1}, Lcom/aor/droidedit/document/Document;->getFile()Lcom/aor/droidedit/fs/implementation/FSFile;
+ 
+@@ -5625,174 +5600,29 @@
+     move-result-object v24
+ 
+     .line 2928
+-    .local v24, "resolver":Landroid/content/ContentResolver;
+     :try_start_1
+     invoke-virtual/range {p1 .. p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;
+ 
+     move-result-object v2
+ 
+-    move-object/from16 v0, v24
+-
+-    invoke-virtual {v0, v2}, Landroid/content/ContentResolver;->openInputStream(Landroid/net/Uri;)Ljava/io/InputStream;
+-    :try_end_1
+-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
+-
+-    move-result-object v19
+-
+-    .line 2929
+-    .local v19, "is":Ljava/io/InputStream;
+-    if-eqz v19, :cond_9
+-
+-    .line 2931
+-    const/16 v21, 0x0
+-
+-    .line 2934
+-    .local v21, "name":Ljava/lang/String;
+-    :try_start_2
+-    invoke-virtual/range {p0 .. p0}, Lcom/aor/droidedit/DroidEditActivity;->getContentResolver()Landroid/content/ContentResolver;
+-
+-    move-result-object v2
+-
+-    invoke-virtual/range {p1 .. p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;
+-
+-    move-result-object v3
+-
+-    const/4 v4, 0x0
+-
+-    const/4 v5, 0x0
+-
+-    const/4 v6, 0x0
+-
+-    const/4 v7, 0x0
+-
+-    invoke-virtual/range {v2 .. v7}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+-
+-    move-result-object v11
+-
+-    .line 2935
+-    .local v11, "c":Landroid/database/Cursor;
+-    invoke-interface {v11}, Landroid/database/Cursor;->moveToFirst()Z
+-
+-    .line 2936
+-    const-string/jumbo v2, "_display_name"
+-
+-    invoke-interface {v11, v2}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+-
+-    move-result v16
+-
+-    .line 2937
+-    .local v16, "fileNameColumnId":I
+-    if-ltz v16, :cond_7
+-
+-    move/from16 v0, v16
+-
+-    invoke-interface {v11, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+-    :try_end_2
+-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
+-
+-    move-result-object v21
+-
+-    .line 2940
+-    .end local v11    # "c":Landroid/database/Cursor;
+-    .end local v16    # "fileNameColumnId":I
+-    :cond_7
+-    :goto_2
+-    if-nez v21, :cond_8
+-
+-    :try_start_3
+-    new-instance v2, Ljava/lang/StringBuilder;
+-
+-    const-string/jumbo v3, "untitled_"
+-
+-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+-
+-    new-instance v3, Ljava/util/Random;
+-
+-    invoke-direct {v3}, Ljava/util/Random;-><init>()V
+-
+-    const/16 v4, 0x2710
+-
+-    invoke-virtual {v3, v4}, Ljava/util/Random;->nextInt(I)I
+-
+-    move-result v3
++    move-object/from16 v0, p0
+ 
+-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
++    invoke-static {v0, v2}, Lcom/code/ide/compat/UriBridge;->open(Landroid/content/Context;Landroid/net/Uri;)Ljava/io/File;
+ 
+     move-result-object v2
+ 
+-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v21
+-
+-    .line 2942
+-    :cond_8
+-    new-instance v2, Ljava/io/File;
+-
+-    invoke-virtual/range {p0 .. p0}, Lcom/aor/droidedit/DroidEditActivity;->getFilesDir()Ljava/io/File;
+-
+-    move-result-object v3
+-
+-    move-object/from16 v0, v21
+-
+-    invoke-direct {v2, v3, v0}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+-
+-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+-
+-    move-result-object v22
+-
+-    .line 2944
+-    .local v22, "path":Ljava/lang/String;
+-    new-instance v26, Ljava/io/FileOutputStream;
+-
+-    move-object/from16 v0, v26
+-
+-    move-object/from16 v1, v22
+-
+-    invoke-direct {v0, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/lang/String;)V
+-
+-    .line 2945
+-    .local v26, "tmp":Ljava/io/FileOutputStream;
+-    const/16 v2, 0x400
+-
+-    new-array v10, v2, [B
+-
+-    .line 2946
+-    .local v10, "buffer":[B
+-    :goto_3
+-    move-object/from16 v0, v19
+-
+-    invoke-virtual {v0, v10}, Ljava/io/InputStream;->read([B)I
+-
+-    move-result v2
+-
+-    if-gtz v2, :cond_c
+-
+-    .line 2949
+-    invoke-virtual/range {v26 .. v26}, Ljava/io/FileOutputStream;->close()V
+-
+-    .line 2950
+-    invoke-virtual/range {v19 .. v19}, Ljava/io/InputStream;->close()V
++    if-eqz v2, :cond_9
+ 
+-    .line 2952
+     new-instance v15, Lcom/aor/droidedit/fs/implementation/local/LocalFile;
+ 
+-    new-instance v2, Ljava/io/File;
+-
+-    move-object/from16 v0, v22
+-
+-    invoke-direct {v2, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+-
+     invoke-direct {v15, v2}, Lcom/aor/droidedit/fs/implementation/local/LocalFile;-><init>(Ljava/io/File;)V
+ 
+-    .line 2953
+-    .local v15, "file":Lcom/aor/droidedit/fs/implementation/local/LocalFile;
+     new-instance v2, Lcom/aor/droidedit/fs/implementation/local/LocalFileSystem;
+ 
+     invoke-direct {v2}, Lcom/aor/droidedit/fs/implementation/local/LocalFileSystem;-><init>()V
+ 
+     invoke-virtual {v15, v2}, Lcom/aor/droidedit/fs/implementation/local/LocalFile;->setFileSystem(Lcom/aor/droidedit/fs/implementation/FileSystem;)V
+ 
+-    .line 2954
+     invoke-virtual {v15}, Lcom/aor/droidedit/fs/implementation/local/LocalFile;->getFileSystem()Lcom/aor/droidedit/fs/implementation/FileSystem;
+ 
+     move-result-object v2
+@@ -5801,7 +5631,6 @@
+ 
+     invoke-virtual {v2, v0, v15}, Lcom/aor/droidedit/fs/implementation/FileSystem;->updateLocalPath(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FSFile;)V
+ 
+-    .line 2955
+     new-instance v2, Lcom/aor/droidedit/DroidEditActivity$GenericOpenAction;
+ 
+     invoke-static/range {p0 .. p0}, Lcom/aor/droidedit/document/Encoding;->getDefaultEncoding(Landroid/content/Context;)Lcom/aor/droidedit/document/Encoding;
+@@ -5818,16 +5647,10 @@
+ 
+     invoke-virtual {v2}, Lcom/aor/droidedit/DroidEditActivity$GenericOpenAction;->execute()V
+     :try_end_3
+-    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_1
++    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_3} :catch_1
+ 
+     .line 2961
+-    .end local v10    # "buffer":[B
+     .end local v15    # "file":Lcom/aor/droidedit/fs/implementation/local/LocalFile;
+-    .end local v19    # "is":Ljava/io/InputStream;
+-    .end local v21    # "name":Ljava/lang/String;
+-    .end local v22    # "path":Ljava/lang/String;
+-    .end local v24    # "resolver":Landroid/content/ContentResolver;
+-    .end local v26    # "tmp":Ljava/io/FileOutputStream;
+     :cond_9
+     :goto_4
+     invoke-virtual/range {p1 .. p1}, Landroid/content/Intent;->getScheme()Ljava/lang/String;
+@@ -5906,12 +5729,6 @@
+     if-eqz v25, :cond_d
+ 
+     .line 2969
+-    new-instance v2, Lcom/aor/droidedit/fs/implementation/root/RootFileSystem;
+-
+-    invoke-direct {v2}, Lcom/aor/droidedit/fs/implementation/root/RootFileSystem;-><init>()V
+-
+-    invoke-virtual {v15, v2}, Lcom/aor/droidedit/fs/implementation/local/LocalFile;->setFileSystem(Lcom/aor/droidedit/fs/implementation/FileSystem;)V
+-
+     .line 2973
+     :goto_5
+     invoke-virtual {v15}, Lcom/aor/droidedit/fs/implementation/local/LocalFile;->getFileSystem()Lcom/aor/droidedit/fs/implementation/FileSystem;
+@@ -6046,28 +5863,8 @@
+     goto/16 :goto_0
+ 
+     .line 2947
+-    .restart local v10    # "buffer":[B
+-    .restart local v19    # "is":Ljava/io/InputStream;
+-    .restart local v21    # "name":Ljava/lang/String;
+-    .restart local v22    # "path":Ljava/lang/String;
+-    .restart local v24    # "resolver":Landroid/content/ContentResolver;
+-    .restart local v26    # "tmp":Ljava/io/FileOutputStream;
+-    :cond_c
+-    :try_start_4
+-    move-object/from16 v0, v26
+-
+-    invoke-virtual {v0, v10}, Ljava/io/FileOutputStream;->write([B)V
+-    :try_end_4
+-    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_1
+-
+-    goto/16 :goto_3
+ 
+     .line 2957
+-    .end local v10    # "buffer":[B
+-    .end local v19    # "is":Ljava/io/InputStream;
+-    .end local v21    # "name":Ljava/lang/String;
+-    .end local v22    # "path":Ljava/lang/String;
+-    .end local v26    # "tmp":Ljava/io/FileOutputStream;
+     :catch_1
+     move-exception v12
+ 
+@@ -6091,7 +5888,6 @@
+ 
+     .line 2971
+     .end local v12    # "e":Ljava/lang/Exception;
+-    .end local v24    # "resolver":Landroid/content/ContentResolver;
+     .restart local v14    # "f":Ljava/io/File;
+     .restart local v15    # "file":Lcom/aor/droidedit/fs/implementation/local/LocalFile;
+     .restart local v23    # "prefs":Landroid/content/SharedPreferences;
+@@ -6110,13 +5906,6 @@
+     .end local v15    # "file":Lcom/aor/droidedit/fs/implementation/local/LocalFile;
+     .end local v23    # "prefs":Landroid/content/SharedPreferences;
+     .end local v25    # "rootMode":Z
+-    .restart local v19    # "is":Ljava/io/InputStream;
+-    .restart local v21    # "name":Ljava/lang/String;
+-    .restart local v24    # "resolver":Landroid/content/ContentResolver;
+-    :catch_2
+-    move-exception v2
+-
+-    goto/16 :goto_2
+ .end method
+ 
+ .method private openGotoLineDialog()V
+@@ -10103,24 +9892,6 @@
+ 
+     .line 299
+     :goto_1
+-    const-string/jumbo v3, "bugsense"
+-
+-    invoke-interface {v2, v3, v7}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+-
+-    move-result v3
+-
+-    if-eqz v3, :cond_1
+-
+-    .line 300
+-    :try_start_0
+-    invoke-static {p0}, Lcom/crashlytics/android/Crashlytics;->start(Landroid/content/Context;)V
+-    :try_end_0
+-    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    goto :goto_2
+-
+-    :catch_0
+-    move-exception v3
+ 
+     .line 303
+     :cond_1
+--- a/smali/com/aor/droidedit/custom/HelpPageViewer.smali
++++ b/smali/com/aor/droidedit/custom/HelpPageViewer.smali
+@@ -56,7 +56,13 @@
+     .line 32
+     iget-object v0, p0, Lcom/aor/droidedit/custom/HelpPageViewer;->mWebview:Landroid/webkit/WebView;
+ 
+-    const-string/jumbo v1, "file:///android_asset/help/index.html"
++    invoke-virtual {p0}, Lcom/aor/droidedit/custom/HelpPageViewer;->getIntent()Landroid/content/Intent;
++
++    move-result-object v1
++
++    invoke-static {v1}, Lcom/code/ide/compat/HelpLink;->url(Landroid/content/Intent;)Ljava/lang/String;
++
++    move-result-object v1
+ 
+     invoke-virtual {v0, v1}, Landroid/webkit/WebView;->loadUrl(Ljava/lang/String;)V
+ 
+--- a/smali/com/aor/droidedit/custom/ObservableEditText.smali
++++ b/smali/com/aor/droidedit/custom/ObservableEditText.smali
+@@ -118,6 +118,8 @@
+     iput-object v0, p0, Lcom/aor/droidedit/custom/ObservableEditText;->mBounds:Landroid/graphics/Rect;
+ 
+     .line 53
++    invoke-static {p0}, Lcom/code/ide/compat/PieceTableFactory;->install(Landroid/widget/TextView;)V
++
+     return-void
+ .end method
+ 
+@@ -172,6 +174,8 @@
+     iput-object v0, p0, Lcom/aor/droidedit/custom/ObservableEditText;->mBounds:Landroid/graphics/Rect;
+ 
+     .line 62
++    invoke-static {p0}, Lcom/code/ide/compat/PieceTableFactory;->install(Landroid/widget/TextView;)V
++
+     return-void
+ .end method
+ 
+@@ -227,6 +231,8 @@
+     iput-object v0, p0, Lcom/aor/droidedit/custom/ObservableEditText;->mBounds:Landroid/graphics/Rect;
+ 
+     .line 57
++    invoke-static {p0}, Lcom/code/ide/compat/PieceTableFactory;->install(Landroid/widget/TextView;)V
++
+     return-void
+ .end method
+ 
+--- a/smali/com/aor/droidedit/document/Document.smali
++++ b/smali/com/aor/droidedit/document/Document.smali
+@@ -63,7 +63,7 @@
+ 
+ .field private selectionStart:I
+ 
+-.field protected text:Ljava/lang/String;
++.field protected text:Lcom/code/ide/compat/PieceTable;
+ 
+ .field private undo:Ljava/util/Vector;
+     .annotation system Ldalvik/annotation/Signature;
+@@ -103,7 +103,11 @@
+     .line 46
+     const-string/jumbo v0, ""
+ 
+-    iput-object v0, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    invoke-static {v0}, Lcom/code/ide/compat/PieceTable;->of(Ljava/lang/String;)Lcom/code/ide/compat/PieceTable;
++
++    move-result-object v0
++
++    iput-object v0, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     .line 49
+     iput v1, p0, Lcom/aor/droidedit/document/Document;->scrollPositionX:I
+@@ -173,7 +177,11 @@
+     .line 46
+     const-string/jumbo v0, ""
+ 
+-    iput-object v0, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    invoke-static {v0}, Lcom/code/ide/compat/PieceTable;->of(Ljava/lang/String;)Lcom/code/ide/compat/PieceTable;
++
++    move-result-object v0
++
++    iput-object v0, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     .line 49
+     iput v1, p0, Lcom/aor/droidedit/document/Document;->scrollPositionX:I
+@@ -533,7 +541,11 @@
+ 
+     if-eqz v2, :cond_0
+ 
+-    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
++
++    invoke-virtual {v2}, Lcom/code/ide/compat/PieceTable;->toString()Ljava/lang/String;
++
++    move-result-object v2
+ 
+     const-string/jumbo v3, "\\n"
+ 
+@@ -557,7 +569,11 @@
+ 
+     if-eqz v2, :cond_1
+ 
+-    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
++
++    invoke-virtual {v2}, Lcom/code/ide/compat/PieceTable;->toString()Ljava/lang/String;
++
++    move-result-object v2
+ 
+     const-string/jumbo v3, "\\n"
+ 
+@@ -571,7 +587,11 @@
+ 
+     .line 311
+     :cond_1
+-    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
++
++    invoke-virtual {v2}, Lcom/code/ide/compat/PieceTable;->toString()Ljava/lang/String;
++
++    move-result-object v2
+ 
+     goto :goto_0
+ .end method
+@@ -582,9 +602,9 @@
+ 
+     .prologue
+     .line 174
+-    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    invoke-virtual {v1, p1}, Ljava/lang/String;->charAt(I)C
++    invoke-virtual {v1, p1}, Lcom/code/ide/compat/PieceTable;->charAt(I)C
+ 
+     move-result v0
+ 
+@@ -873,6 +893,8 @@
+     .line 326
+     invoke-virtual {v2}, Ljava/io/FileOutputStream;->close()V
+ 
++    invoke-static {p2, v1}, Lcom/code/ide/compat/UriBridge;->afterSave(Landroid/content/Context;Ljava/io/File;)V
++
+     .line 327
+     return-void
+ .end method
+@@ -969,9 +991,9 @@
+     .line 179
+     if-lez p1, :cond_0
+ 
+-    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;++    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    invoke-virtual {v1}, Ljava/lang/String;->length()I
++    invoke-virtual {v1}, Lcom/code/ide/compat/PieceTable;->length()I
+ 
+     move-result v1
+ 
+@@ -986,11 +1008,11 @@
+ 
+     .line 180
+     :cond_1
+-    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     add-int/lit8 v2, p1, -0x1
+ 
+-    invoke-virtual {v1, v2}, Ljava/lang/String;->charAt(I)C
++    invoke-virtual {v1, v2}, Lcom/code/ide/compat/PieceTable;->charAt(I)C
+ 
+     move-result v1
+ 
+@@ -1000,11 +1022,11 @@
+ 
+     if-eqz v1, :cond_0
+ 
+-    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     add-int/lit8 v2, p1, 0x1
+ 
+-    invoke-virtual {v1, v2}, Ljava/lang/String;->charAt(I)C
++    invoke-virtual {v1, v2}, Lcom/code/ide/compat/PieceTable;->charAt(I)C
+ 
+     move-result v1
+ 
+@@ -1380,7 +1402,11 @@
+ 
+     const/4 v1, 0x0
+ 
+-    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
++
++    invoke-virtual {v2}, Lcom/code/ide/compat/PieceTable;->toString()Ljava/lang/String;
++
++    move-result-object v2
+ 
+     invoke-virtual {v2}, Ljava/lang/String;->length()I
+ 
+@@ -1612,9 +1638,9 @@
+     .line 544
+     const/4 v0, 0x0
+ 
+-    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    invoke-virtual {v1}, Ljava/lang/String;->length()I
++    invoke-virtual {v1}, Lcom/code/ide/compat/PieceTable;->length()I
+ 
+     move-result v1
+ 
+@@ -1648,9 +1674,9 @@
+ 
+     const/4 p1, 0x0
+ 
+-    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    invoke-virtual {v5}, Ljava/lang/String;->length()I
++    invoke-virtual {v5}, Lcom/code/ide/compat/PieceTable;->length()I
+ 
+     move-result p2
+ 
+@@ -1675,9 +1701,9 @@
+ 
+     .local v0, "i":I
+     :goto_0
+-    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    invoke-virtual {v5}, Ljava/lang/String;->length()I
++    invoke-virtual {v5}, Lcom/code/ide/compat/PieceTable;->length()I
+ 
+     move-result v5
+ 
+@@ -1748,9 +1774,9 @@
+ 
+     .line 556
+     :goto_1
+-    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    invoke-virtual {v5, v0}, Ljava/lang/String;->charAt(I)C
++    invoke-virtual {v5, v0}, Lcom/code/ide/compat/PieceTable;->charAt(I)C
+ 
+     move-result v5
+ 
+@@ -1995,7 +2021,11 @@
+ 
+     .prologue
+     .line 226
+-    iget-object v0, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v0, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
++
++    invoke-virtual {v0}, Lcom/code/ide/compat/PieceTable;->toString()Ljava/lang/String;
++
++    move-result-object v0
+ 
+     return-object v0
+ .end method
+@@ -2273,107 +2303,25 @@
+ 
+     .line 157
+     .local v6, "size":J
+-    const-wide/32 v8, 0xf4240
+-
+-    cmp-long v5, v6, v8
+-
+-    if-lez v5, :cond_1
+-
+-    new-instance v5, Ljava/io/IOException;
+-
+-    sget v8, Lcom/aor/droidedit/lib/R$string;->error_file_too_big_msg:I
+-
+-    invoke-virtual {p1, v8}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+-
+-    move-result-object v8
+-
+-    invoke-direct {v5, v8}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+-
+-    throw v5
+-
+-    .line 159
+-    :cond_1
+-    long-to-int v5, v6
+-
+-    new-array v0, v5, [B
+-
+-    .line 161
+-    .local v0, "bts":[B
+-    const/4 v4, 0x0
+-
+-    .line 162
+-    .local v4, "offset":I
+-    const/4 v3, 0x0
+-
+-    .line 163
+-    .local v3, "numRead":I
+-    :goto_0
+-    array-length v5, v0
+-
+-    if-ge v4, v5, :cond_2
+-
+-    array-length v5, v0
+-
+-    sub-int/2addr v5, v4
+-
+-    invoke-virtual {v2, v0, v4, v5}, Ljava/io/FileInputStream;->read([BII)I
+-
+-    move-result v3
+-
+-    if-gez v3, :cond_3
+-
+-    .line 166
+-    :cond_2
+-    new-instance v5, Ljava/lang/String;
++    move-object/from16 v3, p1
+ 
+     iget-object v8, p0, Lcom/aor/droidedit/document/Document;->encodingJavaName:Ljava/lang/String;
+ 
+-    invoke-direct {v5, v0, v8}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
+-
+-    iput-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
+-
+-    .line 167
+-    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
+-
+-    const-string/jumbo v8, "\\r\\n"
+-
+-    const-string/jumbo v9, "\n"
+-
+-    invoke-virtual {v5, v8, v9}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
++    invoke-static {v3, v2, v6, v7, v8}, Lcom/code/ide/compat/LargeFileGuard;->read(Landroid/content/Context;Ljava/io/InputStream;JLjava/lang/String;)Ljava/lang/String;
+ 
+     move-result-object v5
+ 
+-    iput-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
+-
+-    .line 168
+-    iget-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
+-
+-    const-string/jumbo v8, "\\r"
+-
+-    const-string/jumbo v9, "\n"
+-
+-    invoke-virtual {v5, v8, v9}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
++    invoke-static {v5}, Lcom/code/ide/compat/PieceTable;->of(Ljava/lang/String;)Lcom/code/ide/compat/PieceTable;
+ 
+     move-result-object v5
+ 
+-    iput-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iput-object v5, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    .line 169
+     const/4 v5, 0x0
+ 
+     iput-boolean v5, p0, Lcom/aor/droidedit/document/Document;->changed:Z
+ 
+-    .line 170
+-    invoke-virtual {v2}, Ljava/io/FileInputStream;->close()V
+-
+-    .line 171
+     return-void
+-
+-    .line 164
+-    :cond_3
+-    add-int/2addr v4, v3
+-
+-    goto :goto_0
+ .end method
+ 
+ .method public load(Landroid/content/Context;Z)V
+@@ -2438,21 +2386,7 @@
+     invoke-virtual {v4, v0}, Ljava/util/Vector;->removeElement(Ljava/lang/Object;)Z
+ 
+     .line 274
+-    iget-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
+-
+-    const/4 v5, 0x0
+-
+-    invoke-virtual {v0}, Lcom/aor/droidedit/document/Change;->getStart()I
+-
+-    move-result v6
+-
+-    invoke-virtual {v4, v5, v6}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    .line 275
+-    .local v3, "textBefore":Ljava/lang/String;
+-    iget-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     invoke-virtual {v0}, Lcom/aor/droidedit/document/Change;->getStart()I
+ 
+@@ -2466,39 +2400,11 @@
+ 
+     move-result v6
+ 
+-    add-int/2addr v5, v6
+-
+-    invoke-virtual {v4, v5}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+-
+-    move-result-object v2
+-
+-    .line 276
+-    .local v2, "textAfter":Ljava/lang/String;
+-    new-instance v4, Ljava/lang/StringBuilder;
+-
+-    invoke-static {v3}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+-
+-    move-result-object v5
+-
+-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+-
+     invoke-virtual {v0}, Lcom/aor/droidedit/document/Change;->getNewText()Ljava/lang/String;
+ 
+-    move-result-object v5
+-
+-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v4
+-
+-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v4
+-
+-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v4
++    move-result-object v3
+ 
+-    iput-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    invoke-virtual {v4, v5, v6, v3}, Lcom/code/ide/compat/PieceTable;->replace(IILjava/lang/CharSequence;)V
+ 
+     .line 277
+     iget-object v4, p0, Lcom/aor/droidedit/document/Document;->undo:Ljava/util/Vector;
+@@ -2653,7 +2559,11 @@
+ 
+     .prologue
+     .line 230
+-    iput-object p1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    invoke-static {p1}, Lcom/code/ide/compat/PieceTable;->of(Ljava/lang/String;)Lcom/code/ide/compat/PieceTable;
++
++    move-result-object p1
++
++    iput-object p1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     .line 231
+     return-void
+@@ -3173,32 +3083,23 @@
+     .prologue
+     .line 110
+     :try_start_0
+-    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v1, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+-    .line 111
+-    .local v1, "oldText":Ljava/lang/String;
+-    invoke-interface {p1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
++    invoke-virtual {v1, p1, p2, p3, p4}, Lcom/code/ide/compat/PieceTable;->applyEdit(Ljava/lang/CharSequence;III)[Ljava/lang/String;
+ 
+-    move-result-object v2
++    move-result-object v1
+ 
+-    iput-object v2, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    if-eqz v1, :goto_1
+ 
+-    .line 112
+     new-instance v0, Lcom/aor/droidedit/document/Change;
+ 
+-    add-int v2, p2, p3
+-
+-    invoke-virtual {v1, p2, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+-
+-    move-result-object v2
+-
+-    iget-object v3, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    const/4 v2, 0x0
+ 
+-    add-int v4, p2, p4
++    aget-object v2, v1, v2
+ 
+-    invoke-virtual {v3, p2, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
++    const/4 v3, 0x1
+ 
+-    move-result-object v3
++    aget-object v3, v1, v3
+ 
+     invoke-direct {v0, p2, v2, v3}, Lcom/aor/droidedit/document/Change;-><init>(ILjava/lang/String;Ljava/lang/String;)V
+ 
+@@ -3386,19 +3287,7 @@
+     invoke-virtual {v4, v0}, Ljava/util/Vector;->removeElement(Ljava/lang/Object;)Z
+ 
+     .line 255
+-    iget-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
+-
+-    invoke-virtual {v0}, Lcom/aor/droidedit/document/Change;->getStart()I
+-
+-    move-result v5
+-
+-    invoke-virtual {v4, v7, v5}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    .line 256
+-    .local v3, "textBefore":Ljava/lang/String;
+-    iget-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    iget-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Lcom/code/ide/compat/PieceTable;
+ 
+     invoke-virtual {v0}, Lcom/aor/droidedit/document/Change;->getStart()I
+ 
+@@ -3412,39 +3301,11 @@
+ 
+     move-result v6
+ 
+-    add-int/2addr v5, v6
+-
+-    invoke-virtual {v4, v5}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+-
+-    move-result-object v2
+-
+-    .line 257
+-    .local v2, "textAfter":Ljava/lang/String;
+-    new-instance v4, Ljava/lang/StringBuilder;
+-
+-    invoke-static {v3}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+-
+-    move-result-object v5
+-
+-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+-
+     invoke-virtual {v0}, Lcom/aor/droidedit/document/Change;->getOldText()Ljava/lang/String;
+ 
+-    move-result-object v5
+-
+-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v4
+-
+-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    move-result-object v4
+-
+-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v4
++    move-result-object v3
+ 
+-    iput-object v4, p0, Lcom/aor/droidedit/document/Document;->text:Ljava/lang/String;
++    invoke-virtual {v4, v5, v6, v3}, Lcom/code/ide/compat/PieceTable;->replace(IILjava/lang/CharSequence;)V
+ 
+     .line 258
+     iget-object v4, p0, Lcom/aor/droidedit/document/Document;->redo:Ljava/util/Vector;
+--- a/smali/com/aor/droidedit/fs/implementation/FileSystem.smali
++++ b/smali/com/aor/droidedit/fs/implementation/FileSystem.smali
+@@ -288,9 +288,9 @@
+ 
+     .line 55
+     :pswitch_2
+-    new-instance v0, Lcom/aor/droidedit/fs/implementation/root/RootFileSystem;
++    new-instance v0, Lcom/aor/droidedit/fs/implementation/local/LocalFileSystem;
+ 
+-    invoke-direct {v0}, Lcom/aor/droidedit/fs/implementation/root/RootFileSystem;-><init>()V
++    invoke-direct {v0}, Lcom/aor/droidedit/fs/implementation/local/LocalFileSystem;-><init>()V
+ 
+     goto :goto_0
+ 
+@@ -499,26 +499,6 @@
+     invoke-interface {v0, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+ 
+     .line 96
+-    if-eqz v4, :cond_0
+-
+-    const-string/jumbo v7, "rootMode"
+-
+-    invoke-interface {v5, v7, v11}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+-
+-    move-result v7
+-
+-    if-eqz v7, :cond_0
+-
+-    .line 97
+-    sget-object v7, Lcom/aor/droidedit/fs/implementation/FileSystem$TYPE;->ROOT:Lcom/aor/droidedit/fs/implementation/FileSystem$TYPE;
+-
+-    invoke-static {p0, v7, v12, v4}, Lcom/aor/droidedit/fs/implementation/FileSystem;->createFS(Landroid/content/Context;Lcom/aor/droidedit/fs/implementation/FileSystem$TYPE;[Ljava/lang/Object;Z)Lcom/aor/droidedit/fs/implementation/FileSystem;
+-
+-    move-result-object v7
+-
+-    invoke-interface {v0, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+-
+-    .line 98
+     :cond_0
+     const-string/jumbo v7, "dropboxActive"
+ 
+--- a/smali/com/aor/droidedit/preferences/Preferences.smali
++++ b/smali/com/aor/droidedit/preferences/Preferences.smali
+@@ -2357,51 +2357,6 @@
+     invoke-virtual {v0, v1}, Landroid/preference/CheckBoxPreference;->setSummaryOff(I)V
+ 
+     .line 250
+-    new-instance v7, Landroid/preference/CheckBoxPreference;
+-
+-    move-object/from16 v0, p0
+-
+-    invoke-direct {v7, v0}, Landroid/preference/CheckBoxPreference;-><init>(Landroid/content/Context;)V
+-
+-    .line 251
+-    .local v7, "bugsensePreference":Landroid/preference/CheckBoxPreference;
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_bugsense:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setTitle(I)V
+-
+-    .line 252
+-    const-string/jumbo v36, "bugsense"
+-
+-    move-object/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setKey(Ljava/lang/String;)V
+-
+-    .line 253
+-    const/16 v36, 0x1
+-
+-    invoke-static/range {v36 .. v36}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    move-result-object v36
+-
+-    move-object/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setDefaultValue(Ljava/lang/Object;)V
+-
+-    .line 254
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_bugsense_active:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setSummaryOn(I)V
+-
+-    .line 255
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_bugsense_inactive:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setSummaryOff(I)V
+ 
+     .line 257
+     new-instance v32, Landroid/preference/CheckBoxPreference;
+@@ -2615,10 +2570,8 @@
+     .line 313
+     move-object/from16 v0, v21
+ 
+-    invoke-virtual {v0, v7}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     .line 456
+-    .end local v7    # "bugsensePreference":Landroid/preference/CheckBoxPreference;
+     .end local v18    # "lineNumbersPreference":Landroid/preference/CheckBoxPreference;
+     .end local v19    # "lineWrapPreference":Landroid/preference/CheckBoxPreference;
+     .end local v22    # "positionHack":Landroid/preference/CheckBoxPreference;
+@@ -2996,143 +2949,13 @@
+ 
+     invoke-direct {v0, v1}, Lcom/aor/droidedit/preferences/Preferences;->createShortcutPreferences(Landroid/preference/PreferenceScreen;)V
+ 
+-    invoke-virtual {v0}, Lcom/aor/droidedit/preferences/Preferences;->getPreferenceManager()Landroid/preference/PreferenceManager;
+-
+-    move-result-object v2
+-
+-    invoke-virtual {v2, v0}, Landroid/preference/PreferenceManager;->createPreferenceScreen(Landroid/content/Context;)Landroid/preference/PreferenceScreen;
++    invoke-static {v0}, Lcom/code/ide/compat/EmmetSnippets;->preference(Landroid/app/Activity;)Landroid/preference/Preference;
+ 
+     move-result-object v2
+ 
+-    const-string v3, "emmet_snippets_title"
+-
+-    move-object/from16 v0, p0
+-
+-    move-object/from16 v1, v3
+-
+-    invoke-static {v0, v1}, Lcom/code/ide/compat/AppUi;->text(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v2, v3}, Landroid/preference/PreferenceScreen;->setTitle(Ljava/lang/CharSequence;)V
+-
+-    sget v3, Lcom/aor/droidedit/lib/R$drawable;->preferences:I
+-
+-    invoke-virtual {v2, v3}, Landroid/preference/PreferenceScreen;->setIcon(I)V
+-
+-    const-string v3, "emmet_snippets_help"
+-
+-    move-object/from16 v0, p0
+-
+-    move-object/from16 v1, v3
+-
+-    invoke-static {v0, v1}, Lcom/code/ide/compat/AppUi;->text(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v2, v3}, Landroid/preference/PreferenceScreen;->setSummary(Ljava/lang/CharSequence;)V
+-
+-    new-instance v4, Landroid/preference/Preference;
+-
+-    invoke-direct {v4, v0}, Landroid/preference/Preference;-><init>(Landroid/content/Context;)V
+-
+-    const-string v3, "snip_add"
+-
+-    invoke-static {v0, v3}, Lcom/code/ide/compat/AppUi;->text(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v4, v3}, Landroid/preference/Preference;->setTitle(Ljava/lang/CharSequence;)V
+-
+-    sget v3, Lcom/aor/droidedit/lib/R$drawable;->ic_menu_edit:I
+-
+-    invoke-virtual {v4, v3}, Landroid/preference/Preference;->setIcon(I)V
+-
+-    new-instance v3, Lcom/aor/droidedit/preferences/Preferences$4;
+-
+-    invoke-direct {v3, v0}, Lcom/aor/droidedit/preferences/Preferences$4;-><init>(Lcom/aor/droidedit/preferences/Preferences;)V
+-
+-    invoke-virtual {v4, v3}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+-
+-    invoke-virtual {v2, v4}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+-
+-    new-instance v5, Landroid/preference/Preference;
+-
+-    invoke-direct {v5, v0}, Landroid/preference/Preference;-><init>(Landroid/content/Context;)V
+-
+-    const-string v3, "snip_import"
+-
+-    invoke-static {v0, v3}, Lcom/code/ide/compat/AppUi;->text(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v5, v3}, Landroid/preference/Preference;->setTitle(Ljava/lang/CharSequence;)V
+-
+-    sget v3, Lcom/aor/droidedit/lib/R$drawable;->ic_menu_upload:I
+-
+-    invoke-virtual {v5, v3}, Landroid/preference/Preference;->setIcon(I)V
+-
+-    new-instance v3, Lcom/aor/droidedit/preferences/Preferences$5;
+-
+-    invoke-direct {v3, v0}, Lcom/aor/droidedit/preferences/Preferences$5;-><init>(Lcom/aor/droidedit/preferences/Preferences;)V
+-
+-    invoke-virtual {v5, v3}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+-
+-    invoke-virtual {v2, v5}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+-
+-    new-instance v6, Landroid/preference/Preference;
+-
+-    invoke-direct {v6, v0}, Landroid/preference/Preference;-><init>(Landroid/content/Context;)V
+-
+-    const-string v3, "snip_export"
+-
+-    invoke-static {v0, v3}, Lcom/code/ide/compat/AppUi;->text(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v6, v3}, Landroid/preference/Preference;->setTitle(Ljava/lang/CharSequence;)V
+-
+-    sget v3, Lcom/aor/droidedit/lib/R$drawable;->save_as:I
+-
+-    invoke-virtual {v6, v3}, Landroid/preference/Preference;->setIcon(I)V
+-
+-    new-instance v3, Lcom/aor/droidedit/preferences/Preferences$6;
+-
+-    invoke-direct {v3, v0}, Lcom/aor/droidedit/preferences/Preferences$6;-><init>(Lcom/aor/droidedit/preferences/Preferences;)V
+-
+-    invoke-virtual {v6, v3}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+-
+-    invoke-virtual {v2, v6}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+-
+-    new-instance v7, Landroid/preference/Preference;
+-
+-    invoke-direct {v7, v0}, Landroid/preference/Preference;-><init>(Landroid/content/Context;)V
+-
+-    const-string v3, "snip_options"
+-
+-    invoke-static {v0, v3}, Lcom/code/ide/compat/AppUi;->text(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v7, v3}, Landroid/preference/Preference;->setTitle(Ljava/lang/CharSequence;)V
+-
+-    sget v3, Lcom/aor/droidedit/lib/R$drawable;->preferences:I
+-
+-    invoke-virtual {v7, v3}, Landroid/preference/Preference;->setIcon(I)V
+-
+-    new-instance v3, Lcom/aor/droidedit/preferences/Preferences$7;
+-
+-    invoke-direct {v3, v0}, Lcom/aor/droidedit/preferences/Preferences$7;-><init>(Lcom/aor/droidedit/preferences/Preferences;)V
+-
+-    invoke-virtual {v7, v3}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+-
+-    invoke-virtual {v2, v7}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+-
+     move-object/from16 v0, p1
+ 
+-    move-object/from16 v1, v2
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
++    invoke-virtual {v0, v2}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     .line 543
+     return-object p1
+@@ -3521,7 +3344,6 @@
+     .end local v15    # "hideDocumentList":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v33    # "splitActionBar":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .restart local v4    # "adMargin":Landroid/preference/CheckBoxPreference;
+-    .restart local v7    # "bugsensePreference":Landroid/preference/CheckBoxPreference;
+     .restart local v8    # "defaultEncoding":Landroid/preference/ListPreference;
+     .restart local v9    # "defaultLineBreak":Landroid/preference/ListPreference;
+     .restart local v10    # "display":Landroid/view/Display;
+@@ -3608,70 +3430,7 @@
+     invoke-virtual {v6, v0}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     .line 288
+-    new-instance v25, Landroid/preference/CheckBoxPreference;
+-
+-    move-object/from16 v0, v25
+ 
+-    move-object/from16 v1, p0
+-
+-    invoke-direct {v0, v1}, Landroid/preference/CheckBoxPreference;-><init>(Landroid/content/Context;)V
+-
+-    .line 289
+-    .local v25, "rootMode":Landroid/preference/CheckBoxPreference;
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_root_mode:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/CheckBoxPreference;->setTitle(I)V
+-
+-    .line 290
+-    const-string/jumbo v36, "rootMode"
+-
+-    move-object/from16 v0, v25
+-
+-    move-object/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/CheckBoxPreference;->setKey(Ljava/lang/String;)V
+-
+-    .line 291
+-    const/16 v36, 0x0
+-
+-    invoke-static/range {v36 .. v36}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    move-result-object v36
+-
+-    move-object/from16 v0, v25
+-
+-    move-object/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/CheckBoxPreference;->setDefaultValue(Ljava/lang/Object;)V
+-
+-    .line 292
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_root_mode_active:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/CheckBoxPreference;->setSummaryOn(I)V
+-
+-    .line 293
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_root_mode_inactive:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/CheckBoxPreference;->setSummaryOff(I)V
+-
+-    .line 294
+-    move-object/from16 v0, v21
+-
+-    move-object/from16 v1, v25
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     .line 296
+     new-instance v14, Landroid/preference/CheckBoxPreference;
+@@ -3726,14 +3485,12 @@
+     goto/16 :goto_2
+ 
+     .line 315
+-    .end local v7    # "bugsensePreference":Landroid/preference/CheckBoxPreference;
+     .end local v14    # "extraKeysPreference":Landroid/preference/CheckBoxPreference;
+     .end local v17    # "infoPanel":Landroid/preference/CheckBoxPreference;
+     .end local v18    # "lineNumbersPreference":Landroid/preference/CheckBoxPreference;
+     .end local v19    # "lineWrapPreference":Landroid/preference/CheckBoxPreference;
+     .end local v22    # "positionHack":Landroid/preference/CheckBoxPreference;
+     .end local v24    # "readOnly":Landroid/preference/CheckBoxPreference;
+-    .end local v25    # "rootMode":Landroid/preference/CheckBoxPreference;
+     .end local v27    # "selectEncoding":Landroid/preference/CheckBoxPreference;
+     .end local v30    # "spaceTab":Landroid/preference/CheckBoxPreference;
+     .end local v32    # "spellCheck":Landroid/preference/CheckBoxPreference;
+@@ -4201,65 +3958,6 @@
+     invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSwitchTextOff(I)V
+ 
+     .line 369
+-    new-instance v7, Lcom/aor/droidedit/custom/CustomSwitchPreference;
+-
+-    move-object/from16 v0, p0
+-
+-    invoke-direct {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;-><init>(Landroid/content/Context;)V
+-
+-    .line 370
+-    .local v7, "bugsensePreference":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_bugsense:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setTitle(I)V
+-
+-    .line 371
+-    const-string/jumbo v36, "bugsense"
+-
+-    move-object/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setKey(Ljava/lang/String;)V
+-
+-    .line 372
+-    const/16 v36, 0x1
+-
+-    invoke-static/range {v36 .. v36}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    move-result-object v36
+-
+-    move-object/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setDefaultValue(Ljava/lang/Object;)V
+-
+-    .line 373
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_bugsense_active:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSummaryOn(I)V
+-
+-    .line 374
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_bugsense_inactive:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSummaryOff(I)V
+-
+-    .line 375
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_yes:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSwitchTextOn(I)V
+-
+-    .line 376
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_no:I
+-
+-    move/from16 v0, v36
+-
+-    invoke-virtual {v7, v0}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSwitchTextOff(I)V
+ 
+     .line 378
+     new-instance v20, Lcom/aor/droidedit/custom/CustomSwitchPreference;
+@@ -4584,7 +4282,6 @@
+     .line 453
+     move-object/from16 v0, v21
+ 
+-    invoke-virtual {v0, v7}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     goto/16 :goto_3
+ 
+@@ -4684,88 +4381,7 @@
+     invoke-virtual {v6, v0}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     .line 424
+-    new-instance v25, Lcom/aor/droidedit/custom/CustomSwitchPreference;
+-
+-    move-object/from16 v0, v25
+-
+-    move-object/from16 v1, p0
+-
+-    invoke-direct {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;-><init>(Landroid/content/Context;)V
+-
+-    .line 425
+-    .local v25, "rootMode":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_root_mode:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setTitle(I)V
+-
+-    .line 426
+-    const-string/jumbo v36, "rootMode"
+-
+-    move-object/from16 v0, v25
+-
+-    move-object/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setKey(Ljava/lang/String;)V
+-
+-    .line 427
+-    const/16 v36, 0x0
+-
+-    invoke-static/range {v36 .. v36}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    move-result-object v36
+-
+-    move-object/from16 v0, v25
+-
+-    move-object/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setDefaultValue(Ljava/lang/Object;)V
+-
+-    .line 428
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_root_mode_active:I
+ 
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSummaryOn(I)V
+-
+-    .line 429
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_root_mode_inactive:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSummaryOff(I)V
+-
+-    .line 430
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_yes:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSwitchTextOn(I)V
+-
+-    .line 431
+-    sget v36, Lcom/aor/droidedit/lib/R$string;->pref_no:I
+-
+-    move-object/from16 v0, v25
+-
+-    move/from16 v1, v36
+-
+-    invoke-virtual {v0, v1}, Lcom/aor/droidedit/custom/CustomSwitchPreference;->setSwitchTextOff(I)V
+-
+-    .line 432
+-    move-object/from16 v0, v21
+-
+-    move-object/from16 v1, v25
+-
+-    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+ 
+     .line 434
+     new-instance v14, Lcom/aor/droidedit/custom/CustomSwitchPreference;
+@@ -4834,14 +4450,12 @@
+     goto/16 :goto_8
+ 
+     .line 491
+-    .end local v7    # "bugsensePreference":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v14    # "extraKeysPreference":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v17    # "infoPanel":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v18    # "lineNumbersPreference":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v19    # "lineWrapPreference":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v20    # "lowProfile":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v24    # "readOnly":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+-    .end local v25    # "rootMode":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v27    # "selectEncoding":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v30    # "spaceTab":Lcom/aor/droidedit/custom/CustomSwitchPreference;
+     .end local v32    # "spellCheck":Lcom/aor/droidedit/custom/CustomSwitchPreference;

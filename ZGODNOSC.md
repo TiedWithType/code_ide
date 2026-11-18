@@ -40,3 +40,31 @@ Dokumentacja Androida opisuje wymuszenie edge-to-edge po przejściu na targetSdk
 6. Duże dokumenty: checkpoint serializuje model na głównym wątku, więc należy zmierzyć opóźnienie przed planowaniem dalszej optymalizacji.
 
 Ograniczenia: brak emulatora/urządzenia Android; testy hosta, kompilacja i dekompilacja nie zastępują tych prób.
+
+# Przegląd zgodności — 2026-11-17 (linia 2026.11)
+
+## Potwierdzone w paczce
+
+- minSdk 31, targetSdk 34. Nowe klasy: Java 8, `dx --min-sdk-version=26`, dołączone jako `classes2.dex` (multi-dex natywny od API 21).
+- Usunięto RootTools i Crashlytics (kod, zasoby, osadzony `RootTools.apk`); brak ich śladów w `classes*.dex` poza stałą nazwy w `R$string`.
+- `PieceTableEditable` korzysta wyłącznie z publicznego API (`Selection.SELECTION_START/END` są publiczne); nie używa refleksji ani ukrytych metod. Ukryte `GraphicsOperations` pominięto; zakładamy, że `Canvas`/`Paint` użyją wtedy ścieżki przez `TextUtils.getChars` (do potwierdzenia na urządzeniu).
+- Dokument w `onSaveInstanceState`: tekst > 65 536 znaków trafia do `files/state/spill_*.txt`; pliki starsze niż 7 dni są sprzątane. Przy braku pliku stanu tekst wraca pusty (rzadki przypadek; nie wykonano próby ubicia procesu).
+
+## Zmiana certyfikatu podpisu
+
+Wydanie `editor-20260922` jest podpisane `CN=Android Test Key` (SHA-256 `fc02a40e…de1f`). Linia 2026.11 jest podpisana
+dostarczonym kluczem `CN=Android APK Signing` (SHA-256 `1cb5322e…ef57`). Pakiet jest ten sam (`com.code.ide`), więc Android
+odrzuci aktualizację nad wydaniem 20260922. Do decyzji: zachować nowy klucz i poinformować o odinstalowaniu, albo podpisać dawnym kluczem.
+
+## Testy urządzenia — niewykonane w tym środowisku
+
+1. Start aplikacji po zmianach (w tym ikona/tło i brak Crashlytics); Ustawienia bez pozycji Bug reports/Root mode.
+2. Otwieranie z zewnątrz: `externalstorage`, Pobrane (`raw:`/numeryczne), `media`, `FileProvider` obcej aplikacji; zapis trafia do oryginału; kopia awaryjna i odsyłanie do URI; brak uprawnień do zapisu.
+3. Snippety Emmet: wpis w Ustawieniach, grupy, edycja, „Cofnij”, import/eksport (BOM; formaty v1/v2/Emmet; tryby scalania), obrót ekranu, motyw i font.
+4. Duże pliki: 1, 5, 20 i 32 MB; komunikat odmowy przy małej pamięci; edycja w `PieceTableEditable` (kursor, zaznaczenie, IME, podpowiedzi, cofanie/ponawianie, wyszukiwanie, zawijanie); numery linii.
+5. Zejście do tła i przywracanie po ubiciu procesu dużego dokumentu (plik stanu).
+6. Pomiar opóźnień i pamięci: `updateLineCount`/zawijanie wykonują się w O(n) w tle — nie zoptymalizowano; stałe 32 MiB i 16 B/bajt to szacunki.
+7. Aktualizacja nad zainstalowanym wydaniem 20260922 (spodziewane odrzucenie z powodu certyfikatu).
+
+Ograniczenia: brak emulatora/urządzenia; testy hosta, kompilacja i dekompilacja nie zastępują tych prób.
+
