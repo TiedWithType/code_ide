@@ -149,5 +149,5 @@ Zakres: zmiany użytkownika na bazie `com.code.ide.apk` 2026.11.14 (SHA-256 `b45
 
 - [ ] Test na urządzeniu Android (brak urządzenia/emulatora) — lista w ZGODNOSC.md.
 - [ ] Pomiary czasu/pamięci dla dużych plików; stałe 32 MiB i 16 B/bajt to szacunki.
-- [ ] Commit, push, tag i GitHub Release — **nie wykonano** (pkt 4 reguł; wymagają wyraźnej zgody). Proponowany tag: `editor-20261117`, plik wydania: `Code-IDE-2026.11.17.apk`.
+- [x] Commit i push do `main`: `d656d149e3ba7cb3e02dd41bb3d8bdb5e9928c43` (33 pliki). [ ] Tag `editor-20261117` i GitHub Release pozostają do utworzenia; APK zostanie dodany przez użytkownika.
 
